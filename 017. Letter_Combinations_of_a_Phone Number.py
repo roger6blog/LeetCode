@@ -21,7 +21,7 @@ class Solution(object):
         :rtype: List[str]
         """
         def dfs(num, string, res):
-            if num == length: 
+            if num == length:    # Length is same as len(digits), done
                 res.append(string) 
                 return
             for letter in dicTel[digits[num]]:
