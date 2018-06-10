@@ -1,5 +1,5 @@
 '''
-## Meeting Rooms I, II
+## Meeting Rooms I
 
 >**Question 1**
 
