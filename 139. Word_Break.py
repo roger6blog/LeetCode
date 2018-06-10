@@ -43,3 +43,8 @@ class Solution(object):
                     dp.append(i)
                     break
         return dp[-1] == len(s)
+
+sol = Solution()      
+res = sol.wordBreak("abcd", ["a","ab", "abc", "cde"])
+print res      
+      
