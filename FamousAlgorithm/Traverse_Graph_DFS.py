@@ -19,5 +19,11 @@ def dfs(graph, node, visited):
   graph: whole graph
   return: the sequence of traversed graph
   '''
+  if node not in visited:
+        visited.append(node)
+        for item in graph[node]:
+            dfs(graph, item, visited)
+  return visited
   
-  
+result = dfs(graph, 'A', [])
+print result
