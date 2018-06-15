@@ -25,9 +25,6 @@ Output: false
 
 '''
 
-
-
-
 class Solution(object):
     def wordBreak(self, s, wordDict):
         """
@@ -35,8 +32,13 @@ class Solution(object):
         :type wordDict: List[str]
         :rtype: bool
         """
+        # lenggn of dp is 0, it means the previous element was handle, we can continue to parse from 0 now
         dp = [0]
+        
+        # the length of s, (1, len(s)+1)
         for i in xrange(1, len(s)+1):
+            # All valid word break from beginning. We cannot process behind string if we don't process front string
+            # for loop: initial value = len(dp)-1, final value = -1, intervel = -1
             for j in xrange(len(dp)-1, -1, -1):
                 substr = s[dp[j]: i]
                 if substr in wordDict:
