@@ -42,6 +42,7 @@ class Solution(object):
             for j in xrange(len(dp)-1, -1, -1):
                 substr = s[dp[j]: i]
                 if substr in wordDict:
+                    # Add dp record if substring in dict
                     dp.append(i)
                     break
         return dp[-1] == len(s)
