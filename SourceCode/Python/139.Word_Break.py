@@ -46,8 +46,25 @@ class Solution(object):
                     dp.append(i)
                     break
         return dp[-1] == len(s)
+      
+    def wordBreak2(self, s, wordDict):
+        # lenggn of dp is 0, it means the previous element was handle, we can continue to parse from 0 now
+        dp = [False for i in range(len(s) + 1)]
+        dp[0] = True
+        for i in range(len(s)):
+            # All valid word break from beginning. We cannot process behind string if we don't process front string
+            # for loop: initial value =i, final value = -1, intervel = -1
+            for j in range(i, -1, -1):
+                if dp[j] and s[j:i + 1] in wordDict:
+                    dp[i + 1] = True
+                    break
+        return dp[len(s)]
 
 sol = Solution()      
 res = sol.wordBreak("abcd", ["a","ab", "abc", "cde"])
 print res      
+     
+res = sol.wordBreak2("abcd", ["a","ab", "abc", "cde"])
+print res      
+
       
