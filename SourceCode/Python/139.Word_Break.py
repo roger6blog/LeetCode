@@ -32,7 +32,7 @@ class Solution(object):
         :type wordDict: List[str]
         :rtype: bool
         """
-        # lenggn of dp is 0, it means the previous element was handle, we can continue to parse from 0 now
+        # length of dp is 0, it means the previous element was handle, we can continue to parse from 0 now
         dp = [0]
         
         # the length of s, (1, len(s)+1)
@@ -48,7 +48,7 @@ class Solution(object):
         return dp[-1] == len(s)
       
     def wordBreak2(self, s, wordDict):
-        # lenggn of dp is 0, it means the previous element was handle, we can continue to parse from 0 now
+        # length of dp is 0, it means the previous element was handle, we can continue to parse from 0 now
         dp = [False for i in range(len(s) + 1)]
         dp[0] = True
         for i in range(len(s)):
