@@ -1,4 +1,12 @@
-
+  
+  
+  
+***
+  
+### [017.Letter_Combinations_of_a_Phone Number](../SourceCode/Python/017.Letter_Combinations_of_a_Phone Number.py) Level: Medium Tags: [DFS]
+   
+思路: 用DFS窮舉所有可能的字串
+  
 ***
   
   
