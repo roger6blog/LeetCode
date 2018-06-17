@@ -28,6 +28,16 @@ class Solution(object):
      * @param n   Maximum number of characters to read
      * @return    The number of characters read
     '''
-    
-    while len + 4 < n:
+    len = 0
+    bufread4 = ['']*4
+    while Readbyte < n:
+        res = read4(bufread4)  # size maybe 4 since there is no char in file
+        copyBytes = min(n, res)
+        if res < 4:
+            break
+        Readbyte += copyBytes
+        for i in xrange(res):
+            buf[Readbyte + i ] = bufread4[i]
+    if res < 4 or Readbyte == n:
+        return Readbyte
     
