@@ -27,7 +27,7 @@ starString coverage和string指針都不斷往前進
 Analysis:
 
 For each element in s  
-If *s==*p or *p == ? which means this is a match, then goes to next element s++ p++.  
+If *s==*p or \*p == ? which means this is a match, then goes to next element s++ p++.  
 If p=='*', this is also a match, but one or many chars may be available, so let us save this *'s position and the matched s position.
 If not match, then we check if there is a * previously showed up,  
        if there is no *,  return false;  
