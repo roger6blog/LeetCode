@@ -47,3 +47,17 @@ check the rest element in p, if all are *, true, else false;
 Note that in char array, the last is NOT NULL, to check the end, use  "*p"  or "*p=='\0'".  
 
 ***
+  
+  
+  
+***
+  
+  
+### [158.[Locked]Read_N_Characters_Given Read4_II_-_Call_multiple_times](../SourceCode/Python/158.[Locked]Read_N_Characters_Given Read4_II_-_Call_multiple_times.py) Level: Hard Tags: []
+  
+  
+  
+  
+***
+  
+  
