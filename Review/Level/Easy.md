@@ -5,7 +5,7 @@
 
 ***
   
-### [157.Read_N_Characters_Given_Read4](../SourceCode/Python/157.[Locked]Read_N_Characters_Given_Read4.py) Level: Easy Tags: [Locked]
+### [157.Read_N_Characters_Given_Read4](../../SourceCode/Python/157.[Locked]Read_N_Characters_Given_Read4.py) Level: Easy Tags: [Locked]
   
   
 首先要明白題意的Read4是什麼意思  
