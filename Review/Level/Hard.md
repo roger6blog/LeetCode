@@ -5,7 +5,7 @@
   
 ***
   
-### [044.Wildcard_Matching](../SourceCode/Python/044.Wildcard_Matching.py) Level: Hard Tags: []
+### [044.Wildcard_Matching](../../SourceCode/Python/044.Wildcard_Matching.py) Level: Hard Tags: []
    
 用三個指針來代表string，pattern和星號(star)指向的位置  
 一個變數代表星號所涵蓋的string長度  
@@ -53,7 +53,7 @@ Note that in char array, the last is NOT NULL, to check the end, use  "*p"  or "
 ***
   
   
-### [158.\[Locked\]Read_N_Characters_Given_Read4_II_-_Call_multiple_times](../SourceCode/Python/158.\[Locked\]Read_N_Characters_Given_Read4_II_-_Call_multiple_times.py) Level: Hard Tags: []
+### [158.\[Locked\]Read_N_Characters_Given_Read4_II_-_Call_multiple_times](../../SourceCode/Python/158.\[Locked\]Read_N_Characters_Given_Read4_II_-_Call_multiple_times.py) Level: Hard Tags: []
   
   
   
