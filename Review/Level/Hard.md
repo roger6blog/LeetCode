@@ -56,7 +56,13 @@ Note that in char array, the last is NOT NULL, to check the end, use  "*p"  or "
 ### [158.\[Locked\]Read_N_Characters_Given_Read4_II_-_Call_multiple_times](../../SourceCode/Python/158.\[Locked\]Read_N_Characters_Given_Read4_II_-_Call_multiple_times.py) Level: Hard Tags: []
   
   
-這題是157題: [157.Read_N_Characters_Given_Read4](../SourceCode/Python/157.[Locked]Read_N_Characters_Given_Read4.py) 的延伸
+這題是157題: [157.Read_N_Characters_Given_Read4](../../SourceCode/Python/157.[Locked]Read_N_Characters_Given_Read4.py) 的延伸  
+但多了多次讀取的部分
+多次讀取的意義在於每次呼叫Read4所得到的資料量可能不同
+所以需要準備一個buffer來存放讀取4字元後多餘的資料  
+每次我們的read被呼叫時，先檢查buffer有無資料  
+有的話就先從buffer拿資料出來  
+還不夠的話繼續呼叫read4來存取檔案  
   
   
 ***
