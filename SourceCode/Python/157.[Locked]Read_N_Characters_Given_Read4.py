@@ -28,7 +28,7 @@ class Solution(object):
      * @param n   Maximum number of characters to read
      * @return    The number of characters read
     '''
-    len = 0
+    Readbyte = 0
     bufread4 = ['']*4
     while Readbyte < n:
         res = read4(bufread4)  # size maybe 4 since there is no char in file
