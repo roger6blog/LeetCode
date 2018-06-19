@@ -71,8 +71,19 @@ Note that in char array, the last is NOT NULL, to check the end, use  "*p"  or "
 ### [159.[Locked]Longest_Substring_with_At_Most_Two_Distinct_Characters](../../SourceCode/Python/159.[Locked]Longest_Substring_with_At_Most_Two_Distinct_Characters.py) Level: Hard Tags: [Sliding Window]
   
   
+思路: 用Slinding Window來計算最長的兩個兩個不相同字元組成的字串長度  
+另外用一個Hashmap來記錄目前在Slinding Window的字元  
+1. 一開始先用Window 的右側bar來累加所有不同的字元並存入Hashmap  
+每掃到一個新字元，Hashmap相對應的字元就累加1  
+2. 右側bar前進的同時也檢查目前Hashmap裡的不同字元有沒有超過2個  
+有的話則滑動Window的左側bar，並將左側bar原本指向的字元在Hashmap裡的數量減1  
+減到0之後，Hashpmap裡不同字元的數量便少了1  
+如此重複直到Hashmap裡的不同字元少於2個為止  
+3. 取當前Window右側的bar(通常是for迴圈裡的i) 和Window左側bar相減的長度、和當前最長不同字元字串的長度的最大值  
+接著繼續讓Window右側bar前進來讀取整個字串  
+4. 等Traverse完整個字串，即得到最大不同字元的字串長度
   
   
-  
+***
   
 ***
