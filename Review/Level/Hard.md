@@ -87,7 +87,13 @@ Note that in char array, the last is NOT NULL, to check the end, use  "*p"  or "
 ***
   
   
-### [253.[Locked]Meeting_Rooms_II](../../SourceCode/Python/253.[Locked]Meeting_Rooms_II.py) Level: Hard Tags: [Sliding Window]
+### [253.[Locked]Meeting_Rooms_II](../../SourceCode/Python/253.[Locked]Meeting_Rooms_II.py) Level: Hard Tags: [List]
+  
+思路: 直觀可以看出就是找出所有List重疊的部分，重疊代表要多準備會議室  
+可以把Meeting room所有的起始和結束時間按順序排好  
+並從左掃到右，每遇到Start，需要會議室就+1，遇到end，需要會議室就-1  
+同時記錄在這iterate中的最大會議室數  
+此即為答案
   
   
   
