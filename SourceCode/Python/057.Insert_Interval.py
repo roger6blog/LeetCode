@@ -20,10 +20,10 @@ Explanation: Because the new interval [4,8] overlaps with [3,5],[6,7],[8,10].
 
 
 # Definition for an interval.
-# class Interval(object):
-#     def __init__(self, s=0, e=0):
-#         self.start = s
-#         self.end = e
+class Interval(object):
+    def __init__(self, s=0, e=0):
+        self.start = s
+        self.end = e
 
 class Solution(object):
     def insert(self, intervals, newInterval):
@@ -48,4 +48,7 @@ class Solution(object):
         return ans
                                  
 
-                                 
+a = [Interval(1,3),Interval(6,9)]
+b = Interval(2,5)
+sol = Solution()
+print sol.insert(a, b)
