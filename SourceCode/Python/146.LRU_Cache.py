@@ -48,7 +48,9 @@ class LRUCache(object):
         if key not in self.dicCache:
             return -1
         else:
-            self.lstRecent.insert(0, self.lstRecent.pop(self.lstRecent.index(key)))
+            #self.lstRecent.insert(0, self.lstRecent.pop(self.lstRecent.index(key)))
+            self.lstRecent.remove(key)
+            self.lstRecent.append(key)
             return self.dicCache[key]
 
 
@@ -62,13 +64,17 @@ class LRUCache(object):
         if key in self.dicCache:
             # just renew the value
             self.dicCache[key] = value
-            self.lstRecent.insert(0, self.lstRecent.pop(self.lstRecent.index(key)))
-        if len(self.lstRecent) == self.capcity:
-            removeKey = self.lstRecent.pop()
-            self.dicCache.pop(removeKey, None)
+            #self.lstRecent.insert(0, self.lstRecent.pop(self.lstRecent.index(key)))
+            self.lstRecent.remove(key)
+            self.lstRecent.append(key)
+        else:
+            if len(self.lstRecent) == self.capcity:
+                removeKey = self.lstRecent[0]
+                self.dicCache.pop(removeKey, None)
+                self.lstRecent = self.lstRecent[1:]
 
-        self.dicCache[key] = value
-        self.lstRecent.insert(0, key)
+            self.dicCache[key] = value
+            self.lstRecent.append(key)
 
 
 
@@ -78,7 +84,7 @@ class LRUCache(object):
 # param_1 = obj.get(key)
 # obj.put(key,value)
 
-
+'''
 cache = LRUCache(2)
 cache.get(2)
 cache.put(2, 6)
@@ -88,8 +94,18 @@ cache.put(1, 2)
 print cache.get(1)
 print cache.get(2)
 
-
-
+'''
+cache = LRUCache(2)
+cache.get(2)
+cache.put(1, 1)
+cache.put(2, 2)
+print cache.get(1)
+cache.put(3, 3)
+print cache.get(2)
+cache.put(4, 4)
+print cache.get(1)
+print cache.get(3)
+print cache.get(4)
 
 
 
