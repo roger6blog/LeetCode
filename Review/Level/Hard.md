@@ -1,7 +1,13 @@
 
   
+***
+
+[057.Insert_Interval](../../SourceCode/Python/057.Insert_Interval.py) Level: Hard Tags: [List]
   
-  
+思路: 是[056.Merge_Interval](../../SourceCode/Python/056.Merge_Interval.py) 的延伸  
+做法也極為類似  
+只要把要插入的Interval插入原本的List
+剩下的就跟056.Merge_Interval一樣了
   
 ***
   
