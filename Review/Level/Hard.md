@@ -54,7 +54,16 @@ Note that in char array, the last is NOT NULL, to check the end, use  "*p"  or "
 
 ***
   
+### [146.LRU_Cache](../../SourceCode/Python/146.LRU_Cache.py) Level: Hard Tags: []
   
+思路: 實作一個 Least Recently Used (LRU) cache.  
+最簡單的作法是使用Python內建的dictionary來存放資料和索引  
+用List來存放Cache容量滿的時候要移出去的index
+這種做法的時間複雜度為 O(n)  
+如果需要O(1)的複雜度  
+則需要用Dobule LinkList來取代原本的List
+
+
   
 ***
   
