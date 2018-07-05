@@ -74,3 +74,20 @@ roo節點通常為空，底下有a~z 26個子Trie
 壞處就是浪費空間和比不上最佳化的Hash  
   
   
+### [230.Kth_Smallest_Element_in_a_BST](../SourceCode/Python/230.Kth_Smallest_Element_in_a_BST.py) Level: Medium Tags: [Recursive]
+  
+Time:  O(max(h, k))
+h is height of tree
+Space: O(h)
+思路: 在一個二元樹中找出第K小的元素  
+Python的話可以先traversal整個二元樹(BFS或DFS都行)    
+然後對traversal後的list做sort  
+如此便知道第K個元素是誰了  
+一般的遞迴方法則是先遞迴尋找此二元樹的child  
+每找到一個就把k減去1   
+當k減到0時該元素即為答案  
+  
+  
+***
+
+  
