@@ -113,3 +113,27 @@ Note that in char array, the last is NOT NULL, to check the end, use  "*p"  or "
   
   
 ***
+ 
+### [212.Word_Search_II](../../SourceCode/Python/212.Word_Search_II.py) Level: Hard Tags: [DFS, Tree]
+  
+思路: 題目給了你一個2D陣列，要求你找出給予的單字中是能讓這陣列中的相鄰字元成為該單字  
+例如  
+words = ["oath","pea","eat","rain"]  
+board =
+[
+  ['o','a','a','n'],
+  ['e','t','a','e'],
+  ['i','h','k','r'],
+  ['i','f','l','v']
+]
+
+Output: ["eat","oath"]
+因為e, a, t能在陣列中找出相鄰的字元    
+看到2D陣列的traversal便能很自然想到用DFS或BFS解題  
+而題目限制字元是a~z的組合也暗示了我們能用 Tries來拆解單字和搜尋  
+因為自己寫的code一直敗在其中一個test case  
+這裡附上能被Accept的版本  
+[212.Word_Search_II_Accept](../../SourceCode/Python/212.Word_Search_II_Accept.py)
+
+***
+  

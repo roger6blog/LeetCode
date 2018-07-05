@@ -59,6 +59,8 @@ pre指標指向前一個元素、curr指標指向後面一個元素
   
 ### [208.Implement_Trie_(Prefix_Tree)](../SourceCode/Python/208.Implement_Trie_(Prefix_Tree).py) Level: Medium Tags: []
   
+Time:  O(n), per operation
+Space: O(1)
 思路:本題要求你實作一個字典樹(Trie)的insert, search和startWith  
 在此之前你必須先了解字典樹是什麼  
   
