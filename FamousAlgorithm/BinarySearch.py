@@ -4,7 +4,7 @@
 '''
 
 
-def binarySearch(lst, item):
+def BinarySearch(lst, item):
     '''
     :param lst: sorted list of integers
     :param item: integer you are searching for
@@ -17,16 +17,16 @@ def binarySearch(lst, item):
 
     first = 0
     last = len(lst) - 1
-    i = (first + last) // 2
+    mid = (first + last) // 2
 
-    if lst[i] == item:
-        return i
-    elif lst[i] < item:
-        return binarySearch(lst[i+1:], item)
+    if lst[mid] == item:
+        return mid
+    elif lst[mid] < item:
+        return BinarySearch(lst[mid + 1:], item)
     else:
-        return binarySearch(lst[:i], item)
+        return BinarySearch(lst[:mid], item)
 
 
 a = [1,2,3,5,7,9]
-ans = binarySearch(a, 9)
+ans = BinarySearch(a, 9)
 print ans

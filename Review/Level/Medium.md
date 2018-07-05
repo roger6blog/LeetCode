@@ -16,6 +16,18 @@
   
 ***
 
+### [074.Search_a_2D_Matrix](../SourceCode/Python/074.Search_a_2D_Matrix.py) Level: Medium Tags: []
+  
+Time:  O(logm + logn)
+Space: O(1)
+思路:在一個已排序的2D List中找出某個元素  
+最直觀的解法當然是用for去找，不過此解法只能得到O(n)  
+既然這List已經被排序，就算它分成幾個小List  
+我們還是能用BinarySearch來找出我們要的元素
+所以最佳解為O(nlog(n))
+  
+***
+  
 ### [179.Largest_Number](../SourceCode/Python/179.Largest_Number.py) Level: Medium Tags: [Sort]
 
   
@@ -74,6 +86,8 @@ roo節點通常為空，底下有a~z 26個子Trie
 壞處就是浪費空間和比不上最佳化的Hash  
   
   
+***
+  
 ### [230.Kth_Smallest_Element_in_a_BST](../SourceCode/Python/230.Kth_Smallest_Element_in_a_BST.py) Level: Medium Tags: [Recursive]
   
 Time:  O(max(h, k))
@@ -90,4 +104,21 @@ Python的話可以先traversal整個二元樹(BFS或DFS都行)
   
 ***
 
+### [240.Search_a_2D_Matrix_II](../SourceCode/Python/240.Search_a_2D_Matrix_II.py) Level: Medium Tags: [Recursive]
   
+Time:  O(row + col)  
+Space: O(1)
+  
+思路:   
+是[074.Search_a_2D_Matrix](../SourceCode/Python/074.Search_a_2D_Matrix.py) 的衍伸題    
+不同的是這次的2D Matrix是呈螺旋狀遞減，但基本還是西高東低
+所以同樣也能用遞迴解題，甚至可能用同樣的解法來解題  
+只有效率的差別  
+我們這次在這裡採用非遞迴的解法  
+我們從該2D Matrix的最右上角開始比對  
+如果比target大的話說明元素在我們的左手邊，所以目標col-1  
+如果比target小的話說明元素在我們的下面，所以目標row+1    
+終止條件為超過matrix的邊界  
+  
+  
+***
