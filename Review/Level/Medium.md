@@ -47,3 +47,28 @@ pre指標指向前一個元素、curr指標指向後面一個元素
 我們需要一個dictionary來記錄該小數點數字出現的位置  
 不能直接把小數點數字加入list再去搜尋該list  
 否則會無法處理小數點數字重複的情況如: 1/333=0.(003) 
+  
+***
+  
+### [200.Number_of_Islands](../SourceCode/Python/200.Number_of_Islands.py) Level: Medium Tags: []
+  
+思路: 本題是找出與周圍被0包圍的1  
+可以使用DFS，利用四個方向去取得每個元素的周圍是否還有0  
+已經走過 (visited) 的元素我們用0標示，如此便不會再去走它  
+  
+  
+### [208.Implement_Trie_(Prefix_Tree)](../SourceCode/Python/208.Implement_Trie_(Prefix_Tree).py) Level: Medium Tags: []
+  
+思路:本題要求你實作一個字典樹(Trie)的insert, search和startWith  
+在此之前你必須先了解字典樹是什麼  
+  
+![一個保存了8個鍵的trie結構，"A", "to", "tea", "ted", "ten", "i", "in", and "inn".](../Res/1200px-Trie_example.svg.png)
+  
+簡單來說就是一個方便搜尋同樣Prefix單字的樹  
+有同樣prefix字的單字會被插到同一條Trie  
+roo節點通常為空，底下有a~z 26個子Trie
+好處是用空間換取時間  
+搜尋速度比為最佳化的Hash快，只要O(n)    
+壞處就是浪費空間和比不上最佳化的Hash  
+  
+  

@@ -59,4 +59,10 @@ _function_:
 ### [140.Word_Break II](../SourceCode/Python/140.Word_Break_II.py) Level: Hard Tags: [DP, Sequence DP, DFS]
   
   
-***
+### [200.Number_of_Islands](../SourceCode/Python/200.Number_of_Islands.py) Level: Medium Tags: []
+  
+Time:  O(m * n)  
+Space: O(m * n)  
+思路: 本題是找出與周圍被0包圍的1  
+可以使用DFS，利用四個方向去取得每個元素的周圍是否還有0  
+已經走過 (visited) 的元素我們用0標示，如此便不會再去走它
