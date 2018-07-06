@@ -122,3 +122,18 @@ Space: O(1)
   
   
 ***
+  
+
+### [246.Strobogrammatic_Number](../SourceCode/Python/246.Strobogrammatic_Number.py) Level: Medium Tags: []
+  
+Time:  O(n)
+Space: O(1)
+  
+思路:Strobogrammatic Number是對稱數，亦即左右上下翻轉都能維持原狀的數  
+本題只要求上下翻轉，不過都差不多  
+解法為預設一個dictionary，上面寫好應該要對應的key-value pair  
+例如 1:1, 6:9, 8:8  
+然後從中間切半，不斷比對左右兩邊的元素是否是dictionary預期的即可  
+  
+  
+***
