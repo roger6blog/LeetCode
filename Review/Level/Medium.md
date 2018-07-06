@@ -124,7 +124,7 @@ Space: O(1)
 ***
   
 
-### [246.Strobogrammatic_Number](../SourceCode/Python/246.Strobogrammatic_Number.py) Level: Medium Tags: []
+### [246.[Locked]Strobogrammatic_Number](../SourceCode/Python/246.[Locked]Strobogrammatic_Number.py) Level: Medium Tags: []
   
 Time:  O(n)
 Space: O(1)
