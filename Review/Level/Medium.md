@@ -7,24 +7,24 @@
   
 思路: 對Python來說不難，因為Python就有內建List排序  
 把題目給的List照start值得順序排好後  
-用以下的方式來判斷兩個Interal:
-1. 如果新的List裡面沒Interval，直接加入新List
-2. 如果有的話，比較新List最後一個Interval和要加入的Interval是否有重疊
-  重疊的規則: 新Interval的start值落在最後一個Interval的區間裡(相同值也算)
-  如此不斷iterate所有元素
-  新List即為答案
+用以下的方式來判斷兩個Interal:  
+1. 如果新的List裡面沒Interval，直接加入新List  
+2. 如果有的話，比較新List最後一個Interval和要加入的Interval是否有重疊  
+  重疊的規則: 新Interval的start值落在最後一個Interval的區間裡(相同值也算)  
+  如此不斷iterate所有元素  
+  新List即為答案  
   
 ***
 
 ### [074.Search_a_2D_Matrix](../SourceCode/Python/074.Search_a_2D_Matrix.py) Level: Medium Tags: []
   
-Time:  O(logm + logn)
-Space: O(1)
+Time:  O(logm + logn)  
+Space: O(1)  
 思路:在一個已排序的2D List中找出某個元素  
 最直觀的解法當然是用for去找，不過此解法只能得到O(n)  
 既然這List已經被排序，就算它分成幾個小List  
 我們還是能用BinarySearch來找出我們要的元素
-所以最佳解為O(nlog(n))
+所以最佳解為O(nlog(n))  
   
 ***
   
@@ -43,7 +43,7 @@ Space: O(1)
   
 ### [163.Missing_Range](../SourceCode/Python/163.Missing_Range.py) Level: Medium Tags: []
   
-思路:我們可以使用雙指標
+思路:我們可以使用雙指標  
 pre指標指向前一個元素、curr指標指向後面一個元素  
 不斷的比較前一個元素和後一個元素是否有大於2的差距  
 如果有的話代表有Missing range  
@@ -54,7 +54,7 @@ pre指標指向前一個元素、curr指標指向後面一個元素
   
 ### [166.Fraction_to_Recurring_Decimal](../SourceCode/Python/166.Fraction_to_Recurring_Decimal.py) Level: Medium Tags: []
   
-思路: 題目要求你找出不同數字相除後的小數，如果有循環則在循環的數字中括號
+思路: 題目要求你找出不同數字相除後的小數，如果有循環則在循環的數字中括號  
 除了最基本的兩數相除取模和找商之外  
 我們需要一個dictionary來記錄該小數點數字出現的位置  
 不能直接把小數點數字加入list再去搜尋該list  
@@ -80,7 +80,7 @@ Space: O(1)
   
 簡單來說就是一個方便搜尋同樣Prefix單字的樹  
 有同樣prefix字的單字會被插到同一條Trie  
-roo節點通常為空，底下有a~z 26個子Trie
+roo節點通常為空，底下有a~z 26個子Trie  
 好處是用空間換取時間  
 搜尋速度比為最佳化的Hash快，只要O(n)    
 壞處就是浪費空間和比不上最佳化的Hash  
@@ -137,3 +137,59 @@ Space: O(1)
   
   
 ***
+
+### [247.[Locked]Strobogrammatic_Number_II](../SourceCode/Python/247.[Locked]Strobogrammatic_Number_II.py) Level: Medium Tags: [Recursive]
+  
+Time:  O(n^2 * 5^(n/2))
+Space: O(n)
+  
+思路:[246.[Locked]Strobogrammatic_Number](../SourceCode/Python/246.[Locked]Strobogrammatic_Number.py) 的衍伸題目  
+這次是要求你組出一個n長度的所有對稱數  
+但題目也好心的提示你要用遞迴來做，還告訴你要用n-2來當遞迴條件(因為是對稱數)  
+重點就在於遞迴的參數，我們一開始呼叫帶兩個n的遞迴function  
+每呼叫一次其中一個n就減2並組合可能的字串  
+如此一直到減去的n為1或0即為終止條件  
+最後要注意一點，最外層的數不能是0，所以需要加判斷條件去掉  
+
+  
+***
+
+### [249.[Locked]Group_Shifted_Strings](../SourceCode/Python/249.[Locked]Group_Shifted_Strings.py) Level: Medium Tags: []
+  
+Time:  O(nlogn)
+Space: O(n)
+  
+思路: 題目要你把[字元間隔]一樣的字串歸類  
+例如 abc 他們的字元間隔就是1，但a和z的字元間隔也是1  
+所以歸類時需要有循環的觀念  
+我們可以用 % 運算子做到循環的效果，來算出每個字串的字元間隔  
+例如 abc就是 [1,1] xyz也是[1,1]  
+由此可得這兩個字串的字元間隔相同，便可將他們歸在同一類  
+我們可以把 [1,1]當作索引存到一個dictionary  
+value即為歸類於此的各個字串組成的List
+  
+  
+***
+  
+
+### [251.[Locked]Flatten_2D_Vector](../SourceCode/Python/251.[Locked]Flatten_2D_Vector.py) Level: Medium Tags: []
+  
+  
+思路: 題目很難弄懂  
+他的要求是要你把一個2D List壓平後用2個iterator把裡面的元素印出來  
+因為有iterator的要求所以其他方法都不能用  
+這兩個iterator，第一個iterator疊代最外面的List  
+第二個iterator疊代裡面List的元素
+首先用Python內建的iter把輸入的Vector疊代化，名為x  
+在hasNext方法中，檢查有沒有第二個疊代器y  
+有的話就把之後next要返回的值塞入第二個疊代器指向的元素值  
+對於StopIteration的處理，因為第二個疊代器已經沒有元素了  
+所以需要把當前的第二個疊代器刪除，重新產生一個新的  
+  
+如果一開始就沒有第二個疊代器  
+那就把第一個疊代器的下一個List拿來疊代化，產生一個新的  
+對於StopIteration的處理，就是告訴caller下面沒有了  
+
+
+
+

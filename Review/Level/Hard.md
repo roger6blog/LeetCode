@@ -6,7 +6,7 @@
   
 思路: 是[056.Merge_Interval](../../SourceCode/Python/056.Merge_Interval.py) 的延伸  
 做法也極為類似  
-只要把要插入的Interval插入原本的List
+只要把要插入的Interval插入原本的List  
 剩下的就跟056.Merge_Interval一樣了
   
 ***
@@ -22,10 +22,10 @@
   
 在Traversal兩個指針時
 比較特別的是發現pattern指向的位置有星號  
-此時要做的動作就是紀錄string在何處開始符合星號pattern
-和開始累積starString coverage的起始範圍
+此時要做的動作就是紀錄string在何處開始符合星號pattern  
+和開始累積starString coverage的起始範圍  
   
-此情況觸發後，接下來的step是在下一個字串符合pattern指針的所指向的下一個(當前是星號)字元前  
+此情況觸發後，接下來的step是在下一個字串符合pattern指針的所指向的下一個(當前是星號)字元前    
 starString coverage和string指針都不斷往前進
   
   
@@ -58,12 +58,11 @@ Note that in char array, the last is NOT NULL, to check the end, use  "*p"  or "
   
 思路: 實作一個 Least Recently Used (LRU) cache.  
 最簡單的作法是使用Python內建的dictionary來存放資料和索引  
-用List來存放Cache容量滿的時候要移出去的index
+用List來存放Cache容量滿的時候要移出去的index  
 這種做法的時間複雜度為 O(n)  
 如果需要O(1)的複雜度  
 則需要用Dobule LinkList來取代原本的List
-
-
+  
   
 ***
   
@@ -71,9 +70,9 @@ Note that in char array, the last is NOT NULL, to check the end, use  "*p"  or "
 ### [158.\[Locked\]Read_N_Characters_Given_Read4_II_-_Call_multiple_times](../../SourceCode/Python/158.\[Locked\]Read_N_Characters_Given_Read4_II_-_Call_multiple_times.py) Level: Hard Tags: []
   
   
-這題是157題: [157.Read_N_Characters_Given_Read4](../../SourceCode/Python/157.[Locked]Read_N_Characters_Given_Read4.py) 的延伸  
-但多了多次讀取的部分
-多次讀取的意義在於每次呼叫Read4所得到的資料量可能不同
+這題是157題: [157.Read_N_Characters_Given_Read4](../../SourceCode/Python/157.[Locked]Read_N_Characters_Given_Read4.py) 的延伸    
+但多了多次讀取的部分  
+多次讀取的意義在於每次呼叫Read4所得到的資料量可能不同  
 所以需要準備一個buffer來存放讀取4字元後多餘的資料  
 每次我們的read被呼叫時，先檢查buffer有無資料  
 有的話就先從buffer拿資料出來  

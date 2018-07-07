@@ -5,8 +5,8 @@
   
 ### [001.Two_Sum](../../SourceCode/Python/001.Two_Sum.py) Level: Easy Tags: []
   
-Time:  O(n)
-Space: O(n)
+Time:  O(n)  
+Space: O(n)  
 思路: 檢查一個List中的兩個元素相加是否等於目標的數字   
 雖然看起來可用兩個for迴圈  
 前一個元素和後一個元素不斷試著相加就能得出答案  
@@ -29,5 +29,19 @@ temp = [''] * 4  # 即為['', '', '', '']
 接著輸入的buf也是一堆空字元組成的list  
 我們要做的就是利用每一次的Read4 把讀到的4個字元放到buf中  
 注意每次Read4只能讀取4個字元，如果發現讀不出來了就要break  
+  
+***
+  
+### [257.Binary_Tree_Paths](../../SourceCode/Python/257.Binary_Tree_Paths.py) Level: Easy Tags: [Tree]
+  
+  
+思路: 要求你印出Binary Tree從root到所有leave的路徑   
+Traversal的部分用DFS就可以做到  
+問題在於怎麼把每次的路徑都印出來  
+我們可以在DFS裡面加上純leave的判斷  
+traversal到leave即印出其中一條路徑  
+在traversal到leave後我們需要把leave Node pop出來  
+不然就會變成一般的DFS traversal了  
+   
   
 ***
