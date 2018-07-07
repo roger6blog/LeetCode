@@ -34,7 +34,8 @@ temp = [''] * 4  # 即為['', '', '', '']
   
 ### [257.Binary_Tree_Paths](../../SourceCode/Python/257.Binary_Tree_Paths.py) Level: Easy Tags: [Tree]
   
-  
+Time:  O(n * h)，h為樹高  
+Space: O(h)  
 思路: 要求你印出Binary Tree從root到所有leave的路徑   
 Traversal的部分用DFS就可以做到  
 問題在於怎麼把每次的路徑都印出來  
