@@ -46,3 +46,18 @@ traversal到leave即印出其中一條路徑
    
   
 ***
+  
+### [326 Power_of_Three](../../SourceCode/Python/326 Power_of_Three.py) Level: Easy Tags: [Math]
+  
+Time:  O(1)  
+Space: O(1)  
+思路: 計算輸入的數字是否為3的n次方  
+用遞迴從3的0次方算到大於n的3的k次方      
+其中有相等於n的次方數即為答案  
+題目的Follow up要求用非遞迴的方法  
+因為符合3的n次方的正整數並不多  
+我們可以把0~最大正整數符合3的n次方的數字都算出來存到dictionary    
+接著看n有沒有在裡面就可以了    
+  
+  
+***
