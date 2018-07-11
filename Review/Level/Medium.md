@@ -266,3 +266,29 @@ nums[0] <= nums[1] >= nums[2] <= nums[3]....
   
   
 ***
+  
+### [341.Flatten_Nested_List_Iterator](../SourceCode/Python/341.Flatten_Nested_List_Iterator.py) Level: Medium Tags: []
+  
+Time:  O(n), n is the number of the integers.  
+Space: O(h), h is the depth of the nested lists.  
+  
+思路:本題要你用iterator把所有巢狀List中的元素疊代出來  
+和  [251.[Locked]Flatten_2D_Vector](../SourceCode/Python/251.[Locked]Flatten_2D_Vector.py) 有點相似    
+可是251題的Input全部都是List而這題有時Input會有數字    
+因為iter有個條件是要疊代的元素需要全部屬於同一種type  
+所以我們不能用251題的解法來解此題  
+我們可以用一個List代表要疊代的元素，依次把原本List中的元素倒給他    
+之後的next方法就只是pop這List裡的第一個元素了  
+hasNext方法中，有一個很重要的步驟是當我們的List接到元素時    
+需要判斷接到的是數字或是List  
+List的話還需要對他做進一步的處理才能給next方法用    
+  
+如果Input的List和我們的List都空了  
+說明後面已經沒有東西能疊代了  
+此時就能return False  
+  
+***
+
+
+ 
+  

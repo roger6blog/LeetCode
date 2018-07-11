@@ -49,30 +49,36 @@ the order of elements returned by next should be: [1,4,6].
 #        :rtype List[NestedInteger]
 #        """
 
+import os
 class NestedIterator(object):
-
     def __init__(self, nestedList):
-        """
-        Initialize your data structure here.
-        :type nestedList: List[NestedInteger]
-        """
-        self.i = iter(nestedList)
-        self.v = []
-        return self.i, self.v
+        self.stack = []
+        self.list = nestedList
 
+
+    def isInteger(self, obj):
+        if isinstance(obj, int):
+            return True
+        return False
     def next(self):
-        """
-        :rtype: int
-        """
-        return self.i.getInteger()
-
+        return self.stack.pop(0)
 
     def hasNext(self):
-        """
-        :rtype: bool
-        """
-
+        while self.list or self.stack:
+            if not self.stack:
+                self.stack.append(self.list.pop(0))
+            while self.stack and not self.isInteger(self.stack[-1]):
+                top = self.stack.pop()
+                for e in top:
+                    self.stack.append(e)
+            if self.stack and self.isInteger(self.stack[-1]):
+                return True
+        return False
 
 # Your NestedIterator object will be instantiated and called as such:
-# i, v = NestedIterator(nestedList), []
-# while i.hasNext(): v.append(i.next())
+nestedList = [[1,1],2,[6,1]]
+i, v = NestedIterator(nestedList), []
+while i.hasNext():
+    v.append(i.next())
+print v
+

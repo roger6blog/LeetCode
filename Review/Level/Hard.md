@@ -84,7 +84,8 @@ Note that in char array, the last is NOT NULL, to check the end, use  "*p"  or "
   
 ### [159.[Locked]Longest_Substring_with_At_Most_Two_Distinct_Characters](../../SourceCode/Python/159.[Locked]Longest_Substring_with_At_Most_Two_Distinct_Characters.py) Level: Hard Tags: [Sliding Window]
   
-  
+Time:  O(n)  
+Space: O(1)  
 思路: 用Slinding Window來計算最長的兩個兩個不相同字元組成的字串長度  
 另外用一個Hashmap來記錄目前在Slinding Window的字元  
 1. 一開始先用Window 的右側bar來累加所有不同的字元並存入Hashmap  
@@ -136,3 +137,15 @@ Output: ["eat","oath"]
 
 ***
   
+  
+### [340.[Locked]Longest_Substring_with_At_Most_K_Distinct_Characters](../../SourceCode/Python/340.[Locked]Longest_Substring_with_At_Most_K_Distinct_Characters.py) Level: Hard Tags: [Sliding Window]
+    
+Time:  O(n)  
+Space: O(1)  
+思路:和 [159.[Locked]Longest_Substring_with_At_Most_Two_Distinct_Characters](../../SourceCode/Python/159.[Locked]Longest_Substring_with_At_Most_Two_Distinct_Characters.py) 幾乎完全一樣  
+差別只在於159只要你找出最長的2個字母組成的字串長度  
+這題要K個而已  
+完全可以用159題的解法解答  
+  
+  
+***
