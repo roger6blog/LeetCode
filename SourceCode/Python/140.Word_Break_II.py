@@ -1,7 +1,9 @@
 
 
 '''
-Given a non-empty string s and a dictionary wordDict containing a list of non-empty words, add spaces in s to construct a sentence where each word is a valid dictionary word. Return all such possible sentences.
+Given a non-empty string s and a dictionary wordDict containing a list of non-empty words,
+add spaces in s to construct a sentence where each word is a valid dictionary word.
+Return all such possible sentences.
 
 Note:
 
@@ -17,6 +19,7 @@ Output:
   "cats and dog",
   "cat sand dog"
 ]
+
 Example 2:
 
 Input:
@@ -29,6 +32,7 @@ Output:
   "pine applepen apple"
 ]
 Explanation: Note that you are allowed to reuse a dictionary word.
+
 Example 3:
 
 Input:
@@ -52,12 +56,14 @@ class Solution(object):
         return self.ans
       
     def isWordBreak(self, s, wordDict):
-        # length of dp is 0, it means the previous element was handle, we can continue to parse from 0 now
+        # length of dp is 0, it means the previous element was handle,
+        # we can continue to parse from 0 now
         dp = [False for i in xrange(len(s)+1)]
         dp[0] = True
 
         for i in xrange(len(s)):
-            # All valid word break from beginning. We cannot process behind string if we don't process front string
+            # All valid word break from beginning.
+            # We cannot process behind string if we don't process front string
             # for loop: initial value =i, final value = -1, intervel = -1            
             for j in xrange(i, -1, -1):
                 if dp[j] and s[j:i+1] in wordDict:
