@@ -137,7 +137,6 @@ Output: ["eat","oath"]
 
 ***
   
-  
 ### [340.[Locked]Longest_Substring_with_At_Most_K_Distinct_Characters](../../SourceCode/Python/340.[Locked]Longest_Substring_with_At_Most_K_Distinct_Characters.py) Level: Hard Tags: [Sliding Window]
     
 Time:  O(n)  
@@ -146,6 +145,35 @@ Space: O(1)
 差別只在於159只要你找出最長的2個字母組成的字串長度  
 這題要K個而已  
 完全可以用159題的解法解答  
+  
+  
+***
+  
+### [329.Longest_Increasing_Path_in_a_Matrix](../../SourceCode/Python/329.Longest_Increasing_Path_in_a_Matrix.py) Level: Hard Tags: [DFS, DP]
+  
+Time:  O(m * n)  
+Space: O(m * n)  
+  
+思路:找出2D陣列裡所能排出最長的遞增序列  
+這題非常的難，除了要會用DFS Traversal所有可能的元素外  
+還要會運用Dynamic Programming  
+不然就會敗在題目給的超大2D陣列下吐出Time Limit Exceeded  
+  
+首先我們先造出全部為0的2D陣列  
+這陣列用來記錄曾經找出過的最長序列元素個數  
+接著逐行逐列，用DFS找出每個元素所能形成的最長序列個數  
+DFS相關的步驟可以寫成另一個函式  
+這函式一開始就要先檢查dp陣列裡是否已經紀錄過找過的最長序列元素數  
+找過的話就可以直接給遞回中呼叫的 sub function答案以節省時間  
+沒有找過的話，我們定出四個方向的tuple  
+分別代表目前元素的上下左右方  
+然後依次去比較(上下左右)方的元素是否大於目前元素  
+是的話深度就+1  
+並且遞回呼叫DFS繼續往深處找  
+該元素所能達到的最大深度找完後，把它紀錄在dp上  
+就能在Leetcode給的時間限制內把所有元素所能到達的最大深度全部算完  
+最後只要看dp陣列中的最大值  
+就是題目要的答案了  
   
   
 ***
