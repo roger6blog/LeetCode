@@ -47,7 +47,7 @@ traversal到leave即印出其中一條路徑
   
 ***
   
-### [326 Power_of_Three](../../SourceCode/Python/326 Power_of_Three.py) Level: Easy Tags: [Math]
+### [326.Power_of_Three](../../SourceCode/Python/326.Power_of_Three.py) Level: Easy Tags: [Math]
   
 Time:  O(1)  
 Space: O(1)  
