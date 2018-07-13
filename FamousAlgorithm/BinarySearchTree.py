@@ -23,7 +23,7 @@ Input: root = [5,3,6,2,4,null,null,1]
 
 '''
 
-# Definition for a binary tree node.
+# Definition for a binary search tree node.
 
 
 class TreeNode(object):
@@ -47,13 +47,16 @@ class Tree:
             self._add(val, self.root)
 
     def _add(self, val, node):
-        if node.left:
+        if val < node.val:
+            if node.left:
+                self._add(val, node.left)
+            else:
+                node.left = TreeNode(val)
+        else:
             if node.right:
                 self._add(val, node.right)
             else:
                 node.right = TreeNode(val)
-        else:
-            node.left = TreeNode(val)
 
 
 a = [3,1,4,None,2]
