@@ -134,7 +134,32 @@ Output: ["eat","oath"]
 因為自己寫的code一直敗在其中一個test case  
 這裡附上能被Accept的版本  
 [212.Word_Search_II_Accept](../../SourceCode/Python/212.Word_Search_II_Accept.py)
-
+  
+  
+  
+***
+  
+### [218.The_Skyline_Problem](../../SourceCode/Python/218.The_Skyline_Problem.py) Level: Hard Tags: [Heap]
+  
+  
+思路:堪稱是Leetcode最知名的經典難題之一  
+我們必須從圖A的建築物圖形中找出他剪影圖的特定點  
+![](../Res/skyline1.jpg)![](../Res/skyline2.jpg)  
+題目有提示這些點的特性固定的，可以參考圖B    
+具體的描述是"水平線段的左邊端點，就是所謂的關鍵點"  
+另外一個重點是"同一條天際線裡只能取一個關鍵點"  
+解題的核心思路是從左到右掃描每一個建築物  
+用Max heap來儲存目前最高天際線的右端點  
+如果目前天際線上左端點的天際線高度不等於Max heap中的最大高度的話    
+就是我們要的關鍵點  
+  
+如果目前的建築物左端點範圍落在Max heap擁有最高天際線的建築右端點外面的話  
+說明當前建物已經不屬於這個建築群，我們需要逐步移除Max heap裡的建築  
+在移除之前別忘記從天際線落地時也有一個關鍵點  
+  
+Python heapq提供的heap的是Min heap  
+所以我們要用Max heap的話，每個元素都要乘上-1才能達到Max heap的效果  
+   
 ***
   
 ### [340.[Locked]Longest_Substring_with_At_Most_K_Distinct_Characters](../../SourceCode/Python/340.[Locked]Longest_Substring_with_At_Most_K_Distinct_Characters.py) Level: Hard Tags: [Sliding Window]

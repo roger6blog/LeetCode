@@ -3,7 +3,7 @@
 
 ***
 
-[056.Merge_Interval](../../SourceCode/Python/056.Merge_Interval.py) Level: Medium Tags: [List]  
+### [056.Merge_Interval](../../SourceCode/Python/056.Merge_Interval.py) Level: Medium Tags: [List]  
   
 思路: 對Python來說不難，因為Python就有內建List排序  
 把題目給的List照start值得順序排好後  

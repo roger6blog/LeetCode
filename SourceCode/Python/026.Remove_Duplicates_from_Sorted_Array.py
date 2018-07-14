@@ -1,5 +1,4 @@
 
-
 '''
 Given a sorted array nums,
 remove the duplicates in-place such that each element appear only once and return the new length.
@@ -59,3 +58,6 @@ class Solution(object):
                 i += 1
                 nums[i] = nums[j]
         return i+1
+
+nums = [0,0,1,1,1,2,2,3,3,4]
+print Solution().removeDuplicates(nums)
