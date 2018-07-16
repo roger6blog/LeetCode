@@ -1,19 +1,152 @@
 
   
+  
 ***
 
-### [057.Insert_Interval](../../SourceCode/Python/057.Insert_Interval.py) Level: Hard Tags: [List]
+### [010.Regular_Expression_Matching](../../SourceCode/Python/010.Regular_Expression_Matching.py) Level: Hard Tags: [DP]
   
-思路: 是[056.Merge_Interval](../../SourceCode/Python/056.Merge_Interval.py) 的延伸  
-做法也極為類似  
-只要把要插入的Interval插入原本的List  
-剩下的就跟056.Merge_Interval一樣了
+Time:  O(m * n)  
+Space: O(m * n)  
   
+思路:其實就是把正規表示式的"." 和 "*"寫出來    
+十分難的一題  
+和 [044.Wildcard_Matching](../../SourceCode/Python/044.Wildcard_Matching.py)  很像  
+但兩者間有微妙的差別，具體可以見44題的思路  
+不過簡單來說，這題比44題難多了  
+因為本題的"*"有太多狀況要考慮了  
+  
+這題我們用Dynamic Programming(DP)解題  
+首先我們準備一個二元的DP陣列，大小為 (s+1)*(p+1)
+裏頭的元素除最左上角為True外，其餘初始值均為False    
+我們用它來做DP的matching  
+其中心思想是dp[sp][pp]為 s[0:sp] 和p[0:pp]是否match  
+其餘的規則，我們用範例來說明，例子如下    
+```
+s = "xaabyc"
+p = "xa*b.c"
+```
+以上面的例子來說，我們需要一個7*7的DP陣列 
+第一行和第一列代表沒有任何字元或沒有任何pattern  
+所以 "" 一定match空pattern "" 
+  
+|s\p|   | x | a | * | b | . | c |
+|---|---|---|---|---|---|---|---|
+|   | T |   |   |   |   |   |   |
+| x |   |   |   |   |   |   |   |
+| a |   |   |   |   |   |   |   |
+| a |   |   |   |   |   |   |   |
+| b |   |   |   |   |   |   |   |
+| y |   |   |   |   |   |   |   |
+| c |   |   |   |   |   |   |   |
+    
+    
+在開始match traversal之前，我們先檢查一個特殊的scenario  
+也就是第一行，這裡先用另一個例子說明
+```s = "", p = "c*"```
+在正規表示式中，"*"代表他前面的字元有可能出現多個，也有可能不出現  
+所以當p[pp]為*且為第二個字元時，他必定符合空字串    
+所以他的欄位應該填上True  
+而我們一開始的例子裡並沒有這種情況  
+所以第一行應該都填上False　　
+
+接著我們正式開始填DP陣列  
+以正規表示式來說，我們可以找到下面的規則  
+
+1. 如果當前p的欄位是"*"的話，分成以下三種情況  
+a) 考慮 "xa" match "xa*"的場合:  
+p往前退一個時，"xa"一樣能match "xa"  
+所以只要dp[sp][pp-1]的欄位為True，當前欄位就為True  
+  
+b) 考慮 "x" match "xa*" 的場合:
+p往前退兩個時，"x"一樣能match "x"  
+所以只要dp[sp][pp-2]的欄位為True，當前欄位就為True  
+  
+c) 考慮 "xaa" match "xa*" 的場合:  
+只要s退一步，就能走到和上面a)一樣的 "xa" match "xa*"  
+這時我們除了要確認之前match的結果 (dp[sp-1][pp])是否為True外  
+還要確認s和p的前一個字元是否相同  (s[sp-1] == p[pp-2])  
+或者p的前一個字元是否為'.' (p[pp-2] == '.')  
+以"xaa" match "xa*"來說，他符合 s[sp-1] -> "a" == p[pp-2] -> a
+所以 "xaa" match "xa*" 的欄位為 True
+
+2. 如果當前p的欄位為"."的話，代表符合任意一個字元  
+因此我們可以比較他的前一個比較結果 (dp[sp-1][pp-1]) 是否為True  
+是的話當前欄位就為True  
+
+3. 如果s的當前字元 (s[sp-1]) 等於當前p字元的話
+那當然也是可以參考他的前一個結果 (dp[sp-1][pp-1])
+  
+情況2和3可以寫在一起以節省行數  
+  
+知道規則後我們從第二列開始填起  
+注意*號的欄位可以參考前一個的True或前二個的True  
+所以他為True
+
+|s\p|   | x | a | * | b | . | c |
+|---|---|---|---|---|---|---|---|
+|   | T |   |   |   |   |   |   |
+| x |   | T |   | T |   |   |   |
+| a |   |   |   |   |   |   |   |
+| a |   |   |   |   |   |   |   |
+| b |   |   |   |   |   |   |   |
+| y |   |   |   |   |   |   |   |
+| c |   |   |   |   |   |   |   |
+  
+  
+接著第三列  
+比較令人注意的是 "xa" == "xa*"  
+
+|s\p|   | x | a | * | b | . | c |
+|---|---|---|---|---|---|---|---|
+|   | T |   |   |   |   |   |   |
+| x |   | T |   | T |   |   |   |
+| a |   |   | T | T |   |   |   |
+| a |   |   |   |   |   |   |   |
+| b |   |   |   |   |   |   |   |
+| y |   |   |   |   |   |   |   |
+| c |   |   |   |   |   |   |   |
+
+
+接著第四列  
+
+|s\p|   | x | a | * | b | . | c |
+|---|---|---|---|---|---|---|---|
+|   | T |   |   |   |   |   |   |
+| x |   | T |   | T |   |   |   |
+| a |   |   | T | T |   |   |   |
+| a |   |   |   | T |   |   |   |
+| b |   |   |   |   |   |   |   |
+| y |   |   |   |   |   |   |   |
+| c |   |   |   |   |   |   |   |
+  
+  
+全部填完後可得  
+
+|s\p|   | x | a | * | b | . | c |
+|---|---|---|---|---|---|---|---|
+|   | T |   |   |   |   |   |   |
+| x |   | T |   | T |   |   |   |
+| a |   |   | T | T |   |   |   |
+| a |   |   |   | T |   |   |   |
+| b |   |   |   |   | T |   |   |
+| y |   |   |   |   |   | T |   |
+| c |   |   |   |   |   |   | T |
+
+最右下角的欄位就是我們要的答案
+這裡為True，所以 "xaabyc" macth "xa*b.c" 為True    
+
+
 ***
   
-### [044.Wildcard_Matching](../../SourceCode/Python/044.Wildcard_Matching.py) Level: Hard Tags: []
+### [044.Wildcard_Matching](../../SourceCode/Python/044.Wildcard_Matching.py) Level: Hard Tags: [DP]
    
-用三個指針來代表string，pattern和星號(star)指向的位置  
+思路: 題目要求用?代表一個字元，*代表所有字元    
+來比對該字串是否符合特定的pattern  
+乍看之下和 [010.Regular_Expression_Matching](../../SourceCode/Python/010.Regular_Expression_Matching.py) 很像  
+但兩者間有微妙的差別  
+不過這裡的 "*"和第10題的"." 幾乎一樣就是了  
+這裡有兩種解法，第一種是暴力算法  
+用三個指針來代表string，pattern和星號(star)指向的位置    
 一個變數代表星號所涵蓋的string長度  
 然後用不同條件來traversal兩個指針  
 有2種match或不match的情況:  
@@ -33,8 +166,13 @@ starString coverage和string指針都不斷往前進
 Analysis:
 
 For each element in s  
-If *s==*p or \*p == ? which means this is a match, then goes to next element s++ p++.  
-If p=='*', this is also a match, but one or many chars may be available, so let us save this *'s position and the matched s position.
+If *s==*p or \*p == ? which means this is a match, 
+then goes to next element s++ p++.  
+
+If p=='*', this is also a match, 
+but one or many chars may be available, 
+so let us save this *'s position and the matched s position.
+
 If not match, then we check if there is a * previously showed up,  
        if there is no *,  return false;  
        if there is an *,  we set current p to the next element of *, and set current s to the next saved s position.  
@@ -50,8 +188,133 @@ e!=d,  check if there was a *, yes, ss++, s=ss; p=star+1
 d=d, go on, meet the end.  
 check the rest element in p, if all are *, true, else false;  
 
-Note that in char array, the last is NOT NULL, to check the end, use  "*p"  or "*p=='\0'".  
+Note that in char array, 
+the last is NOT NULL, 
+to check the end, use  "*p"  or "*p=='\0'".  
 
+第二種解法是動態規劃  
+我們以題目給的其中一個例子來說明  
+```
+s = "acdcb"  
+p = "a*c?b"  
+```  
+  
+首先我們宣告一個len(s)+1 x len(p)+1 的表格  
+表格內的內容除了最左上角是True外，其他全為False  
+如下表
+
+|s\p|   | a | * | c | ? | b |
+|---|---|---|---|---|---|---|
+|   | T |   |   |   |   |   |
+| a |   |   |   |   |   |   |
+| c |   |   |   |   |   |   |
+| d |   |   |   |   |   |   |
+| c |   |   |   |   |   |   |
+| b |   |   |   |   |   |   |
+
+這是DP的表格，我們用sp和pp來iterate這個表格  
+他們的初始值都是0，而dp[0][0]永遠為True  
+一般情況下d[sp][pp]表示s[0:sp-1]和p[0:pp-1]是否有match    
+所以我們可以不斷的參考前面的結果來得到目前的結果  
+
+在正式填表之前，我們需要對星號做特別處理  
+因為有可能p的開頭就有星號  
+做法是看第一列dp[0]，如果某個元素有星號的話  
+他後面的元素就會遵從這星號對應的結果  
+以上表來說就是這樣  
+
+|s\p|   | a | * | c | ? | b |
+|---|---|---|---|---|---|---|
+|   | T |   | F | F | F | F |
+| a |   |   |   |   |   |   |
+| c |   |   |   |   |   |   |
+| d |   |   |   |   |   |   |
+| c |   |   |   |   |   |   |
+| b |   |   |   |   |   |   |
+
+這基本上是針對第一個元素是星號程式碼  
+如s = "aa", p ="*"時  
+第一列都會變為True  
+
+現在我們要正式填表了
+填表格的規則如下:  
+
+1. 如果當前p的欄位是"*"  
+那可以直接參考他上方或他左方的結果  
+其中一個是True，該欄位就能寫成True 
+因為*可以表示任何字元  
+這是match s = "a", p = "a*" (dp[sp][pp-1])  
+和 s = "ab", p = "a*" (dp[sp-1][pp]) 的情況  
+
+2. 如果當前p的欄位是"?"或者s[sp] match p[pp]  
+那當前的欄位就可以參考前一個match的結果  
+即dp[sp][pp] = dp[sp-1][pp-1]  
+因為 "?" 為任意一個字元  
+所以我們可以參考他前面一個比較的結果  
+ 
+  
+  
+我們先看sp=1的情況  
+sp和pp都為1的時候，"a" match "a" 所以表格為   
+
+|s\p|   | a | * | c | ? | b |
+|---|---|---|---|---|---|---|
+|   | T |   | F | F | F | F |
+| a |   | T |   |   |   |   |
+| c |   |   |   |   |   |   |
+| d |   |   |   |   |   |   |
+| c |   |   |   |   |   |   |
+| b |   |   |   |   |   |   |
+
+接著走到星號時  
+"a" match "a*"所以為True
+  
+|s\p|   | a | * | c | ? | b |
+|---|---|---|---|---|---|---|
+|   | T |   | F | F | F | F |
+| a |   | T | T |   |   |   |
+| c |   |   |   |   |   |   |
+| d |   |   |   |   |   |   |
+| c |   |   |   |   |   |   |
+| b |   |   |   |   |   |   |  
+  
+同理，第三行的元素為  
+
+|s\p|   | a | * | c | ? | b |
+|---|---|---|---|---|---|---|
+|   | T |   | F | F | F | F |
+| a |   | T | T |   |   |   |
+| c |   |   | T | T |   |   |
+| d |   |   |   |   |   |   |
+| c |   |   |   |   |   |   |
+| b |   |   |   |   |   |   |
+  
+  
+中間過程省略，我們看最後一行的結果(False省略)    
+
+|s\p|   | a | * | c | ? | b |
+|---|---|---|---|---|---|---|
+|   | T |   |   |   |   |   |
+| a |   | T | T |   |   |   |
+| c |   |   | T | T |   |   |
+| d |   |   | T |   | T |   |
+| c |   |   | T | T |   |   |
+| b |   |   | T |   | T |   |
+  
+最右下角的元素便代表全部的match結果    
+所以這個match的結果為False  
+"acdcb" 不match "a*c?b"  
+  
+  
+***
+
+### [057.Insert_Interval](../../SourceCode/Python/057.Insert_Interval.py) Level: Hard Tags: [List]
+  
+思路: 是[056.Merge_Interval](../../SourceCode/Python/056.Merge_Interval.py) 的延伸  
+做法也極為類似  
+只要把要插入的Interval插入原本的List  
+剩下的就跟056.Merge_Interval一樣了
+  
 ***
   
 ### [146.LRU_Cache](../../SourceCode/Python/146.LRU_Cache.py) Level: Hard Tags: []
@@ -141,7 +404,9 @@ Output: ["eat","oath"]
   
 ### [218.The_Skyline_Problem](../../SourceCode/Python/218.The_Skyline_Problem.py) Level: Hard Tags: [Heap]
   
-  
+Time:  O(nlogn)  
+Space: O(n)  
+    
 思路:堪稱是Leetcode最知名的經典難題之一  
 我們必須從圖A的建築物圖形中找出他剪影圖的特定點  
 ![](../Res/skyline1.jpg)![](../Res/skyline2.jpg)  

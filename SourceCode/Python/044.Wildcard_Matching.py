@@ -22,6 +22,7 @@ s = "aa"
 p = "a"
 Output: false
 Explanation: "a" does not match the entire string "aa".
+
 Example 2:
 
 Input:
@@ -29,6 +30,7 @@ s = "aa"
 p = "*"
 Output: true
 Explanation: '*' matches any sequence.
+
 Example 3:
 
 Input:
@@ -97,11 +99,42 @@ class Solution:
         if pPointer == len(p):
             return True
         return False
-s1 = 'aa'
-p1 = 'a'
-s = ""
-p = "*"
+
+    def isMatchDP(self, s, p):
+        dp = []
+        for x in xrange(len(s) + 1):
+            dp.append([])
+            for y in xrange(len(p) + 1):
+                dp[x].append(False)
+
+        dp[0][0] = True
+
+        # handle first char of pattern is "*" scenario
+        for x in xrange(len(p)):
+            if p[x] == "*" and dp[0][x] == True:
+                dp[0][x + 1] = True
+            # Same effect
+            # if p[x] == "*":
+            #     dp[0][x + 1] = dp[0][x]
+
+        for sp in xrange(1, len(s) + 1):
+            for pp in xrange(1, len(p) + 1):
+                if p[pp - 1] == "*":
+                    if dp[sp - 1][pp] == True or \
+                       dp[sp][pp - 1] == True:
+                        dp[sp][pp] = True
+                elif s[sp - 1] == p[pp - 1] or p[pp - 1] == "?":
+                        dp[sp][pp] = dp[sp - 1][pp - 1]
+
+        return dp[len(s)][len(p)]
+
+
+
+s1 ="aa"
+p1 = "*"
+s = "acdcb"
+p = "a*c?b"
 sol = Solution()
-ans = sol.isMatch(s, p)
+ans = sol.isMatchDP(s1, p1)
 print ans
 
