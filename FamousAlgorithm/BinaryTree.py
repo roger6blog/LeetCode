@@ -24,40 +24,41 @@ Input: root = [5,3,6,2,4,null,null,1]
 '''
 
 # Definition for a binary tree node.
-
-
-class TreeNode(object):
-    def __init__(self, x):
-        self.val = x
+class Node:
+    def __init__(self, data):
+        self.val = data
         self.left = None
         self.right = None
 
 
-class Tree:
-    def __init__(self):
-        self.root = None
 
-    def getRoot(self):
-        return self.root
-
-    def add(self, val):
-        if not self.root:
-            self.root = TreeNode(val)
-        else:
-            self._add(val, self.root)
-
-    def _add(self, val, node):
-        if node.left:
-            if node.right:
-                self._add(val, node.right)
+    def add(self, data):
+        if self.val:
+            if self.left is None:
+                self.left = Node(data)
             else:
-                node.right = TreeNode(val)
-        else:
-            node.left = TreeNode(val)
+                if self.right is None:
+                    self.right = Node(data)
+                else:
+                    self.left.add(data)
+
+
+
+    # Print the Tree preorder
+    def printTree(self):
+
+        print(self.val),
+        if self.left:
+            self.left.printTree()
+        #print( self.val),
+        if self.right:
+            self.right.printTree()
 
 
 a = [3,1,4,None,2]
-tree = Tree()
+tree = Node(5)
 for i in a:
     tree.add(i)
-print tree.getRoot().val
+print tree.val
+print "-------------"
+tree.printTree()
