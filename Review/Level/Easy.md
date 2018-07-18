@@ -116,3 +116,38 @@ Space: O(1)
   
   
 ***
+  
+### [408.Valid_Word_Abbreviation](../../SourceCode/Python/408.Valid_Word_Abbreviation.py) Level: Easy Tags: []
+    
+  
+思路: 這題並不難，難的是了解題目的意思  
+給你一個字串 s 和相對應的縮寫 abbr
+例如 
+```python
+s = "internationalization"
+abbr = "i12iz4n"
+```
+其中縮寫 "i12iz4n" 內的數字代表左右兩個字母中間有多少個字元  
+例如 i12i -> 開頭的i和下一個i中間夾了12個字元  
+依此類推  
+而另一個例子
+```python
+s = "apple"
+abbr = "a2e"
+```
+因為a和e中間夾了3個字元而不是2個
+所以這個"a2e"不是 "apple"的縮寫  
+  
+知道題意之後  
+就可以照題目的要求解題  
+用雙指針分別遍歷 s 和 abbr是不錯的主意  
+不過要注意數字可能會超過10  
+所以遍歷時遇到數字別急著馬上處理，應該先把它加總起來  
+例如 
+```p
+count = count*10 + int(abbr[j])
+```
+等看到下一個字母時就能算出正確的數字了
+  
+  
+***
