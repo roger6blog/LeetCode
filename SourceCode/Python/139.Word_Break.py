@@ -59,13 +59,13 @@ class Solution(object):
         # we can continue to parse from 0 now
         dp = [False for i in range(len(s) + 1)]
         dp[0] = True
-        for i in range(len(s)):
+        for i in range(1, len(s)+1):
             # All valid word break from beginning.
             # We cannot process behind string if we don't process front string
             # for loop: initial value =i, final value = -1, intervel = -1
-            for j in range(i, -1, -1):
-                if dp[j] and s[j:i + 1] in wordDict:
-                    dp[i + 1] = True
+            for j in range(i):
+                if dp[j] and s[j : i] in wordDict:
+                    dp[i] = True
                     break
         return dp[len(s)]
 

@@ -64,6 +64,11 @@ DFS或BFS皆可
   
 ***
   
+### [139.Word_Break](../../SourceCode/Python/139.Word_Break.py) Level: Medium Tags: [DP]
+    
+
+***
+  
 ### [163.Missing_Ranges](../../SourceCode/Python/163.Missing_Ranges.py) Level: Medium Tags: []
   
 Time:  O(n)  
@@ -198,8 +203,8 @@ Space: O(n)
 
 ### [249.[Locked]Group_Shifted_Strings](../../SourceCode/Python/249.[Locked]Group_Shifted_Strings.py) Level: Medium Tags: []
   
-Time:  O(nlogn)
-Space: O(n)
+Time:  O(nlogn)  
+Space: O(n)  
   
 思路: 題目要你把[字元間隔]一樣的字串歸類  
 例如 abc 他們的字元間隔就是1，但a和z的字元間隔也是1  
@@ -208,7 +213,7 @@ Space: O(n)
 例如 abc就是 [1,1] xyz也是[1,1]  
 由此可得這兩個字串的字元間隔相同，便可將他們歸在同一類  
 我們可以把 [1,1]當作索引存到一個dictionary  
-value即為歸類於此的各個字串組成的List
+value即為歸類於此的各個字串組成的List  
   
   
 ***
@@ -216,6 +221,8 @@ value即為歸類於此的各個字串組成的List
 
 ### [251.[Locked]Flatten_2D_Vector](../../SourceCode/Python/251.[Locked]Flatten_2D_Vector.py) Level: Medium Tags: []
   
+Time:  O(1)  
+Space: O(1)  
   
 思路: 題目很難弄懂  
 他的要求是要你把一個2D List壓平後用2個iterator把裡面的元素印出來  
@@ -238,7 +245,9 @@ value即為歸類於此的各個字串組成的List
 ### [279.Perfect_Squares](../../SourceCode/Python/279.Perfect_Squares.py) Level: Medium Tags: [DP]
   
   
-思路:這題雖然可以用數學定理的四平方和解題  
+思路:檢查所給的數字能被多少個完美平方數相加  
+例如 13 可以分成4和9 所以答案為2  
+這題雖然可以用數學定理的四平方和解題  
 ( Lagrange's four-square theorem，每個正整數均可表示為4個整數的平方和 )  
 但我們在面試中不太可能碰到剛好能用數學定理解題的情況，還是考慮一般解吧。  
 此題需要使用的是Dynamic Programming  
@@ -254,7 +263,7 @@ value即為歸類於此的各個字串組成的List
 如果沒寫過的話，就能直接從dp[x]加1(這個1是找到的y給的)  
 如果寫過的話，就比較目前筆記裡寫過的值+1有沒有小於目前值  
 比較小的話當然採用dp[x]+1  
-如此走完整個迴圈，則dp[n]即為答案
+如此走完整個迴圈，則dp[n]即為答案  
   
   
 ***

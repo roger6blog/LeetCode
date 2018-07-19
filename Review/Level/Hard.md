@@ -8,7 +8,7 @@
 Time:  O(m * n)  
 Space: O(m * n)  
   
-思路:其實就是把正規表示式的"." 和 "*"寫出來    
+思路:其實就是把正規表示式的"." 和 "\*"寫出來    
 十分難的一題  
 和 [044.Wildcard_Matching](../../SourceCode/Python/044.Wildcard_Matching.py)  很像  
 但兩者間有微妙的差別，具體可以見44題的思路  
@@ -43,7 +43,7 @@ p = "xa*b.c"
 在開始match traversal之前，我們先檢查一個特殊的scenario  
 也就是第一行，這裡先用另一個例子說明
 ```s = "", p = "c*"```
-在正規表示式中，"*"代表他前面的字元有可能出現多個，也有可能不出現  
+在正規表示式中，"\*"代表他前面的字元有可能出現多個，也有可能不出現  
 所以當p[pp]為*且為第二個字元時，他必定符合空字串    
 所以他的欄位應該填上True  
 而我們一開始的例子裡並沒有這種情況  
@@ -52,7 +52,7 @@ p = "xa*b.c"
 接著我們正式開始填DP陣列  
 以正規表示式來說，我們可以找到下面的規則  
 
-1. 如果當前p的欄位是"*"的話，分成以下三種情況  
+1. 如果當前p的欄位是"\*"的話，分成以下三種情況  
 a) 考慮 "xa" match "xa*"的場合:  
 p往前退一個時，"xa"一樣能match "xa"  
 所以只要dp[sp][pp-1]的欄位為True，當前欄位就為True  
@@ -144,22 +144,23 @@ c) 考慮 "xaa" match "xa*" 的場合:
 來比對該字串是否符合特定的pattern  
 乍看之下和 [010.Regular_Expression_Matching](../../SourceCode/Python/010.Regular_Expression_Matching.py) 很像  
 但兩者間有微妙的差別  
-不過這裡的 "*"和第10題的"." 幾乎一樣就是了  
+不過這裡的 "\*"和第10題的"." 幾乎一樣就是了  
 這裡有兩種解法，第一種是暴力算法  
 用三個指針來代表string，pattern和星號(star)指向的位置    
 一個變數代表星號所涵蓋的string長度  
 然後用不同條件來traversal兩個指針  
 有2種match或不match的情況:  
-1. string指針還沒走完，pattern指針卻走完了: 不match  
+1. string指針還沒走完，pattern指針卻走完了=> 不match  
 2. 兩個指針都走完: match  
   
-在Traversal兩個指針時
+在Traversal兩個指針時  
 比較特別的是發現pattern指向的位置有星號  
 此時要做的動作就是紀錄string在何處開始符合星號pattern  
 和開始累積starString coverage的起始範圍  
   
-此情況觸發後，接下來的step是在下一個字串符合pattern指針的所指向的下一個(當前是星號)字元前    
-starString coverage和string指針都不斷往前進
+此情況觸發後  
+接下來的step是在下一個字串符合pattern指針的所指向的下一個(當前是星號)字元前    
+starString coverage和string指針都不斷往前進  
   
   
 英文分析  
@@ -239,7 +240,7 @@ p = "a*c?b"
 現在我們要正式填表了
 填表格的規則如下:  
 
-1. 如果當前p的欄位是"*"  
+1. 如果當前p的欄位是"\*"  
 那可以直接參考他上方或他左方的結果  
 其中一個是True，該欄位就能寫成True 
 因為*可以表示任何字元  
