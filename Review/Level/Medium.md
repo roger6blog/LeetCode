@@ -3,7 +3,7 @@
 
 ***
 
-### [056.Merge_Interval](../../SourceCode/Python/056.Merge_Interval.py) Level: Medium Tags: [List]  
+### [056.Merge_Intervals](../../SourceCode/Python/056.Merge_Intervals.py) Level: Medium Tags: [List]  
   
 思路: 對Python來說不難，因為Python就有內建List排序  
 把題目給的List照start值得順序排好後  
@@ -16,7 +16,7 @@
   
 ***
 
-### [074.Search_a_2D_Matrix](../SourceCode/Python/074.Search_a_2D_Matrix.py) Level: Medium Tags: []
+### [074.Search_a_2D_Matrix](../../SourceCode/Python/074.Search_a_2D_Matrix.py) Level: Medium Tags: []
   
 Time:  O(logm + logn)  
 Space: O(1)  
@@ -28,20 +28,20 @@ Space: O(1)
   
 ***
   
-### [179.Largest_Number](../SourceCode/Python/179.Largest_Number.py) Level: Medium Tags: [Sort]
+### [179.Largest_Number](../../SourceCode/Python/179.Largest_Number.py) Level: Medium Tags: [Sort]
 
   
   
 ***
   
   
-### [133.Clone_Graph](../SourceCode/Python/133.Clone_Graph.py) Level: Medium Tags: [Graph, DFS]
+### [133.Clone_Graph](../../SourceCode/Python/133.Clone_Graph.py) Level: Medium Tags: [Graph, DFS]
   
   
   
 ***
   
-### [163.Missing_Range](../SourceCode/Python/163.Missing_Range.py) Level: Medium Tags: []
+### [163.Missing_Range](../../SourceCode/Python/163.Missing_Range.py) Level: Medium Tags: []
   
 思路:我們可以使用雙指標  
 pre指標指向前一個元素、curr指標指向後面一個元素  
@@ -52,7 +52,7 @@ pre指標指向前一個元素、curr指標指向後面一個元素
   
 ***
   
-### [166.Fraction_to_Recurring_Decimal](../SourceCode/Python/166.Fraction_to_Recurring_Decimal.py) Level: Medium Tags: []
+### [166.Fraction_to_Recurring_Decimal](../../SourceCode/Python/166.Fraction_to_Recurring_Decimal.py) Level: Medium Tags: []
   
 思路: 題目要求你找出不同數字相除後的小數，如果有循環則在循環的數字中括號  
 除了最基本的兩數相除取模和找商之外  
@@ -62,14 +62,14 @@ pre指標指向前一個元素、curr指標指向後面一個元素
   
 ***
   
-### [200.Number_of_Islands](../SourceCode/Python/200.Number_of_Islands.py) Level: Medium Tags: []
+### [200.Number_of_Islands](../../SourceCode/Python/200.Number_of_Islands.py) Level: Medium Tags: []
   
 思路: 本題是找出與周圍被0包圍的1  
 可以使用DFS，利用四個方向去取得每個元素的周圍是否還有0  
 已經走過 (visited) 的元素我們用0標示，如此便不會再去走它  
   
   
-### [208.Implement_Trie_(Prefix_Tree)](../SourceCode/Python/208.Implement_Trie_(Prefix_Tree).py) Level: Medium Tags: []
+### [208.Implement_Trie_(Prefix_Tree)](../../SourceCode/Python/208.Implement_Trie_(Prefix_Tree).py) Level: Medium Tags: []
   
 Time:  O(n), per operation
 Space: O(1)
@@ -88,7 +88,7 @@ roo節點通常為空，底下有a~z 26個子Trie
   
 ***
   
-### [230.Kth_Smallest_Element_in_a_BST](../SourceCode/Python/230.Kth_Smallest_Element_in_a_BST.py) Level: Medium Tags: [Recursive]
+### [230.Kth_Smallest_Element_in_a_BST](../../SourceCode/Python/230.Kth_Smallest_Element_in_a_BST.py) Level: Medium Tags: [Recursive]
   
 Time:  O(max(h, k))
 h is height of tree
@@ -104,13 +104,13 @@ Python的話可以先traversal整個二元樹(BFS或DFS都行)
   
 ***
 
-### [240.Search_a_2D_Matrix_II](../SourceCode/Python/240.Search_a_2D_Matrix_II.py) Level: Medium Tags: [Recursive]
+### [240.Search_a_2D_Matrix_II](../../SourceCode/Python/240.Search_a_2D_Matrix_II.py) Level: Medium Tags: [Recursive]
   
 Time:  O(row + col)  
 Space: O(1)
   
 思路:   
-是[074.Search_a_2D_Matrix](../SourceCode/Python/074.Search_a_2D_Matrix.py) 的衍伸題    
+是[074.Search_a_2D_Matrix](../../SourceCode/Python/074.Search_a_2D_Matrix.py) 的衍伸題    
 不同的是這次的2D Matrix是呈螺旋狀遞減，但基本還是西高東低
 所以同樣也能用遞迴解題，甚至可能用同樣的解法來解題  
 只有效率的差別  
@@ -124,7 +124,7 @@ Space: O(1)
 ***
   
 
-### [246.[Locked]Strobogrammatic_Number](../SourceCode/Python/246.[Locked]Strobogrammatic_Number.py) Level: Medium Tags: []
+### [246.[Locked]Strobogrammatic_Number](../../SourceCode/Python/246.[Locked]Strobogrammatic_Number.py) Level: Medium Tags: []
   
 Time:  O(n)
 Space: O(1)
@@ -138,12 +138,12 @@ Space: O(1)
   
 ***
 
-### [247.[Locked]Strobogrammatic_Number_II](../SourceCode/Python/247.[Locked]Strobogrammatic_Number_II.py) Level: Medium Tags: [Recursive]
+### [247.[Locked]Strobogrammatic_Number_II](../../SourceCode/Python/247.[Locked]Strobogrammatic_Number_II.py) Level: Medium Tags: [Recursive]
   
 Time:  O(n^2 * 5^(n/2))
 Space: O(n)
   
-思路:[246.[Locked]Strobogrammatic_Number](../SourceCode/Python/246.[Locked]Strobogrammatic_Number.py) 的衍伸題目  
+思路:[246.[Locked]Strobogrammatic_Number](../../SourceCode/Python/246.[Locked]Strobogrammatic_Number.py) 的衍伸題目  
 這次是要求你組出一個n長度的所有對稱數  
 但題目也好心的提示你要用遞迴來做，還告訴你要用n-2來當遞迴條件(因為是對稱數)  
 重點就在於遞迴的參數，我們一開始呼叫帶兩個n的遞迴function  
@@ -154,7 +154,7 @@ Space: O(n)
   
 ***
 
-### [249.[Locked]Group_Shifted_Strings](../SourceCode/Python/249.[Locked]Group_Shifted_Strings.py) Level: Medium Tags: []
+### [249.[Locked]Group_Shifted_Strings](../../SourceCode/Python/249.[Locked]Group_Shifted_Strings.py) Level: Medium Tags: []
   
 Time:  O(nlogn)
 Space: O(n)
@@ -172,7 +172,7 @@ value即為歸類於此的各個字串組成的List
 ***
   
 
-### [251.[Locked]Flatten_2D_Vector](../SourceCode/Python/251.[Locked]Flatten_2D_Vector.py) Level: Medium Tags: []
+### [251.[Locked]Flatten_2D_Vector](../../SourceCode/Python/251.[Locked]Flatten_2D_Vector.py) Level: Medium Tags: []
   
   
 思路: 題目很難弄懂  
@@ -193,7 +193,7 @@ value即為歸類於此的各個字串組成的List
   
 ***
   
-### [279.Perfect_Squares](../SourceCode/Python/279.Perfect_Squares.py) Level: Medium Tags: [DP]
+### [279.Perfect_Squares](../../SourceCode/Python/279.Perfect_Squares.py) Level: Medium Tags: [DP]
   
   
 思路:這題雖然可以用數學定理的四平方和解題  
@@ -217,7 +217,7 @@ value即為歸類於此的各個字串組成的List
   
 ***
   
-### [280.[Locked]Wiggle_Sort](../SourceCode/Python/280.[Locked]Wiggle_Sort.py) Level: Medium Tags: [Sort]
+### [280.[Locked]Wiggle_Sort](../../SourceCode/Python/280.[Locked]Wiggle_Sort.py) Level: Medium Tags: [Sort]
   
 Time:  O(n)  
 Space: O(1)  
@@ -231,7 +231,7 @@ nums[0] <= nums[1] >= nums[2] <= nums[3]....
   
 ***
   
-### [289.Game_of_Life](../SourceCode/Python/289.Game_of_Life.py) Level: Medium Tags: [List, Bit manipulation]
+### [289.Game_of_Life](../../SourceCode/Python/289.Game_of_Life.py) Level: Medium Tags: [List, Bit manipulation]
   
 Time:  O(m * n)  
 Space: O(m * n)  Follow up: O(1)    
@@ -266,13 +266,13 @@ Follow up要求我們在不能使用額外空間的情況下得出陣列的下�
   
 ***
   
-### [341.Flatten_Nested_List_Iterator](../SourceCode/Python/341.Flatten_Nested_List_Iterator.py) Level: Medium Tags: []
+### [341.Flatten_Nested_List_Iterator](../../SourceCode/Python/341.Flatten_Nested_List_Iterator.py) Level: Medium Tags: []
   
 Time:  O(n), n is the number of the integers.  
 Space: O(h), h is the depth of the nested lists.  
   
 思路:本題要你用iterator把所有巢狀List中的元素疊代出來  
-和  [251.[Locked]Flatten_2D_Vector](../SourceCode/Python/251.[Locked]Flatten_2D_Vector.py) 有點相似    
+和  [251.[Locked]Flatten_2D_Vector](../../SourceCode/Python/251.[Locked]Flatten_2D_Vector.py) 有點相似    
 可是251題的Input全部都是List而這題有時Input會有數字    
 因為iter有個條件是要疊代的元素需要全部屬於同一種type  
 所以我們不能用251題的解法來解此題  
@@ -288,12 +288,12 @@ List的話還需要對他做進一步的處理才能給next方法用
   
 ***
   
-### [324.Wiggle_Sort_II](../SourceCode/Python/324.Wiggle_Sort_II.py) Level: Medium Tags: [Sort]
+### [324.Wiggle_Sort_II](../../SourceCode/Python/324.Wiggle_Sort_II.py) Level: Medium Tags: [Sort]
   
 Time:  O(nlogn)  
 Space: O(n)  
   
-思路:是[280.[Locked]Wiggle_Sort](../SourceCode/Python/280.[Locked]Wiggle_Sort.py) 的衍伸  
+思路:是[280.[Locked]Wiggle_Sort](../../SourceCode/Python/280.[Locked]Wiggle_Sort.py) 的衍伸  
 和280不同的是peak間的元素不能相等，所以原本的方法不能用了  
 但解法其實也不難  
 把原本的陣列先排序好之後存到另一個陣列  

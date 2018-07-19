@@ -119,6 +119,8 @@ Space: O(1)
   
 ### [408.Valid_Word_Abbreviation](../../SourceCode/Python/408.Valid_Word_Abbreviation.py) Level: Easy Tags: []
     
+Time:  O(n)  
+Space: O(1)  
   
 思路: 這題並不難，難的是了解題目的意思  
 給你一個字串 s 和相對應的縮寫 abbr
