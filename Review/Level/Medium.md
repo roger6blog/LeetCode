@@ -20,30 +20,58 @@
   
 Time:  O(logm + logn)  
 Space: O(1)  
+  
 思路:在一個已排序的2D List中找出某個元素  
 最直觀的解法當然是用for去找，不過此解法只能得到O(n)  
 既然這List已經被排序，就算它分成幾個小List  
-我們還是能用BinarySearch來找出我們要的元素
+我們還是能用BinarySearch來找出我們要的元素  
 所以最佳解為O(nlog(n))  
   
 ***
   
 ### [179.Largest_Number](../../SourceCode/Python/179.Largest_Number.py) Level: Medium Tags: [Sort]
 
-  
+Time:  O(nlogn)  
+Space: O(1)
+      
+思路:在一串數字中找出所能排列的最大數字  
+Python雖然有內建排序  
+但是我們在排序時還需要確認兩個數字接起來時誰比較大
+如 201和9 單比數字時是201大
+但接起來時很明顯9201比2019大  
+python sort的cmp函式在這裡可以派上用場  
+cmp函式:
+```python
+if str(a)+str(b) > str(b) + str(a):
+    return 1
+else:
+    return -1
+```
+
+這裡要知道Python的數字string是可以比大小的  
   
 ***
-  
   
 ### [133.Clone_Graph](../../SourceCode/Python/133.Clone_Graph.py) Level: Medium Tags: [Graph, DFS]
   
+Time:  O(n)  
+Space: O(n)  
+  
+思路：題目要求你clone一個無向圖  
+就是把整個圖走一遍然後順便把圖的節點加進去而已  
+DFS或BFS皆可  
   
   
 ***
   
-### [163.Missing_Range](../../SourceCode/Python/163.Missing_Range.py) Level: Medium Tags: []
+### [163.Missing_Ranges](../../SourceCode/Python/163.Missing_Ranges.py) Level: Medium Tags: []
   
-思路:我們可以使用雙指標  
+Time:  O(n)  
+Space: O(n)
+    
+思路: 題目給你一組排序過的數列  
+要你找個每個元素間漏掉的數字，用 a->b表示  
+我們可以使用雙指標  
 pre指標指向前一個元素、curr指標指向後面一個元素  
 不斷的比較前一個元素和後一個元素是否有大於2的差距  
 如果有的話代表有Missing range  
