@@ -82,11 +82,15 @@ pre指標指向前一個元素、curr指標指向後面一個元素
   
 ### [166.Fraction_to_Recurring_Decimal](../../SourceCode/Python/166.Fraction_to_Recurring_Decimal.py) Level: Medium Tags: []
   
+Time:  O(logn), 
+where logn is the length of result strings    
+Space: O(1)    
+  
 思路: 題目要求你找出不同數字相除後的小數，如果有循環則在循環的數字中括號  
 除了最基本的兩數相除取模和找商之外  
 我們需要一個dictionary來記錄該小數點數字出現的位置  
 不能直接把小數點數字加入list再去搜尋該list  
-否則會無法處理小數點數字重複的情況如: 1/333=0.(003) 
+否則會無法處理小數點數字重複的情況如: 1/333=0.(003)  
   
 ***
   
@@ -96,6 +100,7 @@ pre指標指向前一個元素、curr指標指向後面一個元素
 可以使用DFS，利用四個方向去取得每個元素的周圍是否還有0  
 已經走過 (visited) 的元素我們用0標示，如此便不會再去走它  
   
+***
   
 ### [208.Implement_Trie_(Prefix_Tree)](../../SourceCode/Python/208.Implement_Trie_(Prefix_Tree).py) Level: Medium Tags: []
   
@@ -110,22 +115,31 @@ Space: O(1)
 有同樣prefix字的單字會被插到同一條Trie  
 roo節點通常為空，底下有a~z 26個子Trie  
 好處是用空間換取時間  
-搜尋速度比為最佳化的Hash快，只要O(n)    
+搜尋速度比未最佳化的Hash快，只要O(n)    
 壞處就是浪費空間和比不上最佳化的Hash  
-  
+雖然圖裡沒提到  
+不過通常建構Trie時都會加上isword屬性  
+題目有三個function要實作:    
+insert、search、startwith  
+比較特別的是startwith  
+只要隨著輸入的字母不斷往下traversal  
+在輸入的字母全跑完之前這條Trie還沒有走到底部  
+就代表能找到startwith 輸入的單字  
   
 ***
   
 ### [230.Kth_Smallest_Element_in_a_BST](../../SourceCode/Python/230.Kth_Smallest_Element_in_a_BST.py) Level: Medium Tags: [Recursive]
   
-Time:  O(max(h, k))
-h is height of tree
-Space: O(h)
+Time:  O(max(h, k))  
+h is height of tree  
+Space: O(h)  
+  
 思路: 在一個二元樹中找出第K小的元素  
 Python的話可以先traversal整個二元樹(BFS或DFS都行)    
 然後對traversal後的list做sort  
 如此便知道第K個元素是誰了  
-一般的遞迴方法則是先遞迴尋找此二元樹的child  
+一般的遞迴方法則是從左子樹走起  
+遞迴尋找此二元樹的child  
 每找到一個就把k減去1   
 當k減到0時該元素即為答案  
   
@@ -139,7 +153,7 @@ Space: O(1)
   
 思路:   
 是[074.Search_a_2D_Matrix](../../SourceCode/Python/074.Search_a_2D_Matrix.py) 的衍伸題    
-不同的是這次的2D Matrix是呈螺旋狀遞減，但基本還是西高東低
+不同的是這次的2D Matrix是呈螺旋狀遞減，但基本還是西高東低  
 所以同樣也能用遞迴解題，甚至可能用同樣的解法來解題  
 只有效率的差別  
 我們這次在這裡採用非遞迴的解法  
@@ -154,8 +168,8 @@ Space: O(1)
 
 ### [246.[Locked]Strobogrammatic_Number](../../SourceCode/Python/246.[Locked]Strobogrammatic_Number.py) Level: Medium Tags: []
   
-Time:  O(n)
-Space: O(1)
+Time:  O(n)  
+Space: O(1)  
   
 思路:Strobogrammatic Number是對稱數，亦即左右上下翻轉都能維持原狀的數  
 本題只要求上下翻轉，不過都差不多  
