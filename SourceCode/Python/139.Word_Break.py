@@ -69,7 +69,11 @@ class Solution(object):
                     break
         return dp[len(s)]
 
-sol = Solution()      
+sol = Solution()
+s = "catsandog"
+wordDict = ["cats", "dog", "sand", "and", "cat"]
+res = sol.wordBreak2(s, wordDict)
+print res
 res = sol.wordBreak("abcd", ["a","ab", "abc", "cde"])
 print res      
      

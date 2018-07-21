@@ -64,9 +64,113 @@ DFS或BFS皆可
   
 ***
   
-### [139.Word_Break](../../SourceCode/Python/139.Word_Break.py) Level: Medium Tags: [DP]
-    
+### [139.Word_Break](../../SourceCode/Python/139.Word_Break.py) Level: Medium Tags: [DP, Backtracking]
+  
+Time:  O(n * j), worst case is O(n^2)  
+Space: O(n)    
+  
+思路: 給你一個用任意字母片段的List  
+要你判斷用這些片段是否能湊出輸入的英文片段  
+例如
+```python
+s = "catsandog"
+wordDict = ["cats", "dog", "sand", "and", "cat"]
+```
+s可被字典裡的字串拼出來，所以結果為True  
 
+第一個方法是從第一個字元開始依次向後尋找，直到找到一個可以分開的地方(斷句)，這時代表目前的substing在dictionary中    
+如果找到最後都沒找到，傳回False  
+  
+找到第一個斷句後，接下來找下一個斷句處，就是從第一個斷句後的字元開始找連續的字串  
+但此時和第一次尋找稍微不同，例如說 word = 'ab', dict= {'a', 'ab', ...}  
+在從word裡找到a之後，接下來要處理的是b，我們發現b不再dict中  
+但b可以和a相結合形成ab，而ab在dict中  
+所以這裡的每個字串有三個選擇  
+
++ 自己單獨為個體到dict中尋找
++ 和前面的string合併起來一起找
++ 等後面的新字元，構成更長的substring  
+
+以第二項來說，我們需要跟前面的string合併起來找，所以我們需要紀錄訊息來代表前面的substring  
+是從哪裡分開而滿足條件的  
+如此我們就能一次從離前一個substring近的部分進行結合  
+例如 word = 'aab', dict= {'a', 'aab'}  
+處理a時在dict中，處理下一個a也在dict中  
+但再下一個b就不在dict中了  
+此時就和前面的b結合形成 ab ，但發現也不在dict中  
+於是繼續跟前面的substring結合形成aab，此時在dict中了  
+於是word便滿足條件
+
+第二個方法是  
+在拼湊的過程中，我們會需要不斷檢查之前拼湊的結果
+所以可以用Dynamic Programming解題  
+
+首先我們先宣告一個長度比輸入字串多1的一維陣列  
+除了第一個是True外，其他內容全為False，如:
+
+|   | c | a | t | s | a | n | d | o | g |
+|---|---|---|---|---|---|---|---|---|---|
+| T |   |   |   |   |   |   |   |   |   |
+
+接著我們從第一個字元c來開始掃描他們有沒有在預設的字典中  
+c我們可以看到字典裡沒有這個字，所以是False
+第二個字起比較複雜  
+我們比較的順序會是這樣:   
+ca=>a  
+第三個字加入後會是:
+cat=>at=>t
+我們發現cat有符合字典中的字了  
+所以在t的位置把False改成True  
+
+|   | c | a | t | s | a | n | d | o | g |
+|---|---|---|---|---|---|---|---|---|---|
+| T |   |   | T |   |   |   |   |   |   |
+
+
+第四個字母加入後會是:  
+cats=>ats=>ts=>s  
+和上面一樣，字典裡有cats這個字  
+所以在s的位置改成True
+
+|   | c | a | t | s | a | n | d | o | g |
+|---|---|---|---|---|---|---|---|---|---|
+| T |   |   | T | T |   |   |   |   |   |
+
+第五個字母加入後是catsa  
+catsa=>asta=>sta=>ta=>a  
+沒什麼好說的
+    
+第六個字母加入後事catsan  
+catsan=>astan=>tsan=>san=>an=>n  
+在比到san的時候，因為san是在字典裡的字  
+我們除了看san本身外，也要回頭去看扣掉san的字串比對的結果  
+而扣掉san的字串是cat，之前的比對結果是True  
+所以這裡我們也能填上True    
+
+|   | c | a | t | s | a | n | d | o | g |
+|---|---|---|---|---|---|---|---|---|---|
+| T |   |   | T | T |   | T |   |   |   |
+  
+  
+第七個字母加入後為 catsand，省略
+第八個字母加入後為 catsando，省略
+第九個字母加入後為 catsandog
+catsandog=>atsandog=>tsandog=>sandog  
+=>andog=>ndog=>dog=>og=>g  
+在dog時，我們會去參考剩下的字串的比對結果，就是catsan
+這在剛才的比對中已經證明為True了  
+所以dog這裡也可以寫為True  
+
+|   | c | a | t | s | a | n | d | o | g |
+|---|---|---|---|---|---|---|---|---|---|
+| T |   |   | T | T |   | T |   |   | T |
+
+全部比完後我們看最後面的比對結果  
+就是題目要的答案  
+  
+下圖是另一個用DP的範例  
+![Alt text](../Res/dp.png)
+  
 ***
   
 ### [163.Missing_Ranges](../../SourceCode/Python/163.Missing_Ranges.py) Level: Medium Tags: []
