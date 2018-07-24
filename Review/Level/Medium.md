@@ -237,6 +237,24 @@ insert、search、startwith
   
 ***
   
+### [228.Summary_Ranges](../../SourceCode/Python/228.Summary_Ranges.py) Level: Medium Tags: []
+  
+Time:  O(n)  
+Space: O(1)  
+  
+思路:要你印出一個排序的正整數陣列的Range  
+例如 [0,1,2,4,5,7] => ["0->2","4->5","7"]  
+最簡單的方式是用兩個while  
+一個while遍歷所有元素  
+內層的while則是判斷遍歷的前後元素是否為連續  
+連續的話則外層while的變數+1  
+如此便可和進入內圈while前的變數做對照找出前後範圍  
+  
+  
+***
+  
+  
+  
 ### [230.Kth_Smallest_Element_in_a_BST](../../SourceCode/Python/230.Kth_Smallest_Element_in_a_BST.py) Level: Medium Tags: [Recursive]
   
 Time:  O(max(h, k))  

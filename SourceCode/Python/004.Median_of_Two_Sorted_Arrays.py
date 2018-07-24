@@ -25,12 +25,20 @@ class Solution(object):
     def getKth(self, A, B, k):
         lenA = len(A)
         lenB = len(B)
+
+        # Make length of A always smaller than B
         if lenA > lenB:
             return self.getKth(B, A, k)
+
+        # min(k/2, lenA)-1 will lead lenA == 0,
+        # so add this checking
         if lenA == 0:
             return B[k - 1]
+        # min(k/2, lenA)-1 will lead k == 1,
+        # so add this checking
         if k == 1:
             return min(A[0], B[0])
+
         pa = min(k/2, lenA)
         pb = k - pa
         if A[pa - 1] <= B[pb - 1]:

@@ -62,6 +62,20 @@ Space: O(1)
   
 ***
   
+### [387.First_Unique_Character_in_a_String](../../SourceCode/Python/387.First_Unique_Character_in_a_String.py) Level: Easy Tags: []
+  
+Time:  O(2*n)  
+Space: O(n)
+    
+思路:找出一個字串裡第一個單獨出現的字母  
+單純地用字串的.count方法會超時(Time Limit Exceed)  
+我們可以先遍歷一次字串  
+把出現的字母和計數都存到一個dictionary中  
+然後再重新遍歷一次  
+第一個計數為1的字母就是答案  
+  
+***
+  
 ### [400.Nth_Digit](../../SourceCode/Python/400.Nth_Digit.py) Level: Easy Tags: [Math]
   
 Time:  O(logn)  
