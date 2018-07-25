@@ -160,10 +160,30 @@ abbr = "a2e"
 不過要注意數字可能會超過10  
 所以遍歷時遇到數字別急著馬上處理，應該先把它加總起來  
 例如 
-```p
+```python
 count = count*10 + int(abbr[j])
 ```
 等看到下一個字母時就能算出正確的數字了
   
+  
+***
+  
+### [448.Find_All_Numbers_Disappeared_in_an_Array](../../SourceCode/Python/448.Find_All_Numbers_Disappeared_in_an_Array.py) Level: Easy Tags: []
+     
+Time:  O(n)  
+Space: O(1)  
+  
+思路:在一個無序數列中，裡面的數字為1~n之間，n為數列長度  
+找出沒有出現在該數列裡的數字  
+既然有沒有出現的數字又限制數字在1~n之間  
+代表一定有數字是重複的  
+雖然排序後找出和index不對齊的數字便是答案  
+但這種作法只要遇到長數列Leecode就會吐TLE(Time Limit Exceed)    
+這裡用負號標記法  
+我們把數列中的每個數字都當作是一個index  
+對這個index的數字乘上-1讓他變成負數  
+如此一來，數列中缺少的數字的index對應的數字就不會成為負數  
+接著重新遍歷整個數列，找出數字為正的index就是答案  
+
   
 ***
