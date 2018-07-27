@@ -486,6 +486,74 @@ List的話還需要對他做進一步的處理才能給next方法用
 說明後面已經沒有東西能疊代了  
 此時就能return False  
   
+  
+***
+  
+### [309.Best_Time_to_Buy_and_Sell_Stock_with_Cooldown](../../SourceCode/Python/309.Best_Time_to_Buy_and_Sell_Stock_with_Cooldown.py) Level: Medium Tags: [DP]
+  
+Time:  O(n)  
+Space: O(n)  
+  
+思路: 是[122.Best_Time_to_Buy_and_Sell_Stock_II](../../SourceCode/Python/122.Best_Time_to_Buy_and_Sell_Stock_II.py)   
+     和[121.Best_Time_to_Buy_and_Sell_Stock_II](../../SourceCode/Python/121.Best_Time_to_Buy_and_Sell_Stock.py) 的延伸  
+如果不熟動態規劃()Dynamic Programming)的話  
+這題可以算是Hard了  
+題目和之前幾題一樣都要求買低賣高，但多了冷卻期  
+也就是賣出後的那一天不能買進股票  
+如果你第一天買入，第二天賣出的話  
+你得等第四天後才能買進第二筆  
+  
+這裡用動態規劃需要令兩個List  
+分別是buy和sell，長度為prices長度  
+buy[i]和sell[i]分別代表第i天持股股票的最大利潤  
+和第i天賣出股票時的最大利潤  
+這裡我們要寫出他們的狀態轉移方程  
+對於buy[i]，最大利潤有兩種可能:  
+1. 前一天的持股buy[i-1]，到今天仍未賣出  
+2. 之前賣出股票後今天買了股票，花掉了prices[i]
+因為有一天的冷卻期，所以是sell[i-2]-prices[i]  
+第i天的買進最大利潤就為  
+```python
+buy[i] = max(buy[i-1], sell[i-2] - prices[i]
+```
+  
+對於sell[i]，最大利潤有兩種可能:  
+1. 前一天賣出後，今天仍然沒買進股票  
+所以最大利潤是sell[i-1]  
+2. 前一天買進後，今天賣出持股得到了今天股價prices[i]  
+所以是buy[i-1] + prices[i]  
+所以我們可以知道sell[i]的最大利潤為:  
+```python
+sell[i] = max(sell[i-1], buy[i-1] + prices[i])
+```
+  
+不斷轉移狀態到最後一天賣出持股 (sell[len(prices)-1])  
+就是我們所能達到的最大利潤了  
+  
+  
+***
+  
+### [318.Maximum_Product_of_Word_Lengths](../../SourceCode/Python/318.Maximum_Product_of_Word_Lengths.py) Level: Medium Tags: [Bit Manipulation]
+  
+Time:  O(n^2)  
+Space: O(n)  (用Bit可再降低點空間複雜度)  
+  
+思路: 給你一組由不同單字組成的陣列  
+要你找出每兩個單字所能組成的最大乘積  
+這兩個單字必須要沒有共同字母才能相乘  
+例如 ["abcw","baz","foo","bar","xtfn","abcdef"]  
+因為"abcw" 和 "abcdef"有共同字母，所以不能相乘  
+因為有共同字母的限制，所以我們在找最大乘積前得先解決這個問題  
+單純的相互比對字串會造成超時 (Time Limit Exceed)  
+所以我們要用其他方式來加速比對  
+網路上推薦使用Bit操作，因為題目描述限制字母只有小寫  
+一個32bit的整數就能囊括26個英文字母  
+不過也能使用Python的Set來操作  
+先把每個單字分別儲存到不同的Set中，再交叉比對作聯集  
+如果是空集合就代表符合題目要求  
+不斷循環找出最大乘積即為答案  
+  
+  
 ***
   
 ### [324.Wiggle_Sort_II](../../SourceCode/Python/324.Wiggle_Sort_II.py) Level: Medium Tags: [Sort]

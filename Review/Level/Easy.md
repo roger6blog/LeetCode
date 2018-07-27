@@ -15,7 +15,53 @@ Space: O(n)
 那我們便可以得知Target減其中一個元素就等於另一個元素  
 如此便可用一個暫存的dict來存放目前已經找過的元素  
 另一個元素用target相減後的值能在dict中找到的話便為答案
-
+  
+  
+  
+***
+  
+### [121.Best_Time_to_Buy_and_Sell_Stock](../../SourceCode/Python/121.Best_Time_to_Buy_and_Sell_Stock.py) Level: Easy Tags: []
+  
+Time:  O(n)  
+Space: O(1)    
+  
+思路: 給你一個整數數列當作股票的當日價格  
+要你找出買進賣出利潤最大的利潤  
+這是一題簡單的題目    
+但一不小心還是會陰溝裡翻船  
+我們從第一個元素開始令他為最小價格  
+接著開始遍歷整個數列和這個最小價格比大小  
+如果有比他小的值，那就把最小價格改成當前元素    
+如果比最小價格大的話，就算出他們相減的利潤並和最大利潤做比較  
+如果比最大利潤大的話，就把最大利潤改成這個值  
+如此全部遍歷完即可得出最大利潤  
+  
+另外此題也是簡單的動態規劃(Dynamic Programming)題   
+但簡單到不需要用DP寫了
+   
+  
+***
+  
+### [122.Best_Time_to_Buy_and_Sell_Stock_II](../../SourceCode/Python/122.Best_Time_to_Buy_and_Sell_Stock_II.py) Level: Easy Tags: []
+  
+Time:  O(n)  
+Space: O(1)
+     
+思路: 是上一題[121.Best_Time_to_Buy_and_Sell_Stock](../../SourceCode/Python/121.Best_Time_to_Buy_and_Sell_Stock.py) 的衍伸
+不同的是這次不限買賣次數  
+要你把所有利潤都累加起來求總利潤  
+直覺得會想到遍歷整個數列  
+如果當前價格小於明日價格的話就是利潤所在  
+但是如[1,2,3,4,5]這種數列組合    
+雖然有違反題意當天買賣的嫌疑  
+(第二天賣出前天股票後馬上買進，第三天又賣出並買進)  
+但是這樣的計算結果卻還是對的    
+其實正常的做法應該是貪婪解法:  
+先找局部最小，再找局部最大的循環  
+只是程式碼改進後就會變成這副模樣  
+    
+當然，這題也能用Dynamic Programming解題  
+  
 ***
   
 ### [157.Read_N_Characters_Given_Read4](../../SourceCode/Python/157.[Locked]Read_N_Characters_Given_Read4.py) Level: Easy Tags: [Locked]

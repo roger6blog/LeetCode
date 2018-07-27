@@ -372,6 +372,44 @@ sp和pp都為1的時候，"a" match "a" 所以表格為
   
 ***
   
+### [123.Best_Time_to_Buy_and_Sell_Stock_III](../../SourceCode/Python/123.Best_Time_to_Buy_and_Sell_Stock_III.py) Level: Hard Tags: [DP]
+  
+Time:  O(n)  
+Space: O(n)  
+  
+思路: 是[122.Best_Time_to_Buy_and_Sell_Stock_II](../../SourceCode/Python/122.Best_Time_to_Buy_and_Sell_Stock_II.py)   
+     和[121.Best_Time_to_Buy_and_Sell_Stock_II](../../SourceCode/Python/121.Best_Time_to_Buy_and_Sell_Stock.py) 的延伸  
+但本題因為只能用DP解題，屬於高難度  
+同樣是買低賣高，這題限制只能做兩次交易  
+我們用一維的雙動態規劃來解題  
+使用兩組DP陣列 DP1和DP2   
+DP1代表在遍歷prices數列時，在prices[x]之前所能達到的最大利潤  
+DP2代表在逆向遍歷prices數列時，在prices[x]之後所能達到的最大利潤  
+則DP1[x]的利潤加上DP2[x]的利潤  
+就是代表在x時間點前後的兩次交易所能達到的利潤  
+所以取兩者和的最大值即為所求  
+  
+另一種特別的解法是  
+其實我們並不需要每個時間點買賣第一第二筆股票收益的所有利潤  
+我們只要知道前一個時間點買賣第一第二筆股票的最大利潤  
+就能得到當前最大的最大利潤了  
+我們在遍歷prices數列的時候  
+使用四個變數:  
+buy1: 在該價格買入第一筆股票後手裡剩的錢  
+sell1: 在該價格賣出第一筆股票後手裡剩的錢  
+也就是說第一筆買進賣出後得到的利潤  
+或者是上一輪賣出第一筆股票後的利潤，兩者取其大  
+buy2: 在該價格買入第二筆股票後手裡剩的錢  
+同等於上一輪賣出第一筆股票後的利潤減去當前股票價格  
+sell2: 在該價格賣出第二筆股票後手裡剩的錢，即最後利潤  
+或者是上一輪賣出第二筆股票後的利潤，兩者取其大  
+我們能做的就是儘可能的低價買入後高價出售(廢話)  
+要注意的是第二筆交易裡我們是把第一筆交易的利潤考慮進去的  
+所以能達到題目要求  
+此法時間複雜度為O(n)，空間複雜度為O(1)
+  
+***
+  
 ### [146.LRU_Cache](../../SourceCode/Python/146.LRU_Cache.py) Level: Hard Tags: []
   
 思路: 實作一個 Least Recently Used (LRU) cache.  

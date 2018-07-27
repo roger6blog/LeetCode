@@ -267,6 +267,44 @@ sp和pp都為1的時候，"a" match "a" 所以表格為
   
 ***
   
+### [123.Best_Time_to_Buy_and_Sell_Stock_III](../../SourceCode/Python/123.Best_Time_to_Buy_and_Sell_Stock_III.py) Level: Hard Tags: [DP]
+  
+Time:  O(n)  
+Space: O(n)  
+  
+思路: 是[122.Best_Time_to_Buy_and_Sell_Stock_II](../../SourceCode/Python/122.Best_Time_to_Buy_and_Sell_Stock_II.py)   
+     和[121.Best_Time_to_Buy_and_Sell_Stock_II](../../SourceCode/Python/121.Best_Time_to_Buy_and_Sell_Stock.py) 的延伸  
+但本題因為只能用DP解題，屬於高難度  
+同樣是買低賣高，這題限制只能做兩次交易  
+我們用一維的雙動態規劃來解題  
+使用兩組DP陣列 DP1和DP2   
+DP1代表在遍歷prices數列時，在prices[x]之前所能達到的最大利潤  
+DP2代表在逆向遍歷prices數列時，在prices[x]之後所能達到的最大利潤  
+則DP1[x]的利潤加上DP2[x]的利潤  
+就是代表在x時間點前後的兩次交易所能達到的利潤  
+所以取兩者和的最大值即為所求  
+  
+另一種特別的解法是  
+其實我們並不需要每個時間點買賣第一第二筆股票收益的所有利潤  
+我們只要知道前一個時間點買賣第一第二筆股票的最大利潤  
+就能得到當前最大的最大利潤了  
+我們在遍歷prices數列的時候  
+使用四個變數:  
+buy1: 在該價格買入第一筆股票後手裡剩的錢  
+sell1: 在該價格賣出第一筆股票後手裡剩的錢  
+也就是說第一筆買進賣出後得到的利潤  
+或者是上一輪賣出第一筆股票後的利潤，兩者取其大  
+buy2: 在該價格買入第二筆股票後手裡剩的錢  
+同等於上一輪賣出第一筆股票後的利潤減去當前股票價格  
+sell2: 在該價格賣出第二筆股票後手裡剩的錢，即最後利潤  
+或者是上一輪賣出第二筆股票後的利潤，兩者取其大  
+我們能做的就是儘可能的低價買入後高價出售(廢話)  
+要注意的是第二筆交易裡我們是把第一筆交易的利潤考慮進去的  
+所以能達到題目要求  
+此法時間複雜度為O(n)，空間複雜度為O(1)
+  
+***
+  
 ### [139.Word_Break](../../SourceCode/Python/139.Word_Break.py) Level: Medium Tags: [DP, Backtracking]
   
 Time:  O(n * j), worst case is O(n^2)  
@@ -404,6 +442,49 @@ catsandog=>atsandog=>tsandog=>sandog
 如此走完整個迴圈，則dp[n]即為答案
   
   
+  
+***
+  
+### [309.Best_Time_to_Buy_and_Sell_Stock_with_Cooldown](../../SourceCode/Python/309.Best_Time_to_Buy_and_Sell_Stock_with_Cooldown.py) Level: Medium Tags: [DP]
+  
+Time:  O(n)  
+Space: O(n)  
+  
+思路: 是[122.Best_Time_to_Buy_and_Sell_Stock_II](../../SourceCode/Python/122.Best_Time_to_Buy_and_Sell_Stock_II.py)   
+     和[121.Best_Time_to_Buy_and_Sell_Stock_II](../../SourceCode/Python/121.Best_Time_to_Buy_and_Sell_Stock.py) 的延伸  
+如果不熟動態規劃()Dynamic Programming)的話  
+這題可以算是Hard了  
+題目和之前幾題一樣都要求買低賣高，但多了冷卻期  
+也就是賣出後的那一天不能買進股票  
+如果你第一天買入，第二天賣出的話  
+你得等第四天後才能買進第二筆  
+  
+這裡用動態規劃需要令兩個List  
+分別是buy和sell，長度為prices長度  
+buy[i]和sell[i]分別代表第i天持股股票的最大利潤  
+和第i天賣出股票時的最大利潤  
+這裡我們要寫出他們的狀態轉移方程  
+對於buy[i]，最大利潤有兩種可能:  
+1. 前一天的持股buy[i-1]，到今天仍未賣出  
+2. 之前賣出股票後今天買了股票，花掉了prices[i]
+因為有一天的冷卻期，所以是sell[i-2]-prices[i]  
+第i天的買進最大利潤就為  
+```python
+buy[i] = max(buy[i-1], sell[i-2] - prices[i]
+```
+  
+對於sell[i]，最大利潤有兩種可能:  
+1. 前一天賣出後，今天仍然沒買進股票  
+所以最大利潤是sell[i-1]  
+2. 前一天買進後，今天賣出持股得到了今天股價prices[i]  
+所以是buy[i-1] + prices[i]  
+所以我們可以知道sell[i]的最大利潤為:  
+```python
+sell[i] = max(sell[i-1], buy[i-1] + prices[i])
+```
+  
+不斷轉移狀態到最後一天賣出持股 (sell[len(prices)-1])  
+就是我們所能達到的最大利潤了  
   
 ***
   
