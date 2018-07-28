@@ -38,6 +38,7 @@ class Solution(object):
         digits = set(time)
         while True:
             time = self.nextTime(time)
+            # It's equal to set(time).issubset(digits)
             if set(time) <= digits:
                 break
         return time
