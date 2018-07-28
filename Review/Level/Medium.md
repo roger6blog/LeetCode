@@ -624,6 +624,8 @@ n繼續往上加可以很容易地發現能使用的數字持續減少
   
 ### [378.Kth_Smallest_Element_in_a_Sorted_Matrix](../../SourceCode/Python/378.Kth_Smallest_Element_in_a_Sorted_Matrix.py) Level: Medium Tags: [Binary Search]
   
+Time:  O(k * log(min(n, m, k))), with n x m matrix  
+Space: O(min(n, m, k))  
   
 思路: 給你一個行和列都有排序的整數二維陣列  
 要你找出第k小的元素是什麼  
@@ -641,6 +643,34 @@ n繼續往上加可以很容易地發現能使用的數字持續減少
 反之則右邊界改為 right-1  
 直到左右邊界交會後，左右邊界的其中一個即為所求  
    
+***  
+  
+### [394.Decode_String](../../SourceCode/Python/394.Decode_String.py) Level: Medium Tags: []
+
+
+思路:給你一個特定符號要你解碼字串    
+題意不難理解    
+但是需要用一個由list組成的list做stack  
+另一個num字串給掃到的數字用  
+  
+一開始從左至右掃過所有字元  
+掃到數字時，我們先存到num字串中  
+因為有可能下一個字元也是數字  
+掃到"["時，代表累積前面的數字要和其後的字串相乘  
+所以可以把["", int(num)] 加到stack中  
+然後清空num準備下一輪的數字
+掃到字母時，代表這字母將會和stack頂端的數字相乘  
+我們可以寫成 stack[-1][0] += char  
+把字母塞進stack頂端  
+  
+掃到"]"時，代表累積的字串和數字要相乘了  
+把stack pop後讓他們相乘  
+然後把運算後的字串加到pop後stack頂端的字串部分  
+如 stack[-1][0] = chars * num  
+  
+全部掃過後我們會發現最後解碼的字串會位於stack最底部的List的第一個元素  
+也就是stack[0][0] 即為所求  
+    
         
 ***  
   

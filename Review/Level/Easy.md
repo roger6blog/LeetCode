@@ -177,6 +177,28 @@ Space: O(1)
   
 ***
   
+### [401.Binary_Watch](../../SourceCode/Python/401.Binary_Watch.py) Level: Easy Tags: [Tricky]
+   
+Time:  O(1)  
+Space: O(1)
+        
+思路:給你一個二進位制表示的手錶，如下圖所示  
+    
+![](../Res/Binary_clock_samui_moon.jpg)
+  
+要你找出特定燈號數量下能顯示的所有時間  
+例如亮一個燈時就可能有0:01, 0:02, 0:04, 0:08....等各種組合  
+這題雖然歸類在Easy  
+但那是最佳解的code相當Easy  
+找不到最佳解的話根本就接近Hard，要寫一長串code  
+用兩個for迴圈分別遍歷小時(12)和分鐘(60)  
+計算他們的二進位數字裡有多少個1  
+和題目要求相符數量的就印出時間  
+此即為題目所求答案  
+
+  
+***
+  
 ### [408.Valid_Word_Abbreviation](../../SourceCode/Python/408.Valid_Word_Abbreviation.py) Level: Easy Tags: []
     
 Time:  O(n)  
