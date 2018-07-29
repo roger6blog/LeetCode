@@ -54,6 +54,34 @@ Space: O(1)
 我們還是能用BinarySearch來找出我們要的元素  
 所以最佳解為O(nlog(n))  
   
+  
+***
+
+### [079.Word_Search](../../SourceCode/Python/079.Word_Search.py) Level: Medium Tags: [DFS]
+  
+Time:  O(m * n * k)  
+Space: O(k)  
+k is length of word
+  
+思路: 給你一個由字母組成的2維陣列和一個單字  
+要你判斷這個單字能不能在這陣列中找到   
+這是個典型的深度搜索(DFS)問題  
+我們可以把每一個端點都當作起點  
+然後從這端點進行上下左右的DFS  
+下一個端點如果是我們預期的字母就繼續同樣的動作  
+反之如果超過邊界，或是不是我們預期的字母就返回False  
+返回True的條件看要怎麼寫  
+我這裡是如果現在搜尋到的是我們預期的字母  
+就把這個字母從目前的單字裡移除  
+如此一來返回True的條件就是這個單字變數變為空字串  
+  
+在搜尋過程中我們要防止自己走過的地方又走回來  
+這裡有很多種方式，只要和原本走過的字母不同就可以  
+例如改為'.'、'#' 等等  
+Python的話可以用swapcase變換字母大小  
+寫起來稍微優雅些  
+  
+  
 ***
   
 ### [179.Largest_Number](../../SourceCode/Python/179.Largest_Number.py) Level: Medium Tags: [Sort]
@@ -432,6 +460,31 @@ nums[0] <= nums[1] >= nums[2] <= nums[3]....
   
 ***
   
+### [284.Peeking_Iterator](../../SourceCode/Python/284.Peeking_Iterator.py) Level: Medium Tags: [Iterator]
+   
+Time:  O(1) per peek(), next(), hasNext()  
+Space: O(1)   
+  
+思路:要你在一個為Iterator基礎的iterator建立其相關method  
+例如next、hasNext,peek等  
+因為Python沒有內建hasNext，所以這method建立稍麻煩點  
+peek也是題目特別要求的method  
+關於hasNext的部分，我們可以用題目已經提供的hasNext method  
+(有興趣的話可以看Soruce code裡題目提供的hasNext())  
+peek的要求是告訴我們下一個元素的值  
+因為內建的next會自動疊代到下一個元素  
+所以我們需要設一個peekflag，預設為False  
+當peek被呼叫時把next得到的元素存到另一個全域變數去
+然後把peekflag設為True  
+如此當之後呼叫該class的next()時  
+我們可以看peekflag查之前有沒有呼叫過peek()  
+有的話就直接return全域變數內存的值  
+並把相關的變數重設回預設值  
+反之的話就能直接呼叫該iterator的next來取值  
+    
+    
+***
+  
 ### [289.Game_of_Life](../../SourceCode/Python/289.Game_of_Life.py) Level: Medium Tags: [List, Bit manipulation]
   
 Time:  O(m * n)  
@@ -565,7 +618,7 @@ Follow up是挺難的題目
   
 ***
   
-### [341.Flatten_Nested_List_Iterator](../../SourceCode/Python/341.Flatten_Nested_List_Iterator.py) Level: Medium Tags: []
+### [341.Flatten_Nested_List_Iterator](../../SourceCode/Python/341.Flatten_Nested_List_Iterator.py) Level: Medium Tags: [Iterator]
   
 Time:  O(n), n is the number of the integers.  
 Space: O(h), h is the depth of the nested lists.  

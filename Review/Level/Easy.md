@@ -253,5 +253,19 @@ Space: O(1)
 如此一來，數列中缺少的數字的index對應的數字就不會成為負數  
 接著重新遍歷整個數列，找出數字為正的index就是答案  
 
+
+***
+  
+### [543.Diameter_of_Binary_Tree](../../SourceCode/Python/543.Diameter_of_Binary_Tree.py) Level: Easy Tags: [Tree]
+  
+Time:  O(n)  
+Space: O(h)  
+h is Height of Tree  
+  
+思路: 給你一個樹，要你求兩個子結點彼此間的最長距離  
+因為可以橫跨左右子樹，所以不能單純的深度搜尋(DFS)或排序  
+我們可以這問題想成是兩個子樹的最長深度的加總    
+那麼一來只要想辦法把兩邊子樹的深度算出來就能找到答案了  
+
   
 ***
