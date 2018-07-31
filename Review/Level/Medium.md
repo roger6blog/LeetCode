@@ -614,8 +614,87 @@ Follow up是挺難的題目
 [0, 1, 2, ... , n-1, n] mapping到  
 [1, 3, 5, ...., 0, 2, 4,...]得到新的下標  
 3. 以中位數mid為界，將大於mid的元素排列在新下標的較小部分  
-而將小於mid的元素排列在新下標的叫大部分  
+而將小於mid的元素排列在新下標的較大部分  
   
+  
+***
+  
+### [332.Reconstruct_Itinerary](../../SourceCode/Python/332.Reconstruct_Itinerary.py) Level: Medium Tags: [Graph, DFS]
+  
+Time:  O(t! / (n1! * n2! * ... nk!)),   
+t is the total number of tickets,  
+ni is the number of the ticket which from is city i,  
+k is the total number of cities.  
+Space: O(t)  
+      
+思路: 給你幾張飛機票組成的List  
+上面由 [起點->終點] 組成  
+要你求出順路而且用掉所有機票的順序，且順序要照字母排序  
+看到機票、路徑，很容易可以想到是Graph問題  
+而Graph的Traversal就是用DFS  
+然而因為目標可能會重複，所以建立圖時一開始就要注意這裡  
+可以用defaultdict，或是用自己用if else來判斷  
+如此我們可以建立一個以list為值的字典  
+list內為這個key能夠飛到的地點  
+  
+我們另外寫一個dfs函式  
+函式內一開始用for迴圈把所有起點能飛到的點都做疊代  
+也就是一個個計算他們所能飛到的路徑  
+在這過程中我們需要把要飛過去的路徑從字典中暫時刪除
+```python
+ans.append(spot)
+travel[spot].remove(dst)            
+if len(travel[spot]) == 0:
+    travel.pop(spot)
+```  
+然後再用DFS繼續搜索剩下能飛的點
+```python
+valid = self.dfs(travel, ans, dst, tickets)
+```  
+如果過程中發現沒有能飛的點了，就直接返回
+```python
+if travel == {}:
+    return
+```    
+如果過程發現沒有能走的點了，也直接返回  
+```python
+if spot not in travel:
+    return
+```    
+這樣的返回結果會是None，我們用valid這變數來接dfs的結果  
+如果valid有值，代表這條路走得通  
+我們就能在遞迴裡返回結果valid  
+```python
+if valid:
+    return valid
+```    
+不要忘記結束該次遞迴後要把原本扣掉的點再加回去  
+才能繼續下一次的dfs搜尋  
+```python
+key = spot
+..
+..
+ans.pop()
+if key not in travel:
+    travel[key] = [dst]
+else:
+    travel[key].append(dst)
+``` 
+還有一點很重要的是題目要求照字母順序來選點  
+所以我們在for迴圈時就要先把能走的List做排序  
+```python
+for dst in sorted(travel[spot]):
+```       
+最後一個最重要的判斷條件  
+只要ans List的元素數量已經到了我們的預期  
+就要中斷dfs搜尋並返回結果
+```python
+if len(ans) == len(tickets) + 1:
+    return ans
+```
+這結果就是題目要求的答案 
+      
+    
 ***
   
 ### [341.Flatten_Nested_List_Iterator](../../SourceCode/Python/341.Flatten_Nested_List_Iterator.py) Level: Medium Tags: [Iterator]
@@ -1059,7 +1138,92 @@ set去除重複元素後為 [00000, 10000]
 所以我們找到的max就是 11100 = 28  
 此為最後的答案  
  
- 
+  
+***  
+  
+### [481.Magical_String](../../SourceCode/Python/481.Magical_String.py) Level: Medium Tags: [Tricky]
+  
+Time:  O(n)  
+Space: O(logn)
+      
+思路: 題目非常難理解，這裡有必要解釋清楚  
+給你一個魔術字串S = "1221121221221121122...."  
+這個字串有個神奇的地方在於  
+從最左邊看到最右邊  
+每一個對應的'1'或'2'都代表這字串的'1'或'2'出現次數  
+把這些'1'或'2'出現的次數寫成一個字串  
+剛好就等於S字串  
+用對應關係來解釋，就是如下: 
+```
+(S字串)
+1   22   11   2  1   22  ......
+
+1    2    2   1  1    2  ......
+('1'或'2'出現的次數所組成的字串)
+```
+可以看到下面的字串雖然不長  
+但完全和上面的S字串相同  
+所以只要給你S字串的開頭  
+這個字串是可以生生不息的  
+    
+我們取"122"當作字串的樣板  
+然後每次照順序拿一個數字出來  
+用這數字乘上他應該重複的字串  
+再把他加總起來，就是S字串的一部分  
+```python
+num = int(pattern[i])
+..
+..
+genString += num * char
+```  
+加上去後別忘記切換Flag來交替疊加'1'字串或'2'字串  
+我是用1和-1交替切換  
+```python
+Flag = -Flag
+```
+我們不斷從樣板字串取數字出來，最後總會走到盡頭  
+但別忘記我們新生的字串理論上應該要和樣板字串完全相同  
+所以可以寫個try / except  
+當取不到index時  
+把新生的字串重新當樣板字串，就能繼續取值了  
+```python
+try:
+    num = int(pattern[i])
+except IndexError:
+    pattern = genString
+    num = int(pattern[i])
+```
+至於題目的n長度找幾個'1'的要求  
+只要我們取的i和n相等時跳出迴圈  
+計算新生的字串有多少個'1'就是答案了
+  
+   
+***  
+  
+### [498.Diagonal_Traverse](../../SourceCode/Python/498.Diagonal_Traverse.py) Level: Medium Tags: []
+    
+
+思路:  要你照下圖的方式Traversal一個2維陣列的元素  
+  
+![](../Res/diagonal_traverse.png)  
+  
+  
+按照提議去觀察每個元素的變化  
+你會發現他們是有規律的 [1,-1] 和[-1,1] 在移動  
+切換條件在邊界時，變化規則如下圖:  
+
+![](../Res/Picture5.png) 
+
+基本上就是:  
+1. 任何一邊的index小於0時，扶正回0   
+2. 任何一邊的index大於其最大index時，扶正回最大index  
+且另一邊的index+2  
+  
+須注意此種寫法，判斷條件的順序會有差別  
+條件二的判斷必須在條件一之前  
+不然另一邊的index會受到影響  
+  
+
 ***  
   
 ### [560.Subarray_Sum_Equals_K](../../SourceCode/Python/560.Subarray_Sum_Equals_K.py) Level: Medium Tags: []

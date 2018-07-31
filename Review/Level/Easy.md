@@ -93,6 +93,35 @@ traversal到leave即印出其中一條路徑
   
 ***
   
+### 283.Move_Zeroes](../../SourceCode/Python/283.Move_Zeroes.py) Level: Easy Tags: []
+
+
+思路: 給你一個包含0的數列  
+要你把0都搬到最右邊去，而且限制你不能用任何多餘空間  
+因此限制了我們只能用元素交換的方式  
+我們可以用一個指標紀錄下一個要交換的0，然後依序讀取元素  
+如果是0的話不做任何事，反之則把該元素和指標記錄到的0做交換  
+同時該指標+1  
+如此反覆執行，最後所有的0都會被換到最右邊去  
+大致上的流程如下圖  
+![](../Res/MoveZeros.jpeg)
+    
+若看上圖仍不明白  
+我們用實際的例子作範例  
+假如nums = [0, 1, 0 , 3]
+```python
+nums = [0, 1, 0 , 3], left == 0, right == 0 => nums[right] ==0  跳過
+nums = [0, 1, 0 , 3], left == 0, right == 1 => nums[right] ==1  
+左右交換，left++
+nums = [1, 0, 0 , 3], left == 1, right == 2 => nums[right] ==0  跳過
+nums = [1, 0, 0 , 3], left == 1, right == 3 => nums[right] ==3
+左右交換，left++
+nums = [1, 3, 0 , 0]  
+```
+  
+  
+***
+  
 ### [326.Power_of_Three](../../SourceCode/Python/326.Power_of_Three.py) Level: Easy Tags: [Math]
   
 Time:  O(1)  
