@@ -1,3 +1,41 @@
+  
+  
+***
+
+### [003.Longest_Substring_Without_Repeating_Characters](../../SourceCode/Python/003.Longest_Substring_Without_Repeating_Characters.py) Level: Medium Tags: [String, Two Pointer]  
+  
+Time:  O(n)  
+Space: O(1)    
+  
+思路:給你一個字串  
+要你求最大長度的不重複字元子字串的長度  
+解題的核心觀念就是題目告訴你的:  
+不重複字元子字串，代表這個字串不能存在兩個相同的字元  
+所以我們可以用一個Sliding Window來計算這字串的長度  
+加上一個dictoionary來儲存目前字串擁有的字元和位置  
+一開始這Window的左右邊界都在最左邊  
+然後我們讓右邊界的值不斷增加  
+在他們兩個中間的字串就是當前最長的不重複子字串  
+在右邊界增加的同時，我們把右邊界指向的新字元和dictionary裡的內容比較  
+如果dictionary裡不存在這個新字元  
+就把他加入裡面並賦值為當前位置
+```python
+wordDict[char] = index
+```
+反之如果能在dictionary裡找到這個字元  
+說明這個字串已經有字元重複了  
+我們應該把左邊界移動到這個重複字元位置的右邊一位  
+然後把該字元的位置更新成當前字元所在位置  
+```python
+if char in wordDict and wordDict[char] >= begin:
+    begin = wordDict[char] + 1
+```
+這裡有一個額外的判斷是wordDict[char] >= begin  
+他是為了避免begin會因為某個重複字元出現在begin的前面過  
+造成begin往回指的狀況
+  
+每一次的新增字元都能判斷一次當前最長不重複子字串是否為最大  
+整個字元都掃描完後這個當前最長子字串就是答案了    
 
 ***
 
@@ -396,7 +434,6 @@ value即為歸類於此的各個字串組成的List
   
 ***
   
-
 ### [251.[Locked]Flatten_2D_Vector](../../SourceCode/Python/251.[Locked]Flatten_2D_Vector.py) Level: Medium Tags: []
   
 Time:  O(1)  
@@ -416,6 +453,37 @@ Space: O(1)
 如果一開始就沒有第二個疊代器  
 那就把第一個疊代器的下一個List拿來疊代化，產生一個新的  
 對於StopIteration的處理，就是告訴caller下面沒有了  
+  
+  
+***
+  
+### [264.Ugly_Number_II](../../SourceCode/Python/264.Ugly_Number_II.py) Level: Medium Tags: [Math]  
+
+Time:  O(n)  
+Space: O(1)
+    
+思路: 是 [263.Ugly_Number](../../SourceCode/Python/263.Ugly_Number.py) 的衍伸題  
+要知道醜數的定義請看之前的題目   
+本題要你找出從1開始排起，排行位於第n個的醜數  
+我們當然可以從1開始每個數都挑出來看他是不是醜數  
+但這做法非常的慢  
+這裡用題目提示給的方法  
+仔細觀察一開始的醜數數列  [1, 2, 3, 4, 5, 6, 8, 9, 10, 12]...  
+可以發現他們是從大到小的 2 或 3 或 5 相乘的結果  
+所以我們可以把他們想成是這樣:  
+
+**1x2**, 2x2, **2x2**, 3x2, **3x2**, **4x2**, 5x2, ....  
+1x3, **1x3**, 2x3, 2x3, 2x3, 3x3, **3x3**...  
+1x5, 1x5, 1x5, 1x5, **2x5**, 2x5, 2x5...  
+  
+我們用三個從1開始的index去分別乘上每個醜數的因子 (2,3,5)    
+然後去取他們相乘後的最小值  
+這時就一定是我們目前能取到最小的醜數  
+粗體代表每一次index增加時索取的醜數  
+如果該醜數的因子被選中了，他的index就會遞增  
+這樣下一輪要取時該因子的數字就可能因為變得比較大  
+而讓其他index沒有增加的因子被選為當前最小醜數  
+如此一來只要重複n次就能知道第n個醜數是多少了  
   
   
 ***
@@ -561,6 +629,18 @@ sell[i] = max(sell[i-1], buy[i-1] + prices[i])
   
 不斷轉移狀態到最後一天賣出持股 (sell[len(prices)-1])  
 就是我們所能達到的最大利潤了  
+  
+  
+***
+  
+### [313.Super_Ugly_Number](../../SourceCode/Python/313.Super_Ugly_Number.py) Level: Medium Tags: [Math]
+  
+思路:思路: 是 [263.Ugly_Number](../../SourceCode/Python/263.Ugly_Number.py)   
+和 [264.Ugly_Number_II](../../SourceCode/Python/264.Ugly_Number_II.py) 的衍伸題  
+給你一組全新的醜數因子，要你找出第n個醜數  
+其實只是把264題的內建醜數因子改成題目給的而已  
+所以把264題的解答改成用動態給因子的方式就可以了  
+具體思路請參考264題  
   
   
 ***
@@ -1009,7 +1089,41 @@ Space: O(min(n, m, k))
   
 全部掃過後我們會發現最後解碼的字串會位於stack最底部的List的第一個元素  
 也就是stack[0][0] 即為所求  
-    
+   
+   
+***  
+  
+### [399.Evaluate_Division](../../SourceCode/Python/399.Evaluate_Division.py) Level: Medium Tags: [Graph]
+  
+Time: O(n^3)   
+Space: O(n)  
+  
+思路: 給你幾個數學符號的除法計算式和結果  
+要你求題目要求的數學式的答案  
+因為有數學運算，很容易聯想成是數學相關的程式題  
+但其實他是一題跟Graph有關的題目  
+(當然你開提示或看related topic便能馬上發現)  
+A->B的關係就是A/B，反過來B->A就是B/A    
+所以這題的中心思想就是  
+把所有能找到的關聯圖都加進去  
+題目要求的queries便可迎刃而解  
+  
+以題目範例給的關係式為例  
+他給的式子也只有區區兩個a / b = 2.0, b / c = 3.0  
+光兩個方向的圖是無法解題的  
+剩下的方向就要靠我們自己用數學來推導:  
+1. A/A = 1.0  
+2. A/B == x時，B/A == 1/x  
+3. A/B == x且B/C == y時，A/C == x * y  
+以上這些都是國中小程度的數學公式  
+  
+在建構圖的過程中，時間複雜度會卡在條件3  
+因為他需要同時找出三個元素來比較  
+這裡的時間複雜度可達O(n^3)  
+  
+另外，如果用內建的dictionary會有許多KeyError Exception和多餘的判斷式要寫  
+用collection的detaultdict會讓程式碼簡潔很多  
+  
         
 ***  
   
@@ -1138,6 +1252,52 @@ set去除重複元素後為 [00000, 10000]
 所以我們找到的max就是 11100 = 28  
 此為最後的答案  
  
+  
+***  
+  
+### [447.Number_of_Boomerangs](../../SourceCode/Python/447.Number_of_Boomerangs.py) Level: Medium Tags: [Math]
+      
+Time:  O(n^2)    
+Space: O(n)    
+思路: Boomerangs是迴力鏢的意思  
+代表有一個點到另外兩點距離相等  
+題目給你n個點的座標，求能形成迴力鏢的總數  
+這題解法很多，這裡講最通俗的解法  
+把每個點一次取出來  
+以這個點為起點去求其他點的距離  
+把這些點的距離存到一個dictionary中  
+求點和點之間距離的公式國中有教過是math.sqrt((x1 - x2) ** 2 + (y1 - y2) ** 2)  
+但在實務上我們不一定需要import math 去呼叫sqrt  
+因為我們聚焦的只在相同距離，有沒有取平方根不影響答案  
+  
+所有離取完後  
+我們可以看到在dictionary裡會有value超過2的key  
+例如範例給的  [[0,0],[1,0],[2,0]]  
+我們可以求到這三點到其他點的距離分別為  
+[0, 0] => {1: 1, 4: 1}  
+[1, 0] => {1: 2}  
+[2, 0] => {1: 1, 4: 1}    
+(key為4就是沒開平方根的距離)  
+我們可以看到在[1, 0]中  
+距離為1的邊有2個  
+因此代表[1, 0]存在到其他點距離相等的回力鏢  
+  
+就算知道該點有多個到其他點的距離相等  
+我們還是得求出這回力鏢有幾種組合  
+這是一個排列組合的問題  
+假如以四個點abcd，a到其他bcd點的距離都相同   
+說明有3個距離是相等的  
+則這些點的排列組合為:  
+abc, acb, acd, adc, adb, abd 共6個  
+經過推導可得公式 n*(n-1) = 3*1 = 6 
+所以我們也可以比照辦理
+```python
+for d in disDict:
+    ans += disDict[d] * (disDict[d] - 1)
+```
+依次把每個點的排列組合都算出來進行加總  
+即為題目要的答案  
+  
   
 ***  
   

@@ -31,3 +31,15 @@ class Solution(object):
             else:
                 dicBuff[nums[i]] = i
                 # print("dicBuff[{}] == {}".format(nums[i], i))
+
+    def twoSum2(self, nums, target):
+        dic = {}
+        for i, num in enumerate(nums):
+            if num in dic:
+                return [dic[num], i]
+            else:
+                dic[target - num] = i
+
+nums = [11 , 2, 15, 7  ]
+target = 9
+print Solution().twoSum(nums, target)

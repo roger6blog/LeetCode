@@ -89,7 +89,27 @@ Traversal的部分用DFS就可以做到
 traversal到leave即印出其中一條路徑  
 在traversal到leave後我們需要把leave Node pop出來  
 不然就會變成一般的DFS traversal了  
+  
    
+***
+  
+### [263.Ugly_Number](../../SourceCode/Python/263.Ugly_Number.py) Level: Easy Tags: [Math]
+  
+Time:  O(logn)    
+Space: O(1)    
+  
+思路:要我們判斷一個數字是否為醜數(Ugly number)  
+醜數的定義是只能被[2,3,5]整除的數  
+雖然可以用質因數分解後去看對應的質因數是否為2,3,5的組合    
+但本題有時間要求，所以遇到太大的數字會超時  
+其中一個解法是拿題目給的數字不斷去除2或3或5  
+整除的話就把商塞給原本的數字，繼續除下去  
+一旦除到有餘數就換下一個數字  
+直到三個數字都除完後看題目最後給的數字是否為1  
+是的話就代表是醜數  
+反之則一定還有其他數字為題目給的數字的因數  
+因此不是醜數  
+  
   
 ***
   
