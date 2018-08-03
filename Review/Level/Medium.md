@@ -2,7 +2,7 @@
   
 ***
 
-### [003.Longest_Substring_Without_Repeating_Characters](../../SourceCode/Python/003.Longest_Substring_Without_Repeating_Characters.py) Level: Medium Tags: [String, Two Pointer]  
+### [003.Longest_Substring_Without_Repeating_Characters](../../SourceCode/Python/003.Longest_Substring_Without_Repeating_Characters.py) Level: Medium Tags: [String, Sliding Window]  
   
 Time:  O(n)  
 Space: O(1)    
@@ -696,6 +696,26 @@ Follow up是挺難的題目
 3. 以中位數mid為界，將大於mid的元素排列在新下標的較小部分  
 而將小於mid的元素排列在新下標的較大部分  
   
+  
+***
+  
+### [325.[Locked]Maximum_Size_Subarray_Sum_Equals_k](../../SourceCode/Python/325.[Locked]Maximum_Size_Subarray_Sum_Equals_k.py) Level: Medium Tags: [String]
+    
+Time:  O(n)  
+Space: O(n)  
+  
+思路: 是[560.Subarray_Sum_Equals_K](../../SourceCode/Python/560.Subarray_Sum_Equals_K.py)的類似題  
+差別只在於560是求總和為K的數列數量  
+本題是求最長的總和為K的子數列長度  
+所以解題思路也類似，都用到sum - (sum - k) == k 的原理  
+處理條件則有所差別  
+如果sum不在當前hash中的話，就把當前index存到hash  
+如果sum剛好等於k的話，那最大長度就是index + 1   
+另外當sum-k (之前出現過的sum)在has中的話  
+最大長度就是目前最大長度和當前index減去之前出現過的sum的index
+```python
+maxLen = max(maxLen, x - prefixSum[sum - k])
+```
   
 ***
   
