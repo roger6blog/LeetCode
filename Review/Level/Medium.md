@@ -58,11 +58,11 @@ Space: O(1)
 這裡是4和5，我們稱4為partition number  
 2. 從右找出第一個比partition number大的數字  
 這裡是5，我們叫他change number  
-3. 把partition number和change number做交換
-所以數列變成[1,5,4,3,2]
+3. 把partition number和change number做交換  
+所以數列變成[1,5,4,3,2]  
 4. 從原本partition number在的index後面開始  
 把其後的數列做反轉  
-[1,5,4,3,2] => [1,5,2,3,4]
+[1,5,4,3,2] => [1,5,2,3,4]  
 5. 此數列即為題目要求的答案  
   
   
@@ -74,8 +74,8 @@ Space: O(1)
 把題目給的List照start值得順序排好後  
 用以下的方式來判斷兩個Interal:  
 1. 如果新的List裡面沒Interval，直接加入新List  
-2. 如果有的話，比較新List最後一個Interval和要加入的Interval是否有重疊  
-  重疊的規則: 新Interval的start值落在最後一個Interval的區間裡(相同值也算)  
+2. 如果有的話，比較新List最後一個Interval和要加入的Interval是否有重疊    
+  重疊的規則: 新Interval的start值落在最後一個Interval的區間裡(相同值也算)    
   如此不斷iterate所有元素  
   新List即為答案  
   
@@ -90,6 +90,14 @@ Space: O(1)
 最直觀的解法當然是用for去找，不過此解法只能得到O(n)  
 既然這List已經被排序，就算它分成幾個小List  
 我們還是能用BinarySearch來找出我們要的元素  
+```python
+while left < right:
+    mid = left + (right - left) / 2
+    if matrix[mid / col][mid % col] >= target:
+        right = mid
+    else:
+        left = mid + 1
+```
 所以最佳解為O(nlog(n))  
   
   
@@ -1480,6 +1488,96 @@ Space: O(1)
 那就是題目要的答案了  
 因為一天內的時間最長也不過1440分鐘  
 所以此法既簡潔又快速  
+  
+  
+***  
+  
+### [739.Daily_Temperatures](../../SourceCode/Python/739.Daily_Temperatures.py) Level: Medium Tags: [Stack]  
+    
+Time:  O(n)  
+Space: O(n)  
+    
+思路: 給你一個數天的溫度列表  
+要你找出以每一天的溫度為基準，再過幾天溫度會比當天溫暖  
+是 [503.Next_Greater_Element_II](../../SourceCode/Python/503.Next_Greater_Element_II.py) 的類似題  
+直觀的解法是用兩個for迴圈從第一天的溫度開始  
+不斷地往後找第一個比當天大的溫度然後把index存到答案中  
+然而O(n^2)的時間複雜度因為天數太多而會造成超時(Time Limit Exceed)  
+所以我們不能用遍歷天數的方式  
+因為題目有提示溫度不會超過100度，我們可以考慮採用遍歷溫度的作法  
+從數列的最右邊開始讀取溫度  
+每一次都把溫度當key，index當value 存到一個溫度dictionary裡
+```python
+for day in xrange(length - 1, -1, -1):
+    warmer = []
+    tMap[temperatures[day]] = day
+```  
+然後我們從比該天溫度高一度的溫度開始，遍歷整個當天溫度到最高溫度的區間  
+目的在於從目前的溫度dictionary中找出比當天溫度還高的溫度  
+如果有存在比當天溫度還大的溫度的話  
+就把它和當天時間的差距(天)加到一個暫存list中  
+因此這List就是所有溫度比當天溫度高的時間差距  
+```python
+for t in xrange(temperatures[day] + 1, 101):
+    if t in tMap:
+        warmer.append(tMap[t] - day)
+```
+這List的最小值，很明顯地為該天的下一個比他高溫度的最小天數  
+如果這List為空，說明之後沒有任何一天的溫度比當天高了  
+照題目要求需要填0進去  
+因為我們是從最後一天開始看起  
+所以加入答案的方式也必須相反  
+有的人是用插入最前面的方式來做，這樣最後一次插入的元素就是第一天
+```python
+if warmer:
+    ans.insert(0, min(warmer))
+else:
+    ans.insert(0, 0)
+```  
+也有人是照原本方式從最後一天增加起然後反轉答案List的
+```python
+    if warmer:
+        ans.insert(min(warmer))
+    else:
+        ans.insert(0)
+        
+return ans[::-1]      
+```   
+端看個人需求
+  
+另一種解題思路是用stack的方式
+先把答案要的陣列預備好，也就是全部初始化成0  
+```python
+length = len(temperatures)
+ans = [0] * length
+```
+把該天的index塞到stack中
+在這之前先檢查stack的最頂端的index指向的溫度是否大於該天溫度  
+如果是的話，就把頂端的index pop出來  
+並把這個index當作答案陣列的index(因為我們找到他的下一個較溫暖的時間了)  
+然後把把答案陣列中指向的那一天填入該天溫度的index減去index
+就是index那天溫度到現在這天溫度的差距天數  
+```python
+for i in xrange(length):
+    while len(stack) > 0 and temperatures[stack[-1]] < temperatures[i]:
+        temp = stack.pop()
+        ans[temp] = i - temp
+
+    stack.append(i)
+```
+  
+這步驟需要反覆進行  
+因為有可能stack裡最頂端元素指向那天的溫度都小於今天的溫度  
+例如溫度(73, 72, 75)這種場合  
+一開始stack裡塞了[0, 1]  
+等走到75這天時，stack頂端元素 index 1 指向的那天溫度小於75
+所以pop index 1 => ans[1] = 2 - 1   
+=> ans[1] == 1  
+繼續比較發現目前stack頂端的元素指向的溫度一樣小於75  
+所以ans[0] == 2   
+  
+把每天的index遍歷完，ans即為所求    
+
   
 ***
   

@@ -302,7 +302,48 @@ Space: O(1)
 如此一來，數列中缺少的數字的index對應的數字就不會成為負數  
 接著重新遍歷整個數列，找出數字為正的index就是答案  
 
-
+  
+  
+***
+  
+### [496.Next_Greater_Element_I](../../SourceCode/Python/496.Next_Greater_Element_I.py) Level: Easy Tags: [Stack]
+  
+  
+思路:  給你兩個不重複整數組成的數列  
+第一個數列是第二個數列的子集合  
+求以第一個數列內數字的值當key  
+在第二個數列找到的位置當起點的右邊第一個數字，如果找不到就是-1   
+例如nums1 = [4,1,2]，nums2 = [1,3,4,2]  
+從nums1取4出來，在nums2找到他在數列中的第三個  
+從第三個往右看沒有比他大的數字，所以4這元素的答案為-1  
+第二個數1在num2的位置是第1個，他的右邊第一個數字是3  
+第三個數2在num2的位置是最後一個，所以右邊沒有比他大的數字，返回-1  
+  
+只要明白題意的話，這是題簡單的題目  
+直接用兩個for迴圈便可解決問題  
+不過為了之後較難的題目    
+這裡用Stack的方式解題  
+把nums2的數字一個個取出來  
+目的是為了把每個數字找出他右邊的第一個數字  
+把該數字照順序放到stack中  
+然後比較stack頂的數字和下一個數字  
+如果下一個數字比較大，說明這是元素頂端的下一個較大數字  
+```python
+for i in xrange(len(nums)):
+    while len(stack) > 0 and stack[-1] < nums[i]:
+```
+條件成立時，把stack頂端元素pop出來當key  
+存放他的下一個較大數字nums[i]  
+```python
+temp = stack.pop()
+dMap[temp] = nums[i]
+```
+mapping建立後  
+只要用for迴圈把nums1的數字依次取出來  
+只要mapping裡存在該數字，就能找到該數字的下一個較大數字  
+反之找不到就是-1了   
+  
+  
 ***
   
 ### [543.Diameter_of_Binary_Tree](../../SourceCode/Python/543.Diameter_of_Binary_Tree.py) Level: Easy Tags: [Tree]
