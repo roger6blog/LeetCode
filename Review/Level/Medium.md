@@ -1118,6 +1118,32 @@ Space: O(min(n, m, k))
 全部掃過後我們會發現最後解碼的字串會位於stack最底部的List的第一個元素  
 也就是stack[0][0] 即為所求  
    
+  
+***  
+  
+### [395.Longest_Substring_with_At_Least_K_Repeating_Characters](../../SourceCode/Python/395.Longest_Substring_with_At_Least_K_Repeating_Characters.py) Level: Medium Tags: [Recursive]
+
+  
+  
+思路:給你一個字串和數字k，要你求出在這字串的子字串中  
+重複字元大於等於k的最長子字串  
+例如s = "ababbc", k = 2  
+最長子字串即為"ababb"  
+因為a和b的重複次數都超過k，但c沒有  
+這題用一般解法很困難  
+但如果用遞迴解，思路清晰程式碼又簡潔  
+  
+以字串“abbcadda" k=為例
+我們可以一眼看出不滿足條件的字元為"c"  
+因為只有c不滿足重複2次  
+所以我們以c當作分隔點，取左右兩個字串"abb"和"adda"  
+在左字串"abb"中，我們以不滿足條件的a當分隔點，得到 ""和 "bb"  
+左邊空字串不用看，看右邊的"bb"以滿足條件，所以目前最長長度為2  
+    
+在右字串"adda"中，因為它全部滿足條件，最長長度為4  
+所以最長的子字串為4  
+
+  
    
 ***  
   
@@ -1411,7 +1437,47 @@ except IndexError:
 條件二的判斷必須在條件一之前  
 不然另一邊的index會受到影響  
   
-
+  
+***  
+  
+### [503.Next_Greater_Element_II](../../SourceCode/Python/503.Next_Greater_Element_II.py) Level: Medium Tags: [Stack]
+    
+  
+思路: 給你一組整數數列，要你求一個從他的右邊算起比該數大的數字  
+如果找數列找到底的話就從頭開始計算  
+如果這樣還是找不到，就回傳-1  
+這題是 [496.Next_Greater_Element_I](../../SourceCode/Python/496.Next_Greater_Element_I.py)的衍生題  
+但這題用暴力解是會TLE(Time Limit Excees)的  
+只能用時間複雜度較低的Stack解法  
+基本核心理念我們有在 496和另一個衍生題 [739.Daily_Temperatures](../../SourceCode/Python/739.Daily_Temperatures.py) 探討過  
+這題也是類似，準備一個空的Stack來存放所有數字的index  
+如果在stack頂端index指向的數字比當前index指向的數字小的話  
+說明當前index指向的數字就是stack頂端index的下一個較大數字  
+所以把stack頂端元素pop出來存放到答案中  
+```python
+while len(stack) > 0 and nums[stack[-1]] < num:
+    ans[stack.pop()] = num
+```
+但因為本題要求我們數列找到底必須從頭計算  
+所以在搜尋範圍上稍微有點變化  
+有兩種方式可以從頭計算:  
+1. 把陣列乘上2倍，這樣相當於重走一次同樣的數列  
+2. 疊代範圍增加2倍，但用mod除上陣列長度使其不會超過邊界  
+這裡我們用第二種方法
+```python
+for i in xrange(length * 2):
+    num = nums[i % length]
+```
+最後別忘記我們的疊代範圍是2倍  
+所以在存到stack時要加上長度判斷  
+```python
+if i < length:
+    stack.append(i)
+```  
+  
+特別注意: **stack裡存的是數列的index，不是數字本身!**
+  
+  
 ***  
   
 ### [560.Subarray_Sum_Equals_K](../../SourceCode/Python/560.Subarray_Sum_Equals_K.py) Level: Medium Tags: []

@@ -308,7 +308,9 @@ Space: O(1)
   
 ### [496.Next_Greater_Element_I](../../SourceCode/Python/496.Next_Greater_Element_I.py) Level: Easy Tags: [Stack]
   
-  
+Time:  O(m + n)  
+Space: O(m + n)  
+    
 思路:  給你兩個不重複整數組成的數列  
 第一個數列是第二個數列的子集合  
 求以第一個數列內數字的值當key  
