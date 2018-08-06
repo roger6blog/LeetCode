@@ -99,6 +99,30 @@ class Testcase(object):
         print("Average: {}".format(average))
         print("MAX running time: {}".format(maxTime))
 
+    def combinationSum(self, testcase, limitTime):
+        testcase.sort()
+        slot = sum(testcase)/limitTime
+        average = sum(testcase)/slot
+
+        ans = []
+        self.combination(testcase, average, [], ans)
+        bSet = set(map(tuple, ans))
+        return map(list, bSet)
+
+    def combination(self, candidates, target, current, ans):
+        if current:
+            s = sum(current)
+        else:
+            s = 0
+
+        if s >= target:
+            current.sort()
+            ans.append(current)
+            return
+        else:
+            for c, i in enumerate(candidates):
+                self.combination(candidates[c + 1:], target, current + [i], ans)
+
 
 testcase =[64,95,285,93,94,380,102,122,67,119,68,100,68,120,214,218,213,253,70,82,71,201,71,59,59,54,74,54,78,51]
 
@@ -106,6 +130,7 @@ limitTime = 600
 print
 print("Total {}, hope be able to run in {} seconds".format(sum(testcase), limitTime))
 print
-Testcase().rearrange(testcase, limitTime)
+print Testcase().combinationSum(testcase, limitTime)
+# Testcase().rearrange(testcase, limitTime)
 # Testcase().rearrange2(testcase, limitTime)
 

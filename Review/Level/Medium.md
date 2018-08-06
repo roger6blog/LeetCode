@@ -68,6 +68,75 @@ Space: O(1)
   
 ***
 
+### [039.Combination_Sum](../../SourceCode/Python/039.Combination_Sum.py) Level: Medium Tags: [Recursive]  
+    
+Time:  O(k * n^k)  
+Space: O(k)  
+      
+思路: 給你一個candidate數列和一個target數字  
+要你求總和為target數字的所有組合  
+數字從candidate數列挑出，可重複
+為了找出所有排列組合，我們要窮舉所有總和為target的所有組合  
+這裡我們需要使用遞迴來處理  
+遞迴函式一開始傳入空陣列  
+然後用遞迴把candidate數列取出後，每次都計算加總後的結果  
+```python
+if current:
+    s = sum(current)
+else:
+    s = 0
+```
+拿加總後的結果和target比較  
+如果大於target那當然就出局了，整串組合都不能用  
+如果等於target那就把這組和加到答案的陣列中
+```python
+if s > target:
+    # End of recursive
+    return
+elif s == target:
+    ans.append(current)
+    return
+```
+如果加總後還是比target小，說明還是能繼續加  
+就再一次挑選可用數字然後遞迴呼叫原本的函式  
+```python
+else:
+    for c, i in enumerate(candidates):
+        self.combination(candidates[c:], target, current + [i], ans)
+```
+這是個時間複雜度很高的演算法  
+若k為n的話可達到O(n^n)的複雜度  
+  
+  
+***
+
+### [040.Combination_Sum_II](../../SourceCode/Python/040.Combination_Sum_II.py) Level: Medium Tags: [Recursive]  
+    
+Time:  O(k * n^k)  
+Space: O(k)  
+  
+思路: 給你一個candidate數列和一個target數字  
+要你求總和為target數字的所有組合  
+數字從candidate數列挑出，**不**可重複  
+不可重複是和 [039.Combination_Sum](../../SourceCode/Python/039.Combination_Sum.py) 唯一的差別       
+我們的作法也很簡單，幾乎和39題一樣  
+只有在遞迴呼叫時傳入當前數字之後的candidate數列即可  
+(意即當前數字之前的數字都已經被參考使用過)  
+```python
+for c, i in enumerate(candidates):
+    self.combination(candidates[c+1:], target, current + [i], ans)
+```
+因為最後得到的數列會有重複的情況  
+所以我們需要把他對應到set上消除重複的數列
+```python
+bSet = set(map(tuple, ans))
+return map(list, bSet)
+
+```
+  
+  
+***
+
 ### [056.Merge_Intervals](../../SourceCode/Python/056.Merge_Intervals.py) Level: Medium Tags: [List]  
   
 思路: 對Python來說不難，因為Python就有內建List排序  

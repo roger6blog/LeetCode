@@ -1,8 +1,8 @@
 
 # Creation of Linked list
-class Node:
-    def __init__(self, val=None):
-        self.val = val
+class ListNode(object):
+    def __init__(self, x):
+        self.val = x
         self.next = None
 
 class Linklist:
@@ -24,7 +24,7 @@ class Linklist:
 
     # Inserting at the Beginning of the Linked List
     def insertBegin(self, val):
-        newNode = Node(val)
+        newNode = ListNode(val)
         newNode.next = self.head
         self.head = newNode
 
@@ -33,7 +33,7 @@ class Linklist:
         if middleNode is None:
             return
 
-        newNode = Node(val)
+        newNode = ListNode(val)
         newNode.next = middleNode.next
         middleNode.next = newNode
 
@@ -63,11 +63,11 @@ class Linklist:
 
 
 link1 = Linklist()
-link1.head = Node(1)
-node2 = Node(2)
+link1.head = ListNode(1)
+node2 = ListNode(2)
 link1.head.next = node2
-node3 = Node(3)
-node4 = Node(4)
+node3 = ListNode(3)
+node4 = ListNode(4)
 
 node2.next = node3
 node3.next = node4
