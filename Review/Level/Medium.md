@@ -131,7 +131,6 @@ for c, i in enumerate(candidates):
 ```python
 bSet = set(map(tuple, ans))
 return map(list, bSet)
-
 ```
   
   
@@ -405,6 +404,25 @@ insert、search、startwith
 在輸入的字母全跑完之前這條Trie還沒有走到底部  
 就代表能找到startwith 輸入的單字  
   
+  
+***  
+  
+### [216.Combination_Sum_III](../../SourceCode/Python/216.Combination_Sum_III.py) Level: Medium Tags: [Recursive]
+  
+Time:  O(k * n^k)    
+Space: O(k)    
+    
+思路: 給你一個長度數字k和目標數字n  
+要你求出由不重複的0~9整數且長度為k的數列組成的數字n 
+例如k=3, n=9  
+則答案為[[1,2,6], [1,3,5], [2,3,4]]    
+本題是 [039.Combination_Sum](../../SourceCode/Python/039.Combination_Sum.py)   
+和 [040.Combination_Sum_II](../../SourceCode/Python/040.Combination_Sum_II.py) 的類似題  
+主要的差別在於候選數列candidate要自己湊  
+其實就是[1~9] 剩下的除了要判斷數列長度是否為k外
+和040題幾乎沒有差別    
+    
+    
 ***
   
 ### [228.Summary_Ranges](../../SourceCode/Python/228.Summary_Ranges.py) Level: Medium Tags: []
@@ -1134,8 +1152,124 @@ dp[2][5] = 6
 
 本題也可以用遞迴解  
 但因為時間複雜度最差可高達O(n^3)，速度會差疊代非常多  
+  
+
+***  
+  
+### [377.Combination_Sum_IV](../../SourceCode/Python/377.Combination_Sum_IV.py) Level: Medium Tags: [DP]
+  
+Time:  O(nlogn + n * t),   
+t is the value of target.  
+Space: O(t)  
+    
+思路: 給你一組整數組成的數列和一個數字Target  
+求這數列內的元素加總能組成Target的組合數目  
+他其實根本就是 [039.Combination_Sum](../../SourceCode/Python/039.Combination_Sum.py)   
+只是要求的東西不同  
+理論上我們可以把39題的答案直接拿來這裡用  
+最後再求答案陣列的長度即為組合總數  
+但這種遞迴解法在Target越大時會越慢，最後TLE (Time Limit Exceed)  
+所以這裡我們得用Dynamic Programming來解題  
+  
+以題目給的範例數列 [1, 2, 3]，Target=4為例  
+從1開始找能加總為4的數字  
+我可以先從簡單的目標總和為1開始  
+只有[1]一種組合  
+目標總和為2時  
+有[1, 1]、[2]兩種組合  
+目標總和為3時  
+有[1, 1, 1]、[1, 2]、[2, 1]、[3]四種組合  
+接著是我們的目標總和4  
+我們可以知道當第一個數字為1時  
+有[1, 1, 1, 1]、[1, 1, 2]、[1, 2, 1]、[1, 3]這4種組合  
+第一個數字為2時  
+有[2, 1, 1]、[2, 2]兩者組合  
+第三個數字為3時  
+有[3, 1]一種組合  
+  
+歸納上面的組合，我們可以發現:  
+Target N 的總和 = Target N-1 的總和 + 1 
+或 Target N-2 的總和 + 2   
+或 Target N-3 的總和 + 3  
+可以寫成狀態轉移方程式:  
+```python
+dp[target] = dp[x] + dp[target - x] 
+```   
+或者也可以寫成:
+```python
+if i + x == target:
+    dp[i + x] = dp[i + x] + dp[i + x - x]
+```
+在實際運用時，我們從x=1開始不斷找出x+i <= target的組合  
+只要找到了，就相當於找到dp[i+x]的一種組合  
+然後就可以寫成下面的程式碼:  
+```python
+for i in xrange(target + 1):
+    for x in nums:
+        if i + x <= target:
+            # dp[i+x] = sum(dp[i+x - x])
+            dp[i+x] += dp[i]
+```
+我們直接跑幾次步驟，會比較容易理解其思路　　
+令一維DP陣列如下，且dp[0]:  
 
 
+| 0 | 1 | 2 | 3 | 4 |
+|---|---|---|---|---|
+| 1 |   |   |   |   |
+   
+nums = [1, 2, 3], target = 4   
+i = 0時，取x=1  
+所以dp[1] += dp[0]  
+
+| 0 | 1 | 2 | 3 | 4 |
+|---|---|---|---|---|
+| 1 | 1 |   |   |   |
+
+x接著取2，得  
+dp[2] += dp[0]  
+
+| 0 | 1 | 2 | 3 | 4 |
+|---|---|---|---|---|
+| 1 | 1 | 1 |   |   | 
+
+x接著取3，得  
+dp[3] += dp[0]  
+  
+| 0 | 1 | 2 | 3 | 4 |
+|---|---|---|---|---|
+| 1 | 1 | 1 | 1 |   |      
+       
+i遞增為1，重新取x=1，得  
+dp[1+1] += dp[1]
+
+| 0 | 1 | 2 | 3 | 4 |
+|---|---|---|---|---|
+| 1 | 1 | 2 | 1 |   |        
+x接著取2，得  
+dp[1+2] += dp[1]
+
+| 0 | 1 | 2 | 3 | 4 |
+|---|---|---|---|---|
+| 1 | 1 | 2 | 2 |   | 
+x接著取3，得  
+dp[1+3] += dp[1]  
+
+| 0 | 1 | 2 | 3 | 4 |
+|---|---|---|---|---|
+| 1 | 1 | 2 | 2 | 1 | 
+  
+全部遍歷完我們可以得到如下:
+dp[4] = dp[1] + dp[2] + dp[3]   
+
+| 0 | 1 | 2 | 3 | 4 |
+|---|---|---|---|---|
+| 1 | 1 | 2 | 4 | 7 |    
+     
+
+還有另一種狀態轉移方程式是 dp[i] += dp[i-x]  
+不過for loop的range要有相對應的變化       
+       
 ***  
   
 ### [378.Kth_Smallest_Element_in_a_Sorted_Matrix](../../SourceCode/Python/378.Kth_Smallest_Element_in_a_Sorted_Matrix.py) Level: Medium Tags: [Binary Search]
