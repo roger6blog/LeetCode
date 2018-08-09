@@ -63,4 +63,5 @@ class Solution(object):
 
 
 
-print Solution().fractionToDecimal(-2147483648, 1)
+# print Solution().fractionToDecimal(-2147483648, 1)
+print Solution().fractionToDecimal(1, 333)

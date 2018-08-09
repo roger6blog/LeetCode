@@ -309,7 +309,7 @@ cats=>ats=>ts=>s
 catsa=>asta=>sta=>ta=>a  
 沒什麼好說的
     
-第六個字母加入後事catsan  
+第六個字母加入後是catsan  
 catsan=>astan=>tsan=>san=>an=>n  
 在比到san的時候，因為san是在字典裡的字  
 我們除了看san本身外，也要回頭去看扣掉san的字串比對的結果  
@@ -366,7 +366,27 @@ Space: O(1)
   
 思路: 題目要求你找出不同數字相除後的小數，如果有循環則在循環的數字中括號  
 除了最基本的兩數相除取模和找商之外  
-我們需要一個dictionary來記錄該小數點數字出現的位置  
+我們需要一個dictionary (loopDict)來記錄相除時的分子  
+其值cnt為當前相除的次數，之後為循環小數的長度    
+另一個字典(loopDec) 存放循環的小數值  
+當在字典loopDict中找到同樣的分子時，說明小數開始循環了  
+就能用cnt把循環小數字典loopDec中循環的部分取出來  
+```python
+cnt = 0
+loopDict = dict() # Decide the location of decimal loop
+while True:
+    loopDec.append(str(numerator / denominator))
+    cnt += 1
+    ...
+    ...
+    # Check if this numerator appeared or not
+    loc = loopDict.get(numerator)
+    if loc:
+        # Loop end
+        loopStr = "".join(loopDec[loc:cnt])
+        break
+    loopDict[numerator] = cnt
+```
 不能直接把小數點數字加入list再去搜尋該list  
 否則會無法處理小數點數字重複的情況如: 1/333=0.(003)  
   
@@ -945,7 +965,26 @@ n繼續往上加可以很容易地發現能使用的數字持續減少
 其實這題根本是數學題  
 甚至你可以先算出來每個n的組合直接return結果  
 所以這題的差評很多
-     
+  
+  
+***  
+  
+### [362.[Locked]Design_Hit_Counter](../../SourceCode/Python/362.[Locked]Design_Hit_Counter.py) Level: Medium Tags: [Queue]
+    
+Time:  O(1), amortized (平均分攤)   
+Space: O(k), k is the count of seconds.  
+    
+思路:要你實作一個點擊的計數器統計當前時間點的Hit數  
+超過5分鐘的計數就刪除，所以只統計5分鐘內的計數  
+  
+這題可以用Queue來做     
+把時間點和計數的pair存到dqueue中  
+當有新Hit呼叫時，檢查他是不是跟當前時間點相同  
+不是的話就加入queue並增加計數  
+當要取得Hit數時，檢查queue的開頭元素看有沒有超過間隔5分鐘的  
+有就把它移出去並扣掉hitCountInWindow的數量  
+然後返回hitCountInWindow的數字就是當前Hit數了  
+  
    
 ***  
   
@@ -1269,6 +1308,41 @@ dp[4] = dp[1] + dp[2] + dp[3]
 
 還有另一種狀態轉移方程式是 dp[i] += dp[i-x]  
 不過for loop的range要有相對應的變化       
+  
+  
+***  
+  
+### [388.Longest_Absolute_File_Path](../../SourceCode/Python/388.Longest_Absolute_File_Path.py) Level: Medium Tags: [Stack]
+    
+  
+思路: 這是Google的OA題目 (Online Assessment) 
+題目出現頻率之高，要考google的人建議別錯過這題  
+給你一串用換行還有tab分隔的目錄路徑和檔案名稱  
+找出最長的路徑名  
+Google的原題是找出圖片文件的路徑和，只有些許變化  
+  
+核心思路是準備一個Stack，存放每個目錄或檔案的長度和所在目錄深度  
+目錄和檔案可以用\n分隔開，深度可以用tab的數量來決定  
+從左到右掃描被分隔開的檔案/目錄名  
+確定深度後和Stack頂端的元素比較其深度  
+如果Stack內元素的深度較大的話  
+就把頂部元素彈出來，因為這不是當前目錄/檔名的目標深度  
+一直彈到頂部元素的深度小於當前目錄/檔名的深度為止  
+```python
+currDepth = p.count('\t')
+depth, length = stack[-1]
+while depth >= currDepth:
+    totalLength -= length
+    stack.pop()
+    depth, length = stack[-1]
+```
+剩下要注意的地方就是最終判斷合法路徑是由"檔案名稱"決定的而不是目錄  
+所以判斷目前的分隔字串是檔案名稱才需要考慮把它納入最終解  
+```python
+if p.count('.'):
+    ans = max(ans, totalLength + currLength)
+```
+  
        
 ***  
   
