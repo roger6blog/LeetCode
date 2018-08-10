@@ -433,7 +433,7 @@ Time:  O(k * n^k)
 Space: O(k)    
     
 思路: 給你一個長度數字k和目標數字n  
-要你求出由不重複的0~9整數且長度為k的數列組成的數字n 
+要你求出由不重複的0\~9整數且長度為k的數列組成的數字n 
 例如k=3, n=9  
 則答案為[[1,2,6], [1,3,5], [2,3,4]]    
 本題是 [039.Combination_Sum](../../SourceCode/Python/039.Combination_Sum.py)   
@@ -985,6 +985,117 @@ Space: O(k), k is the count of seconds.
 有就把它移出去並扣掉hitCountInWindow的數量  
 然後返回hitCountInWindow的數字就是當前Hit數了  
   
+  
+***  
+  
+### [368.Largest_Divisible_Subset](../../SourceCode/Python/368.Largest_Divisible_Subset.py) Level: Medium Tags: [DP]
+    
+  
+思路: 給你一個不同整數組成的數列，要你產生另一個數列  
+其中，這數列是原題的子集合，且裡面的數字任取兩個出來  
+其中一個數必能整除另一個數  
+
+這題算是DP的難題，我到現在還參不透  
+只能翻譯別人的解答  
+
+1. 分析架構    
+按照題意我們可以注意到，如果兩個數a能整除b且b能整除c  
+那麼a必定也能整除c  
+為了計算方便，我們需要把數列做排序  
+但是考慮到可能會有其他分支的情況  
+例如[1,2,4,8,10,20,40,80]    
+可以分成 [4,8] 或[10,20,40,80],  
+所以我們要另外指派一個陣列來存放這個最長子集合的元素index  
+  
+2. 找出狀態轉移方程  
+令dp為最長子集合的陣列，存放包含數字n的子集合長度  
+則dp[i]表示到數字nums[i]位置最大可整除的子集合的長度  
+假如j >= i 且nums[j] % nums[i] == 0  
+代表比j更大的數能整除nums[j]的必也能整除nums[i]
+所以dp[i] = dp[j] + 1
+  
+3. 建構DP  
+以[1,2,3,4]為例  
+首先建構一個一維DP，預設長度都為0  
+
+|   | 1 | 2 | 3 | 4 |
+|---|---|---|---|---|
+|長度|   |   |   |   |
+
+我們從最大的數開始掃起  
+每次取 (4,4) => (3,3), (3,4) => (2,2),(2,3),(2,4)   
+=>(1,1),(1,2),(1,3),(1,4)    
+這樣的掃描順序  
+  
+取(4,4) 時，4必能整除自己，所以dp[4] = do[4] + 1  
+
+|   | 1 | 2 | 3 | 4 |
+|---|---|---|---|---|
+|長度|   |   |   | 1 | 
+
+取(3,3) 時，3必能整除自己，所以dp[3] = do[3] + 1 
+
+|   | 1 | 2 | 3 | 4 |
+|---|---|---|---|---|
+|長度|   |   | 1 | 1 | 
+
+取(3,4)時條件不成立，跳過  
+取(2,2) 時，2必能整除自己，所以dp[2] = do[2] + 1  
+
+|   | 1 | 2 | 3 | 4 |
+|---|---|---|---|---|
+|長度|   | 1 | 1 | 1 | 
+
+取(2,3)時條件不成立，跳過   
+取(2,4)時，4可整除2，所以d[2] = dp[4] + 1
+把原本dp[2]的值蓋掉了  
+
+|   | 1 | 2 | 3 | 4 |
+|---|---|---|---|---|
+|長度|   | 2| 1 | 1 | 
+
+1可以整除以所有數字  
+dp[1] = dp[1] + 1 => 1  
+dp[1] = dp[2] + 1 => 3  
+dp[1] = dp[3] + 1 => 2  
+dp[1] = dp[4] + 1 => 2  
+  
+我們發現dp[2]的結果可帶來最大長度  
+但照迴圈走法會被後面的狀態轉移方程蓋掉  
+所以我們需要多一個判斷 dp[i] < dp[j] + 1: 
+```python
+if nums[j] % nums[i] == 0 and dp[i] < dp[j] + 1:
+    dp[i] = dp[j] + 1
+    child[i] = j
+```
+所以最後dp結果為  
+
+|   | 1 | 2 | 3 | 4 |
+|---|---|---|---|---|
+|長度| 3 | 2| 1 | 1 | 
+   
+為了解決Step1裡多重分組的問題，我們需要多設一個陣列存放元素的index  
+還需要用兩個變數max和max_index 
+max存放最長dp的長度  
+max_index存放這subset的起始index  
+最後我們就能用一個for迴圈把答案的subset建構出來  
+```python
+for k in xrange(max):
+    ans.append(nums[max_index])
+    max_index = child[max_index]
+```  
+還是用剛才的例子，最後dp判斷全跑完時  
+subset的陣列如下所示  
+
+|index    | 0 | 1 | 2 | 3 |
+|---      |---|---|---|---|
+|max_index| 1 | 3| 2 | 3 | 
+   
+這表是告訴你  
+如果我今天取第0個元素時，他的下一個能互相整除的元素在index 1  
+繼續取index 1的元素時，他的下一個能互相整除的元素在 index 3 
+max為2，所以取到第三個元素就停止了  
+答案為[1,2,4]   
    
 ***  
   
@@ -1310,6 +1421,31 @@ dp[4] = dp[1] + dp[2] + dp[3]
 不過for loop的range要有相對應的變化       
   
   
+       
+***  
+  
+### [378.Kth_Smallest_Element_in_a_Sorted_Matrix](../../SourceCode/Python/378.Kth_Smallest_Element_in_a_Sorted_Matrix.py) Level: Medium Tags: [Binary Search]
+  
+Time:  O(k * log(min(n, m, k))), with n x m matrix  
+Space: O(min(n, m, k))  
+  
+思路: 給你一個行和列都有排序的整數二維陣列  
+要你找出第k小的元素是什麼  
+直觀的作法是把所有元素倒到一個陣列後排序  
+然後找出下標k-1的元素  
+這種解法雖然能通過Leetcode，但不是最佳解  
+這裡我們用Binary Search的方式    
+左右邊界分別為第一個和最大的元素  
+那middle當然是他們中間的元素    
+在迴圈中  
+我們再用一次Binary Search  
+去尋找小於middle元素的個數  
+如果這個個數小於題目要求的k，代表middle太小  
+左邊界就改為 middle+1
+反之則右邊界改為 right-1  
+直到左右邊界交會後，左右邊界的其中一個即為所求  
+  
+  
 ***  
   
 ### [388.Longest_Absolute_File_Path](../../SourceCode/Python/388.Longest_Absolute_File_Path.py) Level: Medium Tags: [Stack]
@@ -1342,30 +1478,8 @@ while depth >= currDepth:
 if p.count('.'):
     ans = max(ans, totalLength + currLength)
 ```
+    
   
-       
-***  
-  
-### [378.Kth_Smallest_Element_in_a_Sorted_Matrix](../../SourceCode/Python/378.Kth_Smallest_Element_in_a_Sorted_Matrix.py) Level: Medium Tags: [Binary Search]
-  
-Time:  O(k * log(min(n, m, k))), with n x m matrix  
-Space: O(min(n, m, k))  
-  
-思路: 給你一個行和列都有排序的整數二維陣列  
-要你找出第k小的元素是什麼  
-直觀的作法是把所有元素倒到一個陣列後排序  
-然後找出下標k-1的元素  
-這種解法雖然能通過Leetcode，但不是最佳解  
-這裡我們用Binary Search的方式    
-左右邊界分別為第一個和最大的元素  
-那middle當然是他們中間的元素    
-在迴圈中  
-我們再用一次Binary Search  
-去尋找小於middle元素的個數  
-如果這個個數小於題目要求的k，代表middle太小  
-左邊界就改為 middle+1
-反之則右邊界改為 right-1  
-直到左右邊界交會後，左右邊界的其中一個即為所求  
    
 ***  
   
