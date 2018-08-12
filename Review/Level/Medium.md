@@ -169,6 +169,20 @@ while left < right:
 所以最佳解為O(nlog(n))  
   
   
+  
+***
+
+### [078.Subsets](../../SourceCode/Python/078.Subsets.py) Level: Medium Tags: [Recursive, backtracking]
+  
+Time:  O(n * 2^n)  
+Space: O(1)  
+  
+思路:給你一個不重複正整數的數列  
+要你求他所有的子集合  
+這是回溯法的經典題目  
+用遞迴把所有可能都窮舉出來即可  
+因為題目沒條件限制，所以沒有return條件  
+  
 ***
 
 ### [079.Word_Search](../../SourceCode/Python/079.Word_Search.py) Level: Medium Tags: [DFS]
@@ -971,7 +985,7 @@ Space: O(1)
 所以不可能用此解法  
 這裡我們用簡單的排列組合來解題  
 n = 1 時，可以有0~9個數字的排列組合共10個數字  
-n = 2 時，十位數不能用0所以只能用1~9  
+n = 2 時，十位數不能用0所以只能用1\~9  
 個位數則從10個少了1個數字  
 所以有 9*9 共81個組合  
 n = 3 時，只剩8個數字可選  
@@ -1856,7 +1870,9 @@ except IndexError:
   
 ### [503.Next_Greater_Element_II](../../SourceCode/Python/503.Next_Greater_Element_II.py) Level: Medium Tags: [Stack]
     
-  
+Time:  O(n)  
+Space: O(n)    
+   
 思路: 給你一組整數數列，要你求一個從他的右邊算起比該數大的數字  
 如果找數列找到底的話就從頭開始計算  
 如果這樣還是找不到，就回傳-1  
@@ -1891,6 +1907,53 @@ if i < length:
   
 特別注意: **stack裡存的是數列的index，不是數字本身!**
   
+  
+***  
+  
+### [526.Beautiful_Arrangement](../../SourceCode/Python/526.Beautiful_Arrangement.py) Level: Medium Tags: [Recursive]  
+  
+Time:  O(n!)   
+Space: O(n) 
+   
+思路:給你一個正整數N  
+要求你找出這整數N所形成1~N的數列的美麗排列數列的總數  
+美麗排列數列的意思是:  其數可以被該位置的下標index互相整除  
+例如給一個數字3  
+則[1, 2, 3], [2, 1, 3], [3, 2, 1] 都是其解之一  
+像[3, 1, 2]就不是答案之一  
+因為2不能被index的3整除、index 3也不能整除2  
+      
+這題雖然可以用排列組合的解法  
+窮舉出每個組合再檢查是否合乎題目要求  
+但在n超過10之後窮舉法的效率會變得非常緩慢而超過題目要求時間(TLE)  
+這裡我們用另外一個方式  
+首先宣告一個N+1的List，內容均為0  
+然後用index=1和這個list做backtrack:
+```python
+self.perm(N, 1, used)
+```
+在backtrack函式中  
+用for迴圈去遍歷每個1~N的idnex  
+如果這些index滿足兩兩互相整除的要求  
+就把相對應的List的index設為1  
+然後繼續找下一個符合條件的index  
+找完後要記得把剛才設的1設回來以便下個遍歷搜尋  
+```python
+for i in xrange(1, N + 1):
+    if used[i] == 0 and (i % index == 0 or index % i == 0):
+        used[i] = 1
+        self.perm(N, index + 1, used)
+        used[i] = 0
+```
+終止條件為index大於題目要求的N，此時就能把計數+1   
+```python
+if index > N:
+    self.count += 1
+    return
+```
+count即為所求  
+時間複雜度方面，TLE(Time Limit Exceed)的解為恐怖的O(n!)  
+另一種解其實也是O(n!)，只是有過濾了一些條件所以快了一些  
   
 ***  
   
