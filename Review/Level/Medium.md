@@ -1955,6 +1955,9 @@ count即為所求
 時間複雜度方面，TLE(Time Limit Exceed)的解為恐怖的O(n!)  
 另一種解其實也是O(n!)，只是有過濾了一些條件所以快了一些  
   
+注意這裡for迴圈的起始是從1開始算的而不是0  
+List的[0]從頭到尾都沒有用到  
+  
 ***  
   
 ### [560.Subarray_Sum_Equals_K](../../SourceCode/Python/560.Subarray_Sum_Equals_K.py) Level: Medium Tags: []
@@ -2010,6 +2013,61 @@ sum(i)和sum(0, j)已知的話
 所以當元素和sum有出現在prefix時  
 我們要更新相對應的prefixSum[sum]的計數讓他加1  
 把所有的出現次數加總即為答案  
+  
+
+    
+***  
+  
+### [667.Beautiful_Arrangement_II](../../SourceCode/Python/667.Beautiful_Arrangement_II.py) Level: Medium Tags: []
+  
+Time:  O(n)  
+Space: O(1)    
+  
+思路: 給你一個組成數列的數字n和總和k  
+求一個數列可達成 |a1-a2|, |a2-a3|..... 有k個組合的數字  
+例如n=3, k=1  
+則n形成的數列應為[1,2,3]  
+而這數列的元素差為[1,1]，剛好只有k=1種組合  
+n=3, k=2時  
+數列就應為[1,3,2]  
+因為他們的元素差為[2,1]，符合k=2的組合  
+  
+這題雖然是  [526.Beautiful_Arrangement](../../SourceCode/Python/526.Beautiful_Arrangement.py) 的延伸題  
+但解法完全不同  
+應該比較像是 [280.[Locked]Wiggle_Sort](../../SourceCode/Python/280.[Locked]Wiggle_Sort.py) 的變形版  
+因為題目要求的條件我們可以找出一個規律  
+例如我們用n=5為例子
+1. k==1時，序列為[1,2,3,4,5]，差的絕對值為[1]  
+2. k==2時，序列為[5,1,2,3,4]，差的絕對值為[1,4]
+3. k==3時，序列為[1,5,2,3,4]，差的絕對值為[1,3,4]
+4. k==4時，序列為[5,1,4,2,3]，差的絕對值為[1,2,3,4]
+k最多為n-1，照上面的規律我們可以看出  
+要達成k的條件，需要讓大小數值交互穿插在數列中  
+這剛好是Wiggle Sort的條件之一  
+所以我們可以使用雙指標，從兩端像中間遍歷所有數字加入結果數列  
+步驟如下:  
+1. 根據k的奇偶狀況決定從頭部還是尾端取數字  
+```python
+if k > 1:
+    if k % 2 == 1:
+        ans.append(left)
+        left += 1
+    else:
+        ans.append(right)
+        right -= 1
+```
+2. 每取出一個數字後將k減1
+3. k剩下1時，直接按順序取值即可，因為最後的元素差集合為[1]  
+```python
+else:
+    ans.append(left)
+    left += 1
+```
+
+當然你也可以窮舉所有排列組合，然後設下元素差的集合為k的條件找出數列  
+但題目有高達n=90的測試項目  
+肯定會造成TLE (Time Limit Exceed)  
+  
   
 ***  
   
