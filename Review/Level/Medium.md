@@ -932,6 +932,29 @@ List的話還需要對他做進一步的處理才能給next方法用
 說明後面已經沒有東西能疊代了  
 此時就能return False  
   
+  
+***
+  
+### [348.[Locked]Design_Tic-Tac-Toe](../../SourceCode/Python/348.[Locked]Design_Tic-Tac-Toe.py) Level: Medium Tags: []
+     
+Time: O(n^2) => O(1), per move.  
+Space: O(n^2) => O(n)  
+   
+思路: Tic-Tac-Toe就是井字遊戲，只是擴展到了n*n大小  
+最直接的想法就是每次都比對直、橫、正反對角線的元素是否相等  
+不過後續的Follow up中，題目要求move函式裡的複雜度小於O(n^2)  
+(O(n*n)應該是寫錯了)  
+以每列為例我們可以宣告一個一維陣列，大小為n  
+指定一個player每次都為1，另一個plater為-1    
+每次move函式被呼叫時，對應的列就增加其值  
+```python
+add = 1 if player == 1 else -1
+self.rows[row] += add
+```
+這樣一來只要該列的大小為n或-n時，就代表某個player贏了  
+其他各行和交叉對角線也可以比照辦理    
+不只時間複雜度降到了O(1)，空間複雜度也降到了O(n)  
+  
    
 ***  
   
