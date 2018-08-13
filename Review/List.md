@@ -1,4 +1,52 @@
 
+https://wdxtub.com/interview/14520594642530.html
+
+# 陣列和字符串
+
+##解題策略
+
+* 一般來說，一旦出現“unique”，就落入使用哈希表或者bitset來判斷元素出現與否的範疇。
+* 一旦需要統計一個元素集中元素出現的次數，我們就應該想到哈希表。  
+  
+#### String Matching 的常見算法  
+簡單介紹兩種比較易於實現的字符串比較算法，  
+下述算法假設在長度為n的母串中匹配長度為m的子串。  
+
++ Brute-Force算法： 順序遍歷母串，將每個字符作為匹配的起始字符，判斷是否匹配子串。  
+時間覆雜度 O(m*n)。
+
++ Rabin-Karp算法：將每一個匹配子串映射為一個哈希值。   
+ 
+例如，將子串看做一個多進制數，比較它的值與母串中相同長度子串的哈希值，  
+如果相同，再細致地按字符確認字符串是否確實相同。  
+順序計算母串哈希值的過程中，使用增量計算的方法：  
+扣除最高位的哈希值，增加最低位的哈希值。  
+因此能在平均情況下做到O(m+n)。
+
+Example:
+
+為描述簡單，假設字符串只含有十進制數字，母串為1234待匹配子串為23，  
+定義hash函數把字符串轉成整數值。
+
+首先計算子串hash：值為23。
+
+然後計算母串前兩個字符的hash：值為12，與子串不符合，需要後移。  
+此時我們扣除最高位1的“hash，增加新的最低位3的hash，  
+得到新的hash值23，與子串相符。
+
+通過按字符比較發現的確匹配成功，可以返回母串匹配上的下標。
+
+偽代碼：
+```
+int RabinKarp(string s[1..n], string pattern[1..m])
+hpattern = hash(pattern[1..m]);  hs = hash(s[1..m]);
+for i from 1 to n-m+1
+if hs = hpattern
+     if s[i..i+m-1] = pattern[1..m]
+return i
+hs = hash(s[i+1..i+m])
+       return not found
+```
 ***
 
 [056.Merge_Interval](../../SourceCode/Python/056.Merge_Interval.py) Level: Medium Tags: [List]  

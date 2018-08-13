@@ -23,7 +23,6 @@ All inputs are guaranteed to be non-empty strings.
 
 
 class Trie(object):
-
     def __init__(self):
         """
         Initialize your data structure here.

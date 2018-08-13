@@ -361,3 +361,26 @@ h is Height of Tree
 
   
 ***
+  
+### [686.Repeated_String_Match](../../SourceCode/Python/686.Repeated_String_Match.py) Level: Easy Tags: [String]
+      
+Time:  O(n + m)  
+Space: O(1)    
+  
+思路:給你兩個字串A和B，通常A有可能為B的子字串  
+求A字串要重複幾次才能讓B成為A的子字串  
+一開始可以用暴力解  
+但後來的測試項目越來越刁鑽，最後敗在A="a"，B="a"x10000的測試項目  
+重點在於測試A的次數，只要A字串長度比B字串長後還是沒能找到答案  
+那麼再繼續循環也沒用  
+至於重複次數可以用兩個字串的長度相除來取得  
+不過Python的除法會向下取整，所以多加3次 (經驗得來)  
+```python
+na = len(A)
+nb = len(B)
+times = nb / na + 3
+``` 
+這個times就是for迴圈的上限
+  
+  
+***
