@@ -1958,6 +1958,95 @@ count即為所求
 注意這裡for迴圈的起始是從1開始算的而不是0  
 List的[0]從頭到尾都沒有用到  
   
+  
+***  
+  
+### [542.01_Matrix](../../SourceCode/Python/5542.01_Matrix.py) Level: Medium Tags: [DFS, BFS, Graph]
+  
+Time:  O(m * n)  
+Space: O(m * n)    
+    
+題意: 題目給你一個由0和1組成的矩陣    
+要你求每個非0的點到最近的0需要的距離並直接更新在矩陣上   
+例如以下矩陣，離0最遠的1元素被更新成了2     
+```
+0 0 0       0 0 0
+0 1 0  ==>  0 1 0
+1 1 1       1 2 1
+``` 
+有點經驗的人應該可以想到這題是DFS或BFS可解答的題目    
+以DFS而言，我們可以從每個值為0的元素開始DFS搜尋  
+不斷朝四面八方尋找非0的元素並增加距離  
+只要注意要是走到的下一個元素為0，那目前距離就要重置為0了  
+```python
+if matrix[x][y] == 0:
+    path = 0
+```
+我們需要另外弄一個同大小的矩陣，每個元素都為最大正整數　　
+每次都記錄相對應元素的目前到下個0的當前距離　　
+然後走四個座標方向的DFS來找出解答  
+還要設一個條件就是如果答案矩陣內的元素值已經不大於路徑長度時　　
+該點會被捨棄掉　　
+```python
+if ans[x][y] <= path:
+    return
+```
+用這解法雖然能找出答案，但在LeetCode中卻會超時 (TLE)  
+當然我們可以繼續調校DFS，不過這裏我們改用BFS的算法  
+
+初始我們令當前距離總和為0  
+另外創一個queue，把matrix中所有為1的元素座標當tuple存入這個queue中  
+```python
+queue = []
+for x in xrange(row):
+    for y in xrange(col):
+        if matrix[x][y] != 0:
+            queue.append((x, y))
+```
+然後每次取一個座標點出來，當前總路徑+1  
+然後比較這座標的四個方向是否有0  
+```python
+while queue:
+    path += 1
+    for x, y in queue:
+        zero = 0
+        dx = [1, 0, 0,-1]
+        dy = [0,-1, 1, 0]
+        for k in xrange(4):
+            nx = x + dx[k]
+            ny = y + dy[k]
+            if 0 <= nx < row and 0 <= ny < col and matrix[nx][ny] == 0:
+                zero += 1
+```  
+有0的話就把他移除，並加入當前路徑總和到相對應座標的答案矩陣中  
+反之則保留起來留待下一次取出來再做一次  
+```python
+if zero:
+    ans[x][y] = path
+    removeQueue.append((x, y))
+else:
+    nextQueue.append((x, y))
+```
+再移除這些訪問過的座標時，原本的矩陣會有如下變化:
+```
+0 0 0       0 0 0      0 0 0
+0 1 0  ==>  0 0 0  ==> 0 0 0
+1 1 1       0 1 0      0 0 0
+```
+答案矩陣的相對應變化為:  
+```
+0 0 0       0 0 0      0 0 0
+0 0 0  ==>  0 1 0  ==> 0 1 0
+0 0 0       1 0 1      1 2 1
+```
+在每一次變化中裡當前總移動路徑加1  
+就可以求出最終的答案矩陣  
+  
+DFS在本題中重複計算的子問題太多，所以過不了時間限制  
+BFS則就像一顆石頭扔進湖中的漣漪一樣  
+以一點為中心，影響波及周圍並向四周不斷傳播他的影響  
+所以在本題較有效率  
+  
 ***  
   
 ### [560.Subarray_Sum_Equals_K](../../SourceCode/Python/560.Subarray_Sum_Equals_K.py) Level: Medium Tags: []
