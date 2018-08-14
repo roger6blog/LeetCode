@@ -113,6 +113,20 @@ Space: O(1)
   
 ***
   
+### [266.[Locked]Palindrome_Permutation](../../SourceCode/Python/266.[Locked]Palindrome_Permutation.py) Level: Easy Tags: []
+
+Time:  O(logn)     
+Space: O(1)      
+   
+思路:給你一個字串，判斷他的排列中是否有回文 (Palindrome)    
+例如carerac和aab就可以形成回文，code就不是  
+基本方法就是先判斷字串長是單數還是偶數  
+單數的話代表可以有一個字元是單數，但其他出現的字元都必須為偶數而且成對出現  
+偶數的話就必須所有字元都成對出現  
+解法非常多，個人覺得用set是最優解  
+  
+***
+  
 ### 283.Move_Zeroes](../../SourceCode/Python/283.Move_Zeroes.py) Level: Easy Tags: []
 
 
@@ -345,6 +359,31 @@ mapping建立後
 只要mapping裡存在該數字，就能找到該數字的下一個較大數字  
 反之找不到就是-1了   
   
+  
+***
+  
+### [541.Reverse_String_II](../../SourceCode/Python/541.Reverse_String_II.py) Level: Easy Tags: [String]
+    
+Time:  O(n)  
+Space: O(1)  
+      
+思路: 是 [344.Reverse_String](../../SourceCode/Python/344.Reverse_String.py) 的衍伸題   
+給一個字串和數字k，要求每2k的字元的前k個字元反轉  
+如果剩下的字元數少於k個，就直接反轉  
+
+題意不是很清楚，用下面的圖做輔助:  
+![](../Res/20170706164056477.png)
+  
+直觀的做法是用for迴圈以2*k為間隔來反轉前k個字元  
+不過這樣會有長度判斷的問題  
+我們可以用while迴圈判斷字串是否為空  
+然後直接拿s的前2*k長度的字串來組合  
+```python
+while s:
+    ans += s[:k][::-1] + s[k:2*k]
+```  
+然後再把s截掉前2*k個長度，用剩下的字串s繼續比對直到s變為空字串為止  
+這是一個遞迴的概念，所以也可以呼叫自己用遞迴來解  
   
 ***
   

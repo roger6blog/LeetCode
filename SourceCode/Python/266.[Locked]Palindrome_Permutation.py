@@ -31,6 +31,22 @@ class Solution(object):
                 i += 1
         return True
 
+
+    def canPermutePalindromeSet(self, s):
+        """
+        :type s: str
+        :rtype: bool
+        """
+        oddChars = set()
+
+        for c in s:
+            if c in oddChars:
+                oddChars.remove(c)
+            else:
+                oddChars.add(c)
+
+        return len(oddChars) <= 1
+
 class Solution2(object):
     # "abb" test case will get wrong answer!!!
     def canPermutePalindrome(self, s):
