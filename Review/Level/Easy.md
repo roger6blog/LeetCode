@@ -15,8 +15,31 @@ Space: O(n)
 那我們便可以得知Target減其中一個元素就等於另一個元素  
 如此便可用一個暫存的dict來存放目前已經找過的元素  
 另一個元素用target相減後的值能在dict中找到的話便為答案
+```python
+for i in xrange(len(nums)):
+    if target - nums[i] in dicBuff:
+        return [i, dicBuff[target - nums[i]]]
+    else:
+        dicBuff[nums[i]] = i
+```  
   
+***
   
+### [014.Longest_Common_Prefix](../../SourceCode/Python/014.Longest_Common_Prefix.py) Level: Easy Tags: []
+  
+Time:  O(n)    
+Space: O(1)   
+  
+思路: 要你比對給予的字串有前幾個字元是相同的  
+題目不會很難，依次檢查每一個字元是否相等就可以了  
+```python
+ans = ""
+for i in xrange(minlen):
+    for s in strs:
+        if s != strs[0] and s[i] != minstr[i]:
+            return ans
+    ans += minstr[i]
+```   
   
 ***
   
