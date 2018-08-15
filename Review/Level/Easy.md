@@ -150,7 +150,7 @@ Space: O(1)
   
 ***
   
-### 283.Move_Zeroes](../../SourceCode/Python/283.Move_Zeroes.py) Level: Easy Tags: []
+### 283.[Move_Zeroes](../../SourceCode/Python/283.Move_Zeroes.py) Level: Easy Tags: []
 
 
 思路: 給你一個包含0的數列  

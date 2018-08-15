@@ -797,6 +797,37 @@ Space: O(n)  (用Bit可再降低點空間複雜度)
   
 ***
   
+### [320.[Locked]Generalized_Abbreviation](../../SourceCode/Python/320.[Locked]Generalized_Abbreviation.py) Level: Medium Tags: [DFS, BackTracking]
+  
+  
+思路:給你一個單字，要你求出所有可用的縮寫  
+算是[408.Valid_Word_Abbreviation](../../SourceCode/Python/408.Valid_Word_Abbreviation.py) 的類似題  
+先假設你知道縮寫是什麼意思了，不明白的人可以去看408題  
+例如word這個單字可以為下面幾種:
+[1ord, w1rd, wo1d, wor1, 2rd, w2d....] 依此類推  
+照這樣的排列方式可以想到數字本身就是縮寫的關鍵  
+這種排列的問題是很經典的DFS + Backtracking問題  
+我們用兩個for迴圈來寫DFS函式  
+其中第一個迴圈定義了字串該有的開頭
+第二個迴圈定義了數字的範圍  
+```python
+for i in xrange(start, len(word)):
+    for j in xrange(1, len(word)):
+```
+最重要的關鍵就在於用這遍歷列出所有可能的縮寫，表達式如下:  
+```python
+abbr = word[:i] + str(j) + word[i+j:]
+```  
+開頭為第一迴圈的i，中間為數字j，最後部分為i+j長度之後的部分  
+  
+之後以i+j+1為下一個起始點，不斷重複遞迴呼叫直到i+j+1大於該縮寫字串長度為止  
+```python
+self.dfs(i+1+j, abbr, ans)
+```  
+  
+  
+***
+  
 ### [324.Wiggle_Sort_II](../../SourceCode/Python/324.Wiggle_Sort_II.py) Level: Medium Tags: [Sort]
   
 Time:  O(nlogn)  
