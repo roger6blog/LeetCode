@@ -356,7 +356,7 @@ catsandog=>atsandog=>tsandog=>sandog
   
 ***
   
-### [163.Missing_Ranges](../../SourceCode/Python/163.Missing_Ranges.py) Level: Medium Tags: []
+### [163.[Locked]Missing_Ranges](../../SourceCode/Python/[Locked]163.Missing_Ranges.py) Level: Medium Tags: []
   
 Time:  O(n)  
 Space: O(n)
