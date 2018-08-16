@@ -385,6 +385,21 @@ mapping建立後
   
 ***
   
+### [521.Longest_Uncommon_Subsequence_I](../../SourceCode/Python/521.Longest_Uncommon_Subsequence_I.py) Level: Easy Tags: [String]
+    
+Time:  O(1)  
+Space: O(1)  
+    
+思路:寫這題的思路完全是為了解釋題目  
+題目寫了一大堆，但重點只有一句話:  
+*判斷兩個字串是否相等，是的話返回-1，不是的話返回較長字串的長度*  
+就這麼簡單!!!!  
+這題是我看過最腦殘的題目  
+在我寫這題的時候他已經累積了147個讚、2384個爛  
+  
+  
+***
+  
 ### [541.Reverse_String_II](../../SourceCode/Python/541.Reverse_String_II.py) Level: Easy Tags: [String]
     
 Time:  O(n)  

@@ -617,6 +617,71 @@ Space: O(1)
   
 ***
   
+### [276.[Locked]Paint_Fence](../../SourceCode/Python/276.[Locked]Paint_Fence.py) Level: Medium Tags: [Math, DP]  
+  
+Time:  O(n)  
+Space: O(n)  
+  
+思路:有一個n根柱子的柵欄，和k總顏色的噴漆  
+今天給一個噴漆的限制: 不能有超過連續兩根柱子是一個顏色  
+求總共能漆成幾組顏色  
+這是一題排列組合問題，但因為題目的限制讓轉移方程變得不太好找  
+
+題目要求的塗色方式是這樣的: 假設有白綠兩種顏色  
+你可以連續上同色也能不同色，但第三根柱子的顏色一定不能和他們同色    
+![](../Res/painting-fence-1.png)    
+  
+因此我們可以知道塗色方法可以分為同色+不同色，如下圖  
+
+![](../Res/painting-fence-2.png)  
+  
+為了求狀態轉移方程，我們從最簡單的組合開始找起  
+令diff為兩根柱子不同色的塗法、same為兩根柱子同色的塗法    
+n = 1時  
+因為只有一根柱子，所以有k種塗法  
+不到兩根柱子根本無法塗同色，故為0種徒法  
+總共有 k + 0 種  
+
+n = 2時  
+第一根柱子同色，第二根柱子就少一種顏色  
+故diff為 k * (k - 1)  
+同色塗法則是有k種塗法  
+總共有 k * (k - 1) + k 種  
+
+n = 3時  
+不同色塗法在這裡變得複雜起來  
+因為所謂的不同色徒法，就像第一張圖一樣  
+可以前兩根都同色，也能前兩根不同色  
+所以前兩根的塗色方式應該是 ( 前兩根同色塗法 + 前兩根不同色徒法 )  
+第三根唯一的要求就是和第二根不同色，不然就是同色塗法了  
+所以總共有 [k + k * (k - 1)] * (k - 1) 種塗法  
+而同色塗法中，前兩根有k種塗法，那第三根只能是 k-1種  
+所以同色塗法為 k * (k - 1)種
+兩個加起來為 [k + k * (k - 1)] * (k - 1) + k * (k - 1) 種  
+  
+寫到這裡，我們可以看出一個規律  
+就是前n根同色塗法皆為前n-1根的不同色塗法  
+而前n根不同色塗法皆為(前n-2根不同色塗法 + 前n-1根不同色塗法) * (k-1)  
+寫成方程式就是: 
+``` python
+same[n] = diff[n-1]  
+diff[n] = (diff[n-1] + diff[n-2]) * (k - 1)  
+total[n] = diff[n] + same[n] 
+```
+所以我們可以寫個for迴圈來處理這個狀態方程式  
+```python
+diff[1] = k
+diff[2] = k*(k-1)
+for i in xrange(3, n+1):
+    diff[i] = (diff[i-1] + diff[i-2]) * (k-1)
+```
+這裡要注意迴圈的終止範圍是n+1  
+最後把diff[n] + 和same[n] 加起來就是題目所求了  
+因為整個方程式的矩陣空間其實只有i, i-1和i-2需要記憶  
+要求降低空間複雜度時可以用滾動矩陣法只記錄這三個空間的值  
+   
+***
+  
 ### [279.Perfect_Squares](../../SourceCode/Python/279.Perfect_Squares.py) Level: Medium Tags: [DP]
   
   
@@ -799,7 +864,9 @@ Space: O(n)  (用Bit可再降低點空間複雜度)
   
 ### [320.[Locked]Generalized_Abbreviation](../../SourceCode/Python/320.[Locked]Generalized_Abbreviation.py) Level: Medium Tags: [DFS, BackTracking]
   
-  
+Time:  O(n * 2^n)  
+Space: O(n)  
+    
 思路:給你一個單字，要你求出所有可用的縮寫  
 算是[408.Valid_Word_Abbreviation](../../SourceCode/Python/408.Valid_Word_Abbreviation.py) 的類似題  
 先假設你知道縮寫是什麼意思了，不明白的人可以去看408題  
