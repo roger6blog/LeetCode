@@ -783,6 +783,33 @@ Follow up要求我們在不能使用額外空間的情況下得出陣列的下�
   
 ***
   
+### [298.[Locked]Binary_Tree_Longest_Consecutive_Sequence](../../SourceCode/Python/298.[Locked]Binary_Tree_Longest_Consecutive_Sequence.py) Level: Medium Tags: [Tree]
+    
+Time:  O(n)  
+Space: O(h), h is height of tree  
+    
+思路:給你一個二元樹，要你找出有連續遞增數字的節點數量  
+例如以下二元樹:  
+```
+   1
+    \
+     3
+    / \
+   2   4
+        \
+         5
+```
+  
+他的最長順序就是3-4-5，所以總和為3  
+做法和[687.Longest_Univalue_Path](../../SourceCode/Python/687.Longest_Univalue_Path.py)  很像  
+只差在判斷條件不同  
+不斷遞迴去尋找下一個符合條件的子節點  
+最後返回左右子樹的最大值  
+具體解法可參考687題  
+    
+  
+***
+  
 ### [309.Best_Time_to_Buy_and_Sell_Stock_with_Cooldown](../../SourceCode/Python/309.Best_Time_to_Buy_and_Sell_Stock_with_Cooldown.py) Level: Medium Tags: [DP]
   
 Time:  O(n)  

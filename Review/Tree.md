@@ -199,7 +199,7 @@ self.left.printTreeInorder()／self.right.printTreeInorder()
   
   
   
-### [208.Implement_Trie_(Prefix_Tree)](../SourceCode/Python/208.Implement_Trie_(Prefix_Tree).py) Level: Medium Tags: []
+### [208.Implement_Trie_(Prefix_Tree)](../SourceCode/Python/208.Implement_Trie_(Prefix_Tree).py) Level: Medium Tags: [Tree]
   
 Time:  O(n), per operation
 Space: O(1)
@@ -240,3 +240,92 @@ Output: ["eat","oath"]
 [212.Word_Search_II_Accept](../../SourceCode/Python/212.Word_Search_II_Accept.py)
 
 ***
+  
+### [298.[Locked]Binary_Tree_Longest_Consecutive_Sequence](../../SourceCode/Python/298.[Locked]Binary_Tree_Longest_Consecutive_Sequence.py) Level: Medium Tags: [Tree]
+    
+Time:  O(n)  
+Space: O(h), h is height of tree  
+    
+思路:給你一個二元樹，要你找出有連續遞增數字的節點數量  
+例如以下二元樹:  
+```
+   1
+    \
+     3
+    / \
+   2   4
+        \
+         5
+```
+  
+他的最長順序就是3-4-5，所以總和為3  
+做法和[687.Longest_Univalue_Path](../../SourceCode/Python/687.Longest_Univalue_Path.py)  很像  
+只差在判斷條件不同  
+不斷遞迴去尋找下一個符合條件的子節點  
+最後返回左右子樹的最大值  
+具體解法可參考687題  
+    
+  
+***
+  
+### [686.Repeated_String_Match](../../SourceCode/Python/686.Repeated_String_Match.py) Level: Easy Tags: [String]
+      
+Time:  O(n + m)  
+Space: O(1)    
+  
+思路:給你兩個字串A和B，通常A有可能為B的子字串  
+求A字串要重複幾次才能讓B成為A的子字串  
+一開始可以用暴力解  
+但後來的測試項目越來越刁鑽，最後敗在A="a"，B="a"x10000的測試項目  
+重點在於測試A的次數，只要A字串長度比B字串長後還是沒能找到答案  
+那麼再繼續循環也沒用  
+至於重複次數可以用兩個字串的長度相除來取得  
+不過Python的除法會向下取整，所以多加3次 (經驗得來)  
+```python
+na = len(A)
+nb = len(B)
+times = nb / na + 3
+``` 
+這個times就是for迴圈的上限
+  
+  
+***
+  
+### [687.Longest_Univalue_Path](../../SourceCode/Python/687.Longest_Univalue_Path.py) Level: Easy Tags: [Tree]
+       
+Time:  O(n)  
+Space: O(h), h is height of tree  
+  
+思路:給你一個BinaryTree  
+要你找出同值節點所組成的最長路徑  
+這路徑不一定要從root開始  
+例如  
+```
+              1
+             / \
+            4   5
+           / \   \
+          4   4   5
+```  
+他的最長路徑為4-4-4組成的 2   
+我們可以從root開始，統計到每個同值左右子節點的路徑  
+如果不同值就返回，反之則繼續遞迴找下去
+```python
+max(self.longestUnivaluePath(root.left), \
+self.longestUnivaluePath(root.right) )
+```
+  
+因為可以不經過root，所以還要考慮他底下兩個子樹符合條件的路徑總和
+```python
+self.longestPath(root.left, root.value) + self.longestPath(root.right, root.value)
+```
+兩個條件合在一起就是  
+```python
+return max(self.longestPath(root.left, root.value) + self.longestPath(root.right, root.value), \
+           self.longestUnivaluePath(root.left), \
+           self.longestUnivaluePath(root.right)
+           )
+```
+  
+***
+

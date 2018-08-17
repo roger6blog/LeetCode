@@ -1,3 +1,4 @@
+import binarytree
 '''
 
 Given a binary tree,
@@ -47,27 +48,6 @@ class TreeNode(object):
         self.left = None
         self.right = None
 
-    def add(self, data):
-        if self.val:
-            if self.left is None:
-                self.left = TreeNode(data)
-            else:
-                if self.right is None:
-                    self.right = TreeNode(data)
-                else:
-                    self.left.add(data)
-
-
-
-    # Print the Tree preorder
-    def printTree(self):
-
-        print(self.val),
-        if self.left:
-            self.left.printTree()
-        #print( self.val),
-        if self.right:
-            self.right.printTree()
 
 class Solution(object):
     def longestUnivaluePath(self, root):
@@ -75,12 +55,39 @@ class Solution(object):
         :type root: TreeNode
         :rtype: int
         """
+        if not root:
+            return 0
+
+        return max(self.longestPath(root.left, root.value) + self.longestPath(root.right, root.value), \
+                   self.longestUnivaluePath(root.left), \
+                   self.longestUnivaluePath(root.right)
+                   )
+
+    def longestPath(self, root, value):
+        if not root or root.value != value:
+            return 0
+
+        return 1 + max(self.longestPath(root.left, value), self.longestPath(root.right, value))
 
 
-a = [3,1,4,None,2]
-tree = TreeNode(5)
-for i in a:
-    tree.add(i)
-print tree.val
-print "-------------"
-tree.printTree()
+
+root = binarytree.Node(5)
+root.left = binarytree.Node(4)
+root.right = binarytree.Node(5)
+root.left.left = binarytree.Node(1)
+root.left.right = binarytree.Node(1)
+root.right.right = binarytree.Node(5)
+print root
+
+
+root2 = binarytree.Node(1)
+root2.left = binarytree.Node(4)
+root2.right = binarytree.Node(5)
+root2.left.left = binarytree.Node(4)
+root2.left.right = binarytree.Node(4)
+root2.left.right.right = binarytree.Node(4)
+root2.right.right = binarytree.Node(5)
+root2.right.right.right = binarytree.Node(5)
+print root2
+print Solution().longestUnivaluePath(root)
+print Solution().longestUnivaluePath(root2)

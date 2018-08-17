@@ -461,3 +461,41 @@ times = nb / na + 3
   
   
 ***
+  
+### [687.Longest_Univalue_Path](../../SourceCode/Python/687.Longest_Univalue_Path.py) Level: Easy Tags: [Tree]
+       
+Time:  O(n)  
+Space: O(h), h is height of tree  
+  
+思路:給你一個BinaryTree  
+要你找出同值節點所組成的最長路徑  
+這路徑不一定要從root開始  
+例如  
+```
+              1
+             / \
+            4   5
+           / \   \
+          4   4   5
+```  
+他的最長路徑為4-4-4組成的 2   
+我們可以從root開始，統計到每個同值左右子節點的路徑  
+如果不同值就返回，反之則繼續遞迴找下去
+```python
+max(self.longestUnivaluePath(root.left), \
+self.longestUnivaluePath(root.right) )
+```
+  
+因為可以不經過root，所以還要考慮他底下兩個子樹符合條件的路徑總和
+```python
+self.longestPath(root.left, root.value) + self.longestPath(root.right, root.value)
+```
+兩個條件合在一起就是  
+```python
+return max(self.longestPath(root.left, root.value) + self.longestPath(root.right, root.value), \
+           self.longestUnivaluePath(root.left), \
+           self.longestUnivaluePath(root.right)
+           )
+```
+  
+***
