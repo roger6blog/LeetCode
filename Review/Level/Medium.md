@@ -614,72 +614,7 @@ Space: O(1)
 而讓其他index沒有增加的因子被選為當前最小醜數  
 如此一來只要重複n次就能知道第n個醜數是多少了  
   
-  
-***
-  
-### [276.[Locked]Paint_Fence](../../SourceCode/Python/276.[Locked]Paint_Fence.py) Level: Medium Tags: [Math, DP]  
-  
-Time:  O(n)  
-Space: O(n)  
-  
-思路:有一個n根柱子的柵欄，和k總顏色的噴漆  
-今天給一個噴漆的限制: 不能有超過連續兩根柱子是一個顏色  
-求總共能漆成幾組顏色  
-這是一題排列組合問題，但因為題目的限制讓轉移方程變得不太好找  
-
-題目要求的塗色方式是這樣的: 假設有白綠兩種顏色  
-你可以連續上同色也能不同色，但第三根柱子的顏色一定不能和他們同色    
-![](../Res/painting-fence-1.png)    
-  
-因此我們可以知道塗色方法可以分為同色+不同色，如下圖  
-
-![](../Res/painting-fence-2.png)  
-  
-為了求狀態轉移方程，我們從最簡單的組合開始找起  
-令diff為兩根柱子不同色的塗法、same為兩根柱子同色的塗法    
-n = 1時  
-因為只有一根柱子，所以有k種塗法  
-不到兩根柱子根本無法塗同色，故為0種徒法  
-總共有 k + 0 種  
-
-n = 2時  
-第一根柱子同色，第二根柱子就少一種顏色  
-故diff為 k * (k - 1)  
-同色塗法則是有k種塗法  
-總共有 k * (k - 1) + k 種  
-
-n = 3時  
-不同色塗法在這裡變得複雜起來  
-因為所謂的不同色徒法，就像第一張圖一樣  
-可以前兩根都同色，也能前兩根不同色  
-所以前兩根的塗色方式應該是 ( 前兩根同色塗法 + 前兩根不同色徒法 )  
-第三根唯一的要求就是和第二根不同色，不然就是同色塗法了  
-所以總共有 [k + k * (k - 1)] * (k - 1) 種塗法  
-而同色塗法中，前兩根有k種塗法，那第三根只能是 k-1種  
-所以同色塗法為 k * (k - 1)種
-兩個加起來為 [k + k * (k - 1)] * (k - 1) + k * (k - 1) 種  
-  
-寫到這裡，我們可以看出一個規律  
-就是前n根同色塗法皆為前n-1根的不同色塗法  
-而前n根不同色塗法皆為(前n-2根不同色塗法 + 前n-1根不同色塗法) * (k-1)  
-寫成方程式就是: 
-``` python
-same[n] = diff[n-1]  
-diff[n] = (diff[n-1] + diff[n-2]) * (k - 1)  
-total[n] = diff[n] + same[n] 
-```
-所以我們可以寫個for迴圈來處理這個狀態方程式  
-```python
-diff[1] = k
-diff[2] = k*(k-1)
-for i in xrange(3, n+1):
-    diff[i] = (diff[i-1] + diff[i-2]) * (k-1)
-```
-這裡要注意迴圈的終止範圍是n+1  
-最後把diff[n] + 和same[n] 加起來就是題目所求了  
-因為整個方程式的矩陣空間其實只有i, i-1和i-2需要記憶  
-要求降低空間複雜度時可以用滾動矩陣法只記錄這三個空間的值  
-   
+     
 ***
   
 ### [279.Perfect_Squares](../../SourceCode/Python/279.Perfect_Squares.py) Level: Medium Tags: [DP]
@@ -1768,6 +1703,60 @@ h代表高度，k代表之後排序，會有幾個h比你高的人在前面
 我們搬到指定位置上時，完全可以滿足只能有k個比他高的元素高的需求
 這部份我們可以用list的pop和insert來實現  
 全部搬完就是答案了    
+  
+  
+  
+***  
+  
+### [417.Pacific_Atlantic_Water_Flow](../../SourceCode/Python/417.Pacific_Atlantic_Water_Flow.py) Level: Medium Tags: [DFS]
+  
+Time:  O(m * n)  
+Space: O(m * n)    
+ 
+思路: 給你一個m * n的矩陣，裡面的元素是兩大洋的交會處  
+如下圖所示   
+```
+  Pacific ~   ~   ~   ~   ~
+       ~  1   2   2   3  (5) *
+       ~  3   2   3  (4) (4) *
+       ~  2   4  (5)  3   1  *
+       ~ (6) (7)  1   4   5  *
+       ~ (5)  1   1   2   4  *
+          *   *   *   *   * Atlantic
+```
+每個區塊的元素代表海拔，海水能往跟他同海拔和比他低海拔的區域流動  
+求同時能流往太平洋(左上)和大西洋(右下)陸地的座標  
+  
+看到二維座標矩陣時幾乎就是要用DFS求解，這已經是common sense  
+反覆求每個元素是否能到太平洋側和大西洋側  
+然後把符合條件的座標加入到答案矩陣中  
+然而題目中如果你對每個元素都這樣求解，遇到超大矩陣時會TLE (Time Limit Exceed)  
+另一種有效率的解法如下:  
+1.準備兩個路徑矩陣，一個太平洋的一個大西洋的，預設值為False   
+```python
+pacific = [[False for _ in xrange(col)] for _ in xrange(row)]
+atlantic = [[False for _ in xrange(col)] for _ in xrange(row)]
+```
+沿著太平洋或大西洋的陸地座標，一個個去找這些座標能流動的地方  
+預設是把自己當最低海拔，一路往四個方向尋找  
+```python
+for i in xrange(row):
+    self.dfs(matrix, pacific, -sys.maxint - 1, i, 0)
+    self.dfs(matrix, atlantic, -sys.maxint - 1, i, col - 1)
+
+for j in xrange(col):
+    self.dfs(matrix, pacific, -sys.maxint - 1, 0, j)
+    self.dfs(matrix, atlantic, -sys.maxint - 1, row - 1, j)
+```  
+*注意:是尋找比自己之前海拔高的地方*  
+如果當前路徑的海拔比自己低，說明對岸的海流無法從這裡流過來  
+```python
+if matrix[x][y] < pre:
+    return
+```
+最後找出太平洋和大西洋訪問矩陣中True有交會的地方  
+代表這就是能同時接觸兩洋海水的交會處  
+  
   
   
 ***  
