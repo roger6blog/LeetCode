@@ -120,5 +120,57 @@ DFS相關的步驟可以寫成另一個函式
 就是題目要的答案了  
   
   
-***
+***  
+  
+### [417.Pacific_Atlantic_Water_Flow](../../SourceCode/Python/417.Pacific_Atlantic_Water_Flow.py) Level: Medium Tags: [DFS]
+  
+Time:  O(m * n)  
+Space: O(m * n)    
+ 
+思路: 給你一個m * n的矩陣，裡面的元素是兩大洋的交會處  
+如下圖所示   
+```
+  Pacific ~   ~   ~   ~   ~
+       ~  1   2   2   3  (5) *
+       ~  3   2   3  (4) (4) *
+       ~  2   4  (5)  3   1  *
+       ~ (6) (7)  1   4   5  *
+       ~ (5)  1   1   2   4  *
+          *   *   *   *   * Atlantic
+```
+每個區塊的元素代表海拔，海水能往跟他同海拔和比他低海拔的區域流動  
+求同時能流往太平洋(左上)和大西洋(右下)陸地的座標  
+  
+看到二維座標矩陣時幾乎就是要用DFS求解，這已經是common sense  
+反覆求每個元素是否能到太平洋側和大西洋側  
+然後把符合條件的座標加入到答案矩陣中  
+然而題目中如果你對每個元素都這樣求解，遇到超大矩陣時會TLE (Time Limit Exceed)  
+另一種有效率的解法如下:  
+1.準備兩個路徑矩陣，一個太平洋的一個大西洋的，預設值為False   
+```python
+pacific = [[False for _ in xrange(col)] for _ in xrange(row)]
+atlantic = [[False for _ in xrange(col)] for _ in xrange(row)]
+```
+沿著太平洋或大西洋的陸地座標，一個個去找這些座標能流動的地方  
+預設是把自己當最低海拔，一路往四個方向尋找  
+```python
+for i in xrange(row):
+    self.dfs(matrix, pacific, -sys.maxint - 1, i, 0)
+    self.dfs(matrix, atlantic, -sys.maxint - 1, i, col - 1)
+
+for j in xrange(col):
+    self.dfs(matrix, pacific, -sys.maxint - 1, 0, j)
+    self.dfs(matrix, atlantic, -sys.maxint - 1, row - 1, j)
+```  
+*注意:是尋找比自己之前海拔高的地方*  
+如果當前路徑的海拔比自己低，說明對岸的海流無法從這裡流過來  
+```python
+if matrix[x][y] < pre:
+    return
+```
+最後找出太平洋和大西洋訪問矩陣中True有交會的地方  
+代表這就是能同時接觸兩洋海水的交會處  
+  
+  
+***  
 
