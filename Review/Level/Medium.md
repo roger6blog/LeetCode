@@ -682,6 +682,22 @@ peek的要求是告訴我們下一個元素的值
     
 ***
   
+### [286.[Locked]Walls_and_Gates](../../SourceCode/Python/286.[Locked]Walls_and_Gates.py) Level: Medium Tags: [DFS]
+     
+Time:  O(m * n)  
+Space: O(m * n)  
+m is row of matrix, n is col of matrix    
+  
+思路: 給你一個由無限大、0和-1的2D陣列  
+要你找出從各個無限大到最近的0的距離。其中-1是不能走的    
+這種題目都是固定一套模式，就是DFS  
+上下左右遞迴深入搜尋0，遇到-1或超出邊界就返回  
+每次遞迴就增加當前路徑到一個list，遇到0就把list的長度吐回來  
+記得函式的最後要把加入過的路徑也吐回去  
+然後把最小路徑寫到答案陣列同位置元素的格子就行了  
+    
+***
+  
 ### [289.Game_of_Life](../../SourceCode/Python/289.Game_of_Life.py) Level: Medium Tags: [List, Bit manipulation]
   
 Time:  O(m * n)  
@@ -1575,8 +1591,27 @@ while depth >= currDepth:
 if p.count('.'):
     ans = max(ans, totalLength + currLength)
 ```
-    
   
+  
+***  
+  
+### [393.UTF-8_Validation](../../SourceCode/Python/393.UTF-8_Validation.py) Level: Medium Tags: [Bit manipulation]
+  
+Time:  O(n)  
+Space: O(1)  
+  
+思路:給你一組字串的數字編碼  
+要你判斷這組字串是不是UTF-8的合法字串  
+把握題目講的2個原則:  
+1. 如果第一個bit是0，代表是一般的ASCII字串  
+2. 如果第一個bit是1，其後的bit說明這byte後面要跟幾個UTF-8字元  
+這些跟在其後的UTF-8字元，開頭的2個bit必須為"10"  
+例如[197, 130, 1]，其二進位表示為 ['11000101', '10000010', '00000001']    
+開頭的197有2個bit為1，說明其後有一個UTF-8字元    
+第二個130的開頭bit為10，所以整個UTF-字元到此告一段落  
+最後一個1因為開頭bit是0，所以是一般的ASCII字元  
+基本上照著替目要求寫就可以，用while或遞迴來不斷判斷之後的字串是否也符合UTF-8格式  
+
    
 ***  
   
