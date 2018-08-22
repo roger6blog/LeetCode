@@ -515,6 +515,29 @@ h is Height of Tree
   
 ***
   
+### [643.Maximum_Average_Subarray_I](../../SourceCode/Python/643.Maximum_Average_Subarray_I.py) Level: Easy Tags: [List, Sliding window]
+
+Time:  O(n)  
+Space: O(1)    
+  
+題意: 給你一個List和區間k  
+要你求出長度為k的連續子List的最大平均值  
+用slice的方式會造成超時(Time Limit Exceed)  
+我們可以用Sliding winodws的方法  
+從左到右開始不斷的加總k個元素    
+為了保持每次都是K個元素的加總  
+每從右邊加一個新元素，左邊的元素就要被減去  
+```python
+for i in xrange(len(nums)):
+    sums += nums[i]
+    if i+1 > k:
+        sums -= nums[i-k]
+```
+接著只要計算最大元素和即為所求  
+
+  
+***
+  
 ### [686.Repeated_String_Match](../../SourceCode/Python/686.Repeated_String_Match.py) Level: Easy Tags: [String]
       
 Time:  O(n + m)  
