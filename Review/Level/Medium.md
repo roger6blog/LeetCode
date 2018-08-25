@@ -2087,7 +2087,43 @@ except IndexError:
 只要我們取的i和n相等時跳出迴圈  
 計算新生的字串有多少個'1'就是答案了
   
-   
+  
+***  
+  
+### [486.Predict_the_Winner](../../SourceCode/Python/486.Predict_the_Winner.py) Level: Medium Tags: [Recursive, DP]
+  
+  
+思路: 有一組正整數數列，兩個玩家輪流取數列兩端的數字加總比大小  
+要你求玩家一在該局是否會獲勝  
+例如[1, 5, 2]中，玩家一不論從哪一端取，最大數5都會被玩家二取去  
+所以玩家一不可能獲勝  
+  
+此題用DP是最佳解，用Recursive最易理解但無法通過Leetcode的TLE(Time Limit Exceed)測試  
+但我們還是採用較好解釋的遞迴方法  
+我們可以解釋成玩家一取的數字為正，玩家二取的數字為負  
+那最後加總的結果只要為正就代表玩家一獲勝  
+又最左邊的數字為nums[i]，最右邊的數字為nums[j]
+以第一個玩家來說，他能做的決定有兩種情況:  
+1. 先取最左端的數字nums[i]  
+那麼最後的結果便為nums[i] - f(nums, i+1, j)  
+2. 先取最右端的數字nums[j]  
+那麼最後的結果便為nums[j] - f(nums, i, j-1)  
+  
+玩家一所要的結果就是這兩個結果中取最佳解，也就是max  
+故為  
+```python
+max(nums[i] - f(nums, i+1, j) , nums[j] - f(nums, i, j-1) )
+```
+遞迴函數在i==j時有終止條件，返回nums[i] (或nums[j])  
+以上述範例來說，最大值為-2小於0，所以玩家一必敗  
+    
+注意題目有說兩者分數相同時算玩家一獲勝  
+故最終判斷條件須加上等號，也就是大於等於0  
+```python
+return self.findAns(nums, 0, length-1) >=0
+```
+  
+  
 ***  
   
 ### [498.Diagonal_Traverse](../../SourceCode/Python/498.Diagonal_Traverse.py) Level: Medium Tags: []

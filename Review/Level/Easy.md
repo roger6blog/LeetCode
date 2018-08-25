@@ -538,6 +538,37 @@ for i in xrange(len(nums)):
   
 ***
   
+### [665.Non-decreasing_Array](../../SourceCode/Python/665.Non-decreasing_Array.py) Level: Easy Tags: [List]
+  
+Time:  O(n)  
+Space: O(1)    
+  
+題意:給一個隨機數列，要你確認這數列是否只改一個元素的值就可為完全遞增數列  
+是的話回傳True，反之回傳False  
+假如一個數列a1, a2, a3, a4中，其中a3 < a2  
+為了後續讓題目的條件更容易達成  
+我們需要讓就算a3修改後達成遞增條件 a1 < a2 < a3 
+也能讓a3 < a4，所以我們需要讓a3儘可能相對於a4是較小的  
+最好的選擇就是讓a3=a2
+但是在這裡我們必須考慮一點: a1是不是大於a3這件事情  
+1. 如果a1 > a3  
+會變成a1 和 a2 都大於a3的情況  
+雖然我們不確定a1 和 a2 的關係  
+如果a1 > a2的話，那就會形成遞減數列 a1 > a2 > a3 沒救了  
+但如果a2 > a1，代表我們只要把a3改成和a2一樣就還有救  
+所以要改的是a3  
+2. 如果a1 < a3  
+因為已知a3 < a2，這數列便形成 a2 > a3 > a1 (例如 1, 3, 2)  
+此時可以把a2改小，也可以把a3改成和a2一樣大  
+為了寫程式碼方便，通常我們就都直接修改a3  
+```python
+if i > 1 and nums[i] <= nums[i-2]:
+    nums[i] = nums[i-1]
+```
+  
+  
+***
+  
 ### [686.Repeated_String_Match](../../SourceCode/Python/686.Repeated_String_Match.py) Level: Easy Tags: [String]
       
 Time:  O(n + m)  
