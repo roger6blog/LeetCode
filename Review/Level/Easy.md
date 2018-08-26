@@ -416,6 +416,32 @@ Space: O(1)
 接著重新遍歷整個數列，找出數字為正的index就是答案  
 
   
+***
+  
+### [459.Repeated_Substring_Pattern](../../SourceCode/Python/459.Repeated_Substring_Pattern.py) Level: Easy Tags: [String]
+      
+Time:  O(n)  
+Space: O(1)  
+  
+思路: 給你一個字串，問你有沒有存在一個子pattern是這個字串的子集合  
+有的話回傳True，反之則回傳False  
+Python在這裡有個很方便的方法  
+因為Python可以用字串乘常數來組合字串，如"a"*2 == "aa"  
+所以我們可以把字串切半，看這一半的字串是否能成為s的子字串  
+不行的話就繼續切，3, 4, 5 ....  一直到不能再切為止  
+```python
+while pos > 0:
+    substr = s[:pos]
+    div = length / pos
+    if substr * div == s:
+        return True
+    else:
+        div += 1
+        pos = length / div
+```
+如果能組成字串s那當然回傳True  
+反之整個while迴圈都走完還沒找到就回傳False了
+  
   
 ***
   
