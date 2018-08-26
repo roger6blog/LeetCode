@@ -65,12 +65,12 @@ Space: O(1)
   
 ***
   
-### [122.Best_Time_to_Buy_and_Sell_Stock_II](../../SourceCode/Python/122.Best_Time_to_Buy_and_Sell_Stock_II.py) Level: Easy Tags: []
+### [122.Best_Time_to_Buy_and_Sell_Stock_II](../../SourceCode/Python/122.Best_Time_to_Buy_and_Sell_Stock_II.py) Level: Easy Tags: [Greed]
   
 Time:  O(n)  
 Space: O(1)
      
-思路: 是上一題[121.Best_Time_to_Buy_and_Sell_Stock](../../SourceCode/Python/121.Best_Time_to_Buy_and_Sell_Stock.py) 的衍伸
+思路: 是上一題[121.Best_Time_to_Buy_and_Sell_Stock](../../SourceCode/Python/121.Best_Time_to_Buy_and_Sell_Stock.py) 的衍伸  
 不同的是這次不限買賣次數  
 要你把所有利潤都累加起來求總利潤  
 直覺得會想到遍歷整個數列  
@@ -87,17 +87,19 @@ Space: O(1)
   
 ***
   
-### [157.Read_N_Characters_Given_Read4](../../SourceCode/Python/157.[Locked]Read_N_Characters_Given_Read4.py) Level: Easy Tags: [Locked]
+### [157.[Locked]Read_N_Characters_Given_Read4](../../SourceCode/Python/157.[Locked]Read_N_Characters_Given_Read4.py) Level: Easy Tags: []
   
   
 首先要明白題意的Read4是什麼意思  
 實際上你給 Read4(buf) 的buf 必須要是一個有4個空字元的list  
 如:  
+```python
 temp = [''] * 4  # 即為['', '', '', '']
-  
+```
 接著輸入的buf也是一堆空字元組成的list  
 我們要做的就是利用每一次的Read4 把讀到的4個字元放到buf中  
 注意每次Read4只能讀取4個字元，如果發現讀不出來了就要break  
+  
   
 ***
   
@@ -129,6 +131,14 @@ Space: O(1)
 整除的話就把商塞給原本的數字，繼續除下去  
 一旦除到有餘數就換下一個數字  
 直到三個數字都除完後看題目最後給的數字是否為1  
+```python
+for p in primes:
+    while num % p == 0:
+        num = num / p
+
+if num == 1:
+    return True
+```
 是的話就代表是醜數  
 反之則一定還有其他數字為題目給的數字的因數  
 因此不是醜數  
@@ -182,8 +192,7 @@ Space: O(n)
 令diff為兩根柱子不同色的塗法、same為兩根柱子同色的塗法    
 n = 1時  
 因為只有一根柱子，所以有k種塗法  
-不到兩根柱子根本無法塗同色，故為0種徒法  
-總共有 k + 0 種  
+不到兩根柱子根本無法塗同色，故為0種塗法  
 
 n = 2時  
 第一根柱子同色，第二根柱子就少一種顏色  
@@ -398,20 +407,24 @@ count = count*10 + int(abbr[j])
   
 ***
   
-### [448.Find_All_Numbers_Disappeared_in_an_Array](../../SourceCode/Python/448.Find_All_Numbers_Disappeared_in_an_Array.py) Level: Easy Tags: []
+### [448.Find_All_Numbers_Disappeared_in_an_Array](../../SourceCode/Python/448.Find_All_Numbers_Disappeared_in_an_Array.py) Level: Easy Tags: [Tricky]
      
 Time:  O(n)  
 Space: O(1)  
   
-思路:在一個無序數列中，裡面的數字為1~n之間，n為數列長度  
+思路:在一個無序數列中，裡面的數字為1\~n之間，n為數列長度  
 找出沒有出現在該數列裡的數字  
-既然有沒有出現的數字又限制數字在1~n之間  
+既然有沒有出現的數字又限制數字在1\~n之間  
 代表一定有數字是重複的  
 雖然排序後找出和index不對齊的數字便是答案  
-但這種作法只要遇到長數列Leecode就會吐TLE(Time Limit Exceed)    
+但這種作法只要遇到長數列Leetcode就會吐TLE(Time Limit Exceed)    
 這裡用負號標記法  
 我們把數列中的每個數字都當作是一個index  
 對這個index的數字乘上-1讓他變成負數  
+```python
+for n in nums:
+    nums[abs(n)-1] = -abs(nums[abs(n)-1])
+```
 如此一來，數列中缺少的數字的index對應的數字就不會成為負數  
 接著重新遍歷整個數列，找出數字為正的index就是答案  
 
@@ -494,7 +507,7 @@ Space: O(1)
     
 思路:寫這題的思路完全是為了解釋題目  
 題目寫了一大堆，但重點只有一句話:  
-*判斷兩個字串是否相等，是的話返回-1，不是的話返回較長字串的長度*  
+**判斷兩個字串是否相等，是的話返回-1，不是的話返回較長字串的長度**  
 就這麼簡單!!!!  
 這題是我看過最腦殘的題目  
 在我寫這題的時候他已經累積了147個讚、2384個爛  
@@ -514,10 +527,10 @@ Space: O(1)
 題意不是很清楚，用下面的圖做輔助:  
 ![](../Res/20170706164056477.png)
   
-直觀的做法是用for迴圈以2*k為間隔來反轉前k個字元  
+直觀的做法是用for迴圈以2\*k為間隔來反轉前k個字元  
 不過這樣會有長度判斷的問題  
 我們可以用while迴圈判斷字串是否為空  
-然後直接拿s的前2*k長度的字串來組合  
+然後直接拿s的前2\*k長度的字串來組合  
 ```python
 while s:
     ans += s[:k][::-1] + s[k:2*k]
@@ -533,7 +546,7 @@ Time:  O(n)
 Space: O(h)  
 h is Height of Tree  
   
-思路: 給你一個樹，要你求兩個子結點彼此間的最長距離  
+思路: 給你一個樹，要你求兩個子節點彼此間的最長距離  
 因為可以橫跨左右子樹，所以不能單純的深度搜尋(DFS)或排序  
 我們可以這問題想成是兩個子樹的最長深度的加總    
 那麼一來只要想辦法把兩邊子樹的深度算出來就能找到答案了  
