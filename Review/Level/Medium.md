@@ -142,10 +142,21 @@ return map(list, bSet)
 把題目給的List照start值得順序排好後  
 用以下的方式來判斷兩個Interal:  
 1. 如果新的List裡面沒Interval，直接加入新List  
+```python
+if ans == []:
+    ans.append(intervals[i])
+```
 2. 如果有的話，比較新List最後一個Interval和要加入的Interval是否有重疊    
-  重疊的規則: 新Interval的start值落在最後一個Interval的區間裡(相同值也算)    
-  如此不斷iterate所有元素  
-  新List即為答案  
+重疊的規則: 新Interval的start值落在最後一個Interval的區間裡(相同值也算) 
+```python
+currlen = len(ans)
+if ans[currlen - 1].start <= intervals[i].start <= ans[currlen - 1].end:
+    ans[currlen - 1].end = max(ans[currlen - 1].end, intervals[i].end)
+else:
+    ans.append(intervals[i])
+```   
+如此不斷iterate所有元素  
+新List即為答案  
   
 ***
 
@@ -1225,8 +1236,8 @@ Space: O(n^2)
 這是一個Dynamic Programming的題目 (DP) 
 因為每個範圍內的結果都是之前範圍可以推得的  
 我們在這裡宣告一個 (n+1) * (n+1) 的2維DP陣列  
-每行每列分別代表猜[行~列]範圍內的數字  
-例如[第一行, 第十列] 就是 1~10內的猜數字    
+每行每列分別代表猜[行\~列]範圍內的數字  
+例如[第一行, 第十列] 就是 1\~10內的猜數字    
 所以算出 dp[1][10]就是答案  
   
 底下我們用n=5來作範例   
@@ -1563,7 +1574,9 @@ Space: O(min(n, m, k))
   
 ### [388.Longest_Absolute_File_Path](../../SourceCode/Python/388.Longest_Absolute_File_Path.py) Level: Medium Tags: [Stack]
     
-  
+Time:  O(n)  
+Space: O(d), d is the max depth of the paths  
+    
 思路: 這是Google的OA題目 (Online Assessment) 
 題目出現頻率之高，要考google的人建議別錯過這題  
 給你一串用換行還有tab分隔的目錄路徑和檔案名稱  
@@ -1900,7 +1913,7 @@ Space: O(n)
 但在實務上我們不一定需要import math 去呼叫sqrt  
 因為我們聚焦的只在相同距離，有沒有取平方根不影響答案  
   
-所有離取完後  
+所有距離取完後  
 我們可以看到在dictionary裡會有value超過2的key  
 例如範例給的  [[0,0],[1,0],[2,0]]  
 我們可以求到這三點到其他點的距離分別為  
@@ -2245,7 +2258,7 @@ List的[0]從頭到尾都沒有用到
   
 ***  
   
-### [542.01_Matrix](../../SourceCode/Python/5542.01_Matrix.py) Level: Medium Tags: [DFS, BFS, Graph]
+### [542.01_Matrix](../../SourceCode/Python/542.01_Matrix.py) Level: Medium Tags: [DFS, BFS, Graph]
   
 Time:  O(m * n)  
 Space: O(m * n)    
@@ -2266,10 +2279,10 @@ Space: O(m * n)
 if matrix[x][y] == 0:
     path = 0
 ```
-我們需要另外弄一個同大小的矩陣，每個元素都為最大正整數　　
-每次都記錄相對應元素的目前到下個0的當前距離　　
+我們需要另外弄一個同大小的矩陣，每個元素都為最大正整數  
+每次都記錄相對應元素的目前到下個0的當前距離  
 然後走四個座標方向的DFS來找出解答  
-還要設一個條件就是如果答案矩陣內的元素值已經不大於路徑長度時　　
+還要設一個條件就是如果答案矩陣內的元素值已經不大於路徑長度時  
 該點會被捨棄掉　　
 ```python
 if ans[x][y] <= path:
@@ -2333,7 +2346,7 @@ BFS則就像一顆石頭扔進湖中的漣漪一樣
   
 ***  
   
-### [560.Subarray_Sum_Equals_K](../../SourceCode/Python/560.Subarray_Sum_Equals_K.py) Level: Medium Tags: []
+### [560.Subarray_Sum_Equals_K](../../SourceCode/Python/560.Subarray_Sum_Equals_K.py) Level: Medium Tags: [List]
   
 Time:  O(n)    
 Space: O(n)
@@ -2344,7 +2357,7 @@ Space: O(n)
 因為下標0和1的元素和、還有1和2的元素和均為2  
 但是第下標0和2的元素和就不能算進去，因為沒有連續  
 暴力算法可以用兩個迴圈  
-分別為i從0~數列長度、j從i+1~數列長度  
+分別為i從0\~數列長度、j從i+1\~數列長度  
 然後再用一個for迴圈從i到j開始計算所有的和是否為k  
 這暴力算法為 O(n^3)  
   
@@ -2370,13 +2383,18 @@ sum(i)和sum(0, j)已知的話
 同等於知道sum(i+1, j) == k會在這裡出現  
 ```
 
-所以我們可以看到新舊sum相減後就是一組sum為k  
-出現次數+1  
+所以我們可以看到新舊sum相減後就是一組sum為k，出現次數+1  
   
 因此，我們只要把所有的舊sum都存到prefixSum字典中  
 新的sum出現時，拿sum-k當key去prefixSum裡找  
 如果存在的話，代表有一組數列的加總會是k  
 (至於位置在哪裡並不是題目要求的，不重要)    
+```python
+for num in nums:
+    sum += num
+    if sum - k in prefixSum: # It means new sum - old sum == k
+        count += prefixSum[sum - k]
+```
 因為他和sum-k出現的次數是一樣的  
 所以sum-k出現多少次，加總為k的數列就會出現多少次  
 為何這裡要強調出現多少次呢  
@@ -2385,8 +2403,13 @@ sum(i)和sum(0, j)已知的話
 會有不同的連續元素和加總後一樣都是k  
 所以當元素和sum有出現在prefix時  
 我們要更新相對應的prefixSum[sum]的計數讓他加1  
+```python
+if sum not in prefixSum:
+    prefixSum[sum] = 1
+else:
+    prefixSum[sum] += 1
+```
 把所有的出現次數加總即為答案  
-  
 
     
 ***  
