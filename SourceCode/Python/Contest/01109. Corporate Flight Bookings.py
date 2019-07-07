@@ -4,7 +4,7 @@ There are n flights, and they are labeled from 1 to n.
 
 We have a list of flight bookings.
 
-The i-th booking bookings[i] = [i, j, k] means that we booked k seats from flights labeled i to j inclusive.
+The i-th booking bookings[i] = [i, j, k] means tnhat we booked k seats from flights labeled i to j inclusive.
 
 Return an array answer of length n, representing the number of seats booked on each flight in order of their label.
 
@@ -26,13 +26,35 @@ Constraints:
 '''
 
 class Solution(object):
-    def corpFlightBookings(self, bookings, n):
+    def corpFlightBookingsN(self, bookings, n):
         """
         :type bookings: List[List[int]]
         :type n: int
         :rtype: List[int]
         """
 
+        x = [0] * n
+        ans = [0] * n
+        for b in bookings:
+            i = b[0]
+            j = b[1]
+            k = b[2]
+            x[i - 1] += k
+            if j != n:
+                x[j] -= k
+
+        for i in range(len(x)):
+            if i == 0:
+                ans[i] = x[i]
+            else:
+                ans[i] = ans[i-1] + x[i]
+        return ans
+    def corpFlightBookings(self, bookings, n):
+        """
+        :type bookings: List[List[int]]
+        :type n: int
+        :rtype: List[int]
+        """
 
         result = [0] * n
         booking_count = 0
@@ -57,4 +79,4 @@ class Solution(object):
 bookings = [[1,2,10],[2,3,20],[2,5,25]]
 n = 5
 sol = Solution()
-print(sol.corpFlightBookings(bookings, n))
+print(sol.corpFlightBookingsN(bookings, n))
