@@ -2,7 +2,7 @@
   
 ***
 
-### [00014.Median_of_Two_Sorted_Arrays](../../SourceCode/Python/004.Median_of_Two_Sorted_Arrays.py) Level: Hard Tags: [Math]
+### [00014.Median_of_Two_Sorted_Arrays](../../SourceCode/Python/Problem/00004.Median_of_Two_Sorted_Arrays.py) Level: Hard Tags: [Math]
     
 
 題意:找出兩個已排序的正整數陣列的中位數
@@ -57,14 +57,14 @@ B則是k-pb=2
   
 ***
 
-### [00010.Regular_Expression_Matching](../../SourceCode/Python/010.Regular_Expression_Matching.py) Level: Hard Tags: [DP]
+### [00010.Regular_Expression_Matching](../../SourceCode/Python/Problem/00010.Regular_Expression_Matching.py) Level: Hard Tags: [DP]
   
 Time:  O(m * n)  
 Space: O(m * n)  
   
 思路:其實就是把正規表示式的"." 和 "\*"寫出來    
 十分難的一題  
-和 [00014.Wildcard_Matching](../../SourceCode/Python/044.Wildcard_Matching.py)  很像  
+和 [00014.Wildcard_Matching](../../SourceCode/Python/Problem/00044.Wildcard_Matching.py)  很像  
 但兩者間有微妙的差別，具體可以見44題的思路  
 不過簡單來說，這題比44題難多了  
 因為本題的"*"有太多狀況要考慮了  
