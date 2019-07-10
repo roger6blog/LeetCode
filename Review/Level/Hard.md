@@ -2,7 +2,7 @@
   
 ***
 
-### [00014.Median_of_Two_Sorted_Arrays](../../SourceCode/Python/Problem/00004.Median_of_Two_Sorted_Arrays.py) Level: Hard Tags: [Math]
+### [00004.Median_of_Two_Sorted_Arrays](../../SourceCode/Python/Problem/00004.Median_of_Two_Sorted_Arrays.py) Level: Hard Tags: [Math]
     
 
 題意:找出兩個已排序的正整數陣列的中位數
@@ -423,10 +423,10 @@ sell2: 在該價格賣出第二筆股票後手裡剩的錢，即最後利潤
 ***
   
   
-### [158.[Locked]Read_N_Characters_Given_Read4_II_-_Call_multiple_times](../../SourceCode/Python/Problem/00158.\[Locked\]Read_N_Characters_Given_Read4_II_-_Call_multiple_times.py) Level: Hard Tags: []
+### [00158.[Locked]Read_N_Characters_Given_Read4_II_-_Call_multiple_times](../../SourceCode/Python/Problem/00158.\[Locked\]Read_N_Characters_Given_Read4_II_-_Call_multiple_times.py) Level: Hard Tags: []
   
   
-這題是157題: [157.Read_N_Characters_Given_Read4](../../SourceCode/Python/Problem/00157.[Locked]Read_N_Characters_Given_Read4.py) 的延伸    
+這題是157題: [00157.Read_N_Characters_Given_Read4](../../SourceCode/Python/Problem/00157.[Locked]Read_N_Characters_Given_Read4.py) 的延伸    
 但多了多次讀取的部分  
 多次讀取的意義在於每次呼叫Read4所得到的資料量可能不同  
 所以需要準備一個buffer來存放讀取4字元後多餘的資料  
@@ -438,7 +438,7 @@ sell2: 在該價格賣出第二筆股票後手裡剩的錢，即最後利潤
 ***
   
   
-### [159.[Locked]Longest_Substring_with_At_Most_Two_Distinct_Characters](../../SourceCode/Python/Problem/00159.[Locked]Longest_Substring_with_At_Most_Two_Distinct_Characters.py) Level: Hard Tags: [Sliding Window]
+### [00159.[Locked]Longest_Substring_with_At_Most_Two_Distinct_Characters](../../SourceCode/Python/Problem/00159.[Locked]Longest_Substring_with_At_Most_Two_Distinct_Characters.py) Level: Hard Tags: [Sliding Window]
   
 Time:  O(n)  
 Space: O(1)  
@@ -458,7 +458,7 @@ Space: O(1)
 ***
   
   
-### [253.[Locked]Meeting_Rooms_II](../../SourceCode/Python/Problem/00253.[Locked]Meeting_Rooms_II.py) Level: Hard Tags: [List]
+### [00253.[Locked]Meeting_Rooms_II](../../SourceCode/Python/Problem/00253.[Locked]Meeting_Rooms_II.py) Level: Hard Tags: [List]
   
 思路: 直觀可以看出就是找出所有List重疊的部分，重疊代表要多準備會議室  
 可以把Meeting room所有的起始和結束時間按順序排好  
@@ -470,7 +470,7 @@ Space: O(1)
   
 ***
  
-### [212.Word_Search_II](../../SourceCode/Python/Problem/00212.Word_Search_II.py) Level: Hard Tags: [DFS, Tree]
+### [00212.Word_Search_II](../../SourceCode/Python/Problem/00212.Word_Search_II.py) Level: Hard Tags: [DFS, Tree]
   
 思路: 題目給了你一個2D陣列，要求你找出給予的單字中是能讓這陣列中的相鄰字元成為該單字  
 例如  
@@ -489,13 +489,13 @@ Output: ["eat","oath"]
 而題目限制字元是a~z的組合也暗示了我們能用 Tries來拆解單字和搜尋  
 因為自己寫的code一直敗在其中一個test case  
 這裡附上能被Accept的版本  
-[212.Word_Search_II_Accept](../../SourceCode/Python/Problem/00212.Word_Search_II_Accept.py)
+[00212.Word_Search_II_Accept](../../SourceCode/Python/Problem/00212.Word_Search_II_Accept.py)
   
   
   
 ***
   
-### [218.The_Skyline_Problem](../../SourceCode/Python/Problem/00218.The_Skyline_Problem.py) Level: Hard Tags: [Heap]
+### [00218.The_Skyline_Problem](../../SourceCode/Python/Problem/00218.The_Skyline_Problem.py) Level: Hard Tags: [Heap]
   
 Time:  O(nlogn)  
 Space: O(n)  
@@ -521,7 +521,7 @@ Python heapq提供的heap的是Min heap
    
 ***
   
-### [336.Palindrome_Pairs](../../SourceCode/Python/Problem/00336.Palindrome_Pairs.py) Level: Hard Tags: []
+### [00336.Palindrome_Pairs](../../SourceCode/Python/Problem/00336.Palindrome_Pairs.py) Level: Hard Tags: []
      
 Time:  O(n * k^2),   
 n is the number of the words, k is the max length of the words.  
@@ -574,18 +574,18 @@ k是所有字串中最大的字串長度
    
 ***
   
-### [340.[Locked]Longest_Substring_with_At_Most_K_Distinct_Characters](../../SourceCode/Python/Problem/00340.[Locked]Longest_Substring_with_At_Most_K_Distinct_Characters.py) Level: Hard Tags: [Sliding Window]
+### [00340.[Locked]Longest_Substring_with_At_Most_K_Distinct_Characters](../../SourceCode/Python/Problem/00340.[Locked]Longest_Substring_with_At_Most_K_Distinct_Characters.py) Level: Hard Tags: [Sliding Window]
     
 Time:  O(n)  
 Space: O(1)  
-思路:和 [159.[Locked]Longest_Substring_with_At_Most_Two_Distinct_Characters](../../SourceCode/Python/Problem/00159.[Locked]Longest_Substring_with_At_Most_Two_Distinct_Characters.py) 幾乎完全一樣  
+思路:和 [00159.[Locked]Longest_Substring_with_At_Most_Two_Distinct_Characters](../../SourceCode/Python/Problem/00159.[Locked]Longest_Substring_with_At_Most_Two_Distinct_Characters.py) 幾乎完全一樣  
 差別只在於159只要你找出最長的2個字母組成的字串長度  
 這題要K個而已  
 完全可以用159題的解法解答  
   
 ***
   
-### [295.Find_Median_from_Data_Stream](../../SourceCode/Python/Problem/00295.Find_Median_from_Data_Stream.py) Level: Hard Tags: [Heap]
+### [00295.Find_Median_from_Data_Stream](../../SourceCode/Python/Problem/00295.Find_Median_from_Data_Stream.py) Level: Hard Tags: [Heap]
   
 Time:  O(nlogn) for total n addNums,    
 O(logn) per addNum,   
@@ -626,7 +626,7 @@ maxHeap < minHeap理論上可以透過平衡來避免
   
 ***
   
-### [297.Serialize_and_Deserialize_Binary_Tree](../../SourceCode/Python/Problem/00297.Serialize_and_Deserialize_Binary_Tree.py) Level: Hard Tags: [DFS, Tree]
+### [00297.Serialize_and_Deserialize_Binary_Tree](../../SourceCode/Python/Problem/00297.Serialize_and_Deserialize_Binary_Tree.py) Level: Hard Tags: [DFS, Tree]
   
 Time:  O(n)  
 Space: O(h)  
@@ -637,11 +637,11 @@ deserialize則是把資料加回Tree的過程
 因為題目很freestyle，沒有完全標準的答案  
 我們另外附上能被accept的版本  
 
-[297.Serialize_and_Deserialize_Binary_Tree_accept](../../SourceCode/Python/Problem/00297.Serialize_and_Deserialize_Binary_Tree_accept.py)  
+[00297.Serialize_and_Deserialize_Binary_Tree_accept](../../SourceCode/Python/Problem/00297.Serialize_and_Deserialize_Binary_Tree_accept.py)  
 
 ***
   
-### [329.Longest_Increasing_Path_in_a_Matrix](../../SourceCode/Python/Problem/00329.Longest_Increasing_Path_in_a_Matrix.py) Level: Hard Tags: [DFS, DP]
+### [00329.Longest_Increasing_Path_in_a_Matrix](../../SourceCode/Python/Problem/00329.Longest_Increasing_Path_in_a_Matrix.py) Level: Hard Tags: [DFS, DP]
   
 Time:  O(m * n)  
 Space: O(m * n)  
