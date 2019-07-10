@@ -2,7 +2,7 @@
   
 ***
 
-### [004.Median_of_Two_Sorted_Arrays](../../SourceCode/Python/004.Median_of_Two_Sorted_Arrays.py) Level: Hard Tags: [Math]
+### [00014.Median_of_Two_Sorted_Arrays](../../SourceCode/Python/004.Median_of_Two_Sorted_Arrays.py) Level: Hard Tags: [Math]
     
 
 題意:找出兩個已排序的正整數陣列的中位數
@@ -57,14 +57,14 @@ B則是k-pb=2
   
 ***
 
-### [010.Regular_Expression_Matching](../../SourceCode/Python/010.Regular_Expression_Matching.py) Level: Hard Tags: [DP]
+### [00010.Regular_Expression_Matching](../../SourceCode/Python/010.Regular_Expression_Matching.py) Level: Hard Tags: [DP]
   
 Time:  O(m * n)  
 Space: O(m * n)  
   
 思路:其實就是把正規表示式的"." 和 "\*"寫出來    
 十分難的一題  
-和 [044.Wildcard_Matching](../../SourceCode/Python/044.Wildcard_Matching.py)  很像  
+和 [00014.Wildcard_Matching](../../SourceCode/Python/044.Wildcard_Matching.py)  很像  
 但兩者間有微妙的差別，具體可以見44題的思路  
 不過簡單來說，這題比44題難多了  
 因為本題的"*"有太多狀況要考慮了  
@@ -192,11 +192,11 @@ c) 考慮 "xaa" match "xa*" 的場合:
 
 ***
   
-### [044.Wildcard_Matching](../../SourceCode/Python/044.Wildcard_Matching.py) Level: Hard Tags: [DP]
+### [00014.Wildcard_Matching](../../SourceCode/Python/Problem/00044.Wildcard_Matching.py) Level: Hard Tags: [DP]
    
 思路: 題目要求用?代表一個字元，*代表所有字元    
 來比對該字串是否符合特定的pattern  
-乍看之下和 [010.Regular_Expression_Matching](../../SourceCode/Python/010.Regular_Expression_Matching.py) 很像  
+乍看之下和 [00010.Regular_Expression_Matching](../../SourceCode/Python/Problem/00010.Regular_Expression_Matching.py) 很像  
 但兩者間有微妙的差別  
 不過這裡的 "\*"和第10題的"." 幾乎一樣就是了  
 這裡有兩種解法，第一種是暴力算法  
@@ -363,22 +363,22 @@ sp和pp都為1的時候，"a" match "a" 所以表格為
   
 ***
 
-### [057.Insert_Interval](../../SourceCode/Python/057.Insert_Interval.py) Level: Hard Tags: [List]
+### [00017.Insert_Interval](../../SourceCode/Python/Problem/00057.Insert_Interval.py) Level: Hard Tags: [List]
   
-思路: 是[056.Merge_Interval](../../SourceCode/Python/056.Merge_Interval.py) 的延伸  
+思路: 是[00016.Merge_Interval](../../SourceCode/Python/Problem/00056.Merge_Interval.py) 的延伸  
 做法也極為類似  
 只要把要插入的Interval插入原本的List  
 剩下的就跟056.Merge_Interval一樣了
   
 ***
   
-### [123.Best_Time_to_Buy_and_Sell_Stock_III](../../SourceCode/Python/123.Best_Time_to_Buy_and_Sell_Stock_III.py) Level: Hard Tags: [DP]
+### [123.Best_Time_to_Buy_and_Sell_Stock_III](../../SourceCode/Python/Problem/00123.Best_Time_to_Buy_and_Sell_Stock_III.py) Level: Hard Tags: [DP]
   
 Time:  O(n)  
 Space: O(n)  
   
-思路: 是[122.Best_Time_to_Buy_and_Sell_Stock_II](../../SourceCode/Python/122.Best_Time_to_Buy_and_Sell_Stock_II.py)   
-     和[121.Best_Time_to_Buy_and_Sell_Stock_II](../../SourceCode/Python/121.Best_Time_to_Buy_and_Sell_Stock.py) 的延伸  
+思路: 是[122.Best_Time_to_Buy_and_Sell_Stock_II](../../SourceCode/Python/Problem/00122.Best_Time_to_Buy_and_Sell_Stock_II.py)   
+     和[121.Best_Time_to_Buy_and_Sell_Stock_II](../../SourceCode/Python/Problem/00121.Best_Time_to_Buy_and_Sell_Stock.py) 的延伸  
 但本題因為只能用DP解題，屬於高難度  
 同樣是買低賣高，這題限制只能做兩次交易  
 我們用一維的雙動態規劃來解題  
@@ -410,7 +410,7 @@ sell2: 在該價格賣出第二筆股票後手裡剩的錢，即最後利潤
   
 ***
   
-### [146.LRU_Cache](../../SourceCode/Python/146.LRU_Cache.py) Level: Hard Tags: []
+### [146.LRU_Cache](../../SourceCode/Python/Problem/00146.LRU_Cache.py) Level: Hard Tags: []
   
 思路: 實作一個 Least Recently Used (LRU) cache.  
 最簡單的作法是使用Python內建的dictionary來存放資料和索引  
@@ -423,10 +423,10 @@ sell2: 在該價格賣出第二筆股票後手裡剩的錢，即最後利潤
 ***
   
   
-### [158.[Locked]Read_N_Characters_Given_Read4_II_-_Call_multiple_times](../../SourceCode/Python/158.\[Locked\]Read_N_Characters_Given_Read4_II_-_Call_multiple_times.py) Level: Hard Tags: []
+### [158.[Locked]Read_N_Characters_Given_Read4_II_-_Call_multiple_times](../../SourceCode/Python/Problem/00158.\[Locked\]Read_N_Characters_Given_Read4_II_-_Call_multiple_times.py) Level: Hard Tags: []
   
   
-這題是157題: [157.Read_N_Characters_Given_Read4](../../SourceCode/Python/157.[Locked]Read_N_Characters_Given_Read4.py) 的延伸    
+這題是157題: [157.Read_N_Characters_Given_Read4](../../SourceCode/Python/Problem/00157.[Locked]Read_N_Characters_Given_Read4.py) 的延伸    
 但多了多次讀取的部分  
 多次讀取的意義在於每次呼叫Read4所得到的資料量可能不同  
 所以需要準備一個buffer來存放讀取4字元後多餘的資料  
@@ -438,7 +438,7 @@ sell2: 在該價格賣出第二筆股票後手裡剩的錢，即最後利潤
 ***
   
   
-### [159.[Locked]Longest_Substring_with_At_Most_Two_Distinct_Characters](../../SourceCode/Python/159.[Locked]Longest_Substring_with_At_Most_Two_Distinct_Characters.py) Level: Hard Tags: [Sliding Window]
+### [159.[Locked]Longest_Substring_with_At_Most_Two_Distinct_Characters](../../SourceCode/Python/Problem/00159.[Locked]Longest_Substring_with_At_Most_Two_Distinct_Characters.py) Level: Hard Tags: [Sliding Window]
   
 Time:  O(n)  
 Space: O(1)  
@@ -458,7 +458,7 @@ Space: O(1)
 ***
   
   
-### [253.[Locked]Meeting_Rooms_II](../../SourceCode/Python/253.[Locked]Meeting_Rooms_II.py) Level: Hard Tags: [List]
+### [253.[Locked]Meeting_Rooms_II](../../SourceCode/Python/Problem/00253.[Locked]Meeting_Rooms_II.py) Level: Hard Tags: [List]
   
 思路: 直觀可以看出就是找出所有List重疊的部分，重疊代表要多準備會議室  
 可以把Meeting room所有的起始和結束時間按順序排好  
@@ -470,7 +470,7 @@ Space: O(1)
   
 ***
  
-### [212.Word_Search_II](../../SourceCode/Python/212.Word_Search_II.py) Level: Hard Tags: [DFS, Tree]
+### [212.Word_Search_II](../../SourceCode/Python/Problem/00212.Word_Search_II.py) Level: Hard Tags: [DFS, Tree]
   
 思路: 題目給了你一個2D陣列，要求你找出給予的單字中是能讓這陣列中的相鄰字元成為該單字  
 例如  
@@ -489,13 +489,13 @@ Output: ["eat","oath"]
 而題目限制字元是a~z的組合也暗示了我們能用 Tries來拆解單字和搜尋  
 因為自己寫的code一直敗在其中一個test case  
 這裡附上能被Accept的版本  
-[212.Word_Search_II_Accept](../../SourceCode/Python/212.Word_Search_II_Accept.py)
+[212.Word_Search_II_Accept](../../SourceCode/Python/Problem/00212.Word_Search_II_Accept.py)
   
   
   
 ***
   
-### [218.The_Skyline_Problem](../../SourceCode/Python/218.The_Skyline_Problem.py) Level: Hard Tags: [Heap]
+### [218.The_Skyline_Problem](../../SourceCode/Python/Problem/00218.The_Skyline_Problem.py) Level: Hard Tags: [Heap]
   
 Time:  O(nlogn)  
 Space: O(n)  
@@ -521,7 +521,7 @@ Python heapq提供的heap的是Min heap
    
 ***
   
-### [336.Palindrome_Pairs](../../SourceCode/Python/336.Palindrome_Pairs.py) Level: Hard Tags: []
+### [336.Palindrome_Pairs](../../SourceCode/Python/Problem/00336.Palindrome_Pairs.py) Level: Hard Tags: []
      
 Time:  O(n * k^2),   
 n is the number of the words, k is the max length of the words.  
@@ -574,18 +574,18 @@ k是所有字串中最大的字串長度
    
 ***
   
-### [340.[Locked]Longest_Substring_with_At_Most_K_Distinct_Characters](../../SourceCode/Python/340.[Locked]Longest_Substring_with_At_Most_K_Distinct_Characters.py) Level: Hard Tags: [Sliding Window]
+### [340.[Locked]Longest_Substring_with_At_Most_K_Distinct_Characters](../../SourceCode/Python/Problem/00340.[Locked]Longest_Substring_with_At_Most_K_Distinct_Characters.py) Level: Hard Tags: [Sliding Window]
     
 Time:  O(n)  
 Space: O(1)  
-思路:和 [159.[Locked]Longest_Substring_with_At_Most_Two_Distinct_Characters](../../SourceCode/Python/159.[Locked]Longest_Substring_with_At_Most_Two_Distinct_Characters.py) 幾乎完全一樣  
+思路:和 [159.[Locked]Longest_Substring_with_At_Most_Two_Distinct_Characters](../../SourceCode/Python/Problem/00159.[Locked]Longest_Substring_with_At_Most_Two_Distinct_Characters.py) 幾乎完全一樣  
 差別只在於159只要你找出最長的2個字母組成的字串長度  
 這題要K個而已  
 完全可以用159題的解法解答  
   
 ***
   
-### [295.Find_Median_from_Data_Stream](../../SourceCode/Python/295.Find_Median_from_Data_Stream.py) Level: Hard Tags: [Heap]
+### [295.Find_Median_from_Data_Stream](../../SourceCode/Python/Problem/00295.Find_Median_from_Data_Stream.py) Level: Hard Tags: [Heap]
   
 Time:  O(nlogn) for total n addNums,    
 O(logn) per addNum,   
@@ -626,7 +626,7 @@ maxHeap < minHeap理論上可以透過平衡來避免
   
 ***
   
-### [297.Serialize_and_Deserialize_Binary_Tree](../../SourceCode/Python/297.Serialize_and_Deserialize_Binary_Tree.py) Level: Hard Tags: [DFS, Tree]
+### [297.Serialize_and_Deserialize_Binary_Tree](../../SourceCode/Python/Problem/00297.Serialize_and_Deserialize_Binary_Tree.py) Level: Hard Tags: [DFS, Tree]
   
 Time:  O(n)  
 Space: O(h)  
@@ -637,11 +637,11 @@ deserialize則是把資料加回Tree的過程
 因為題目很freestyle，沒有完全標準的答案  
 我們另外附上能被accept的版本  
 
-[297.Serialize_and_Deserialize_Binary_Tree_accept](../../SourceCode/Python/297.Serialize_and_Deserialize_Binary_Tree_accept.py)  
+[297.Serialize_and_Deserialize_Binary_Tree_accept](../../SourceCode/Python/Problem/00297.Serialize_and_Deserialize_Binary_Tree_accept.py)  
 
 ***
   
-### [329.Longest_Increasing_Path_in_a_Matrix](../../SourceCode/Python/329.Longest_Increasing_Path_in_a_Matrix.py) Level: Hard Tags: [DFS, DP]
+### [329.Longest_Increasing_Path_in_a_Matrix](../../SourceCode/Python/Problem/00329.Longest_Increasing_Path_in_a_Matrix.py) Level: Hard Tags: [DFS, DP]
   
 Time:  O(m * n)  
 Space: O(m * n)  
