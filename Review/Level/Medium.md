@@ -2,7 +2,7 @@
   
 ***
 
-### [003.Longest_Substring_Without_Repeating_Characters](../../SourceCode/Python/003.Longest_Substring_Without_Repeating_Characters.py) Level: Medium Tags: [String, Sliding Window]  
+### [00003.Longest_Substring_Without_Repeating_Characters](../../SourceCode/Python/Problem/00003.Longest_Substring_Without_Repeating_Characters.py) Level: Medium Tags: [String, Sliding Window]  
   
 Time:  O(n)  
 Space: O(1)    
@@ -39,7 +39,7 @@ if char in wordDict and wordDict[char] >= begin:
 
 ***
 
-### [031.Next_Permutation](../../SourceCode/Python/031.Next_Permutation.py) Level: Medium Tags: [Tricky]  
+### [00031.Next_Permutation](../../SourceCode/Python/Problem/00031.Next_Permutation.py) Level: Medium Tags: [Tricky]  
   
 Time:  O(n)  
 Space: O(1)
@@ -68,7 +68,7 @@ Space: O(1)
   
 ***
 
-### [039.Combination_Sum](../../SourceCode/Python/039.Combination_Sum.py) Level: Medium Tags: [Recursive]  
+### [00039.Combination_Sum](../../SourceCode/Python/Problem/00039.Combination_Sum.py) Level: Medium Tags: [Recursive]  
     
 Time:  O(k * n^k)  
 Space: O(k)  
@@ -110,7 +110,7 @@ else:
   
 ***
 
-### [040.Combination_Sum_II](../../SourceCode/Python/040.Combination_Sum_II.py) Level: Medium Tags: [Recursive]  
+### [00040.Combination_Sum_II](../../SourceCode/Python/Problem/00040.Combination_Sum_II.py) Level: Medium Tags: [Recursive]  
     
 Time:  O(k * n^k)  
 Space: O(k)  
@@ -118,7 +118,7 @@ Space: O(k)
 思路: 給你一個candidate數列和一個target數字  
 要你求總和為target數字的所有組合  
 數字從candidate數列挑出，**不**可重複  
-不可重複是和 [039.Combination_Sum](../../SourceCode/Python/039.Combination_Sum.py) 唯一的差別       
+不可重複是和 [00039.Combination_Sum](../../SourceCode/Python/Problem/00039.Combination_Sum.py) 唯一的差別       
 我們的作法也很簡單，幾乎和39題一樣  
 只有在遞迴呼叫時傳入當前數字之後的candidate數列即可  
 (意即當前數字之前的數字都已經被參考使用過)  
@@ -136,7 +136,7 @@ return map(list, bSet)
   
 ***
 
-### [056.Merge_Intervals](../../SourceCode/Python/056.Merge_Intervals.py) Level: Medium Tags: [List]  
+### [00056.Merge_Intervals](../../SourceCode/Python/Problem/00056.Merge_Intervals.py) Level: Medium Tags: [List]  
   
 思路: 對Python來說不難，因為Python就有內建List排序  
 把題目給的List照start值得順序排好後  
@@ -160,7 +160,7 @@ else:
   
 ***
 
-### [074.Search_a_2D_Matrix](../../SourceCode/Python/074.Search_a_2D_Matrix.py) Level: Medium Tags: []
+### [00074.Search_a_2D_Matrix](../../SourceCode/Python/Problem/00074.Search_a_2D_Matrix.py) Level: Medium Tags: []
   
 Time:  O(logm + logn)  
 Space: O(1)  
@@ -183,7 +183,7 @@ while left < right:
   
 ***
 
-### [078.Subsets](../../SourceCode/Python/078.Subsets.py) Level: Medium Tags: [Recursive, backtracking]
+### [00078.Subsets](../../SourceCode/Python/Problem/00078.Subsets.py) Level: Medium Tags: [Recursive, backtracking]
   
 Time:  O(n * 2^n)  
 Space: O(1)  
@@ -196,7 +196,7 @@ Space: O(1)
   
 ***
 
-### [079.Word_Search](../../SourceCode/Python/079.Word_Search.py) Level: Medium Tags: [DFS]
+### [00079.Word_Search](../../SourceCode/Python/Problem/00079.Word_Search.py) Level: Medium Tags: [DFS]
   
 Time:  O(m * n * k)  
 Space: O(k)  
@@ -223,7 +223,7 @@ Python的話可以用swapcase變換字母大小
   
 ***
   
-### [179.Largest_Number](../../SourceCode/Python/179.Largest_Number.py) Level: Medium Tags: [Sort]
+### [00179.Largest_Number](../../SourceCode/Python/Problem/00179.Largest_Number.py) Level: Medium Tags: [Sort]
 
 Time:  O(nlogn)  
 Space: O(1)
@@ -246,7 +246,7 @@ else:
   
 ***
   
-### [133.Clone_Graph](../../SourceCode/Python/133.Clone_Graph.py) Level: Medium Tags: [Graph, DFS]
+### [00133.Clone_Graph](../../SourceCode/Python/Problem/00133.Clone_Graph.py) Level: Medium Tags: [Graph, DFS]
   
 Time:  O(n)  
 Space: O(n)  
@@ -258,7 +258,7 @@ DFS或BFS皆可
   
 ***
   
-### [139.Word_Break](../../SourceCode/Python/139.Word_Break.py) Level: Medium Tags: [DP, Backtracking]
+### [00139.Word_Break](../../SourceCode/Python/Problem/00139.Word_Break.py) Level: Medium Tags: [DP, Backtracking]
   
 Time:  O(n * j), worst case is O(n^2)  
 Space: O(n)    
@@ -367,7 +367,7 @@ catsandog=>atsandog=>tsandog=>sandog
   
 ***
   
-### [163.[Locked]Missing_Ranges](../../SourceCode/Python/[Locked]163.Missing_Ranges.py) Level: Medium Tags: []
+### [00163.[Locked]Missing_Ranges](../../SourceCode/Python/[Locked]163.Missing_Ranges.py) Level: Medium Tags: []
   
 Time:  O(n)  
 Space: O(n)
@@ -383,7 +383,7 @@ pre指標指向前一個元素、curr指標指向後面一個元素
   
 ***
   
-### [166.Fraction_to_Recurring_Decimal](../../SourceCode/Python/166.Fraction_to_Recurring_Decimal.py) Level: Medium Tags: []
+### [00166.Fraction_to_Recurring_Decimal](../../SourceCode/Python/Problem/00166.Fraction_to_Recurring_Decimal.py) Level: Medium Tags: []
   
 Time:  O(logn), 
 where logn is the length of result strings    
@@ -413,11 +413,11 @@ while True:
     loopDict[numerator] = cnt
 ```
 不能直接把小數點數字加入list再去搜尋該list  
-否則會無法處理小數點數字重複的情況如: 1/333=0.(003)  
+否則會無法處理小數點數字重複的情況如: 1/Problem/00333=0.(003)  
   
 ***
   
-### [200.Number_of_Islands](../../SourceCode/Python/200.Number_of_Islands.py) Level: Medium Tags: []
+### [00200.Number_of_Islands](../../SourceCode/Python/Problem/00200.Number_of_Islands.py) Level: Medium Tags: []
   
 思路: 本題是找出與周圍被0包圍的1  
 可以使用DFS，利用四個方向去取得每個元素的周圍是否還有0  
@@ -425,14 +425,14 @@ while True:
   
 ***
   
-### [208.Implement_Trie_(Prefix_Tree)](../../SourceCode/Python/208.Implement_Trie_(Prefix_Tree).py) Level: Medium Tags: []
+### [00208.Implement_Trie_(Prefix_Tree)](../../SourceCode/Python/Problem/00208.Implement_Trie_(Prefix_Tree).py) Level: Medium Tags: []
   
 Time:  O(n), per operation
 Space: O(1)
 思路:本題要求你實作一個字典樹(Trie)的insert, search和startWith  
 在此之前你必須先了解字典樹是什麼  
   
-![一個保存了8個鍵的trie結構，"A", "to", "tea", "ted", "ten", "i", "in", and "inn".](../Res/1200px-Trie_example.svg.png)
+![一個保存了8個鍵的trie結構，"A", "to", "tea", "ted", "ten", "i", "in", and "inn".](../Res/Problem/001200px-Trie_example.svg.png)
   
 簡單來說就是一個方便搜尋同樣Prefix單字的樹  
 有同樣prefix字的單字會被插到同一條Trie  
@@ -452,7 +452,7 @@ insert、search、startwith
   
 ***  
   
-### [216.Combination_Sum_III](../../SourceCode/Python/216.Combination_Sum_III.py) Level: Medium Tags: [Recursive]
+### [00216.Combination_Sum_III](../../SourceCode/Python/Problem/00216.Combination_Sum_III.py) Level: Medium Tags: [Recursive]
   
 Time:  O(k * n^k)    
 Space: O(k)    
@@ -461,8 +461,8 @@ Space: O(k)
 要你求出由不重複的0\~9整數且長度為k的數列組成的數字n 
 例如k=3, n=9  
 則答案為[[1,2,6], [1,3,5], [2,3,4]]    
-本題是 [039.Combination_Sum](../../SourceCode/Python/039.Combination_Sum.py)   
-和 [040.Combination_Sum_II](../../SourceCode/Python/040.Combination_Sum_II.py) 的類似題  
+本題是 [00039.Combination_Sum](../../SourceCode/Python/Problem/00039.Combination_Sum.py)   
+和 [00040.Combination_Sum_II](../../SourceCode/Python/Problem/00040.Combination_Sum_II.py) 的類似題  
 主要的差別在於候選數列candidate要自己湊  
 其實就是[1~9] 剩下的除了要判斷數列長度是否為k外
 和040題幾乎沒有差別    
@@ -470,7 +470,7 @@ Space: O(k)
     
 ***
   
-### [228.Summary_Ranges](../../SourceCode/Python/228.Summary_Ranges.py) Level: Medium Tags: []
+### [00228.Summary_Ranges](../../SourceCode/Python/Problem/00228.Summary_Ranges.py) Level: Medium Tags: []
   
 Time:  O(n)  
 Space: O(1)  
@@ -488,7 +488,7 @@ Space: O(1)
   
   
   
-### [230.Kth_Smallest_Element_in_a_BST](../../SourceCode/Python/230.Kth_Smallest_Element_in_a_BST.py) Level: Medium Tags: [Recursive]
+### [00230.Kth_Smallest_Element_in_a_BST](../../SourceCode/Python/Problem/00230.Kth_Smallest_Element_in_a_BST.py) Level: Medium Tags: [Recursive]
   
 Time:  O(max(h, k))  
 h is height of tree  
@@ -506,13 +506,13 @@ Python的話可以先traversal整個二元樹(BFS或DFS都行)
   
 ***
 
-### [240.Search_a_2D_Matrix_II](../../SourceCode/Python/240.Search_a_2D_Matrix_II.py) Level: Medium Tags: [Recursive]
+### [00240.Search_a_2D_Matrix_II](../../SourceCode/Python/Problem/00240.Search_a_2D_Matrix_II.py) Level: Medium Tags: [Recursive]
   
 Time:  O(row + col)  
 Space: O(1)
   
 思路:   
-是[074.Search_a_2D_Matrix](../../SourceCode/Python/074.Search_a_2D_Matrix.py) 的衍伸題    
+是[00074.Search_a_2D_Matrix](../../SourceCode/Python/Problem/00074.Search_a_2D_Matrix.py) 的衍伸題    
 不同的是這次的2D Matrix是呈螺旋狀遞減，但基本還是西高東低  
 所以同樣也能用遞迴解題，甚至可能用同樣的解法來解題  
 只有效率的差別  
@@ -527,7 +527,7 @@ Space: O(1)
 ***
   
 
-### [246.[Locked]Strobogrammatic_Number](../../SourceCode/Python/246.[Locked]Strobogrammatic_Number.py) Level: Medium Tags: []
+### [00246.[Locked]Strobogrammatic_Number](../../SourceCode/Python/Problem/00246.[Locked]Strobogrammatic_Number.py) Level: Medium Tags: []
   
 Time:  O(n)  
 Space: O(1)  
@@ -541,12 +541,12 @@ Space: O(1)
   
 ***
 
-### [247.[Locked]Strobogrammatic_Number_II](../../SourceCode/Python/247.[Locked]Strobogrammatic_Number_II.py) Level: Medium Tags: [Recursive]
+### [00247.[Locked]Strobogrammatic_Number_II](../../SourceCode/Python/Problem/00247.[Locked]Strobogrammatic_Number_II.py) Level: Medium Tags: [Recursive]
   
 Time:  O(n^2 * 5^(n/2))
 Space: O(n)
   
-思路:[246.[Locked]Strobogrammatic_Number](../../SourceCode/Python/246.[Locked]Strobogrammatic_Number.py) 的衍伸題目  
+思路:[00246.[Locked]Strobogrammatic_Number](../../SourceCode/Python/Problem/00246.[Locked]Strobogrammatic_Number.py) 的衍伸題目  
 這次是要求你組出一個n長度的所有對稱數  
 但題目也好心的提示你要用遞迴來做，還告訴你要用n-2來當遞迴條件(因為是對稱數)  
 重點就在於遞迴的參數，我們一開始呼叫帶兩個n的遞迴function  
@@ -557,7 +557,7 @@ Space: O(n)
   
 ***
 
-### [249.[Locked]Group_Shifted_Strings](../../SourceCode/Python/249.[Locked]Group_Shifted_Strings.py) Level: Medium Tags: []
+### [00249.[Locked]Group_Shifted_Strings](../../SourceCode/Python/Problem/00249.[Locked]Group_Shifted_Strings.py) Level: Medium Tags: []
   
 Time:  O(nlogn)  
 Space: O(n)  
@@ -574,7 +574,7 @@ value即為歸類於此的各個字串組成的List
   
 ***
   
-### [251.[Locked]Flatten_2D_Vector](../../SourceCode/Python/251.[Locked]Flatten_2D_Vector.py) Level: Medium Tags: []
+### [00251.[Locked]Flatten_2D_Vector](../../SourceCode/Python/Problem/00251.[Locked]Flatten_2D_Vector.py) Level: Medium Tags: []
   
 Time:  O(1)  
 Space: O(1)  
@@ -597,12 +597,12 @@ Space: O(1)
   
 ***
   
-### [264.Ugly_Number_II](../../SourceCode/Python/264.Ugly_Number_II.py) Level: Medium Tags: [Math]  
+### [00264.Ugly_Number_II](../../SourceCode/Python/Problem/00264.Ugly_Number_II.py) Level: Medium Tags: [Math]  
 
 Time:  O(n)  
 Space: O(1)
     
-思路: 是 [263.Ugly_Number](../../SourceCode/Python/263.Ugly_Number.py) 的衍伸題  
+思路: 是 [00263.Ugly_Number](../../SourceCode/Python/Problem/00263.Ugly_Number.py) 的衍伸題  
 要知道醜數的定義請看之前的題目   
 本題要你找出從1開始排起，排行位於第n個的醜數  
 我們當然可以從1開始每個數都挑出來看他是不是醜數  
@@ -628,7 +628,7 @@ Space: O(1)
      
 ***
   
-### [279.Perfect_Squares](../../SourceCode/Python/279.Perfect_Squares.py) Level: Medium Tags: [DP]
+### [00279.Perfect_Squares](../../SourceCode/Python/Problem/00279.Perfect_Squares.py) Level: Medium Tags: [DP]
   
   
 思路:檢查所給的數字能被多少個完美平方數相加  
@@ -654,7 +654,7 @@ Space: O(1)
   
 ***
   
-### [280.[Locked]Wiggle_Sort](../../SourceCode/Python/280.[Locked]Wiggle_Sort.py) Level: Medium Tags: [Sort]
+### [00280.[Locked]Wiggle_Sort](../../SourceCode/Python/Problem/00280.[Locked]Wiggle_Sort.py) Level: Medium Tags: [Sort]
   
 Time:  O(n)  
 Space: O(1)  
@@ -668,7 +668,7 @@ nums[0] <= nums[1] >= nums[2] <= nums[3]....
   
 ***
   
-### [284.Peeking_Iterator](../../SourceCode/Python/284.Peeking_Iterator.py) Level: Medium Tags: [Iterator]
+### [00284.Peeking_Iterator](../../SourceCode/Python/Problem/00284.Peeking_Iterator.py) Level: Medium Tags: [Iterator]
    
 Time:  O(1) per peek(), next(), hasNext()  
 Space: O(1)   
@@ -693,7 +693,7 @@ peek的要求是告訴我們下一個元素的值
     
 ***
   
-### [286.[Locked]Walls_and_Gates](../../SourceCode/Python/286.[Locked]Walls_and_Gates.py) Level: Medium Tags: [DFS]
+### [00286.[Locked]Walls_and_Gates](../../SourceCode/Python/Problem/00286.[Locked]Walls_and_Gates.py) Level: Medium Tags: [DFS]
      
 Time:  O(m * n)  
 Space: O(m * n)  
@@ -709,7 +709,7 @@ m is row of matrix, n is col of matrix
     
 ***
   
-### [289.Game_of_Life](../../SourceCode/Python/289.Game_of_Life.py) Level: Medium Tags: [List, Bit manipulation]
+### [00289.Game_of_Life](../../SourceCode/Python/Problem/00289.Game_of_Life.py) Level: Medium Tags: [List, Bit manipulation]
   
 Time:  O(m * n)  
 Space: O(m * n)  Follow up: O(1)    
@@ -745,7 +745,7 @@ Follow up要求我們在不能使用額外空間的情況下得出陣列的下�
   
 ***
   
-### [298.[Locked]Binary_Tree_Longest_Consecutive_Sequence](../../SourceCode/Python/298.[Locked]Binary_Tree_Longest_Consecutive_Sequence.py) Level: Medium Tags: [Tree]
+### [00298.[Locked]Binary_Tree_Longest_Consecutive_Sequence](../../SourceCode/Python/Problem/00298.[Locked]Binary_Tree_Longest_Consecutive_Sequence.py) Level: Medium Tags: [Tree]
     
 Time:  O(n)  
 Space: O(h), h is height of tree  
@@ -763,7 +763,7 @@ Space: O(h), h is height of tree
 ```
   
 他的最長順序就是3-4-5，所以總和為3  
-做法和[687.Longest_Univalue_Path](../../SourceCode/Python/687.Longest_Univalue_Path.py)  很像  
+做法和[00687.Longest_Univalue_Path](../../SourceCode/Python/Problem/00687.Longest_Univalue_Path.py)  很像  
 只差在判斷條件不同  
 不斷遞迴去尋找下一個符合條件的子節點  
 最後返回左右子樹的最大值  
@@ -772,13 +772,13 @@ Space: O(h), h is height of tree
   
 ***
   
-### [309.Best_Time_to_Buy_and_Sell_Stock_with_Cooldown](../../SourceCode/Python/309.Best_Time_to_Buy_and_Sell_Stock_with_Cooldown.py) Level: Medium Tags: [DP]
+### [00309.Best_Time_to_Buy_and_Sell_Stock_with_Cooldown](../../SourceCode/Python/Problem/00309.Best_Time_to_Buy_and_Sell_Stock_with_Cooldown.py) Level: Medium Tags: [DP]
   
 Time:  O(n)  
 Space: O(n)  
   
-思路: 是[122.Best_Time_to_Buy_and_Sell_Stock_II](../../SourceCode/Python/122.Best_Time_to_Buy_and_Sell_Stock_II.py)   
-     和[121.Best_Time_to_Buy_and_Sell_Stock_II](../../SourceCode/Python/121.Best_Time_to_Buy_and_Sell_Stock.py) 的延伸  
+思路: 是[00122.Best_Time_to_Buy_and_Sell_Stock_II](../../SourceCode/Python/Problem/00122.Best_Time_to_Buy_and_Sell_Stock_II.py)   
+     和[00121.Best_Time_to_Buy_and_Sell_Stock_II](../../SourceCode/Python/Problem/00121.Best_Time_to_Buy_and_Sell_Stock.py) 的延伸  
 如果不熟動態規劃()Dynamic Programming)的話  
 這題可以算是Hard了  
 題目和之前幾題一樣都要求買低賣高，但多了冷卻期  
@@ -816,10 +816,10 @@ sell[i] = max(sell[i-1], buy[i-1] + prices[i])
   
 ***
   
-### [313.Super_Ugly_Number](../../SourceCode/Python/313.Super_Ugly_Number.py) Level: Medium Tags: [Math]
+### [00313.Super_Ugly_Number](../../SourceCode/Python/Problem/00313.Super_Ugly_Number.py) Level: Medium Tags: [Math]
   
-思路:思路: 是 [263.Ugly_Number](../../SourceCode/Python/263.Ugly_Number.py)   
-和 [264.Ugly_Number_II](../../SourceCode/Python/264.Ugly_Number_II.py) 的衍伸題  
+思路:思路: 是 [00263.Ugly_Number](../../SourceCode/Python/Problem/00263.Ugly_Number.py)   
+和 [00264.Ugly_Number_II](../../SourceCode/Python/Problem/00264.Ugly_Number_II.py) 的衍伸題  
 給你一組全新的醜數因子，要你找出第n個醜數  
 其實只是把264題的內建醜數因子改成題目給的而已  
 所以把264題的解答改成用動態給因子的方式就可以了  
@@ -828,7 +828,7 @@ sell[i] = max(sell[i-1], buy[i-1] + prices[i])
   
 ***
   
-### [318.Maximum_Product_of_Word_Lengths](../../SourceCode/Python/318.Maximum_Product_of_Word_Lengths.py) Level: Medium Tags: [Bit Manipulation]
+### [00318.Maximum_Product_of_Word_Lengths](../../SourceCode/Python/Problem/00318.Maximum_Product_of_Word_Lengths.py) Level: Medium Tags: [Bit Manipulation]
   
 Time:  O(n^2)  
 Space: O(n)  (用Bit可再降低點空間複雜度)  
@@ -851,13 +851,13 @@ Space: O(n)  (用Bit可再降低點空間複雜度)
   
 ***
   
-### [320.[Locked]Generalized_Abbreviation](../../SourceCode/Python/320.[Locked]Generalized_Abbreviation.py) Level: Medium Tags: [DFS, BackTracking]
+### [00320.[Locked]Generalized_Abbreviation](../../SourceCode/Python/Problem/00320.[Locked]Generalized_Abbreviation.py) Level: Medium Tags: [DFS, BackTracking]
   
 Time:  O(n * 2^n)  
 Space: O(n)  
     
 思路:給你一個單字，要你求出所有可用的縮寫  
-算是[408.Valid_Word_Abbreviation](../../SourceCode/Python/408.Valid_Word_Abbreviation.py) 的類似題  
+算是[00408.Valid_Word_Abbreviation](../../SourceCode/Python/Problem/00408.Valid_Word_Abbreviation.py) 的類似題  
 先假設你知道縮寫是什麼意思了，不明白的人可以去看408題  
 例如word這個單字可以為下面幾種:
 [1ord, w1rd, wo1d, wor1, 2rd, w2d....] 依此類推  
@@ -884,12 +884,12 @@ self.dfs(i+1+j, abbr, ans)
   
 ***
   
-### [324.Wiggle_Sort_II](../../SourceCode/Python/324.Wiggle_Sort_II.py) Level: Medium Tags: [Sort]
+### [00324.Wiggle_Sort_II](../../SourceCode/Python/Problem/00324.Wiggle_Sort_II.py) Level: Medium Tags: [Sort]
   
 Time:  O(nlogn)  
 Space: O(n)  
   
-思路:是[280.[Locked]Wiggle_Sort](../../SourceCode/Python/280.[Locked]Wiggle_Sort.py) 的衍伸  
+思路:是[00280.[Locked]Wiggle_Sort](../../SourceCode/Python/Problem/00280.[Locked]Wiggle_Sort.py) 的衍伸  
 和280不同的是peak間的元素不能相等，所以原本的方法不能用了  
 但解法其實也不難  
 把原本的陣列先排序好之後存到另一個陣列  
@@ -915,12 +915,12 @@ Follow up是挺難的題目
   
 ***
   
-### [325.[Locked]Maximum_Size_Subarray_Sum_Equals_k](../../SourceCode/Python/325.[Locked]Maximum_Size_Subarray_Sum_Equals_k.py) Level: Medium Tags: [String]
+### [00325.[Locked]Maximum_Size_Subarray_Sum_Equals_k](../../SourceCode/Python/Problem/00325.[Locked]Maximum_Size_Subarray_Sum_Equals_k.py) Level: Medium Tags: [String]
     
 Time:  O(n)  
 Space: O(n)  
   
-思路: 是[560.Subarray_Sum_Equals_K](../../SourceCode/Python/560.Subarray_Sum_Equals_K.py)的類似題  
+思路: 是[00560.Subarray_Sum_Equals_K](../../SourceCode/Python/Problem/00560.Subarray_Sum_Equals_K.py)的類似題  
 差別只在於560是求總和為K的數列數量  
 本題是求最長的總和為K的子數列長度  
 所以解題思路也類似，都用到sum - (sum - k) == k 的原理  
@@ -935,7 +935,7 @@ maxLen = max(maxLen, x - prefixSum[sum - k])
   
 ***
   
-### [332.Reconstruct_Itinerary](../../SourceCode/Python/332.Reconstruct_Itinerary.py) Level: Medium Tags: [Graph, DFS]
+### [00332.Reconstruct_Itinerary](../../SourceCode/Python/Problem/00332.Reconstruct_Itinerary.py) Level: Medium Tags: [Graph, DFS]
   
 Time:  O(t! / (n1! * n2! * ... nk!)),   
 t is the total number of tickets,  
@@ -1013,13 +1013,13 @@ if len(ans) == len(tickets) + 1:
     
 ***
   
-### [341.Flatten_Nested_List_Iterator](../../SourceCode/Python/341.Flatten_Nested_List_Iterator.py) Level: Medium Tags: [Iterator]
+### [00341.Flatten_Nested_List_Iterator](../../SourceCode/Python/Problem/00341.Flatten_Nested_List_Iterator.py) Level: Medium Tags: [Iterator]
   
 Time:  O(n), n is the number of the integers.  
 Space: O(h), h is the depth of the nested lists.  
   
 思路:本題要你用iterator把所有巢狀List中的元素疊代出來  
-和  [251.[Locked]Flatten_2D_Vector](../../SourceCode/Python/251.[Locked]Flatten_2D_Vector.py) 有點相似    
+和  [00251.[Locked]Flatten_2D_Vector](../../SourceCode/Python/Problem/00251.[Locked]Flatten_2D_Vector.py) 有點相似    
 可是251題的Input全部都是List而這題有時Input會有數字    
 因為iter有個條件是要疊代的元素需要全部屬於同一種type  
 所以我們不能用251題的解法來解此題  
@@ -1036,7 +1036,7 @@ List的話還需要對他做進一步的處理才能給next方法用
   
 ***
   
-### [348.[Locked]Design_Tic-Tac-Toe](../../SourceCode/Python/348.[Locked]Design_Tic-Tac-Toe.py) Level: Medium Tags: []
+### [00348.[Locked]Design_Tic-Tac-Toe](../../SourceCode/Python/Problem/00348.[Locked]Design_Tic-Tac-Toe.py) Level: Medium Tags: []
      
 Time: O(n^2) => O(1), per move.  
 Space: O(n^2) => O(n)  
@@ -1059,7 +1059,7 @@ self.rows[row] += add
    
 ***  
   
-### [357.Count_Numbers_with_Unique_Digits](../../SourceCode/Python/357.Count_Numbers_with_Unique_Digits.py) Level: Medium Tags: [Math]
+### [00357.Count_Numbers_with_Unique_Digits](../../SourceCode/Python/Problem/00357.Count_Numbers_with_Unique_Digits.py) Level: Medium Tags: [Math]
   
 Time: O(n)   
 Space: O(1)
@@ -1093,7 +1093,7 @@ n繼續往上加可以很容易地發現能使用的數字持續減少
   
 ***  
   
-### [362.[Locked]Design_Hit_Counter](../../SourceCode/Python/362.[Locked]Design_Hit_Counter.py) Level: Medium Tags: [Queue]
+### [00362.[Locked]Design_Hit_Counter](../../SourceCode/Python/Problem/00362.[Locked]Design_Hit_Counter.py) Level: Medium Tags: [Queue]
     
 Time:  O(1), amortized (平均分攤)   
 Space: O(k), k is the count of seconds.  
@@ -1112,7 +1112,7 @@ Space: O(k), k is the count of seconds.
   
 ***  
   
-### [368.Largest_Divisible_Subset](../../SourceCode/Python/368.Largest_Divisible_Subset.py) Level: Medium Tags: [DP]
+### [00368.Largest_Divisible_Subset](../../SourceCode/Python/Problem/00368.Largest_Divisible_Subset.py) Level: Medium Tags: [DP]
     
   
 思路: 給你一個不同整數組成的數列，要你產生另一個數列  
@@ -1223,12 +1223,12 @@ max為2，所以取到第三個元素就停止了
    
 ***  
   
-### [375.Guess_Number_Higher_or_Lower_II](../../SourceCode/Python/375.Guess_Number_Higher_or_Lower_II.py) Level: Medium Tags: [DP]
+### [00375.Guess_Number_Higher_or_Lower_II](../../SourceCode/Python/Problem/00375.Guess_Number_Higher_or_Lower_II.py) Level: Medium Tags: [DP]
   
 Time:  O(n^2)  
 Space: O(n^2)  
     
-思路: 是[374.Guess_Number_Higher_or_Lower](../../SourceCode/Python/374.Guess_Number_Higher_or_Lower.py) 的衍伸題  
+思路: 是[00374.Guess_Number_Higher_or_Lower](../../SourceCode/Python/Problem/00374.Guess_Number_Higher_or_Lower.py) 的衍伸題  
 但解法完全不同  
 雖然一樣是猜數字，但這次每猜一個數字你就要多花該數字的錢  
 給你一個數字為n的範圍，如果n=10的話  
@@ -1430,7 +1430,7 @@ dp[2][5] = 6
 
 ***  
   
-### [377.Combination_Sum_IV](../../SourceCode/Python/377.Combination_Sum_IV.py) Level: Medium Tags: [DP]
+### [00377.Combination_Sum_IV](../../SourceCode/Python/Problem/00377.Combination_Sum_IV.py) Level: Medium Tags: [DP]
   
 Time:  O(nlogn + n * t),   
 t is the value of target.  
@@ -1438,7 +1438,7 @@ Space: O(t)
     
 思路: 給你一組整數組成的數列和一個數字Target  
 求這數列內的元素加總能組成Target的組合數目  
-他其實根本就是 [039.Combination_Sum](../../SourceCode/Python/039.Combination_Sum.py)   
+他其實根本就是 [00039.Combination_Sum](../../SourceCode/Python/Problem/00039.Combination_Sum.py)   
 只是要求的東西不同  
 理論上我們可以把39題的答案直接拿來這裡用  
 最後再求答案陣列的長度即為組合總數  
@@ -1548,7 +1548,7 @@ dp[4] = dp[1] + dp[2] + dp[3]
        
 ***  
   
-### [378.Kth_Smallest_Element_in_a_Sorted_Matrix](../../SourceCode/Python/378.Kth_Smallest_Element_in_a_Sorted_Matrix.py) Level: Medium Tags: [Binary Search]
+### [00378.Kth_Smallest_Element_in_a_Sorted_Matrix](../../SourceCode/Python/Problem/00378.Kth_Smallest_Element_in_a_Sorted_Matrix.py) Level: Medium Tags: [Binary Search]
   
 Time:  O(k * log(min(n, m, k))), with n x m matrix  
 Space: O(min(n, m, k))  
@@ -1572,7 +1572,7 @@ Space: O(min(n, m, k))
   
 ***  
   
-### [388.Longest_Absolute_File_Path](../../SourceCode/Python/388.Longest_Absolute_File_Path.py) Level: Medium Tags: [Stack]
+### [00388.Longest_Absolute_File_Path](../../SourceCode/Python/Problem/00388.Longest_Absolute_File_Path.py) Level: Medium Tags: [Stack]
     
 Time:  O(n)  
 Space: O(d), d is the max depth of the paths  
@@ -1608,7 +1608,7 @@ if p.count('.'):
   
 ***  
   
-### [393.UTF-8_Validation](../../SourceCode/Python/393.UTF-8_Validation.py) Level: Medium Tags: [Bit manipulation]
+### [00393.UTF-8_Validation](../../SourceCode/Python/Problem/00393.UTF-8_Validation.py) Level: Medium Tags: [Bit manipulation]
   
 Time:  O(n)  
 Space: O(1)  
@@ -1619,7 +1619,7 @@ Space: O(1)
 1. 如果第一個bit是0，代表是一般的ASCII字串  
 2. 如果第一個bit是1，其後的bit說明這byte後面要跟幾個UTF-8字元  
 這些跟在其後的UTF-8字元，開頭的2個bit必須為"10"  
-例如[197, 130, 1]，其二進位表示為 ['11000101', '10000010', '00000001']    
+例如[00197, 130, 1]，其二進位表示為 ['11000101', '10000010', '00000001']    
 開頭的197有2個bit為1，說明其後有一個UTF-8字元    
 第二個130的開頭bit為10，所以整個UTF-字元到此告一段落  
 最後一個1因為開頭bit是0，所以是一般的ASCII字元  
@@ -1628,7 +1628,7 @@ Space: O(1)
    
 ***  
   
-### [394.Decode_String](../../SourceCode/Python/394.Decode_String.py) Level: Medium Tags: []
+### [00394.Decode_String](../../SourceCode/Python/Problem/00394.Decode_String.py) Level: Medium Tags: []
 
 
 思路:給你一個特定符號要你解碼字串    
@@ -1657,7 +1657,7 @@ Space: O(1)
   
 ***  
   
-### [395.Longest_Substring_with_At_Least_K_Repeating_Characters](../../SourceCode/Python/395.Longest_Substring_with_At_Least_K_Repeating_Characters.py) Level: Medium Tags: [Recursive]
+### [00395.Longest_Substring_with_At_Least_K_Repeating_Characters](../../SourceCode/Python/Problem/00395.Longest_Substring_with_At_Least_K_Repeating_Characters.py) Level: Medium Tags: [Recursive]
 
   
   
@@ -1683,7 +1683,7 @@ Space: O(1)
    
 ***  
   
-### [399.Evaluate_Division](../../SourceCode/Python/399.Evaluate_Division.py) Level: Medium Tags: [Graph]
+### [00399.Evaluate_Division](../../SourceCode/Python/Problem/00399.Evaluate_Division.py) Level: Medium Tags: [Graph]
   
 Time: O(n^3)   
 Space: O(n)  
@@ -1717,7 +1717,7 @@ A->B的關係就是A/B，反過來B->A就是B/A
         
 ***  
   
-### [406.Queue_Reconstruction_by_Height](../../SourceCode/Python/406.Queue_Reconstruction_by_Height.py) Level: Medium Tags: []
+### [00406.Queue_Reconstruction_by_Height](../../SourceCode/Python/Problem/00406.Queue_Reconstruction_by_Height.py) Level: Medium Tags: []
   
 Time: O(n)   
 Space: O(1)
@@ -1756,7 +1756,7 @@ h代表高度，k代表之後排序，會有幾個h比你高的人在前面
   
 ***  
   
-### [417.Pacific_Atlantic_Water_Flow](../../SourceCode/Python/417.Pacific_Atlantic_Water_Flow.py) Level: Medium Tags: [DFS]
+### [00417.Pacific_Atlantic_Water_Flow](../../SourceCode/Python/Problem/00417.Pacific_Atlantic_Water_Flow.py) Level: Medium Tags: [DFS]
   
 Time:  O(m * n)  
 Space: O(m * n)    
@@ -1808,7 +1808,7 @@ if matrix[x][y] < pre:
   
 ***  
   
-### [421.Maximum_XOR_of_Two_Numbers_in_an_Array](../../SourceCode/Python/421.Maximum_XOR_of_Two_Numbers_in_an_Array.py) Level: Medium Tags: [Tricky]
+### [00421.Maximum_XOR_of_Two_Numbers_in_an_Array](../../SourceCode/Python/Problem/00421.Maximum_XOR_of_Two_Numbers_in_an_Array.py) Level: Medium Tags: [Tricky]
     
 Time:  O(n)  
 Space: O(n)   
@@ -1836,8 +1836,8 @@ if  a ^ b = x, then b ^ x = a
 但我們不用從31個bit開始算起  
 因為25 = 11001 最多五個bit，所以我們從5個bit開始算起  
 用mask 0b10000 和 所有數字做AND然後放進set中  
-得到 [00000, 00000, 00000, 10000, 00000, 00000]  
-set去除重複元素後為 [00000, 10000]  
+得到 [0000000, 00000, 00000, 10000, 00000, 00000]  
+set去除重複元素後為 [0000000, 10000]  
   
 我們用最高位為 10000 來對此set的每個元素做XOR  
 其中 00000 XOR 10000 = 10000  
@@ -1845,8 +1845,8 @@ set去除重複元素後為 [00000, 10000]
 所以這個bit是可以被湊出來的，目前的max就是10000  
   
 接下來我們看第4個bit的mask，0b01000  
-得到 [00000, 01000, 00000, 11000, 00000, 01000]  
-剔除重複元素得到 [00000, 01000, 11000]    
+得到 [0000000, 01000, 00000, 11000, 00000, 01000]  
+剔除重複元素得到 [0000000, 01000, 11000]    
 我們用目前的max 10000 和第四個bit做 OR 得到 11000  
 用11000和此Set裡所有的元素做XOR  
 其中，00000 XOR 11000  = 11000  
@@ -1855,8 +1855,8 @@ set去除重複元素後為 [00000, 10000]
   
   
 接下來看第3個bit的mask，0b00100  
-得到 [00000, 01000, 00100, 11000, 00000, 01000]  
-剔除重複元素得到 [00000, 01000, 11000]  
+得到 [0000000, 01000, 00100, 11000, 00000, 01000]  
+剔除重複元素得到 [0000000, 01000, 11000]  
 我們用目前的max 11000 和第三個bit做 OR 得到 11100  
 用11000和此Set裡所有的元素做XOR  
 其中，  
@@ -1866,8 +1866,8 @@ set去除重複元素後為 [00000, 10000]
 所以max為 11100  
   
 接下來看第2個bit的mask，0b00010  
-得到 [00010, 01010, 00100, 11000, 00010, 01000]
-剔除重複元素得到 [00010, 01010, 00100, 11000, 01000]
+得到 [0000010, 01010, 00100, 11000, 00010, 01000]
+剔除重複元素得到 [0000010, 01010, 00100, 11000, 01000]
 我們用目前的max 11100 和第二個bit做 OR 得到 11110 
 其中，  
 00010 XOR 11110 = 11100 該Set無此元素  
@@ -1879,7 +1879,7 @@ set去除重複元素後為 [00000, 10000]
 所以第2位bit為0  
   
 接下來看最後1個bit的mask，0b00001  
-得到 [00011, 01010, 00101, 11001, 00010, 01000]  
+得到 [0000011, 01010, 00101, 11001, 00010, 01000]  
 至此已經不會有重複的元素了  
 我們用目前的max 11100 和第一個bit做 OR 得到 11101  
 其中  
@@ -1898,7 +1898,7 @@ set去除重複元素後為 [00000, 10000]
   
 ***  
   
-### [447.Number_of_Boomerangs](../../SourceCode/Python/447.Number_of_Boomerangs.py) Level: Medium Tags: [Math]
+### [00447.Number_of_Boomerangs](../../SourceCode/Python/Problem/00447.Number_of_Boomerangs.py) Level: Medium Tags: [Math]
       
 Time:  O(n^2)    
 Space: O(n)    
@@ -1944,7 +1944,7 @@ for d in disDict:
   
 ***  
   
-### [474.Ones_and_Zeroes](../../SourceCode/Python/474.Ones_and_Zeroes.py) Level: Medium Tags: [DP]
+### [00474.Ones_and_Zeroes](../../SourceCode/Python/Problem/00474.Ones_and_Zeroes.py) Level: Medium Tags: [DP]
       
   
 思路: 給你一串由0和1組成的字串List，跟m個0、n個1  
@@ -1980,7 +1980,7 @@ for i in xrange(m, zero - 1, -1):
 所以每個for迴圈都必須倒序  
 這裡我們借用01背包的例子來解釋  
   
-(https://blog.csdn.net/qq_40828060/article/details/78422412)  
+(https://blog.csdn.net/qq_40828060/article/details/Problem/0078422412)  
   
 我們先來了解01背包的性質，01是指物品在背包中的狀態，  
 也就是說，現在有一個容積為 V 的背包，有 n 件物品，每件物品只有一件，  
@@ -2044,7 +2044,7 @@ f[3] = 0,f[2] = 0,f[1] = 0,f[0] = 0
   
 ***  
   
-### [481.Magical_String](../../SourceCode/Python/481.Magical_String.py) Level: Medium Tags: [Tricky]
+### [00481.Magical_String](../../SourceCode/Python/Problem/00481.Magical_String.py) Level: Medium Tags: [Tricky]
   
 Time:  O(n)  
 Space: O(logn)
@@ -2103,7 +2103,7 @@ except IndexError:
   
 ***  
   
-### [486.Predict_the_Winner](../../SourceCode/Python/486.Predict_the_Winner.py) Level: Medium Tags: [Recursive, DP]
+### [00486.Predict_the_Winner](../../SourceCode/Python/Problem/00486.Predict_the_Winner.py) Level: Medium Tags: [Recursive, DP]
   
   
 思路: 有一組正整數數列，兩個玩家輪流取數列兩端的數字加總比大小  
@@ -2139,7 +2139,7 @@ return self.findAns(nums, 0, length-1) >=0
   
 ***  
   
-### [498.Diagonal_Traverse](../../SourceCode/Python/498.Diagonal_Traverse.py) Level: Medium Tags: []
+### [00498.Diagonal_Traverse](../../SourceCode/Python/Problem/00498.Diagonal_Traverse.py) Level: Medium Tags: []
     
 
 思路:  要你照下圖的方式Traversal一個2維陣列的元素  
@@ -2165,7 +2165,7 @@ return self.findAns(nums, 0, length-1) >=0
   
 ***  
   
-### [503.Next_Greater_Element_II](../../SourceCode/Python/503.Next_Greater_Element_II.py) Level: Medium Tags: [Stack]
+### [00503.Next_Greater_Element_II](../../SourceCode/Python/Problem/00503.Next_Greater_Element_II.py) Level: Medium Tags: [Stack]
     
 Time:  O(n)  
 Space: O(n)    
@@ -2173,10 +2173,10 @@ Space: O(n)
 思路: 給你一組整數數列，要你求一個從他的右邊算起比該數大的數字  
 如果找數列找到底的話就從頭開始計算  
 如果這樣還是找不到，就回傳-1  
-這題是 [496.Next_Greater_Element_I](../../SourceCode/Python/496.Next_Greater_Element_I.py)的衍生題  
+這題是 [00496.Next_Greater_Element_I](../../SourceCode/Python/Problem/00496.Next_Greater_Element_I.py)的衍生題  
 但這題用暴力解是會TLE(Time Limit Excees)的  
 只能用時間複雜度較低的Stack解法  
-基本核心理念我們有在 496和另一個衍生題 [739.Daily_Temperatures](../../SourceCode/Python/739.Daily_Temperatures.py) 探討過  
+基本核心理念我們有在 496和另一個衍生題 [00739.Daily_Temperatures](../../SourceCode/Python/Problem/00739.Daily_Temperatures.py) 探討過  
 這題也是類似，準備一個空的Stack來存放所有數字的index  
 如果在stack頂端index指向的數字比當前index指向的數字小的話  
 說明當前index指向的數字就是stack頂端index的下一個較大數字  
@@ -2207,7 +2207,7 @@ if i < length:
   
 ***  
   
-### [526.Beautiful_Arrangement](../../SourceCode/Python/526.Beautiful_Arrangement.py) Level: Medium Tags: [Recursive]  
+### [00526.Beautiful_Arrangement](../../SourceCode/Python/Problem/00526.Beautiful_Arrangement.py) Level: Medium Tags: [Recursive]  
   
 Time:  O(n!)   
 Space: O(n) 
@@ -2258,7 +2258,7 @@ List的[0]從頭到尾都沒有用到
   
 ***  
   
-### [542.01_Matrix](../../SourceCode/Python/542.01_Matrix.py) Level: Medium Tags: [DFS, BFS, Graph]
+### [00542.01_Matrix](../../SourceCode/Python/Problem/00542.01_Matrix.py) Level: Medium Tags: [DFS, BFS, Graph]
   
 Time:  O(m * n)  
 Space: O(m * n)    
@@ -2346,7 +2346,7 @@ BFS則就像一顆石頭扔進湖中的漣漪一樣
   
 ***  
   
-### [560.Subarray_Sum_Equals_K](../../SourceCode/Python/560.Subarray_Sum_Equals_K.py) Level: Medium Tags: [List]
+### [00560.Subarray_Sum_Equals_K](../../SourceCode/Python/Problem/00560.Subarray_Sum_Equals_K.py) Level: Medium Tags: [List]
   
 Time:  O(n)    
 Space: O(n)
@@ -2414,7 +2414,7 @@ else:
     
 ***  
   
-### [667.Beautiful_Arrangement_II](../../SourceCode/Python/667.Beautiful_Arrangement_II.py) Level: Medium Tags: []
+### [00667.Beautiful_Arrangement_II](../../SourceCode/Python/Problem/00667.Beautiful_Arrangement_II.py) Level: Medium Tags: []
   
 Time:  O(n)  
 Space: O(1)    
@@ -2428,9 +2428,9 @@ n=3, k=2時
 數列就應為[1,3,2]  
 因為他們的元素差為[2,1]，符合k=2的組合  
   
-這題雖然是  [526.Beautiful_Arrangement](../../SourceCode/Python/526.Beautiful_Arrangement.py) 的延伸題  
+這題雖然是  [00526.Beautiful_Arrangement](../../SourceCode/Python/Problem/00526.Beautiful_Arrangement.py) 的延伸題  
 但解法完全不同  
-應該比較像是 [280.[Locked]Wiggle_Sort](../../SourceCode/Python/280.[Locked]Wiggle_Sort.py) 的變形版  
+應該比較像是 [00280.[Locked]Wiggle_Sort](../../SourceCode/Python/Problem/00280.[Locked]Wiggle_Sort.py) 的變形版  
 因為題目要求的條件我們可以找出一個規律  
 例如我們用n=5為例子
 1. k==1時，序列為[1,2,3,4,5]，差的絕對值為[1]  
@@ -2467,7 +2467,7 @@ else:
   
 ***  
   
-### [681.[Locked]Next_Closest_Time](../../SourceCode/Python/681.[Locked]Next_Closest_Time.py) Level: Medium Tags: [DFS]  
+### [00681.[Locked]Next_Closest_Time](../../SourceCode/Python/Problem/00681.[Locked]Next_Closest_Time.py) Level: Medium Tags: [DFS]  
   
 Time:  O(1440) (Worst case)  
 Space: O(1)   
@@ -2489,14 +2489,14 @@ Space: O(1)
   
 ***  
   
-### [739.Daily_Temperatures](../../SourceCode/Python/739.Daily_Temperatures.py) Level: Medium Tags: [Stack]  
+### [00739.Daily_Temperatures](../../SourceCode/Python/Problem/00739.Daily_Temperatures.py) Level: Medium Tags: [Stack]  
     
 Time:  O(n)  
 Space: O(n)  
     
 思路: 給你一個數天的溫度列表  
 要你找出以每一天的溫度為基準，再過幾天溫度會比當天溫暖  
-是 [503.Next_Greater_Element_II](../../SourceCode/Python/503.Next_Greater_Element_II.py) 的類似題  
+是 [00503.Next_Greater_Element_II](../../SourceCode/Python/Problem/00503.Next_Greater_Element_II.py) 的類似題  
 直觀的解法是用兩個for迴圈從第一天的溫度開始  
 不斷地往後找第一個比當天大的溫度然後把index存到答案中  
 然而O(n^2)的時間複雜度因為天數太多而會造成超時(Time Limit Exceed)  

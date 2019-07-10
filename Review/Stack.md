@@ -1,5 +1,5 @@
 
-https://wdxtub.com/interview/14520597235248.html
+https://wdxtub.com/interview/Problem/0014520597235248.html
 
 #堆棧和佇列
 
@@ -66,7 +66,7 @@ https://wdxtub.com/interview/14520597235248.html
 
 ***  
   
-### [388.Longest_Absolute_File_Path](../../SourceCode/Python/388.Longest_Absolute_File_Path.py) Level: Medium Tags: [Stack]
+### [00388.Longest_Absolute_File_Path](../../SourceCode/Python/Problem/00388.Longest_Absolute_File_Path.py) Level: Medium Tags: [Stack]
     
   
 思路: 這是Google的OA題目 (Online Assessment) 

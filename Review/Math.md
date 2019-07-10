@@ -2,7 +2,7 @@
 
 ***
   
-### [263.Ugly_Number](../../SourceCode/Python/263.Ugly_Number.py) Level: Easy Tags: [Math]
+### [00263.Ugly_Number](../../SourceCode/Python/Problem/00263.Ugly_Number.py) Level: Easy Tags: [Math]
   
 Time:  O(logn)    
 Space: O(1)    
@@ -22,12 +22,12 @@ Space: O(1)
   
 ***
   
-### [264.Ugly_Number_II](../../SourceCode/Python/264.Ugly_Number_II.py) Level: Medium Tags: [Math]  
+### [00264.Ugly_Number_II](../../SourceCode/Python/Problem/00264.Ugly_Number_II.py) Level: Medium Tags: [Math]  
 
 Time:  O(n)  
 Space: O(1)
     
-思路: 是 [263.Ugly_Number](../../SourceCode/Python/263.Ugly_Number.py) 的衍伸題  
+思路: 是 [00263.Ugly_Number](../../SourceCode/Python/Problem/00263.Ugly_Number.py) 的衍伸題  
 要知道醜數的定義請看之前的題目   
 本題要你找出從1開始排起，排行位於第n個的醜數  
 我們當然可以從1開始每個數都挑出來看他是不是醜數  
@@ -53,10 +53,10 @@ Space: O(1)
   
 ***
   
-### [313.Super_Ugly_Number](../../SourceCode/Python/313.Super_Ugly_Number.py) Level: Medium Tags: [Math]
+### [00313.Super_Ugly_Number](../../SourceCode/Python/Problem/00313.Super_Ugly_Number.py) Level: Medium Tags: [Math]
   
-思路:思路: 是 [263.Ugly_Number](../../SourceCode/Python/263.Ugly_Number.py)   
-和 [264.Ugly_Number_II](../../SourceCode/Python/264.Ugly_Number_II.py) 的衍伸題  
+思路:思路: 是 [00263.Ugly_Number](../../SourceCode/Python/Problem/00263.Ugly_Number.py)   
+和 [00264.Ugly_Number_II](../../SourceCode/Python/Problem/00264.Ugly_Number_II.py) 的衍伸題  
 給你一組全新的醜數因子，要你找出第n個醜數  
 其實只是把264題的內建醜數因子改成題目給的而已  
 所以把264題的解答改成用動態給因子的方式就可以了  

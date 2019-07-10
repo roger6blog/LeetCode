@@ -2,7 +2,7 @@
 
 ***
 
-### [031.Next_Permutation](../../SourceCode/Python/031.Next_Permutation.py) Level: Medium Tags: [Tricky]  
+### [00031.Next_Permutation](../../SourceCode/Python/Problem/00031.Next_Permutation.py) Level: Medium Tags: [Tricky]  
   
 Time:  O(n)  
 Space: O(1)
@@ -31,7 +31,7 @@ Space: O(1)
   
 ***
 
-## [042.Trapping_Rain_Water](../SourceCode/Python/042.Trapping_Rain_Water.py) Level: Hard Tags: []
+## [00042.Trapping_Rain_Water](../SourceCode/Python/Problem/00042.Trapping_Rain_Water.py) Level: Hard Tags: []
    
 思路: 
 he following idea is in fact from the last answer in this link, which leads to a clean code. I just reorganize it and add some explanations. I hope it is Ok.
@@ -48,7 +48,7 @@ Fill the water until we meet some "barrier"
   
 ***  
   
-### [421.Maximum_XOR_of_Two_Numbers_in_an_Array](../../SourceCode/Python/421.Maximum_XOR_of_Two_Numbers_in_an_Array.py) Level: Medium Tags: [Tricky]
+### [00421.Maximum_XOR_of_Two_Numbers_in_an_Array](../../SourceCode/Python/Problem/00421.Maximum_XOR_of_Two_Numbers_in_an_Array.py) Level: Medium Tags: [Tricky]
     
 Time:  O(n)  
 Space: O(n)   
@@ -76,8 +76,8 @@ if  a ^ b = x, then b ^ x = a
 但我們不用從31個bit開始算起  
 因為25 = 11001 最多五個bit，所以我們從5個bit開始算起  
 用mask 0b10000 和 所有數字做AND然後放進set中  
-得到 [00000, 00000, 00000, 10000, 00000, 00000]  
-set去除重複元素後為 [00000, 10000]  
+得到 [0000000, 00000, 00000, 10000, 00000, 00000]  
+set去除重複元素後為 [0000000, 10000]  
   
 我們用最高位為 10000 來對此set的每個元素做XOR
 其中 00000 XOR 10000 = 10000
@@ -85,8 +85,8 @@ set去除重複元素後為 [00000, 10000]
 所以這個bit是可以被湊出來的，目前的max就是10000  
   
 接下來我們看第4個bit的mask，0b01000  
-得到 [00000, 01000, 00000, 11000, 00000, 01000]  
-剔除重複元素得到 [00000, 01000, 11000]    
+得到 [0000000, 01000, 00000, 11000, 00000, 01000]  
+剔除重複元素得到 [0000000, 01000, 11000]    
 我們用目前的max 10000 和第四個bit做 OR 得到 11000  
 用11000和此Set裡所有的元素做XOR  
 其中，00000 XOR 11000  = 11000  
@@ -95,8 +95,8 @@ set去除重複元素後為 [00000, 10000]
   
   
 接下來看第3個bit的mask，0b00100  
-得到 [00000, 01000, 00100, 11000, 00000, 01000]  
-剔除重複元素得到 [00000, 01000, 11000]  
+得到 [0000000, 01000, 00100, 11000, 00000, 01000]  
+剔除重複元素得到 [0000000, 01000, 11000]  
 我們用目前的max 11000 和第三個bit做 OR 得到 11100  
 用11000和此Set裡所有的元素做XOR  
 其中，  
@@ -106,8 +106,8 @@ set去除重複元素後為 [00000, 10000]
 所以max為 11100  
   
 接下來看第2個bit的mask，0b00010  
-得到 [00010, 01010, 00100, 11000, 00010, 01000]
-剔除重複元素得到 [00010, 01010, 00100, 11000, 01000]
+得到 [0000010, 01010, 00100, 11000, 00010, 01000]
+剔除重複元素得到 [0000010, 01010, 00100, 11000, 01000]
 我們用目前的max 11100 和第二個bit做 OR 得到 11110 
 其中，  
 00010 XOR 11110 = 11100 該Set無此元素  
@@ -119,7 +119,7 @@ set去除重複元素後為 [00000, 10000]
 所以第2位bit為0  
   
 接下來看最後1個bit的mask，0b00001  
-得到 [00011, 01010, 00101, 11001, 00010, 01000]  
+得到 [0000011, 01010, 00101, 11001, 00010, 01000]  
 至此已經不會有重複的元素了  
 我們用目前的max 11100 和第一個bit做 OR 得到 11101  
 其中  

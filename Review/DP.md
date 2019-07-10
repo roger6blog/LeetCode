@@ -1,5 +1,5 @@
   
-https://wdxtub.com/interview/14520597062776.html
+https://wdxtub.com/interview/Problem/0014520597062776.html
 
 # 動態規劃
 動態規劃(Dynamic Programming, DP)是算法類問題中的難點所在。  
@@ -274,14 +274,14 @@ T func(N node, HashTable<N, T>& cache) {
      
 ***
 
-### [010.Regular_Expression_Matching](../../SourceCode/Python/010.Regular_Expression_Matching.py) Level: Hard Tags: [DP]
+### [00010.Regular_Expression_Matching](../../SourceCode/Python/Problem/00010.Regular_Expression_Matching.py) Level: Hard Tags: [DP]
   
 Time:  O(m * n)  
 Space: O(m * n)  
   
 思路:其實就是把正規表示式的"." 和 "*"寫出來    
 十分難的一題  
-和 [044.Wildcard_Matching](../../SourceCode/Python/044.Wildcard_Matching.py)  很像  
+和 [00044.Wildcard_Matching](../../SourceCode/Python/Problem/00044.Wildcard_Matching.py)  很像  
 但兩者間有微妙的差別，具體可以見44題的思路  
 不過簡單來說，這題比44題難多了  
 因為本題的"*"有太多狀況要考慮了  
@@ -409,7 +409,7 @@ c) 考慮 "xaa" match "xa*" 的場合:
 
 ***
   
-### [044.Wildcard_Matching](../../SourceCode/Python/044.Wildcard_Matching.py) Level: Hard Tags: [DP]
+### [00044.Wildcard_Matching](../../SourceCode/Python/Problem/00044.Wildcard_Matching.py) Level: Hard Tags: [DP]
    
 思路: 題目要求用?代表一個字元，*代表所有字元    
 來比對該字串是否符合特定的pattern  
@@ -527,13 +527,13 @@ sp和pp都為1的時候，"a" match "a" 所以表格為
   
 ***
   
-### [123.Best_Time_to_Buy_and_Sell_Stock_III](../../SourceCode/Python/123.Best_Time_to_Buy_and_Sell_Stock_III.py) Level: Hard Tags: [DP]
+### [00123.Best_Time_to_Buy_and_Sell_Stock_III](../../SourceCode/Python/Problem/00123.Best_Time_to_Buy_and_Sell_Stock_III.py) Level: Hard Tags: [DP]
   
 Time:  O(n)  
 Space: O(n)  
   
-思路: 是[122.Best_Time_to_Buy_and_Sell_Stock_II](../../SourceCode/Python/122.Best_Time_to_Buy_and_Sell_Stock_II.py)   
-     和[121.Best_Time_to_Buy_and_Sell_Stock_II](../../SourceCode/Python/121.Best_Time_to_Buy_and_Sell_Stock.py) 的延伸  
+思路: 是[00122.Best_Time_to_Buy_and_Sell_Stock_II](../../SourceCode/Python/Problem/00122.Best_Time_to_Buy_and_Sell_Stock_II.py)   
+     和[00121.Best_Time_to_Buy_and_Sell_Stock_II](../../SourceCode/Python/Problem/00121.Best_Time_to_Buy_and_Sell_Stock.py) 的延伸  
 但本題因為只能用DP解題，屬於高難度  
 同樣是買低賣高，這題限制只能做兩次交易  
 我們用一維的雙動態規劃來解題  
@@ -565,7 +565,7 @@ sell2: 在該價格賣出第二筆股票後手裡剩的錢，即最後利潤
   
 ***
   
-### [139.Word_Break](../../SourceCode/Python/139.Word_Break.py) Level: Medium Tags: [DP, Backtracking]
+### [00139.Word_Break](../../SourceCode/Python/Problem/00139.Word_Break.py) Level: Medium Tags: [DP, Backtracking]
   
 Time:  O(n * j), worst case is O(n^2)  
 Space: O(n)    
@@ -675,12 +675,12 @@ catsandog=>atsandog=>tsandog=>sandog
 ***
   
   
-### [140.Word_Break II](../SourceCode/Python/140.Word_Break_II.py) Level: Hard Tags: [DP, Sequence DP, DFS]
+### [00140.Word_Break II](../SourceCode/Python/Problem/00140.Word_Break_II.py) Level: Hard Tags: [DP, Sequence DP, DFS]
   
   
 ***
   
-### [279.Perfect_Squares](../SourceCode/Python/279.Perfect_Squares.py) Level: Medium Tags: [DP]
+### [00279.Perfect_Squares](../SourceCode/Python/Problem/00279.Perfect_Squares.py) Level: Medium Tags: [DP]
   
   
 思路:這題雖然可以用數學定理的四平方和解題  
@@ -705,13 +705,13 @@ catsandog=>atsandog=>tsandog=>sandog
   
 ***
   
-### [309.Best_Time_to_Buy_and_Sell_Stock_with_Cooldown](../../SourceCode/Python/309.Best_Time_to_Buy_and_Sell_Stock_with_Cooldown.py) Level: Medium Tags: [DP]
+### [00309.Best_Time_to_Buy_and_Sell_Stock_with_Cooldown](../../SourceCode/Python/Problem/00309.Best_Time_to_Buy_and_Sell_Stock_with_Cooldown.py) Level: Medium Tags: [DP]
   
 Time:  O(n)  
 Space: O(n)  
   
-思路: 是[122.Best_Time_to_Buy_and_Sell_Stock_II](../../SourceCode/Python/122.Best_Time_to_Buy_and_Sell_Stock_II.py)   
-     和[121.Best_Time_to_Buy_and_Sell_Stock_II](../../SourceCode/Python/121.Best_Time_to_Buy_and_Sell_Stock.py) 的延伸  
+思路: 是[00122.Best_Time_to_Buy_and_Sell_Stock_II](../../SourceCode/Python/Problem/00122.Best_Time_to_Buy_and_Sell_Stock_II.py)   
+     和[00121.Best_Time_to_Buy_and_Sell_Stock_II](../../SourceCode/Python/Problem/00121.Best_Time_to_Buy_and_Sell_Stock.py) 的延伸  
 如果不熟動態規劃()Dynamic Programming)的話  
 這題可以算是Hard了  
 題目和之前幾題一樣都要求買低賣高，但多了冷卻期  
@@ -748,7 +748,7 @@ sell[i] = max(sell[i-1], buy[i-1] + prices[i])
   
 ***
   
-### [329.Longest_Increasing_Path_in_a_Matrix](../../SourceCode/Python/329.Longest_Increasing_Path_in_a_Matrix.py) Level: Hard Tags: [DFS, DP]
+### [00329.Longest_Increasing_Path_in_a_Matrix](../../SourceCode/Python/Problem/00329.Longest_Increasing_Path_in_a_Matrix.py) Level: Hard Tags: [DFS, DP]
   
 Time:  O(m * n)  
 Space: O(m * n)  
@@ -777,7 +777,7 @@ DFS相關的步驟可以寫成另一個函式
   
 ***  
   
-### [368.Largest_Divisible_Subset](../../SourceCode/Python/368.Largest_Divisible_Subset.py) Level: Medium Tags: [DP]
+### [00368.Largest_Divisible_Subset](../../SourceCode/Python/Problem/00368.Largest_Divisible_Subset.py) Level: Medium Tags: [DP]
     
   
 思路: 給你一個不同整數組成的數列，要你產生另一個數列  

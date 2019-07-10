@@ -1,5 +1,5 @@
 
-https://wdxtub.com/interview/14520594642530.html
+https://wdxtub.com/interview/Problem/0014520594642530.html
 
 # 陣列和字符串
 
@@ -49,7 +49,7 @@ hs = hash(s[i+1..i+m])
 ```
 ***
 
-[056.Merge_Interval](../../SourceCode/Python/056.Merge_Interval.py) Level: Medium Tags: [List]  
+[00056.Merge_Interval](../../SourceCode/Python/Problem/00056.Merge_Interval.py) Level: Medium Tags: [List]  
   
 思路: 對Python來說不難，因為Python就有內建List排序  
 把題目給的List照start值得順序排好後  
@@ -62,16 +62,16 @@ hs = hash(s[i+1..i+m])
   
 ***
 
-[057.Insert_Interval](../../SourceCode/Python/057.Insert_Interval.py) Level: Hard Tags: [List]
+[00057.Insert_Interval](../../SourceCode/Python/Problem/00057.Insert_Interval.py) Level: Hard Tags: [List]
   
-思路: 是[056.Merge_Interval](../../SourceCode/Python/056.Merge_Interval.py) 的延伸  
+思路: 是[00056.Merge_Interval](../../SourceCode/Python/Problem/00056.Merge_Interval.py) 的延伸  
 做法也極為類似  
 只要把要插入的Interval插入原本的List
 剩下的就跟056.Merge_Interval一樣了
   
 ***
   
-### [289.Game_of_Life](../SourceCode/Python/289.Game_of_Life.py) Level: Medium Tags: [List, Bit manipulation]
+### [00289.Game_of_Life](../SourceCode/Python/Problem/00289.Game_of_Life.py) Level: Medium Tags: [List, Bit manipulation]
   
 Time:  O(m * n)  
 Space: O(m * n)  Follow up: O(1)    

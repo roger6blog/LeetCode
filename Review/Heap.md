@@ -41,7 +41,7 @@ return output
   
 ***
   
-### [295.Find_Median_from_Data_Stream](../../SourceCode/Python/295.Find_Median_from_Data_Stream.py) Level: Hard Tags: [Heap]
+### [00295.Find_Median_from_Data_Stream](../../SourceCode/Python/Problem/00295.Find_Median_from_Data_Stream.py) Level: Hard Tags: [Heap]
   
 Time:  O(nlogn) for total n addNums,    
 O(logn) per addNum,   

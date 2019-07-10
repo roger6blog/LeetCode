@@ -4,7 +4,7 @@
   
 ***
 
-### [003.Longest_Substring_Without_Repeating_Characters](../../SourceCode/Python/003.Longest_Substring_Without_Repeating_Characters.py) Level: Medium Tags: [String, Sliding Window]  
+### [00003.Longest_Substring_Without_Repeating_Characters](../../SourceCode/Python/Problem/00003.Longest_Substring_Without_Repeating_Characters.py) Level: Medium Tags: [String, Sliding Window]  
   
 Time:  O(n)  
 Space: O(1)    
@@ -42,7 +42,7 @@ if char in wordDict and wordDict[char] >= begin:
 ***
   
   
-### [159.[Locked]Longest_Substring_with_At_Most_Two_Distinct_Characters](../../SourceCode/Python/159.[Locked]Longest_Substring_with_At_Most_Two_Distinct_Characters.py) Level: Hard Tags: [Sliding Window]
+### [00159.[Locked]Longest_Substring_with_At_Most_Two_Distinct_Characters](../../SourceCode/Python/Problem/00159.[Locked]Longest_Substring_with_At_Most_Two_Distinct_Characters.py) Level: Hard Tags: [Sliding Window]
   
 Time:  O(n)  
 Space: O(1)  
@@ -61,18 +61,18 @@ Space: O(1)
   
 ***
   
-### [340.[Locked]Longest_Substring_with_At_Most_K_Distinct_Characters](../../SourceCode/Python/340.[Locked]Longest_Substring_with_At_Most_K_Distinct_Characters.py) Level: Hard Tags: [Sliding Window]
+### [00340.[Locked]Longest_Substring_with_At_Most_K_Distinct_Characters](../../SourceCode/Python/Problem/00340.[Locked]Longest_Substring_with_At_Most_K_Distinct_Characters.py) Level: Hard Tags: [Sliding Window]
     
 Time:  O(n)  
 Space: O(1)  
-思路:和 [159.[Locked]Longest_Substring_with_At_Most_Two_Distinct_Characters](../../SourceCode/Python/159.[Locked]Longest_Substring_with_At_Most_Two_Distinct_Characters.py) 幾乎完全一樣  
+思路:和 [00159.[Locked]Longest_Substring_with_At_Most_Two_Distinct_Characters](../../SourceCode/Python/Problem/00159.[Locked]Longest_Substring_with_At_Most_Two_Distinct_Characters.py) 幾乎完全一樣  
 差別只在於159只要你找出最長的2個字母組成的字串長度  
 這題要K個而已  
 完全可以用159題的解法解答  
   
 ***
   
-### [643.Maximum_Average_Subarray_I](../../SourceCode/Python/643.Maximum_Average_Subarray_I.py) Level: Easy Tags: [List, Sliding window]
+### [00643.Maximum_Average_Subarray_I](../../SourceCode/Python/Problem/00643.Maximum_Average_Subarray_I.py) Level: Easy Tags: [List, Sliding window]
 
 Time:  O(n)  
 Space: O(1)    

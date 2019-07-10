@@ -199,14 +199,14 @@ self.left.printTreeInorder()／self.right.printTreeInorder()
   
   
   
-### [208.Implement_Trie_(Prefix_Tree)](../SourceCode/Python/208.Implement_Trie_(Prefix_Tree).py) Level: Medium Tags: [Tree]
+### [00208.Implement_Trie_(Prefix_Tree)](../SourceCode/Python/Problem/00208.Implement_Trie_(Prefix_Tree).py) Level: Medium Tags: [Tree]
   
 Time:  O(n), per operation
 Space: O(1)
 思路:本題要求你實作一個字典樹(Trie)的insert, search和startWith  
 在此之前你必須先了解字典樹是什麼  
   
-![一個保存了8個Key的trie結構，"A", "to", "tea", "ted", "ten", "i", "in", and "inn".](Res/1200px-Trie_example.svg.png)
+![一個保存了8個Key的trie結構，"A", "to", "tea", "ted", "ten", "i", "in", and "inn".](Res/Problem/001200px-Trie_example.svg.png)
   
 簡單來說就是一個方便搜尋同樣Prefix單字的樹  
 有同樣prefix字的單字會被插到同一條Trie  
@@ -218,7 +218,7 @@ roo節點通常為空，底下有a~z 26個子Trie
   
 ***
  
-### [212.Word_Search_II](../../SourceCode/Python/212.Word_Search_II.py) Level: Hard Tags: [DFS, Tree]
+### [00212.Word_Search_II](../../SourceCode/Python/Problem/00212.Word_Search_II.py) Level: Hard Tags: [DFS, Tree]
   
 思路: 題目給了你一個2D陣列，要求你找出給予的單字中是能讓這陣列中的相鄰字元成為該單字  
 例如  
@@ -237,11 +237,11 @@ Output: ["eat","oath"]
 而題目限制字元是a~z的組合也暗示了我們能用 Tries來拆解單字和搜尋  
 因為自己寫的code一直敗在其中一個test case  
 這裡附上能被Accept的版本  
-[212.Word_Search_II_Accept](../../SourceCode/Python/212.Word_Search_II_Accept.py)
+[00212.Word_Search_II_Accept](../../SourceCode/Python/Problem/00212.Word_Search_II_Accept.py)
 
 ***
   
-### [298.[Locked]Binary_Tree_Longest_Consecutive_Sequence](../../SourceCode/Python/298.[Locked]Binary_Tree_Longest_Consecutive_Sequence.py) Level: Medium Tags: [Tree]
+### [00298.[Locked]Binary_Tree_Longest_Consecutive_Sequence](../../SourceCode/Python/Problem/00298.[Locked]Binary_Tree_Longest_Consecutive_Sequence.py) Level: Medium Tags: [Tree]
     
 Time:  O(n)  
 Space: O(h), h is height of tree  
@@ -259,7 +259,7 @@ Space: O(h), h is height of tree
 ```
   
 他的最長順序就是3-4-5，所以總和為3  
-做法和[687.Longest_Univalue_Path](../../SourceCode/Python/687.Longest_Univalue_Path.py)  很像  
+做法和[00687.Longest_Univalue_Path](../../SourceCode/Python/Problem/00687.Longest_Univalue_Path.py)  很像  
 只差在判斷條件不同  
 不斷遞迴去尋找下一個符合條件的子節點  
 最後返回左右子樹的最大值  
@@ -268,7 +268,7 @@ Space: O(h), h is height of tree
   
 ***
   
-### [686.Repeated_String_Match](../../SourceCode/Python/686.Repeated_String_Match.py) Level: Easy Tags: [String]
+### [00686.Repeated_String_Match](../../SourceCode/Python/Problem/00686.Repeated_String_Match.py) Level: Easy Tags: [String]
       
 Time:  O(n + m)  
 Space: O(1)    
@@ -291,7 +291,7 @@ times = nb / na + 3
   
 ***
   
-### [687.Longest_Univalue_Path](../../SourceCode/Python/687.Longest_Univalue_Path.py) Level: Easy Tags: [Tree]
+### [00687.Longest_Univalue_Path](../../SourceCode/Python/Problem/00687.Longest_Univalue_Path.py) Level: Easy Tags: [Tree]
        
 Time:  O(n)  
 Space: O(h), h is height of tree  

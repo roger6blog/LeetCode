@@ -3,14 +3,14 @@
   
 ***
   
-### [017.Letter_Combinations_of_a_Phone_Number](../SourceCode/Python/017.Letter_Combinations_of_a_Phone_Number.py) Level: Medium Tags: [DFS]
+### [00017.Letter_Combinations_of_a_Phone_Number](../SourceCode/Python/Problem/00017.Letter_Combinations_of_a_Phone_Number.py) Level: Medium Tags: [DFS]
    
 思路: 用DFS窮舉所有可能的字串
   
 ***
   
   
-### [133.Clone_Graph](../SourceCode/Python/133.Clone_Graph.py) Level: Medium Tags: [Graph, Sequence DFS]
+### [00133.Clone_Graph](../SourceCode/Python/Problem/00133.Clone_Graph.py) Level: Medium Tags: [Graph, Sequence DFS]
   
 思路:用DFS遍歷所有節點
 差別在於接觸到相鄰節點時要做複製的動作
@@ -19,7 +19,7 @@
 
 ***
 
-### [139.Word_Break](../SourceCode/Python/139.Word_Break.py) Level: Medium Tags: [DP, Sequence DP]
+### [00139.Word_Break](../SourceCode/Python/Problem/00139.Word_Break.py) Level: Medium Tags: [DP, Sequence DP]
 
 給一個String word, 和一个字典, 檢查是否word可以被分開, 而所有substring都應該是dictionary裡面的words.  
   
@@ -56,10 +56,10 @@ _function_:
 ***
   
   
-### [140.Word_Break II](../SourceCode/Python/140.Word_Break_II.py) Level: Hard Tags: [DP, Sequence DP, DFS]
+### [00140.Word_Break II](../SourceCode/Python/Problem/00140.Word_Break_II.py) Level: Hard Tags: [DP, Sequence DP, DFS]
   
   
-### [200.Number_of_Islands](../SourceCode/Python/200.Number_of_Islands.py) Level: Medium Tags: []
+### [00200.Number_of_Islands](../SourceCode/Python/Problem/00200.Number_of_Islands.py) Level: Medium Tags: []
   
 Time:  O(m * n)  
 Space: O(m * n)  
@@ -70,7 +70,7 @@ Space: O(m * n)
   
 ***
  
-### [212.Word_Search_II](../../SourceCode/Python/212.Word_Search_II.py) Level: Hard Tags: [DFS, Tree]
+### [00212.Word_Search_II](../../SourceCode/Python/Problem/00212.Word_Search_II.py) Level: Hard Tags: [DFS, Tree]
   
 思路: 題目給了你一個2D陣列，要求你找出給予的單字中是能讓這陣列中的相鄰字元成為該單字  
 例如  
@@ -89,11 +89,11 @@ Output: ["eat","oath"]
 而題目限制字元是a~z的組合也暗示了我們能用 Tries來拆解單字和搜尋  
 因為自己寫的code一直敗在其中一個test case  
 這裡附上能被Accept的版本  
-[212.Word_Search_II_Accept](../../SourceCode/Python/212.Word_Search_II_Accept.py)
+[00212.Word_Search_II_Accept](../../SourceCode/Python/Problem/00212.Word_Search_II_Accept.py)
 
 ***
   
-### [329.Longest_Increasing_Path_in_a_Matrix](../../SourceCode/Python/329.Longest_Increasing_Path_in_a_Matrix.py) Level: Hard Tags: [DFS, DP]
+### [00329.Longest_Increasing_Path_in_a_Matrix](../../SourceCode/Python/Problem/00329.Longest_Increasing_Path_in_a_Matrix.py) Level: Hard Tags: [DFS, DP]
   
 Time:  O(m * n)  
 Space: O(m * n)  
@@ -122,7 +122,7 @@ DFS相關的步驟可以寫成另一個函式
   
 ***  
   
-### [417.Pacific_Atlantic_Water_Flow](../../SourceCode/Python/417.Pacific_Atlantic_Water_Flow.py) Level: Medium Tags: [DFS]
+### [00417.Pacific_Atlantic_Water_Flow](../../SourceCode/Python/Problem/00417.Pacific_Atlantic_Water_Flow.py) Level: Medium Tags: [DFS]
   
 Time:  O(m * n)  
 Space: O(m * n)    
