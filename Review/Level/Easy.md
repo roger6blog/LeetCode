@@ -3,7 +3,7 @@
   
 ***
   
-### [001.Two_Sum](../../SourceCode/Python/001.Two_Sum.py) Level: Easy Tags: []
+### [00001.Two_Sum](../../SourceCode/Python/Problem/00001.Two_Sum.py) Level: Easy Tags: []
   
 Time:  O(n)  
 Space: O(n)  
@@ -25,7 +25,7 @@ for i in xrange(len(nums)):
   
 ***
   
-### [014.Longest_Common_Prefix](../../SourceCode/Python/014.Longest_Common_Prefix.py) Level: Easy Tags: []
+### [00014.Longest_Common_Prefix](../../SourceCode/Python/Problem/00014.Longest_Common_Prefix.py) Level: Easy Tags: []
   
 Time:  O(n)    
 Space: O(1)   
@@ -43,7 +43,7 @@ for i in xrange(minlen):
   
 ***
   
-### [121.Best_Time_to_Buy_and_Sell_Stock](../../SourceCode/Python/121.Best_Time_to_Buy_and_Sell_Stock.py) Level: Easy Tags: []
+### [00121.Best_Time_to_Buy_and_Sell_Stock](../../SourceCode/Python/Problem/00121.Best_Time_to_Buy_and_Sell_Stock.py) Level: Easy Tags: []
   
 Time:  O(n)  
 Space: O(1)    
@@ -65,12 +65,12 @@ Space: O(1)
   
 ***
   
-### [122.Best_Time_to_Buy_and_Sell_Stock_II](../../SourceCode/Python/122.Best_Time_to_Buy_and_Sell_Stock_II.py) Level: Easy Tags: [Greed]
+### [00122.Best_Time_to_Buy_and_Sell_Stock_II](../../SourceCode/Python/Problem/00122.Best_Time_to_Buy_and_Sell_Stock_II.py) Level: Easy Tags: [Greed]
   
 Time:  O(n)  
 Space: O(1)
      
-思路: 是上一題[121.Best_Time_to_Buy_and_Sell_Stock](../../SourceCode/Python/121.Best_Time_to_Buy_and_Sell_Stock.py) 的衍伸  
+思路: 是上一題[00121.Best_Time_to_Buy_and_Sell_Stock](../../SourceCode/Python/Problem/00121.Best_Time_to_Buy_and_Sell_Stock.py) 的衍伸  
 不同的是這次不限買賣次數  
 要你把所有利潤都累加起來求總利潤  
 直覺得會想到遍歷整個數列  
@@ -87,7 +87,7 @@ Space: O(1)
   
 ***
   
-### [157.[Locked]Read_N_Characters_Given_Read4](../../SourceCode/Python/157.[Locked]Read_N_Characters_Given_Read4.py) Level: Easy Tags: []
+### [00157.[Locked]Read_N_Characters_Given_Read4](../../SourceCode/Python/Problem/00157.[Locked]Read_N_Characters_Given_Read4.py) Level: Easy Tags: []
   
   
 首先要明白題意的Read4是什麼意思  
@@ -103,7 +103,7 @@ temp = [''] * 4  # 即為['', '', '', '']
   
 ***
   
-### [257.Binary_Tree_Paths](../../SourceCode/Python/257.Binary_Tree_Paths.py) Level: Easy Tags: [Tree]
+### [00257.Binary_Tree_Paths](../../SourceCode/Python/Problem/00257.Binary_Tree_Paths.py) Level: Easy Tags: [Tree]
   
 Time:  O(n * h)，h為樹高  
 Space: O(h)  
@@ -118,7 +118,7 @@ traversal到leave即印出其中一條路徑
    
 ***
   
-### [263.Ugly_Number](../../SourceCode/Python/263.Ugly_Number.py) Level: Easy Tags: [Math]
+### [00263.Ugly_Number](../../SourceCode/Python/Problem/00263.Ugly_Number.py) Level: Easy Tags: [Math]
   
 Time:  O(logn)    
 Space: O(1)    
@@ -146,7 +146,7 @@ if num == 1:
   
 ***
   
-### [266.[Locked]Palindrome_Permutation](../../SourceCode/Python/266.[Locked]Palindrome_Permutation.py) Level: Easy Tags: []
+### [00266.[Locked]Palindrome_Permutation](../../SourceCode/Python/Problem/00266.[Locked]Palindrome_Permutation.py) Level: Easy Tags: []
 
 Time:  O(logn)     
 Space: O(1)      
@@ -170,7 +170,7 @@ for c in s:
    
 ***
   
-### [276.[Locked]Paint_Fence](../../SourceCode/Python/276.[Locked]Paint_Fence.py) Level: Easy Tags: [Math, DP]  
+### [00276.[Locked]Paint_Fence](../../SourceCode/Python/Problem/00276.[Locked]Paint_Fence.py) Level: Easy Tags: [Math, DP]  
   
 Time:  O(n)  
 Space: O(n)  
@@ -235,7 +235,7 @@ for i in xrange(3, n+1):
   
 ***
   
-### 283.[Move_Zeroes](../../SourceCode/Python/283.Move_Zeroes.py) Level: Easy Tags: []
+### 283.[Move_Zeroes](../../SourceCode/Python/Problem/00283.Move_Zeroes.py) Level: Easy Tags: []
 
 
 思路: 給你一個包含0的數列  
@@ -264,7 +264,7 @@ nums = [1, 3, 0 , 0]
   
 ***
   
-### [326.Power_of_Three](../../SourceCode/Python/326.Power_of_Three.py) Level: Easy Tags: [Math]
+### [00326.Power_of_Three](../../SourceCode/Python/Problem/00326.Power_of_Three.py) Level: Easy Tags: [Math]
   
 Time:  O(1)  
 Space: O(1)  
@@ -279,7 +279,7 @@ Space: O(1)
   
 ***
   
-### [387.First_Unique_Character_in_a_String](../../SourceCode/Python/387.First_Unique_Character_in_a_String.py) Level: Easy Tags: []
+### [00387.First_Unique_Character_in_a_String](../../SourceCode/Python/Problem/00387.First_Unique_Character_in_a_String.py) Level: Easy Tags: []
   
 Time:  O(2*n)  
 Space: O(n)
@@ -293,7 +293,7 @@ Space: O(n)
   
 ***
   
-### [400.Nth_Digit](../../SourceCode/Python/400.Nth_Digit.py) Level: Easy Tags: [Math]
+### [00400.Nth_Digit](../../SourceCode/Python/Problem/00400.Nth_Digit.py) Level: Easy Tags: [Math]
   
 Time:  O(logn)  
 Space: O(1)
@@ -348,7 +348,7 @@ Space: O(1)
   
 ***
   
-### [401.Binary_Watch](../../SourceCode/Python/401.Binary_Watch.py) Level: Easy Tags: [Tricky]
+### [00401.Binary_Watch](../../SourceCode/Python/Problem/00401.Binary_Watch.py) Level: Easy Tags: [Tricky]
    
 Time:  O(1)  
 Space: O(1)
@@ -370,7 +370,7 @@ Space: O(1)
   
 ***
   
-### [408.Valid_Word_Abbreviation](../../SourceCode/Python/408.Valid_Word_Abbreviation.py) Level: Easy Tags: []
+### [00408.Valid_Word_Abbreviation](../../SourceCode/Python/Problem/00408.Valid_Word_Abbreviation.py) Level: Easy Tags: []
     
 Time:  O(n)  
 Space: O(1)  
@@ -407,7 +407,7 @@ count = count*10 + int(abbr[j])
   
 ***
   
-### [448.Find_All_Numbers_Disappeared_in_an_Array](../../SourceCode/Python/448.Find_All_Numbers_Disappeared_in_an_Array.py) Level: Easy Tags: [Tricky]
+### [00448.Find_All_Numbers_Disappeared_in_an_Array](../../SourceCode/Python/Problem/00448.Find_All_Numbers_Disappeared_in_an_Array.py) Level: Easy Tags: [Tricky]
      
 Time:  O(n)  
 Space: O(1)  
@@ -431,7 +431,7 @@ for n in nums:
   
 ***
   
-### [459.Repeated_Substring_Pattern](../../SourceCode/Python/459.Repeated_Substring_Pattern.py) Level: Easy Tags: [String]
+### [00459.Repeated_Substring_Pattern](../../SourceCode/Python/Problem/00459.Repeated_Substring_Pattern.py) Level: Easy Tags: [String]
       
 Time:  O(n)  
 Space: O(1)  
@@ -458,7 +458,7 @@ while pos > 0:
   
 ***
   
-### [496.Next_Greater_Element_I](../../SourceCode/Python/496.Next_Greater_Element_I.py) Level: Easy Tags: [Stack]
+### [00496.Next_Greater_Element_I](../../SourceCode/Python/Problem/00496.Next_Greater_Element_I.py) Level: Easy Tags: [Stack]
   
 Time:  O(m + n)  
 Space: O(m + n)  
@@ -500,7 +500,7 @@ mapping建立後
   
 ***
   
-### [521.Longest_Uncommon_Subsequence_I](../../SourceCode/Python/521.Longest_Uncommon_Subsequence_I.py) Level: Easy Tags: [String]
+### [00521.Longest_Uncommon_Subsequence_I](../../SourceCode/Python/Problem/00521.Longest_Uncommon_Subsequence_I.py) Level: Easy Tags: [String]
     
 Time:  O(1)  
 Space: O(1)  
@@ -515,17 +515,17 @@ Space: O(1)
   
 ***
   
-### [541.Reverse_String_II](../../SourceCode/Python/541.Reverse_String_II.py) Level: Easy Tags: [String]
+### [00541.Reverse_String_II](../../SourceCode/Python/Problem/00541.Reverse_String_II.py) Level: Easy Tags: [String]
     
 Time:  O(n)  
 Space: O(1)  
       
-思路: 是 [344.Reverse_String](../../SourceCode/Python/344.Reverse_String.py) 的衍伸題   
+思路: 是 [00344.Reverse_String](../../SourceCode/Python/Problem/00344.Reverse_String.py) 的衍伸題   
 給一個字串和數字k，要求每2k的字元的前k個字元反轉  
 如果剩下的字元數少於k個，就直接反轉  
 
 題意不是很清楚，用下面的圖做輔助:  
-![](../Res/20170706164056477.png)
+![](../Res/Problem/0020170706164056477.png)
   
 直觀的做法是用for迴圈以2\*k為間隔來反轉前k個字元  
 不過這樣會有長度判斷的問題  
@@ -540,7 +540,7 @@ while s:
   
 ***
   
-### [543.Diameter_of_Binary_Tree](../../SourceCode/Python/543.Diameter_of_Binary_Tree.py) Level: Easy Tags: [Tree]
+### [00543.Diameter_of_Binary_Tree](../../SourceCode/Python/Problem/00543.Diameter_of_Binary_Tree.py) Level: Easy Tags: [Tree]
   
 Time:  O(n)  
 Space: O(h)  
@@ -554,7 +554,7 @@ h is Height of Tree
   
 ***
   
-### [643.Maximum_Average_Subarray_I](../../SourceCode/Python/643.Maximum_Average_Subarray_I.py) Level: Easy Tags: [List, Sliding window]
+### [00643.Maximum_Average_Subarray_I](../../SourceCode/Python/Problem/00643.Maximum_Average_Subarray_I.py) Level: Easy Tags: [List, Sliding window]
 
 Time:  O(n)  
 Space: O(1)    
@@ -577,7 +577,7 @@ for i in xrange(len(nums)):
   
 ***
   
-### [665.Non-decreasing_Array](../../SourceCode/Python/665.Non-decreasing_Array.py) Level: Easy Tags: [List]
+### [00665.Non-decreasing_Array](../../SourceCode/Python/Problem/00665.Non-decreasing_Array.py) Level: Easy Tags: [List]
   
 Time:  O(n)  
 Space: O(1)    
@@ -608,7 +608,7 @@ if i > 1 and nums[i] <= nums[i-2]:
   
 ***
   
-### [686.Repeated_String_Match](../../SourceCode/Python/686.Repeated_String_Match.py) Level: Easy Tags: [String]
+### [00686.Repeated_String_Match](../../SourceCode/Python/Problem/00686.Repeated_String_Match.py) Level: Easy Tags: [String]
       
 Time:  O(n + m)  
 Space: O(1)    
@@ -631,7 +631,7 @@ times = nb / na + 3
   
 ***
   
-### [687.Longest_Univalue_Path](../../SourceCode/Python/687.Longest_Univalue_Path.py) Level: Easy Tags: [Tree]
+### [00687.Longest_Univalue_Path](../../SourceCode/Python/Problem/00687.Longest_Univalue_Path.py) Level: Easy Tags: [Tree]
        
 Time:  O(n)  
 Space: O(h), h is height of tree  
