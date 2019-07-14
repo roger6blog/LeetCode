@@ -41,6 +41,26 @@ Constraints:
 
 
 class Solution(object):
+
+    def maxDepthAfterSplit2(self, seq):
+        """
+        :type seq: str
+        :rtype: List[int]
+        """
+
+        res = []
+        l, r = 0, 0
+        for s in seq:
+            if s == '(':
+                res.append(l)
+                l = 1 - l
+            else:
+                res.append(r)
+                r = 1 - r
+
+
+        return res
+
     def maxDepthAfterSplit(self, seq):
         """
         :type seq: str
@@ -71,6 +91,7 @@ class Solution(object):
         return ans
 
 seq = "(()())"
+seq2 = "()"
 sol = Solution()
-sol.maxDepthAfterSplit(seq)
+sol.maxDepthAfterSplit2(seq)
 #Output: [0,1,1,1,1,0]
