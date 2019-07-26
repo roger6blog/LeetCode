@@ -10,7 +10,7 @@ class Solution(object):
         :type arr: List[int]
         :rtype: int
         """
-        
+
         def dfs(arr, b, e):
 
             mi = sys.maxint
@@ -30,14 +30,14 @@ class Solution(object):
 
         n = len(arr)
 
-        return dfs(arr, 0, len(arr)-1)[0]  
+        return dfs(arr, 0, len(arr)-1)[0]
 
     def mctFromLeafValues(self, arr):
         """
         :type arr: List[int]
         :rtype: int
         """
-        
+
 
         def dfs(arr, b, e, dp_table):
 
