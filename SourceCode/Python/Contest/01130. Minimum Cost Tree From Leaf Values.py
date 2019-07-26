@@ -1,8 +1,11 @@
 '''
 
-Given an array arr of positive integers, consider all binary trees such that:
+Given an array arr of positive integers,
+
+consider all binary trees such that:
 
 Each node has either 0 or 2 children;
+
 The values of arr correspond to the values of each leaf in an in-order traversal of the tree.
 
 (Recall that a node is a leaf if and only if it has 0 children.)
@@ -44,6 +47,8 @@ class Solution(object):
         :type arr: List[int]
         :rtype: int
         """
+
+
 
 
 
