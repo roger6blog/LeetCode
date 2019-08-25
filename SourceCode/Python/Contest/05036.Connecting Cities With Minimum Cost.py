@@ -1,6 +1,6 @@
 '''
 
-5036. Connecting Cities With Minimum Cost My SubmissionsBack to Contest
+5036. Connecting Cities With Minimum Cost
 Difficulty: Medium
 There are N cities numbered from 1 to N.
 
@@ -8,7 +8,7 @@ You are given conections, where each conections[i] = [city1, city2, cost] repres
 
 Return the minimum cost so that for every pair of cities, there exists a path of connections (possibly of length 1) that connects those two cities together.  The cost is the sum of the connection costs used. If the task is impossible, return -1.
 
- 
+
 
 Example 1:
 
@@ -16,7 +16,7 @@ Example 1:
 
 Input: N = 3, conections = [[1,2,5],[1,3,6],[2,3,1]]
 Output: 6
-Explanation: 
+Explanation:
 Choosing any 2 edges will connect all cities so we choose the minimum 2.
 Example 2:
 
@@ -24,9 +24,9 @@ Example 2:
 
 Input: N = 4, conections = [[1,2,3],[3,4,4]]
 Output: -1
-Explanation: 
+Explanation:
 There is no way to connect all cities even if all edges are used.
- 
+
 
 Note:
 
@@ -67,7 +67,7 @@ class Solution(object):
                 pre[f2] = f1
                 return 1
             return 0
-        
+
         pre = [-1] * 10040
         e = [edge(0,0,0)] * 10040
         # for _ in range(10040):
@@ -83,7 +83,7 @@ class Solution(object):
             e[i].v = conections[i][1]
             e[i].c = conections[i][2]
 
-        e = sorted(e, key=)    
+        e = sorted(e, key=)
         pass
 
 print Solution().minimumCost(3, [[1,2,5],[1,3,6],[2,3,1]])

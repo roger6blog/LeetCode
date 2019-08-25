@@ -1,5 +1,5 @@
 '''
-1134. Armstrong Number My SubmissionsBack to Contest
+1134. Armstrong Number
 
 Difficulty: Easy
 The k-digit number N is an Armstrong number if and only if the k-th power of each digit sums to N.

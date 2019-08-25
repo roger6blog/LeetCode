@@ -1,5 +1,5 @@
 '''
-5034. Largest Unique Number My SubmissionsBack to Contest
+5034. Largest Unique Number
 Difficulty: Easy
 Given an array of integers A, return the largest integer that only occurs once.
 

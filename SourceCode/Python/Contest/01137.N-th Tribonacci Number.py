@@ -1,5 +1,5 @@
 '''
-1137. N-th Tribonacci Number My SubmissionsBack to Contest
+1137. N-th Tribonacci Number
 
 Difficulty: Easy
 The Tribonacci sequence Tn is defined as follows:
