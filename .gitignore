@@ -7,3 +7,11 @@ SourceCode/Python/VSCode/.vscode/
 SourceCode/Python/.DS_Store
 SourceCode/Python/Problem/.DS_Store
 
+
+.vscode/.ropeproject/config.py
+
+.vscode/.ropeproject/objectdb
+
+.vscode/launch.json
+
+.vscode/settings.json
