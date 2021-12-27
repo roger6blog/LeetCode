@@ -25,7 +25,6 @@ class Solution:
     def shortestDistance(self, words, word1, word2):
         # Write your code here
         word_map = {}
-        distance = 0
         for c, w in enumerate(words):
             word_map[w] = c
 
