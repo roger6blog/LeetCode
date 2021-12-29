@@ -1,5 +1,5 @@
 '''
-
+Level: Medium Tags: [Greedy]
 Say you have an array for which the ith element is the price of a given stock on day i.
 
 Design an algorithm to find the maximum profit.
@@ -51,4 +51,4 @@ class Solution:
 
 stock = [7,1,5,3,6,4]
 stock2 = [1,2,3,4,5]
-print Solution().maxProfit(stock2)
+print(Solution().maxProfit(stock2))
