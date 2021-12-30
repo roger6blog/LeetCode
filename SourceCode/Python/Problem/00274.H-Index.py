@@ -44,4 +44,4 @@ class Solution(object):
 
 
 citations = [3,0,6,1,5]
-print Solution().hIndex(citations)
+print(Solution().hIndex(citations))
