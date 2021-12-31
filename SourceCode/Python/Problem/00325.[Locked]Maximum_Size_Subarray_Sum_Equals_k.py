@@ -1,4 +1,5 @@
 '''
+Level: Medium
 
 Given an array nums and a target value k,
 
@@ -31,25 +32,28 @@ class Solution(object):
         :rtype: int
         """
 
-        prefixSum = {}
-        sum = 0
-        maxLen = 0
-        for x in xrange(len(nums)):
-            sum += nums[x]
-            if sum - k in prefixSum:
-                maxLen = max(maxLen, x - prefixSum[sum - k])
+        prefix_sum = {}  # prefix mapping max_len
+        sums = 0
+        max_len = 0
+        for x in range(len(nums)):
+            sums += nums[x]
+            if sums - k in prefix_sum:
+                max_len = max(max_len, x-prefix_sum[sums-k])
 
-            if sum == k:
-                maxLen = x + 1
+            if sums == k:
+                max_len = x + 1
 
-            if sum not in prefixSum:
-                prefixSum[sum] = x
+            if sums not in prefix_sum:
+                prefix_sum[sums] = x
 
-        return maxLen
+        return max_len
+
+
+
 
 # nums = [1, -1, 5, -2, 3]
 # k = 3
 
 nums = [-2, -1, 2, 1]
 k = 1
-print Solution().maxSubArrayLen(nums, k)
+print(Solution().maxSubArrayLen(nums, k))

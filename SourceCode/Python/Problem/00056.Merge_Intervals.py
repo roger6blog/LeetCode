@@ -35,7 +35,7 @@ class Solution(object):
         """
         intervals.sort(key=lambda x: x.start)
         ans = []
-        for i in xrange(len(intervals)):
+        for i in range(len(intervals)):
             if ans == []:
                 ans.append(intervals[i])
             else:
@@ -45,9 +45,35 @@ class Solution(object):
                 else:
                     ans.append(intervals[i])
         return ans
-        
-        
-   
+
+    def merge_no_class(self, intervals, newInterval):
+        """
+        :type intervals: List[Interval]
+        :type newInterval: Interval
+        :rtype: List[Interval]
+        """
+        start = 0
+        end = 1
+
+
+        intervals.sort(key=lambda x: x[start])
+        ans = []
+        for interval in intervals:
+            if ans == []:
+                ans.append(interval)
+                continue
+
+            if ans[-1][end] < interval[start]:
+                ans.append(interval)
+
+            else:
+                ans[-1][end] = max(ans[-1][end], interval[start])
+
+            ans[-1][end] = max(ans[-1][end], interval[end])
+
+        return ans
+
+
 
 d = Interval(15, 18)
 b = Interval(2, 6)

@@ -1,11 +1,24 @@
 
 '''
-Level: Hard Tag:[List]
-Given an array of meeting time intervals consisting of start and end times [[s1,e1],[s2,e2],...] (si < ei), find the minimum number of conference rooms required.
+Level: Hard (2021 changed to Medium) Tag:[List]
+Given an array of meeting time intervals consisting of
+start and end times [[s1,e1],[s2,e2],...] (si < ei),
+find the minimum number of conference rooms required.
 
 For example,
 Given [[0, 30],[5, 10],[15, 20]],
 return 2.
+Explanation:
+We need two meeting rooms
+room1: (0,30)
+room2: (5,10),(15,20)
+
+Example2
+
+Input: intervals = [(2,7)]
+Output: 1
+Explanation:
+Only need one meeting room
 
 '''
 # Definition for an interval.
@@ -39,12 +52,35 @@ class Solution:
             maxNum = max(maxNum, currNum)
         return maxNum
 
-    
+
+
+    def minMeetingRooms_scan_line(self, intervals):
+        rooms = []
+        start = 0
+        end = 1
+        for i in intervals:
+            rooms.append((i[start], 1))
+            rooms.append((i[end], -1))
+
+        rooms.sort(key=lambda x: x[start])
+        ans = 0
+        tmp = 0
+        for _, cost in rooms:
+            tmp += cost
+            ans = max(ans, tmp)
+
+        return ans
+
+
+
+
 a = Interval(0, 30)
 b = Interval(5, 10)
 c = Interval(15, 20)
 s = [a,b,c]
 sol = Solution()
-print sol.minMeetingRooms(s)
-        
-        
+print(sol.minMeetingRooms(s))
+
+s = [[0, 30],[5, 10],[15, 20]]
+print(sol.minMeetingRooms_scan_line(s))
+
