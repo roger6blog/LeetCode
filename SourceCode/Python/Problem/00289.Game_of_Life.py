@@ -1,4 +1,5 @@
 '''
+Level: Medium
 
 According to the Wikipedia's article:
 "The Game of Life, also known simply as Life,
@@ -25,21 +26,41 @@ The next state is created by applying the above rules simultaneously to every ce
 where births and deaths occur simultaneously.
 
 Example:
-
+"../../../Material/grid1.jpeg"
 Input:
 [
-  [0,1,0],
-  [0,0,1],
-  [1,1,1],
-  [0,0,0]
+    [0,1,0],
+    [0,0,1],
+    [1,1,1],
+    [0,0,0]
 ]
 Output:
 [
-  [0,0,0],
-  [1,0,1],
-  [0,1,1],
-  [0,1,0]
+    [0,0,0],
+    [1,0,1],
+    [0,1,1],
+    [0,1,0]
 ]
+
+Example 2:
+"../../../Material/grid2.jpeg"
+
+Input: board = [
+    [1,1],
+    [1,0]
+]
+Output: [
+    [1,1],
+    [1,1]
+]
+
+
+Constraints:
+
+m == board.length
+n == board[i].length
+1 <= m, n <= 25
+board[i][j] is 0 or 1.
 
 Follow up:
 
@@ -68,7 +89,7 @@ class Solution(object):
         dx = [1, 1,  1, 0,  0,-1,-1, -1]
         dy = [1, 0, -1, 1, -1, 1, 0, -1]
         cnt = 0
-        for k in xrange(8):
+        for k in range(8):
             nx = i + dx[k]
             ny = j + dy[k]
             if nx < 0 or ny < 0 or nx >= row or ny >= col:
@@ -87,8 +108,8 @@ class Solution(object):
 
         row = len(board)
         col = len(board[0])
-        for i in xrange(row):
-            for j in xrange(col):
+        for i in range(row):
+            for j in range(col):
                 cnt = self.countLiveNeighbors(i, j, row, col, temp)
                 if temp[i][j] == 1:
                     if not (cnt == 2 or cnt == 3):
@@ -106,7 +127,7 @@ class Solution(object):
         dx = [1, 1,  1, 0,  0,-1,-1, -1]
         dy = [1, 0, -1, 1, -1, 1, 0, -1]
         cnt = 0
-        for k in xrange(8):
+        for k in range(8):
             nx = i + dx[k]
             ny = j + dy[k]
             if nx < 0 or ny < 0 or nx >= row or ny >= col:
@@ -136,10 +157,10 @@ class Solution(object):
                     if cnt == 3:
                         # cell will alive!
                         board[i][j] = DEAD_TO_LIVE
-        print board
+        print(board)
 
-        for i in xrange(row):
-            for j in xrange(col):
+        for i in range(row):
+            for j in range(col):
                 board[i][j] = board[i][j] & 1
 
 Input= [
@@ -148,8 +169,28 @@ Input= [
   [1,1,1],
   [0,0,0]
 ]
-print Input
+print(Input)
 #Solution().gameOfLife(Input)
 #print Input
 Solution().gameOfLifeFollowup(Input)
-print Input
+print(Input)
+
+Input = [
+    [0,0,0,0,0,0],
+    [0,0,0,0,0,0],
+    [0,0,1,1,1,0],
+    [0,1,1,1,0,0],
+    [0,0,0,0,0,0],
+    [0,0,0,0,0,0]
+]
+
+Expect = [
+    [0,0,0,0,0,0],
+    [0,0,0,1,0,0],
+    [0,1,0,0,1,0],
+    [0,1,0,0,1,0],
+    [0,0,1,0,0,0],
+    [0,0,0,0,0,0]
+]
+Solution().gameOfLife(Input)
+print(Input)
