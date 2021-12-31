@@ -33,27 +33,27 @@ class Solution(object):
         """
 
         prefix_sum = {}  # prefix mapping max_len
-        sums = 0
+        curr_sum = 0
         max_len = 0
         for x in range(len(nums)):
-            sums += nums[x]
-            if sums - k in prefix_sum:
-                max_len = max(max_len, x-prefix_sum[sums-k])
+            curr_sum += nums[x]
+            if curr_sum - k in prefix_sum:
+                max_len = max(max_len, x-prefix_sum[curr_sum-k])
 
-            if sums == k:
+            if curr_sum == k:
                 max_len = x + 1
 
-            if sums not in prefix_sum:
-                prefix_sum[sums] = x
+            if curr_sum not in prefix_sum:
+                prefix_sum[curr_sum] = x
 
+        print(max_len)
         return max_len
 
 
 
-
-# nums = [1, -1, 5, -2, 3]
-# k = 3
-
+nums = [1, -1, 5, -2, 3]
+k = 3
+assert 4 == Solution().maxSubArrayLen(nums, k)
 nums = [-2, -1, 2, 1]
 k = 1
 print(Solution().maxSubArrayLen(nums, k))

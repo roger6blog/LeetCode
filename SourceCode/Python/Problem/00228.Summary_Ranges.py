@@ -1,6 +1,21 @@
 '''
+Level: Easy
 
 Given a sorted integer array without duplicates, return the summary of its ranges.
+
+====   2021 Description   ====
+You are given a sorted unique integer array nums.
+
+Return the smallest sorted list of ranges that cover all the numbers in the array exactly.
+That is, each element of nums is covered by exactly one of the ranges,
+and there is no integer x such that x is in one of the ranges but not in nums.
+
+Each range [a,b] in the list should be output as:
+
+"a->b" if a != b
+"a" if a == b
+
+====   2021 Description   ====
 
 Example 1:
 
@@ -47,4 +62,4 @@ class Solution(object):
 
 Input= [0,2,3,4,6,8,9]
 s = [0,1,2,4,5,7]
-print Solution().summaryRanges(Input)
+print(Solution().summaryRanges(Input))
