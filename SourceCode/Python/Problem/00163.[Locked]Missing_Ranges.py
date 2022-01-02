@@ -42,7 +42,7 @@ class Solution(object):
         pre = lower - 1
 
 
-        for i in xrange(len(nums)+1):
+        for i in range(len(nums)+1):
             if i == len(nums):
                 curr = upper + 1
             else:
@@ -64,9 +64,29 @@ class Solution(object):
         :rtype: List[str]
         """
 
+        nums.append(lower)
+        nums.append(upper)
+        nums = list(set(nums))
+        nums.sort()
+        tmp = []
+
+        for n in range(1, len(nums)):
+
+            if nums[n] - nums[n-1] != 1:
+                if nums[n] == nums[-1]:
+                    tmp.append([nums[n-1]+1, nums[n]])
+                else:
+                    tmp.append([nums[n-1]+1, nums[n]-1])
+
+        ans = []
+        for x, y in tmp:
+            if x == y:
+                ans.append("{}".format(x))
+            else:
+                ans.append("{}->{}".format(x, y))
+
+        print(ans)
+        return ans
 
 
-
-
-
-assert ["2", "4->49", "51->74", "76->99"] == Solution().findMissingRanges([0, 1, 3, 50, 75], 0, 99)
+assert ["2", "4->49", "51->74", "76->99"] == Solution().findMissingRanges2([0, 1, 3, 50, 75], 0, 99)
