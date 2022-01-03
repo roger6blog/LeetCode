@@ -54,12 +54,33 @@ class Solution(object):
             i += 1
         return ans
 
+    def summaryRanges_O_n(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: List[str]
+        """
+        tmp = []
+        for i in nums:
+            if not tmp:
+                tmp.append([i, i])
+            else:
+                if i - tmp[-1][1] == 1:
+                    tmp[-1][1] = i
+                else:
+                    tmp.append([i, i])
 
+        ans = []
+        for x, y in tmp:
+            if x == y:
+                ans.append("{}".format(x))
+            else:
+                ans.append("{}->{}".format(x, y))
 
+        return ans
 
 
 
 
 Input= [0,2,3,4,6,8,9]
 s = [0,1,2,4,5,7]
-print(Solution().summaryRanges(Input))
+print(Solution().summaryRanges_O_n(Input))
