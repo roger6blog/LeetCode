@@ -50,13 +50,18 @@ class Solution(object):
         :type nums: List[int]
         :rtype: int
         """
+
+        if len(nums) == 1:
+            return nums[0]
+
         left = 0
         right = len(nums)-1
 
 
 
-        while left <= right:
+        while left < right:
             if nums[right] > nums[left]:
+                print(nums[left])
                 return nums[left]
 
             mid = (left+right) // 2
@@ -72,3 +77,8 @@ class Solution(object):
 
 nums = [4,5,6,7,0,1,2]
 assert 0 == Solution().findMin(nums)
+
+nums = [1]
+assert 1 == Solution().findMin(nums)
+nums = [2, 1]
+assert 1 == Solution().findMin(nums)

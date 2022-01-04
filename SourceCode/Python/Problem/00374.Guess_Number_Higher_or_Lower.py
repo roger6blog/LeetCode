@@ -1,4 +1,5 @@
 '''
+Level: Easy
 
 We are playing the Guess Game. The game is as follows:
 
@@ -16,6 +17,21 @@ Example:
 n = 10, I pick 6.
 
 Return 6.
+
+Example 2:
+
+Input: n = 1, pick = 1
+Output: 1
+Example 3:
+
+Input: n = 2, pick = 1
+Output: 1
+
+
+Constraints:
+
+1 <= n <= 2^31 - 1
+1 <= pick <= n
 
 '''
 
@@ -46,3 +62,27 @@ class Solution(object):
         elif ans == -1:
             return self.guessNumberRec(left, mid - 1)
 
+
+    def guessNumber_iteration(self, n):
+        """
+        :type n: int
+        :rtype: int
+        """
+
+        left = 0
+        right = n
+
+        while left <= right:
+
+            mid = left + (right-left)//2
+            ans = guess(mid)
+            if ans == 0:
+                return mid
+
+            elif ans == 1:
+                left = mid+1
+
+            elif ans == -1:
+                right = mid-1
+
+        return -1
