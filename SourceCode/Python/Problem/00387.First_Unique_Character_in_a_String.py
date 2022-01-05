@@ -1,4 +1,5 @@
 '''
+Level: Easy
 
 Given a string,
 
@@ -13,6 +14,11 @@ return 0.
 
 s = "loveleetcode",
 return 2.
+
+Example 3:
+
+Input: s = "aabb"
+Output: -1
 
 Note: You may assume the string contain only lowercase letters.
 
@@ -41,5 +47,36 @@ class Solution(object):
         return -1
 
 
+
+
+    def firstUniqChar2(self, s):
+        """
+        :type s: str
+        :rtype: int
+        """
+
+        char = {}
+
+        for i in range(len(s)):
+            if s[i] not in char:
+                char[s[i]] = i
+            else:
+                char[s[i]] = -1
+
+        ans = float('inf')
+        for k, v in char.items():
+            if v != -1:
+                ans = min(ans, v)
+
+        if ans == float('inf'):
+            ans = -1
+        print(ans)
+        return ans
+
+
 s = "loveleetcode"
-print Solution().firstUniqChar(s)
+assert 2 == Solution().firstUniqChar2(s)
+s = "aabb"
+assert -1 == Solution().firstUniqChar2(s)
+s = "leetcode"
+assert 0 == Solution().firstUniqChar2(s)
