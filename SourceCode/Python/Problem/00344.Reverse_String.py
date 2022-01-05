@@ -1,17 +1,26 @@
 '''
+Level: Easy
 
 Write a function that takes a string as input and returns the string reversed.
 
+You must do this by modifying the input array in-place with O(1) extra memory.
+
 Example 1:
 
-Input: "hello"
-Output: "olleh"
+Input: ["h","e","l","l","o"]
+Output: ["o","l","l","e","h"]
 
 Example 2:
 
-Input: "A man, a plan, a canal: Panama"
-Output: "amanaP :lanac a ,nalp a ,nam A"
+Input: s = ["H","a","n","n","a","h"]
+Output: ["h","a","n","n","a","H"]
 
+
+
+Constraints:
+
+1 <= s.length <= 105
+s[i] is a printable ascii character.
 
 '''
 
@@ -36,6 +45,18 @@ class Solution(object):
 
         return ans
 
-s = "a a"
-# s= "A man, a plan, a canal: Panama"
-print Solution().reverseString(s)
+
+
+    def reverseString_in_place(self, s):
+        """
+        :type s: str
+        :rtype: str
+        """
+        s[:] = s[::-1]
+        return s
+
+
+s = ["h","e","l","l","o"]
+assert ["o","l","l","e","h"] == Solution().reverseString_in_place(s)
+s = ["H","a","n","n","a","h"]
+assert ["h","a","n","n","a","H"] == Solution().reverseString_in_place(s)
