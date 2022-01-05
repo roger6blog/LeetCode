@@ -56,6 +56,34 @@ class Solution(object):
         print(ans)
         return ans
 
+    def longestCommonPrefix2(self, strs):
+        """
+        :type strs: List[str]
+        :rtype: str
+        """
+        if strs == []:
+            return ""
+
+        if len(strs) == 1:
+            return strs.pop()
+
+        minstr = ""
+        minlen = sys.maxint
+        for s in strs:
+            minlen = min(minlen, len(s))
+            if minlen == len(s):
+                minstr = s
+
+
+        ans = ""
+        for i in xrange(minlen):
+            for s in strs:
+                if s != strs[0] and s[i] != minstr[i]:
+                    return ans
+
+            ans += minstr[i]
+
+        return ans
 
 strs = ["flower","flow","flight"]
 assert "fl" == Solution().longestCommonPrefix(strs)
