@@ -46,15 +46,25 @@ class Solution(object):
         :rtype: str
         """
         ans = []
-        while columnNumber > 26:
-            w = columnNumber % 26
-            ans.append(chr(w+65))
-            columnNumber = columnNumber % 26
-        ans.append(chr(columnNumber+65))
+        while columnNumber > 0:
+            if columnNumber % 26 == 0:
+                ans.append("Z")
+                columnNumber -= 26
+            else:
+                ans.append(chr((columnNumber%26)+64))
+            columnNumber //= 26
+
+        ans = "".join(ans[::-1])
         print(ans)
-        return "".join(ans)
+        return ans
 
 columnNumber = 701
 assert "ZY" == Solution().convertToTitle(columnNumber)
 columnNumber = 28
 assert "AB" == Solution().convertToTitle(columnNumber)
+columnNumber = 1
+assert "A" == Solution().convertToTitle(columnNumber)
+columnNumber = 2147483647
+assert "FXSHRXW" == Solution().convertToTitle(columnNumber)
+columnNumber = 52
+assert "AZ" == Solution().convertToTitle(columnNumber)
