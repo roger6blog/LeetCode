@@ -52,20 +52,14 @@ class Solution(object):
             if s[i] not in dict_s:
                 dict_s[s[i]] = t[i]
             else:
-                if t[i] not in dict_s:
+                if dict_s[s[i]] != t[i]:
                     return False
-                else:
-                    if dict_s[t[i]] != s[i]:
-                        return False
 
             if t[i] not in dict_t:
                 dict_t[t[i]] = s[i]
             else:
-                if s[i] not in dict_t:
+                if dict_t[t[i]] != s[i]:
                     return False
-                else:
-                    if dict_t[s[i]] != t[i]:
-                        return False
 
         return True
 

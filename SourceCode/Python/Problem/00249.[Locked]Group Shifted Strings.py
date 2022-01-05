@@ -1,4 +1,5 @@
 '''
+Level: Medium
 
 Given a string, we can "shift" each of its letter to its successive letter,
 for example: "abc" -> "bcd". We can keep "shifting" which forms the sequence:
@@ -7,7 +8,7 @@ for example: "abc" -> "bcd". We can keep "shifting" which forms the sequence:
 Given a list of strings which contains only lowercase alphabets,
 group all strings that belong to the same shifting sequence.
 
-For example, given: ["abc", "bcd", "acef", "xyz", "az", "ba", "a", "z"],
+For example1, given: ["abc", "bcd", "acef", "xyz", "az", "ba", "a", "z"],
 Return:
 
 {
@@ -17,6 +18,10 @@ Return:
   ["a","z"]
 }
 
+Example 2:
+
+input:["a"]
+output:[["a"]]
 
 Note: For the return value,
 each inner list's elements must follow the lexicographic order.
