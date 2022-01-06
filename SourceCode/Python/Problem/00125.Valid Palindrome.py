@@ -1,4 +1,5 @@
 '''
+Level: Easy
 
 Given a string, determine if it is a palindrome,
 
@@ -62,6 +63,34 @@ class Solution(object):
                 i += 1
         return True
 
+    def isPalindrome2(self, s):
+        """
+        :type s: str
+        :rtype: bool
+        """
+        import re
+        s = re.sub("[^a-zA-Z0-9]", "", s)
+
+        s = s.lower()
+
+        t = s[::-1]
+        return t == s
+
+
+
+
 s = "A man, a plan, a canal: Panama"
 s1 = "abb"
-print Solution().isPalindrome(s1)
+print(Solution().isPalindrome2(s))
+
+s = "race a car"
+print(Solution().isPalindrome2(s))
+
+s = "ab"
+assert False == Solution().isPalindrome2(s)
+
+s = "ab_a"
+assert True == Solution().isPalindrome2(s)
+
+s = "0P"
+assert False == Solution().isPalindrome2(s)
