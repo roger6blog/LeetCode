@@ -47,6 +47,17 @@ class Solution(object):
 
         return len(oddChars) <= 1
 
+
+    def canPermutePalindrome_counter(self, s):
+        from collections import Counter
+        char_count = Counter(s)
+        odd_count = 0
+        for k, v in char_count.items():
+            if v % 2 == 1:
+                odd_count += 1
+
+        return odd_count < 1
+
 class Solution2(object):
     # "abb" test case will get wrong answer!!!
     def canPermutePalindrome(self, s):
@@ -72,5 +83,7 @@ class Solution2(object):
         return True
 
 
-print Solution2().canPermutePalindrome("carrac")
-print Solution().canPermutePalindrome("abb")
+print(Solution().canPermutePalindrome_counter("carrac"))
+print(Solution().canPermutePalindrome_counter("abb"))
+s = "code"
+assert False == Solution().canPermutePalindrome_counter(s)
