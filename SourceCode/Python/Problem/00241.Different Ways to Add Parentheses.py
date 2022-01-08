@@ -45,14 +45,35 @@ class Solution(object):
         :type expression: str
         :rtype: List[int]
         """
+        import operator
+        oper_map = {
+            "+": operator.add,
+            "-": operator.sub,
+            "*": operator.mul
+            }
+        cache = {}
+        def compute(s):
+            if s in cache:
+                return cache[s]
+            res = []
+            if not any([s.count("-"), s.count("+"), s.count("*")]):
+                res.append(int(s))
+                return res
 
-        def compute(ex):
-            pass
-
-
+            for i in range(len(s)):
+                if s[i] in "*-+":
+                    left = compute(s[:i])  # left part of operator
+                    right = compute(s[i+1:])  # right part of operator
+                    for l in left:
+                        for r in right:
+                            res.append(oper_map[s[i]](l, r))
+            cache[s] = res
+            return res
 
         ans = compute(expression)
         print(ans)
+
+        return ans
 
 
 
