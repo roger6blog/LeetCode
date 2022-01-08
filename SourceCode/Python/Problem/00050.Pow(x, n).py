@@ -1,5 +1,3 @@
-
-
 '''
 
 Implement pow(x, n),
@@ -23,7 +21,7 @@ Note:
 
 -100.0 < x < 100.0
 n is a 32-bit signed integer,
-within the range [−231, 231 − 1]
+within the range [−2^31, 2^31 − 1]
 
 
 '''
@@ -47,4 +45,4 @@ class Solution(object):
                 y = y * x
             x = x * x
             n= n/2
-        return y        
+        return y
