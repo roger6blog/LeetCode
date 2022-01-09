@@ -61,9 +61,9 @@ class Solution(object):
         z = x ** n
         print(z)
 
-x = 2.10000
-n = 3
-Solution().yourPow(x, n)
+x = 2
+n = 10
+Solution().myPow(x, n)
 
 x = 2.00000
 n = -2
