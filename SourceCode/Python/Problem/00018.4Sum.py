@@ -43,7 +43,7 @@ class Solution(object):
         for i in range(len(nums)-1):
             target_map.append(target - (nums[i] + nums[i+1]))
 
-
+aa
         candidate = []
         for t in range(len(target_map)):
             another_num_map = {}
