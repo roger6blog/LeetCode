@@ -1,4 +1,5 @@
 '''
+Level: Medium
 
 Implement pow(x, n),
 which calculates x raised to the power n (x^n).
@@ -21,7 +22,7 @@ Note:
 
 -100.0 < x < 100.0
 n is a 32-bit signed integer,
-within the range [−2^31, 2^31 − 1]
+within the range [-2^31, 2^31 - 1]
 
 
 '''
@@ -46,3 +47,24 @@ class Solution(object):
             x = x * x
             n= n/2
         return y
+
+
+
+
+
+    def yourPow(self, x, n):
+        """
+        :type x: float
+        :type n: int
+        :rtype: float
+        """
+        z = x ** n
+        print(z)
+
+x = 2.10000
+n = 3
+Solution().yourPow(x, n)
+
+x = 2.00000
+n = -2
+Solution().yourPow(x, n)

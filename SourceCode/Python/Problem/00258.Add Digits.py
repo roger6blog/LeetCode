@@ -1,4 +1,5 @@
 '''
+Level: Easy
 
 Given an integer num, repeatedly add all its digits until the result has only one digit, and return it.
 
@@ -31,12 +32,19 @@ class Solution(object):
         :type num: int
         :rtype: int
         """
+        if num == 0:
+            return 0
+
         ans = 0
         while ans == 0 or num != 0:
             while num != 0:
                 ans +=  num%10
                 num //= 10
                 print(ans)
+            if num == 0 and ans >= 10:
+                num = ans
+                ans = 0
+
 
         return ans
 
@@ -44,3 +52,6 @@ class Solution(object):
 
 num = 38
 assert 2 == Solution().addDigits(num)
+
+num = 0
+assert 0 == Solution().addDigits(num)
