@@ -86,11 +86,20 @@ class Solution(object):
         :rtype: int
         """
         s = s.strip()
-        if s[0] != "-" and s[0] not in "1234567890":
+        if len(s) == 0:
+            return 0
+
+        if len(s) == 1 and not s.isdigit():
+            return 0
+
+        if s[0] in "+-" and s[1] not in "1234567890":
+            return 0
+
+        if s[0] not in "+-" and s[0] not in "1234567890":
             return 0
 
         import re
-        s = re.findall("\-?[0-9]+", s)[0]
+        s = re.findall(r"\-?\+?[0-9]+", s)[0]
         n = int(s)
         if n > 2**31-1:
             return 2**31-1
@@ -98,6 +107,7 @@ class Solution(object):
         if n < -2**31:
             return -2**31
 
+        print(n)
         return n
 
 s = "4193 with words"
@@ -106,4 +116,23 @@ s = "   -42"
 assert -42 == Solution().myAtoi(s)
 
 s = "words and 987"
+assert 0 == Solution().myAtoi(s)
+
+s = "-+12"
+assert 0 == Solution().myAtoi(s)
+
+s = ""
+assert 0 == Solution().myAtoi(s)
+
+s = "-"
+assert 0 == Solution().myAtoi(s)
+
+
+s = "+1"
+assert 1 == Solution().myAtoi(s)
+
+s = "-+12"
+assert 0 == Solution().myAtoi(s)
+
+s = "+-12"
 assert 0 == Solution().myAtoi(s)
