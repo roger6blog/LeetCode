@@ -1,4 +1,5 @@
 '''
+Level: Medium
 
 Given a set of distinct integers, nums,
 
@@ -22,6 +23,16 @@ Output:
 ]
 
 
+Example 2:
+
+Input: nums = [0]
+Output: [[],[0]]
+
+Constraints:
+
+1 <= nums.length <= 10
+-10 <= nums[i] <= 10
+
 '''
 
 
@@ -40,5 +51,27 @@ class Solution(object):
         for i in xrange(index, len(nums)):
             self.subsetRec(nums, i+1, ans, path + [nums[i]])
 
+    def subsets2(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: List[List[int]]
+        """
+        def rec(res, index, nums, path):
+            res.append(path)
+            for i in range(index, len(nums)):
+                rec(res, i+1, nums, path+[nums[i]])
+
+
+        ans = []
+        rec(ans, 0, nums, [])
+        print(ans)
+        return ans
+
+
+        print(ans)
+
 nums = [1,2,3]
-print Solution().subsets(nums)
+print(Solution().subsets(nums))
+
+nums = [1,2,3]
+print(Solution().subsets2(nums))

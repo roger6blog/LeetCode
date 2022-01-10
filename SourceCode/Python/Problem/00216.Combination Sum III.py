@@ -1,4 +1,5 @@
 '''
+Level: Medium
 
 Find all possible combinations of k numbers that add up to a number n,
 
@@ -20,7 +21,18 @@ Input: k = 3, n = 9
 Output: [[1,2,6], [1,3,5], [2,3,4]]
 
 
+Example 3:
 
+Input: k = 4, n = 1
+Output: []
+Explanation: There are no valid combinations.
+Using 4 different numbers in the range [1,9], the smallest sum we can get is 1+2+3+4 = 10 and since 10 > 1, there are no valid combination.
+
+
+Constraints:
+
+2 <= k <= 9
+1 <= n <= 60
 '''
 
 
@@ -61,6 +73,54 @@ class Solution(object):
 
 
 
+
+
+    def combinationSum33(self, k, n):
+        """
+        :type k: int
+        :type n: int
+        :rtype: List[List[int]]
+        """
+
+        def rec(res, index, nums, curr, target, k):
+            if len(curr) > k:
+                return
+            s = sum(curr)
+            if s == target and len(curr) == k:
+                curr.sort()
+                if curr not in res:
+                    res.append(curr)
+                    return
+
+            elif s > target:
+                return
+
+            for i in range(index, len(nums)):
+                rec(res, i+1, nums, curr+[nums[i]], target, k)
+
+
+        nums = [i+1 for i in range(9)]
+
+        ans = []
+        rec(ans, 0, nums, [], n, k)
+        print(ans)
+
+        return ans
+
+
+
 k = 3
 n = 7
-print Solution().combinationSum3(k, n)
+print(Solution().combinationSum3(k, n))
+
+
+
+
+k = 3
+n = 7
+assert [[1, 2, 4]] == Solution().combinationSum33(k, n)
+
+
+k = 2
+n = 18
+Solution().combinationSum33(k, n)
