@@ -77,21 +77,23 @@ class Solution(object):
         """
 
 
-        def rec(res, index, nums, curr, target):
-            s = sum(curr)
-            if s == target:
-                if curr not in res:
-                    res.append(curr)
-            elif s > target:
-                return
-
+        def rec(count, cache, nums, curr, target):
+            if curr in cache:
+                return cache[curr]
+            if curr == target:
+                return 1
+            elif curr > target:
+                return 0
+            count = 0
             for i in range(len(nums)):
-                rec(res, i+1, nums, curr+[nums[i]], target)
+                count += rec(count, cache, nums, curr+nums[i], target)
+            cache[curr] = count
 
-        ans = []
-        rec(ans, 0, nums, [], target)
+            return count
+
+        ans = rec(0, {}, nums, 0, target)
         print(ans)
-        return len(ans)
+        return ans
 
 nums = [1, 2, 3]
 target = 4
@@ -100,9 +102,13 @@ target = 4
 # target = 32
 
 # print(Solution().combinationSum4(nums, target))
-print(Solution().combinationSum44(nums, target))
+assert 7 == Solution().combinationSum44(nums, target)
 
 
 nums = [1,50]
 target = 200
+assert 28730 == Solution().combinationSum44(nums, target)
+
+[4,2,1]
+32
 print(Solution().combinationSum44(nums, target))
