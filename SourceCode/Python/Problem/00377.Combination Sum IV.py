@@ -91,7 +91,7 @@ class Solution(object):
         ans = []
         rec(ans, 0, nums, [], target)
         print(ans)
-        return ans
+        return len(ans)
 
 nums = [1, 2, 3]
 target = 4
@@ -103,3 +103,6 @@ target = 4
 print(Solution().combinationSum44(nums, target))
 
 
+nums = [1,50]
+target = 200
+print(Solution().combinationSum44(nums, target))
