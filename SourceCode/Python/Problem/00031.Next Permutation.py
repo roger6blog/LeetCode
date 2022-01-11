@@ -73,13 +73,12 @@ class Solution(object):
         :type nums: List[int]
         :rtype: void Do not return anything, modify nums in-place instead.
         """
-        def rec(res, index, nums, curr, used):
-            print(len(res))
+        def rec(res, index, nums, curr):
             curr_len = len(curr)
             num_len = len(nums)
             if curr_len == num_len:
                 if curr not in res:
-                    res.append(curr[:])
+                    res.append(curr)
                     return
 
             elif curr_len > num_len:
@@ -88,19 +87,11 @@ class Solution(object):
             for i in range(num_len):
                 if i in index:
                     continue
+                rec(res, index+[i], nums, curr+[nums[i]])
 
-                if used[i] == True:
-                    continue
 
-                used[i] = True
-                curr.append(nums[i])
-                rec(res, index+[i], nums, curr, used)
-                curr.pop()
-                used[i] = False
-
-        used = [False] * len(nums)
         candidate = []
-        rec(candidate, [], nums, [], used)
+        rec(candidate, [], nums, [])
         candidate.sort()
 
         next_perm = candidate.index(nums) + 1
@@ -113,16 +104,37 @@ class Solution(object):
         return
 
 
+    def nextPermutation3(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: void Do not return anything, modify nums in-place instead.
+        """
+        from itertools import permutations
+
+        perms = list(set(list(permutations(nums))))
+        perms.sort()
+        next_perm = perms.index(tuple(nums)) + 1
+        if next_perm == len(perms):
+            next_perm = 0
+        for i in range(len(nums)):
+            nums[i] = perms[next_perm][i]
+
+        print(nums)
+        return
 
 nums = [1,4,5,3,2]
 nums2 = [3,2,1]
 print(Solution().nextPermutation(nums2))
 
-# nums = [3,2,1]
-# print(Solution().nextPermutation2(nums))
-# nums = [1,4,5,3,2]
-# print(Solution().nextPermutation2(nums))
+nums = [3,2,1]
+print(Solution().nextPermutation3(nums))
+nums = [1,4,5,3,2]
+print(Solution().nextPermutation3(nums))
 nums = [1,1,5]
-print(Solution().nextPermutation2(nums))
-nums = [2,2,7,5,4,3,2,2,1]
-print(Solution().nextPermutation2(nums))
+print(Solution().nextPermutation3(nums))
+
+nums = [2,2,7,5,4,3,2,2,1]  # TLE case
+print(Solution().nextPermutation3(nums))
+
+nums = [6,7,5,3,5,6,2,9,1,2,7,0,9] # MLE case, eat 2GB memory!
+print(Solution().nextPermutation3(nums))
