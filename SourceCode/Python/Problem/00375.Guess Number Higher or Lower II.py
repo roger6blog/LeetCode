@@ -1,5 +1,5 @@
 '''
-Level: Medium
+Level: Medium Tag: 2DP
 
 We are playing the Guessing Game. The game will work as follows:
 
@@ -179,7 +179,45 @@ class Solution(object):
 
 
 
-start = datetime.datetime.now()
-print Solution().getMoneyAmount(5)
-end = datetime.datetime.now()
-print end - start
+
+
+    '''
+    以 top-down recursion 的方式分析这个问题，可以发现对于区间 [i, j] ，猜测 i <= k <= j 我们可能出现以下三种结果:
+       1. k 就是答案，此时子问题的额外 cost = 0 ，当前位置总 cost  = k + 0;
+       2. k 过大，此时我们的有效区间缩小为 [i , k - 1] 当前操作总 cost  = k + dp[i][k - 1];
+       3. k 过小，此时我们的有效区间缩小为 [k + 1 , j] 当前操作总 cost  = k + dp[k + 1][j];
+    找出這兩個的最小值即為答案
+    '''
+    def getMoneyAmount_top_down(self, n):
+            """
+            :type n: int
+            :rtype: int
+            """
+
+            from sys import maxint
+            dp = [[0 for i in range (n+1) ] for j in range(n+1)]
+
+            # 區間裡只有一個數字時，cost就是0
+            for i in range(n+1):
+                dp[i][i] = 0
+
+            # 從區間(n-1, n)開始算起
+            for i in range(n)[::-1]:
+                for j in range(i+1, n+1):
+                    min_cost = maxint
+                    for k in range(i, j):
+                        min_cost = min(min_cost, k + max(dp[i][k-1], dp[k+1][j]) )
+                    dp[i][j] = min_cost
+
+            # 區間[1, n]的最小cost即為答案
+            print(dp[1][n])
+            return dp[1][n]
+
+
+
+
+print(Solution().getMoneyAmount(5))
+
+
+print(Solution().getMoneyAmount_top_down(5))
+
