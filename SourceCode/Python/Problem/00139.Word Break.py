@@ -1,5 +1,5 @@
 '''
-Level: Medium
+Level: Medium Tag:  DP
 
 Given a non-empty string s and a dictionary wordDict containing a list of non-empty words,
 determine if s can be segmented into a space-separated sequence of one or more dictionary words.
@@ -138,7 +138,7 @@ class Solution(object):
     如果前i個字元長度的字串[0, i)  扣掉當前比較字典裡的字的長度剩下的字串 之前的比較結果有符合
     當前比較的word長度的字串又有在字典內的話
     那前i個長度的字串就能被字典裡的字組成
-    然後我們看題目要求的i個長度的字串結果是否能符合即為索求
+    然後我們看題目要求的i個長度的字串結果是否能符合即為所求
     '''
 
     def wordBreak5(self, s, wordDict):
