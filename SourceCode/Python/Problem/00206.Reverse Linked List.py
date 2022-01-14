@@ -57,10 +57,10 @@ class Solution(object):
         prev = None
         curr = head
         while curr:
-            next = curr.next
-            curr.next = prev
-            prev = curr
-            curr = next
+            next = curr.next   # 備份目前指向的箭頭                             next: 2->3->4->5  curr:1->2->3->4->5
+            curr.next = prev   # 目前指向的下一個箭頭指到上一個點                curr: 1->None  prev: None
+            prev = curr        # 把目前節點的值給存到應該之後成為上一個點的地方   prev: 1->None  curr:1->None
+            curr = next        # 把備份指向的箭頭的點給目前的點                  curr: 2->3->4->5
 
 
         ans = prev
