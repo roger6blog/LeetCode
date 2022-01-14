@@ -41,26 +41,6 @@ Explanation:
 
 
 
-
-'''
-設DP[i][j][k]為第i根柵欄弄成j色，前面有k個一樣顏色的方法數
-根據提議不能超過2個同色的柵欄相同顏色，所以k只會是1個顏色或2個顏色相同 即k=1 or k=2
-則DP[i][j][k]有幾種狀況:
-前面有2種顏色相同時，DP為DP[i][j][1]
-兩個相鄰顏色代表我不能再繼續塗同一顏色了
-所以DP[i][j][1] = DP[i-1][]
-
-所以應該是DP[m][k] = DP[m-1][x] * (k-1) + DP[m-2][x] * (k-1)
-
-
-
-
-
-'''
-
-
-
-
 class Solution(object):
     def numWays2(self, n, k):
         """
@@ -102,6 +82,23 @@ class Solution(object):
 
 
 
+    '''
+    設DP[n][m] 為塗第n根柱子時 前一個柱子是否與其同色 m只能是0或1，0為不同色 1為同色
+    如果DP[n][1]時，代表前一個柱子n-1和第n根柱子同色
+    此時的DP[n-1]的方法數就是有以下兩種 :
+            1. DP[n-1][0] * (k-1)  和前一根柱子不同色，有k-1種顏色可選
+
+            2. DP[n-1][1] * (k-1)  如果你非要跟前一根柱子同色，那你就還是只能選k-1種顏色
+                                   因為第i-2根柱子用的顏色和第i-1根用的顏色一樣，
+                                   所以我們不能用第i-2根柵欄用的顏色相同的顏色，不然就會三根柱子同色了
+
+    如果DP[n][0]時，代表前一個柱子n-1和第n根柱子不同色
+    此時的DP[n][0]就直接是DP[n-1][1]的方法數
+    最後答案就是選擇同色和選擇不同色的方法數的加總
+
+    '''
+
+
 
     def numWays3(self, n, k):
         """
@@ -110,10 +107,25 @@ class Solution(object):
         :rtype: int
         """
 
+        dp = [[0] * 2 for _ in range(n+1)]
+        # 初始值設定
+        # 第1根沒有前面的人跟你同色，所以有k種方法
+        dp[1][1] = k
 
+        for i in range(2, n+1):
+            dp[i][0] = dp[i-1][1]
+            dp[i][1] = (dp[i-1][0] + dp[i-1][1]) * (k-1)
+
+        ans = dp[i][0] + dp[i][1]
+        print(ans)
+
+        return ans
 
 n=7
 k=3
 print(Solution().numWays(n, k))
 print(Solution().numWays2(n, k))
-print(Solution().numWays3(n, k))
+assert 1344 == Solution().numWays3(n, k)
+n=3
+k=2
+assert 6 == Solution().numWays3(n, k)
