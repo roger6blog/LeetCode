@@ -41,8 +41,12 @@ The number of nodes in the list is in the range [0, 100].
 非遞回寫法:
 原本list:  prev->1->2->3->4->dummy
 新list:  dummy->2->1->4->3->None
-
-
+操作步驟
+"../../../Material/swap-step1.png"
+操作結果
+"../../../Material/swap-step2.png"
+拉成linked list來看
+"../../../Material/swap-summary.png"
 '''
 
 def init_link_list(head):
@@ -75,21 +79,22 @@ class Solution(object):
         :rtype: ListNode
         """
 
-        prev = ListNode(0, head)       # prev = 0->1->2->3->4
-        dummy = prev                   # dummy = 0->1->2->3->4
-        curr = head
-        while curr and curr.next:
-            second_node = curr.next    # second_note = 2->3->4
-            stash = second_node.next   # stash = 3->4
+        dummy = ListNode(0, head)       # prev = 0->1->2->3->4
+        curr = dummy
+        while curr.next and curr.next.next:
 
-            prev.next = second_node    # prev = 0->2->3->4
-            second_node.next = curr    # second_node = 2->1->2->1->2 (circular), curr, prev和dummy亦同
-            curr.next = stash          # curr = 1->3->4, prev = 0->2->1->3->4
+            orig = curr.next
+            stash = curr.next.next.next   # stash = 3->4
 
-            prev = curr                # prev = 1->3->4
-            curr = stash               # curr = 3->4
+            # "../../../Material/swap-step1.png"
 
-        return dummy
+            curr.next = curr.next.next    # step1, curr = 0->2->3->4
+            curr.next.next = orig         # step2, curr = 0->2->1->2..(circular)
+            curr.next.next.next = stash   # step3, curr = 0->2->1->3->4
+
+            curr = curr.next.next
+
+        return dummy.next
 
 head = [1,2,3,4]
 link = init_link_list(head)
