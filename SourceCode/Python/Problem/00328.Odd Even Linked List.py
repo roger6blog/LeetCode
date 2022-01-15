@@ -37,15 +37,44 @@ n == number of nodes in the linked list
 -106 <= Node.val <= 106
 
 '''
+def list_to_link_list(head):
+    for n in range(len(head))[::-1]:
+        head[n] = ListNode(head[n])
+        if n != len(head)-1:
+            head[n].next = head[n+1]
+
+    return head[0]
+
+def link_list_to_list(head):
+    ret = []
+    while head.next:
+        ret.append(head.val)
+        head = head.next
+    ret.append(head.val)
+    return ret
 
 # Definition for singly-linked list.
-# class ListNode(object):
-#     def __init__(self, val=0, next=None):
-#         self.val = val
-#         self.next = next
+class ListNode(object):
+    def __init__(self, val=0, next=None):
+        self.val = val
+        self.next = next
 class Solution(object):
     def oddEvenList(self, head):
         """
         :type head: ListNode
         :rtype: ListNode
         """
+
+        odd = ListNode(1)
+        even = ListNode(2)
+
+        curr = head
+
+        while curr
+
+
+
+
+head = [1,2,3,4,5]
+link = list_to_link_list(head)
+Solution().oddEvenList(link)
