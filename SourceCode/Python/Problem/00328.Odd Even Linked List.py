@@ -64,17 +64,37 @@ class Solution(object):
         :type head: ListNode
         :rtype: ListNode
         """
+        if head == None or head.next == None:
+            return head
 
-        odd = ListNode(1)
-        even = ListNode(2)
 
+        odd_list = ListNode(1)
+        even_list = ListNode(2)
+        odd_curr = odd_list
+        even_curr = even_list
         curr = head
+        even = 1
+        while curr:
+            if even % 2 == 0:
+                even_curr.next = curr
+                even_curr = even_curr.next
+            else:
+                odd_curr.next = curr
+                odd_curr = odd_curr.next
+            curr = curr.next
+            even += 1
 
-        while curr
+        even_curr.next = None
+        odd_curr.next = even_list.next
+
+        return head
+
+
 
 
 
 
 head = [1,2,3,4,5]
 link = list_to_link_list(head)
-Solution().oddEvenList(link)
+link = Solution().oddEvenList(link)
+print(link_list_to_list(link))
