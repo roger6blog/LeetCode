@@ -44,6 +44,15 @@ def link_list_to_list(head):
     ret.append(head.val)
     return ret
 
+'''
+純指針做法是用快慢指針來做
+快指針走2步，慢指針每次走1步
+當快指針走完時，慢指針必定走到中間
+然後反轉後半部分
+比較前半和後半部分是否相同
+'''
+
+
 # Definition for singly-linked list.
 class ListNode(object):
     def __init__(self, val=0, next=None):
@@ -69,7 +78,7 @@ class Solution(object):
             return palin[0] == palin[1]
 
         mid = len(palin) // 2
-        if mid % 2 == 0:
+        if len(palin) % 2 == 0:
             left = mid - 1
             right = mid
         else:
@@ -85,17 +94,17 @@ class Solution(object):
         return True
 
 
-# head = [1,2,2,1]
-# link = list_to_link_list(head)
-# assert True == Solution().isPalindrome(link)
+head = [1,2,2,1]
+link = list_to_link_list(head)
+assert True == Solution().isPalindrome(link)
 
-# head = [1,0,0]
-# link = list_to_link_list(head)
-# assert False == Solution().isPalindrome(link)
+head = [1,0,0]
+link = list_to_link_list(head)
+assert False == Solution().isPalindrome(link)
 
-# head = [1,0,1]
-# link = list_to_link_list(head)
-# assert True == Solution().isPalindrome(link)
+head = [1,0,1]
+link = list_to_link_list(head)
+assert True == Solution().isPalindrome(link)
 
 head = [1,2]
 link = list_to_link_list(head)

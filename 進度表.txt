@@ -1,15 +1,15 @@
 分類題數400題
 
 
-類型                    總數   困難題   少考
-Array                   73            10
-String                  59             4
-Math                    40            23
-Tree                    47             9
-Back Tracking           19             1
-Dynamic Programming     24             1
+類型                    總數  困難  少考  重複
+Array                   73          10
+String                  59           4
+Math                    40          23
+Tree                    47           9
+Back Tracking           19           1
+Dynamic Programming     24           1
 Link List               23
-Binary Search           14
+Binary Search           14     3          11
 Matrix                  17
 DFS & BFS                9
 Stack & Queue           18             2
@@ -24,3 +24,5 @@ Design                  17
 
 1/11   238 / 396  60.1%
 1/14   259 / 396  65.4%
+1/16   277 / 396  69.9%  (Link List 15/23)
+1/17   302 / 396  76.3%  (Maxtix 3/17)

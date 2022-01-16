@@ -34,13 +34,22 @@ Follow up: A linked list can be reversed either iteratively or recursively. Coul
 
 '''
 
-def init_link_list(head):
+def list_to_link_list(head):
     for n in range(len(head))[::-1]:
         head[n] = ListNode(head[n])
         if n != len(head)-1:
             head[n].next = head[n+1]
 
     return head[0]
+
+def link_list_to_list(head):
+    ret = []
+    while head.next:
+        ret.append(head.val)
+        head = head.next
+    ret.append(head.val)
+    return ret
+
 
 # Definition for singly-linked list.
 class ListNode(object):
@@ -70,5 +79,5 @@ class Solution(object):
 
 
 head = [1,2,3,4,5]
-link = init_link_list(head)
+link = list_to_link_list(head)
 Solution().reverseList(link)
