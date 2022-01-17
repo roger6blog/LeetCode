@@ -41,9 +41,48 @@ Could you devise a constant space solution?
 
 '''
 
+
+'''
+暴力作法 開一個同樣大小mxn的矩陣，然後掃描原矩陣 只要有某一行有0 就把新矩陣對應的該行列都設0
+set作法 先掃描一次矩陣行列，看到有0的就把他的行列編號記下來
+        再重掃一次矩陣，有看到對應編號在set裡的就設為0
+'''
+
+
 class Solution(object):
     def setZeroes(self, matrix):
         """
         :type matrix: List[List[int]]
         :rtype: None Do not return anything, modify matrix in-place instead.
         """
+
+        if not matrix:
+            return matrix
+
+        col = len(matrix)
+        row = len(matrix[0])
+        col_zero = set()
+        row_zero = set()
+
+
+        for i in range(col):
+            for j in range(row):
+                if matrix[i][j] == 0:
+                    col_zero.add(i)
+                    row_zero.add(j)
+
+        for i in range(col):
+            for j in range(row):
+                if i in col_zero or j in row_zero:
+                    matrix[i][j] = 0
+
+
+        print(matrix)
+
+        return matrix
+
+
+
+
+matrix = [[1,1,1],[1,0,1],[1,1,1]]
+Solution().setZeroes(matrix)

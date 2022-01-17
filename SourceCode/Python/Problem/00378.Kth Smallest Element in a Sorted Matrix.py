@@ -1,4 +1,5 @@
 '''
+Level: Medium    Tag: Matrix
 
 Given a n x n matrix where each of the rows and columns are sorted in ascending order,
 
@@ -18,9 +19,28 @@ matrix = [
 k = 8,
 
 return 13.
+
+Example 2:
+
+Input: matrix = [[-5]], k = 1
+Output: -5
+
+
+Constraints:
+
+n == matrix.length == matrix[i].length
+1 <= n <= 300
+-10^9 <= matrix[i][j] <= 10^9
+All the rows and columns of matrix are guaranteed to be sorted in non-decreasing order.
+1 <= k <= n2
+
 Note:
 You may assume k is always valid, 1 <= k <= n^2.
 
+Follow up:
+
+Could you solve the problem with a constant memory (i.e., O(1) memory complexity)?
+Could you solve the problem in O(n) time complexity? The solution may be too advanced for an interview but you may find reading this paper fun.
 
 '''
 
@@ -74,6 +94,47 @@ class Solution(object):
                 right = mid
         return left
 
+
+
+
+    def kthSmallest2(self, matrix, k):
+        """
+        :type matrix: List[List[int]]
+        :type k: int
+        :rtype: int
+        """
+        def smaller_count(matrix, num):
+            row = len(matrix)
+            col = len(matrix[0])
+            count = 0
+
+            for i in range(row):
+                for j in range(col):
+                    if matrix[i][j] <= num:
+                        count += 1
+
+            return count
+
+
+        left = matrix[0][0]
+        right = matrix[-1][-1]
+
+
+        while left+1 < right:  # 不加1逼近不了
+            mid = left + (right-left) // 2
+            if smaller_count(matrix, mid) < k:
+                left = mid
+            else:
+                right = mid
+
+
+        if smaller_count(matrix, left) >= k:
+            return left
+        else:
+            return right
+
+
+
 matrix = [
    [ 1,  5,  9],
    [10, 11, 13],
@@ -81,4 +142,4 @@ matrix = [
 ]
 k = 8
 
-print Solution().kthSmallest_BinSearch(matrix, k)
+print(Solution().kthSmallest2(matrix, k))
