@@ -1,5 +1,5 @@
 '''
-Level: Medium   Tag: Matrix
+Level: Medium   Tag: [Matrix]
 
 Given an m x n integer matrix matrix,
 

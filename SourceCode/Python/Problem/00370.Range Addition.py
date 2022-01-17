@@ -1,5 +1,5 @@
 '''
-Level: Medium      Tag: Matrix
+Level: Medium      Tag: [Matrix], [Line sweep]
 
 Assume you have an array of length n initialized with all 0's and are given k update operations.
 
@@ -72,10 +72,12 @@ class Solution:
 
         for i in range(len(ans)):
             if i == 0:
-                ans[i] == oper[i]
+                ans[i] = oper[i]
             else:
-                ans
+                ans[i] = oper[i] + ans[i-1]
 
+        print(ans)
+        return ans
 
 length = 5
 updates = [
