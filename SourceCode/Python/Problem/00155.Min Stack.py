@@ -1,13 +1,25 @@
 '''
+Level: Easy   Tag: [Stack]
 
 Design a stack that supports push, pop, top,
 and retrieving the minimum element in constant time.
 
+MinStack() initializes the stack object.
 push(x) -- Push element x onto stack.
 pop() -- Removes the element on top of the stack.
 top() -- Get the top element.
 getMin() -- Retrieve the minimum element in the stack.
+
 Example:
+
+Input
+["MinStack","push","push","push","getMin","pop","top","getMin"]
+[     [],     [-2],  [0],   [-3],   [],     [],   [],    []]
+
+Output
+[null,null,null,null,-3,null,0,-2]
+
+Explaination
 MinStack minStack = new MinStack();
 minStack.push(-2);
 minStack.push(0);
@@ -16,6 +28,12 @@ minStack.getMin();   --> Returns -3.
 minStack.pop();
 minStack.top();      --> Returns 0.
 minStack.getMin();   --> Returns -2.
+
+Constraints:
+
+-2^31 <= val <= 2^31 - 1
+Methods pop, top and getMin operations will always be called on non-empty stacks.
+At most 3 * 10^4 calls will be made to push, pop, top, and getMin.
 
 '''
 
@@ -59,12 +77,25 @@ class MinStack(object):
         """
         return self.minList[0]
 
+
+
+
+
+# Your MinStack object will be instantiated and called as such:
+# obj = MinStack()
+# obj.push(val)
+# obj.pop()
+# param_3 = obj.top()
+# param_4 = obj.getMin()
+
+
+
 # Your MinStack object will be instantiated and called as such:
 obj = MinStack()
 obj.push(-2)
 obj.push(0)
 obj.push(-3)
-print obj.getMin()
+print(obj.getMin())
 obj.pop()
-print obj.top()
-print obj.getMin()
+print(obj.top())
+print(obj.getMin())
