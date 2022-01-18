@@ -12,11 +12,11 @@ Link List               23
 Binary Search           14     3          11
 Matrix                  17
 DFS & BFS                9
-Stack & Queue           18             2
-Bit Manipulation        13            10
+Stack & Queue           18           2
+Bit Manipulation        13          10
 Topological Sort         3
 Random                   6
-Graph                    8             4
+Graph                    8           4
 Union Find               3
 Trie                     3
 Design                  17
@@ -26,3 +26,4 @@ Design                  17
 1/14   259 / 396  65.4%
 1/16   277 / 396  69.9%  (Link List 15/23)
 1/17   302 / 396  76.3%  (Maxtix 3/17)
+1/18
