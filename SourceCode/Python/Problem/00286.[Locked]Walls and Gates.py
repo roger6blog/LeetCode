@@ -1,4 +1,5 @@
 '''
+Level: Medium  Tag: [Matrix], [DFS]
 
 You are given a m x n 2D grid initialized with these three possible values.
 
@@ -24,6 +25,13 @@ After running your function, the 2D grid should be:
   1  -1   2  -1
   0  -1   3   4
 
+
+Example2
+
+Input:
+[[0,-1],[INF,INF]]
+Output:
+[[0,-1],[1,2]]
 
 '''
 
@@ -85,6 +93,69 @@ class Solution():
             path.pop()
         return minLen
 
+
+
+
+
+
+
+
+
+
+
+
+
+    def wallsAndGates2(self, rooms):
+        """
+        input: List[int][int]
+        rtype: List[int][int]
+        """
+        from sys import maxint
+        def min_path_rec(rooms, x, y, curr):
+            if x < 0 or x >= len(rooms) or y < 0 or y >= len(rooms[0]):
+                return maxint
+
+            if rooms[x][y] == '*' or rooms[x][y] == -1:
+                return maxint
+
+            if rooms[x][y] == 0:
+                return curr
+
+            rooms[x][y] = '*'
+
+            min_path = min(min_path_rec(rooms, x+1, y, curr+1), \
+                           min_path_rec(rooms, x-1, y, curr+1), \
+                           min_path_rec(rooms, x, y+1, curr+1), \
+                           min_path_rec(rooms, x, y-1, curr+1)  )
+
+            rooms[x][y] = 'INF'
+
+            return min_path
+
+        m = len(rooms)
+        n = len(rooms[0])
+
+        ans = [[maxint] * n for _ in range(m)]
+
+        for x in range(m):
+            for y in range(n):
+                if rooms[x][y] == 'INF':
+                    ans[x][y] = min_path_rec(rooms, x, y, 0)
+                elif rooms[x][y] == -1:
+                    ans[x][y] = -1
+                elif rooms[x][y] == 0:
+                    ans[x][y] = 0
+
+        print(ans)
+
+        return ans
+
+
+
+
+
+
+
 rooms = [
     ['INF',  -1,     0,   'INF'],
     ['INF', 'INF', 'INF',  -1],
@@ -93,3 +164,10 @@ rooms = [
 ]
 
 print Solution().wallsAndGates(rooms)
+rooms = [
+    ['INF',  -1,     0,   'INF'],
+    ['INF', 'INF', 'INF',  -1],
+    ['INF',  -1,   'INF',  -1],
+    [  0,    -1,   'INF', 'INF']
+]
+print Solution().wallsAndGates2(rooms)
