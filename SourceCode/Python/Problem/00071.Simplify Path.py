@@ -60,3 +60,49 @@ class Solution(object):
         :type path: str
         :rtype: str
         """
+        path = path.replace("//", "/")
+        path = path.rstrip("//")
+        pname = path.split("/")
+        stack = []
+        for p in pname:
+            if p == ".." and len(stack) > 0:
+                stack.pop()
+                continue
+            if p != ".." and p != ".":
+                stack.append(p)
+        if len(stack) == 1:
+            conon_path = "/" + stack[0]
+        else:
+            conon_path = "/".join(stack)
+
+
+        conon_path = conon_path.replace("//", "/")
+        conon_path = conon_path.rstrip("//")
+        if len(conon_path) == 0:
+            conon_path = "/"
+        print(conon_path)
+
+        return conon_path
+
+
+path = "/home//foo/"
+Solution().simplifyPath(path)
+
+path = "/../"
+Solution().simplifyPath(path)
+
+
+path = "/b/c/a/../d/e"
+Solution().simplifyPath(path)
+
+path = "/a/./b/../../c/"
+assert "/c" == Solution().simplifyPath(path)
+
+path ="/a/../../b/../c//.//"
+assert "/c" == Solution().simplifyPath(path)
+
+path = "/a//b////c/d//././/.."
+assert "/a/b/c" == Solution().simplifyPath(path)
+
+path = "/a/./b///../c/../././../d/..//../e/./f/./g/././//.//h///././/..///"
+assert "/e/f/g" == Solution().simplifyPath(path)
