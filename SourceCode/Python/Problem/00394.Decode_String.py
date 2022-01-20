@@ -1,4 +1,5 @@
 '''
+Level: Medium  Tag: [Stack]
 
 Given an encoded string, return it's decoded string.
 
@@ -25,6 +26,13 @@ s = "3[a2[c]]", return "accaccacc".
 s = "2[abc]3[cd]ef", return "abcabccdcdcdef".
 
 
+Constraints:
+
+1 <= s.length <= 30
+s consists of lowercase English letters, digits, and square brackets '[]'.
+s is guaranteed to be a valid input.
+All the integers in s are in the range [1, 300].
+
 '''
 
 class Solution(object):
@@ -49,9 +57,29 @@ class Solution(object):
 
         return stack[0][0]
 
-        print 3*(2*"ac")
 
+
+    def decodeString2(self, s):
+        """
+        :type s: str
+        :rtype: str
+        """
+        ans = ""
+        stack = [["", 1]]
+        for i in s:
+            if i.isdigit():
+                ans += i
+            elif i == "[":
+                stack.append(["", int(ans)])
+                ans = ""
+            elif i == "]":
+                char, num = stack.pop()
+                stack[-1][0] += num * char
+            else:
+                stack[-1][0] += i
+
+        return stack[0][0]
 
 
 s = "3[a2[c]]"
-print Solution().decodeString(s)
+print Solution().decodeString2(s)

@@ -175,5 +175,73 @@ class Solution(object):
         return ans
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+    def lengthLongestPath2(self, input):
+        """
+        :type input: str
+        :rtype: int
+        """
+        ans = 0
+
+        paths = input.split("\n")
+        stack = []
+        for p in paths:
+
+
+            if not stack:
+                stack.append(p)
+            elif p.count("\t") <= stack[-1].count("\t"):
+                while stack and p.count("\t") <= stack[-1].count("\t"):
+                    stack.pop()
+
+                stack.append(p)
+
+            else:
+                stack.append(p)
+
+            if p.count(".") > 0:
+                full_path = ""
+                for s in stack:
+                    s = s.replace("\t", "") + "/"
+                    full_path +=s
+                ans = max(ans, len(full_path)-1 )
+
+        print(ans)
+
+        return ans
+
+
+
+
+
 dir = "dir\n\tsubdir1\n\tsubdir2\n\t\tfile.ext"
-print Solution().lengthLongestPath(dir)
+assert 20 == Solution().lengthLongestPath2(dir)
+input = "dir\n\tsubdir1\n\t\tfile1.ext\n\t\tsubsubdir1\n\tsubdir2\n\t\tsubsubdir2\n\t\t\tfile2.ext"
+assert 32 == Solution().lengthLongestPath2(input)
+
+input = "a"
+assert 0 == Solution().lengthLongestPath2(input)
+
+input = "dir\n\t        file.txt\n\tfile2.txt"
+assert 20 == Solution().lengthLongestPath2(input)
+
+input = "a\n\taa\n\t\taaa\n\t\t\tfile1234567890123.txt\naaaaaaaaaaaaaaaaaaaaa\n\tsth.png"
+assert 30 == Solution().lengthLongestPath2(input)
+
+input = "file1.txt\nfile2.txt\nlongfile.txt"
+assert 12 == Solution().lengthLongestPath2(input)
+
+
+input = "dir\n        file.txt"
+assert 16 == Solution().lengthLongestPath2(input)
