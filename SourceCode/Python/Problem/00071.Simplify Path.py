@@ -60,29 +60,20 @@ class Solution(object):
         :type path: str
         :rtype: str
         """
-        path = path.replace("//", "/")
-        path = path.rstrip("//")
         pname = path.split("/")
         stack = []
         for p in pname:
-            if p == ".." and len(stack) > 0:
-                stack.pop()
-                continue
-            if p != ".." and p != ".":
+            if p == "..":
+                if len(stack) > 0:
+                    stack.pop()
+
+            elif p != "." and p != "":
                 stack.append(p)
-        if len(stack) == 1:
-            conon_path = "/" + stack[0]
-        else:
-            conon_path = "/".join(stack)
 
+        conan_path = "/" + "/".join(stack)
+        print(conan_path)
 
-        conon_path = conon_path.replace("//", "/")
-        conon_path = conon_path.rstrip("//")
-        if len(conon_path) == 0:
-            conon_path = "/"
-        print(conon_path)
-
-        return conon_path
+        return conan_path
 
 
 path = "/home//foo/"
