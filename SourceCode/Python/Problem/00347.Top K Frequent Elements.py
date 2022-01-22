@@ -35,3 +35,19 @@ class Solution(object):
         :type k: int
         :rtype: List[int]
         """
+
+        from collections import Counter
+
+        c = Counter(nums)
+        freq = c.most_common(k)
+        ans = []
+        for f, q in freq:
+            ans.append(f)
+        print(ans)
+        return ans
+
+
+
+nums = [1,1,1,2,2,3]
+k = 2
+Solution().topKFrequent(nums, k)

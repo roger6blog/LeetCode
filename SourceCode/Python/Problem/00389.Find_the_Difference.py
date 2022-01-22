@@ -34,10 +34,16 @@ class Solution(object):
             return s
         lstT = list(t)
         lstS = list(s)
-        while len(lstS) != 0:
+        while lstS:
             lstT.pop(lstT.index(lstS.pop()))
         return lstT.pop()
 
+
+
+
+
+
 s = "abcd"
 t = "abcde"
-print Solution().findTheDifference(s, t)
+
+print(Solution().findTheDifference(s, t))
