@@ -1,4 +1,5 @@
 '''
+Level: Easy  Tag: [Bit Manipulation]
 
 Given two strings s and t which consist of only lowercase letters.
 
@@ -18,6 +19,11 @@ e
 Explanation:
 'e' is the letter that was added.
 
+Constraints:
+
+0 <= s.length <= 1000
+t.length == s.length + 1
+s and t consist of lowercase English letters
 '''
 
 
@@ -38,12 +44,27 @@ class Solution(object):
             lstT.pop(lstT.index(lstS.pop()))
         return lstT.pop()
 
+    '''
+    XOR運算
+    XOR比較兩個數字時，如果兩個數字相同的話結果會是0
+    所以比較到最後的數字一定是多出來的那個字元
+    '''
 
+    def findTheDifference_xor(self, s, t):
+        x = 0
+        for c in s:
+            x ^= ord(c)
 
+        for c in t:
+            x ^= ord(c)
 
+        ans = chr(x)
+        print(ans)
+        return ans
 
 
 s = "abcd"
 t = "abcde"
 
 print(Solution().findTheDifference(s, t))
+print(Solution().findTheDifference_xor(s, t))

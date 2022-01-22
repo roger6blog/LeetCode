@@ -1,4 +1,5 @@
 '''
+Level: Medium   Tag: [Random]
 
 Given a singly linked list,
 
@@ -6,10 +7,21 @@ return a random node's value from the linked list.
 
 Each node must have the same probability of being chosen.
 
+Implement the Solution class:
+
+Solution(ListNode head) Initializes the object with the head of the singly-linked list head.
+int getRandom() Chooses a node randomly from the list and returns its value.
+All the nodes of the list should be equally likely to be chosen.
+
 Follow up:
-What if the linked list is extremely large and its length is unknown to you? Could you solve this efficiently without using extra space?
+What if the linked list is extremely large and its length is unknown to you?
+Could you solve this efficiently without using extra space?
+
+
 
 Example:
+
+"../../../Material/getrand-linked-list.jpeg"
 
 // Init a singly linked list [1,2,3].
 ListNode head = new ListNode(1);
@@ -17,7 +29,8 @@ head.next = new ListNode(2);
 head.next.next = new ListNode(3);
 Solution solution = new Solution(head);
 
-// getRandom() should return either 1, 2, or 3 randomly. Each element should have equal probability of returning.
+// getRandom() should return either 1, 2, or 3 randomly.
+Each element should have equal probability of returning.
 solution.getRandom();
 
 
@@ -44,7 +57,7 @@ class Linklist:
         if curr.val:
             res.append(curr.val)
 
-        print res
+        print(res)
 
 
     # Inserting at the Beginning of the Linked List
@@ -113,6 +126,37 @@ class Solution(object):
             count += 1
             ptr = ptr.next
 
+'''
+水塘取樣演算法
+在未知長度的樣本中用同等的機率取出樣本
+'''
+
+
+class Solution_follow_up(object):
+    def __init__(self, head):
+        """
+        @param head The linked list's head.
+        Note that the head is guaranteed to be not null, so it contains at least one node.
+        :type head: ListNode
+        """
+        self.head = head
+
+    def getRandom(self):
+        """
+        Returns a random node's value.
+        :rtype: int
+        """
+        ans = None
+        count = 0
+        ptr = self.head
+        while ptr:
+            count += 1
+            x = random.randint(1, count)
+            if x == 1:
+                ans = ptr.val
+            ptr = ptr.next
+
+        return ans
 
 link1 = Linklist()
 link1.head = ListNode(1)
