@@ -1,5 +1,5 @@
 '''
-Level:  Tag: [Graph]
+Level: Medium   Tag: [Graph]
 
 Given a reference of a node in a connected undirected graph.
 
@@ -42,12 +42,14 @@ Explanation: There are 4 nodes in the graph.
 2nd node (val = 2)'s neighbors are 1st node (val = 1) and 3rd node (val = 3).
 3rd node (val = 3)'s neighbors are 2nd node (val = 2) and 4th node (val = 4).
 4th node (val = 4)'s neighbors are 1st node (val = 1) and 3rd node (val = 3).
+
 Example 2:
 
 
 Input: adjList = [[]]
 Output: [[]]
-Explanation: Note that the input contains one empty list. The graph consists of only one node with val = 1 and it does not have any neighbors.
+Explanation: Note that the input contains one empty list.
+The graph consists of only one node with val = 1 and it does not have any neighbors.
 
 Example 3:
 
@@ -112,12 +114,38 @@ Visually, the graph looks like the following:
 
 '''
 
-# Definition for a undirected graph node
-class UndirectedGraphNode:
-    def __init__(self, x):
-        self.label = x
-        self.neighbors = []
+def list_to_graph(head):
+    graph = [None] * len(head)
+    for i in range(len(head)):
+        graph[i] = Node(i+1, head[i])
+    for g in graph:
+        neighbors = []
+        for n in range(len(g.neighbors)):
+            neighbors.append(graph[g.neighbors[n]-1])
+        g.neighbors = neighbors
+    return graph[0]
 
+def link_list_to_list(head):
+    ret = []
+    while head.next:
+        ret.append(head.val)
+        head = head.next
+    ret.append(head.val)
+    return ret
+
+# Definition for a undirected graph node
+class Node(object):
+    def __init__(self, val = 0, neighbors = None):
+        self.val = val
+        self.neighbors = neighbors if neighbors is not None else []
+
+
+
+'''
+1. 从原图给定的点找到所有点
+2. 复制所有的点
+3. 复制所有的边
+'''
 class Solution(object):
     def __init__(self):
         self.visit = {}
@@ -125,12 +153,12 @@ class Solution(object):
     def cloneGraph(self, node):
         if not node:
             return
-        if node.label in self.visit:
-            return self.visit[node.label]
+        if node.val in self.visit:
+            return self.visit[node.val]
 
         # Clone node
-        cloneGraph = UndirectedGraphNode(node.label)
-        self.visit[node.label] = cloneGraph
+        cloneGraph = Node(node.val)
+        self.visit[node.val] = cloneGraph
 
         for neighbour in node.neighbors:
             cloneGraph.neighbors.append(self.cloneGraph(neighbour))
@@ -138,13 +166,43 @@ class Solution(object):
         return cloneGraph
 
 
+
+
+
+class Solution2(object):
+    def __init__(self):
+        self.visit = {}
+
+    def cloneGraph(self, node):
+        if node == None:
+            return node
+
+        if node.val in self.visit:
+            return self.visit[node.val]
+
+        clone_graph = Node(node.val)
+        self.visit[clone_graph.val] = clone_graph
+
+        for n in node.neighbors:
+            clone_graph.neighbors.append(self.cloneGraph(n))
+
+        return clone_graph
+
+
+
 sol = Solution()
-node1 = UndirectedGraphNode(0)
-node2 = UndirectedGraphNode(1)
-node3 = UndirectedGraphNode(2)
+node1 = Node(0)
+node2 = Node(1)
+node3 = Node(2)
 node1.neighbors = [node2, node3]
 node2.neighbors = [node3]
 node3.neighbors = [node3]
 
 a = sol.cloneGraph(node1)
-print a
+print(a)
+
+
+
+adjList = [[2,4],[1,3],[2,4],[1,3]]
+graph = list_to_graph(adjList)
+Solution().cloneGraph(graph)
