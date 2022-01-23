@@ -67,6 +67,14 @@ All inputs are guaranteed to be non-empty strings.
 
 '''
 
+'''
+Trie explain:
+
+"../../../Material/208_trie.png"
+
+
+'''
+
 
 class Trie(object):
     def __init__(self):
