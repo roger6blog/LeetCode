@@ -1,5 +1,5 @@
 '''
-Level: Medium
+Level: Medium   Tag: [Stack]
 
 You are given a nested list of integers nestedList.
 
