@@ -184,7 +184,8 @@ class Solution(object):
         for i, query in enumerate(queries):
             if query[0] not in calc_map or query[1] not in calc_map:
                 continue
-            dfs(query[0], query[1], 1, i, set(query[0]))
+            dfs(query[0], query[1], 1, i, set([query[0]]))
+
 
 
         print(ans)
