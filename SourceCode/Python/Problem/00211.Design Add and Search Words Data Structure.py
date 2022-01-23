@@ -42,16 +42,57 @@ At most 50000 calls will be made to addWord and search.
 
 '''
 
+
+
+
+'''
+基本仿造208題的Trie樹做法
+但对于.符号，需要对当前节点的所有孩子进行遍历。
+为此我们需要定一个新的函数，因为search函数只有要查找的字符串，肯定是以根节点root开始查的
+而我们向后面查的过程中，一定会移动到子节点上，所以需要新的函数match。
+
+'''
+
+
+class TrieNode:
+    def __init__(self):
+        self.child = {}
+        self.is_word = False
 class WordDictionary(object):
 
     def __init__(self):
-
+        self.root = TrieNode()
 
     def addWord(self, word):
         """
         :type word: str
         :rtype: None
         """
+        curr = self.root
+        for c in word:
+            if c not in curr.child:
+                curr.child[c] = TrieNode()
+            curr = curr.child[c]
+
+        curr.is_word = True
+
+    def match(self, word, index, root):
+        if root == None:
+            return False
+
+        if index == len(word):
+            return root.is_word
+
+        if word[index] != '.':
+            if root != None and self.match(word, index+1, root.child.get(word[index])):
+                return True
+            else:
+                return False
+        else:
+            for child in root.child.values():
+                if self.match(word, index+1, child):
+                    return True
+            return False
 
 
     def search(self, word):
@@ -59,10 +100,19 @@ class WordDictionary(object):
         :type word: str
         :rtype: bool
         """
-
+        return self.match(word, 0, self.root)
 
 
 # Your WordDictionary object will be instantiated and called as such:
 # obj = WordDictionary()
 # obj.addWord(word)
 # param_2 = obj.search(word)
+
+word = "bad"
+obj = WordDictionary()
+obj.addWord(word)
+param_2 = obj.search(word)
+print(param_2)
+print(obj.search("mad"))
+assert False == obj.search("mad")
+assert True == obj.search(".ad")

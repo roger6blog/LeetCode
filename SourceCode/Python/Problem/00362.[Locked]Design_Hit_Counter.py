@@ -1,4 +1,5 @@
 '''
+Level:Medium   Tag: [Design]
 
 Design a hit counter which counts the number of hits received in the past 5 minutes.
 
@@ -39,7 +40,6 @@ What if the number of hits per second could be very large? Does your design scal
 
 Credits:
 Special thanks to @elmirap for adding this problem and creating all test cases.
-
 
 
 '''

@@ -69,11 +69,21 @@ All inputs are guaranteed to be non-empty strings.
 
 '''
 Trie explain:
+一个保存了8个键的trie结构，"A", "to", "tea", "ted", "ten", "i", "in", and "inn"，如下图所示
 
 "../../../Material/208_trie.png"
 
+字典树主要有如下三点性质:
+
+1. 根节点不包含字符，除根节点以外每个节点只包含一个字符。
+
+2. 从根节点到某一个节点，路径上经过的字符连接起来，为该节点对应的字符串。
+
+3. 每个节点的所有子节点包含的字符串不相同
 
 '''
+
+
 
 
 class Trie(object):
@@ -127,11 +137,17 @@ class Trie(object):
         return True
 
 
-class Trie2(object):
+class TrieNode:
+    def __init__(self):
+        self.children = {}
+        self.is_word = False
+class Trie2:
+
     def __init__(self):
         """
         Initialize your data structure here.
         """
+        self.root = TrieNode()
 
 
     def insert(self, word):
@@ -140,7 +156,21 @@ class Trie2(object):
         :type word: str
         :rtype: void
         """
+        curr = self.root
+        for c in word:
+            if c not in curr.children:
+                curr.children[c] = TrieNode()
+            curr = curr.children[c]
+        curr.is_word = True
 
+
+    def find(self, word):
+        curr = self.root
+        for c in word:
+            curr = curr.children.get(c)
+            if curr is None:
+                return None
+        return curr
 
 
     def search(self, word):
@@ -149,6 +179,9 @@ class Trie2(object):
         :type word: str
         :rtype: bool
         """
+        curr = self.find(word)
+        if curr is not None and curr.is_word == True:
+            return True
 
 
     def startsWith(self, prefix):
@@ -157,6 +190,7 @@ class Trie2(object):
         :type prefix: str
         :rtype: bool
         """
+        return self.find(prefix) is not None
 
 
 # Your Trie object will be instantiated and called as such:
@@ -167,8 +201,16 @@ class Trie2(object):
 
 word = 'apple'
 obj = Trie()
-print obj.startsWith('a')
+print(obj.startsWith('a'))
 
 obj.insert(word)
 param_2 = obj.search(word)
-print param_2
+print(param_2)
+
+word = 'apple'
+obj = Trie2()
+print(obj.startsWith('a'))
+
+obj.insert(word)
+param_2 = obj.search(word)
+print(param_2)

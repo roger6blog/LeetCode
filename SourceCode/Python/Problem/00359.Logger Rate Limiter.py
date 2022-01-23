@@ -1,4 +1,6 @@
 '''
+2021後被Locked
+Level: Easy   Tag: [Design]
 
 Design a logger system that receive stream of messages along with its timestamps,
 
@@ -62,3 +64,8 @@ class Logger(object):
 # Your Logger object will be instantiated and called as such:
 # obj = Logger()
 # param_1 = obj.shouldPrintMessage(timestamp,message)
+
+obj = Logger()
+print(obj.shouldPrintMessage(1,"foo"))
+print(obj.shouldPrintMessage(3,"foo"))
+print(obj.shouldPrintMessage(20,"foo"))
