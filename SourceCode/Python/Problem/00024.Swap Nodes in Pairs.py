@@ -1,5 +1,5 @@
 '''
-Level: Medium  Tag: LinkList
+Level: Medium  Tag: [LinkList]
 
 Given a linked list, swap every two adjacent nodes and return its head.
 
@@ -49,7 +49,7 @@ The number of nodes in the list is in the range [0, 100].
 "../../../Material/swap-summary.png"
 '''
 
-def init_link_list(head):
+def list_to_link_list(head):
     for n in range(len(head))[::-1]:
         head[n] = ListNode(head[n])
         if n != len(head)-1:
@@ -97,7 +97,7 @@ class Solution(object):
         return dummy.next
 
 head = [1,2,3,4]
-link = init_link_list(head)
+link = list_to_link_list(head)
 print(link_list_to_list(link))
 link = Solution().swapPairs(link)
 print(link_list_to_list(link))

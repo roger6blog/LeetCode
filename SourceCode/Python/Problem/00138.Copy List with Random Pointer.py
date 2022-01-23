@@ -1,7 +1,9 @@
 '''
 Level: Medium   Tag: [Random]
 
-A linked list of length n is given such that each node contains an additional random pointer, which could point to any node in the list, or null.
+A linked list of length n is given such that each node contains an additional random pointer,
+
+which could point to any node in the list, or null.
 
 Construct a deep copy of the list.
 
@@ -13,7 +15,8 @@ the pointers in the original list and copied list represent the same list state.
 None of the pointers in the new list should point to nodes in the original list.
 
 For example,
-if there are two nodes X and Y in the original list, where X.random --> Y, then for the corresponding two nodes x and y in the copied list, x.random --> y.
+if there are two nodes X and Y in the original list, where X.random --> Y,
+then for the corresponding two nodes x and y in the copied list, x.random --> y.
 
 Return the head of the copied linked list.
 
@@ -56,6 +59,37 @@ Node.random is null or is pointing to some node in the linked list.
 '''
 
 
+'''
+please see the problme 137 clone graph.
+use the hash map/ dict to mapping the node: new node
+Space: O(n)
+'''
+
+
+def list_to_link_list_random(head):
+    for n in range(len(head))[::-1]:
+        head[n] = Node(head[n][0], random=head[n][1])
+        if n != len(head)-1:
+            head[n].next = head[n+1]
+    curr = head[0]
+    n = len(head)
+    while curr:
+        if curr.random != None:
+            curr.random = head[curr.random]
+        curr = curr.next
+        n += 1
+
+    return head[0]
+
+def link_list_to_list(head):
+    ret = []
+    while head.next:
+        ret.append(head.val)
+        head = head.next
+    ret.append(head.val)
+    return ret
+
+
 # Definition for a Node.
 class Node:
     def __init__(self, x, next=None, random=None):
@@ -70,3 +104,27 @@ class Solution(object):
         :type head: Node
         :rtype: Node
         """
+        if head is None:
+            return head
+
+         #  mapping the node to new node
+        hash_map = {}
+        curr = head
+        while curr:
+            hash_map[curr] = Node(curr.val)
+            curr = curr.next
+
+        #  copy the next and ramdon pointer
+        for node in hash_map:
+            if node.next:
+                hash_map[node].next = hash_map[node.next]
+            if node.random:
+                hash_map[node].random = hash_map[node.random]
+
+
+        return hash_map[head]
+
+
+head = [[7,None],[13,0],[11,4],[10,2],[1,0]]
+link = list_to_link_list_random(head)
+Solution().copyRandomList(link)
