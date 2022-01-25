@@ -163,10 +163,10 @@ class PeekingIterator(object):
 
 nums = [1,2,3]
 iter = PeekingIterator(Iterator(nums))
-print iter
+print(iter)
 while iter.hasNext():
     val = iter.peek()   # Get the next element but not advance the iterator.
-    print val
+    print(val)
     iter.next()         # Should return the same value as [val].
 
 
@@ -183,7 +183,7 @@ class PeekingIterator2(object):
         :type iterator: Iterator
         """
         self.iter = iterator
-        self.peek = None
+        self.next_one = None
 
 
     def peek(self):
@@ -191,20 +191,20 @@ class PeekingIterator2(object):
         Returns the next element in the iteration without advancing the iterator.
         :rtype: int
         """
-        if self.peek:
-            return self.peek
+        if self.next_one:
+            return self.next_one
         if self.iter.hasNext():
-            self.peek = self.iter.next()
-        return self.peek
+            self.next_one = self.iter.next()
+        return self.next_one
 
 
     def next(self):
         """
         :rtype: int
         """
-        ret = self.peek
-        if self.peek:
-            self.peek = None
+        ret = self.next_one
+        if self.next_one:
+            self.next_one = None
             return ret
         return self.iter.next()
 
@@ -212,7 +212,7 @@ class PeekingIterator2(object):
         """
         :rtype: bool
         """
-        return (self.peek is not None) or self.iter.hasNext()
+        return (self.next_one is not None) or self.iter.hasNext()
 
 
 
@@ -226,5 +226,5 @@ class PeekingIterator2(object):
 
 iter = PeekingIterator2(Iterator(nums))
 while iter.hasNext():
-    val = iter.peek()   # Get the next element but not advance the iterator.
+    val = iter.next_one()   # Get the next element but not advance the iterator.
     iter.next()         # Should return the same value as [val].

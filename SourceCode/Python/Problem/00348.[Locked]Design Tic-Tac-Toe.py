@@ -1,12 +1,19 @@
 '''
+Level: Medium   Tag: [Design]
 
-Design a Tic-tac-toe game that is played between two players on a n x n grid.
+Design a Tic-tac-toe game that is played between two players on a 3 x 3 grid.
 
 You may assume the following rules:
 
 A move is guaranteed to be valid and is placed on an empty block.
 Once a winning condition is reached, no more moves is allowed.
 A player who succeeds in placing n of their marks in a horizontal, vertical, or diagonal row wins the game.
+X always take the first move
+If a place already got taken, and one player want to take that place,
+an AlreadyTakenException will be thrown
+If one player wins, and somebody try to make another move, a GameEndException will be thrown.
+If all the places got taken,you should print "it's a draw"
+
 
 Example:
 Given n = 3, assume that player 1 is "X" and player 2 is "O" in the board.
@@ -92,7 +99,7 @@ class TicTacToeFast(object):
         if row == col:
             self.diag += add
 
-        if row == self.n - col -1 :
+        if row == self.n - col - 1 :
             self.obDiag += add
 
         if abs(self.rows[row]) == N or abs(self.cols[col]) == N or abs(self.diag) == N or abs(self.obDiag) == N:
@@ -191,3 +198,61 @@ toe.move(1, 1, 1)
 # toe.move(1, 0, 2)
 # toe.move(2, 1, 1)
 print
+
+
+class AlreadyTakenException(Exception):
+    pass
+
+class GameEndException(Exception):
+    pass
+class TicTacToe2(object):
+    def __init__(self, n):
+        self.board = [[None] * 3 for _ in range(3)]
+        self.placed = 0
+
+    def move(self, row, col, player):
+        if self.board[row][col] is None:
+            self.board[row][col] = player
+            self.placed += 1
+        else:
+            raise AlreadyTakenException
+
+        game_over = False
+
+        for x in range(3):
+            if len(set(self.board[x])) == 1 and self.board[x][0] != None:
+                print("Player {} win!".format(self.board[x][0]))
+                game_over = True
+                break
+
+        if not game_over:
+            for y in range(3):
+                if len(set([self.board[0][y], self.board[1][y], self.board[2][y]])) == 1 and self.board[0][y] != None:
+                    print("Player {} win!".format(self.board[0][y]))
+                    game_over = True
+                    break
+
+        if not game_over:
+            if len(set([self.board[0][0], self.board[1][1], self.board[2][2]])) == 1 and self.board[0][0] != None:
+                print("Player {} win!".format(self.board[0][y]))
+                game_over = True
+
+        if not game_over:
+            if len(set([self.board[0][2], self.board[1][1], self.board[2][0]])) == 1 and self.board[0][2] != None:
+                print("Player {} win!".format(self.board[0][y]))
+                game_over = True
+
+        if game_over:
+            raise GameEndException
+
+        if self.placed == 9:
+            print("Draw Game")
+            return
+
+toe = TicTacToe2(3)
+toe.move(0, 0, 1)
+toe.move(0, 2, 1)
+toe.move(2, 2, 1)
+toe.move(1, 2, 2)
+toe.move(2, 0, 1)
+toe.move(1, 1, 1)

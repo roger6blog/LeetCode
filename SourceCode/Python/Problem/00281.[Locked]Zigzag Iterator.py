@@ -50,7 +50,7 @@ class ZigzagIterator(object):
             except StopIteration:
                 keepV2 = False
 
-        print ans
+        print(ans)
 
 
 v1 = [1, 2]

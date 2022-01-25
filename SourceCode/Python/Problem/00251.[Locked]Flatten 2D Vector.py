@@ -1,4 +1,5 @@
 '''
+Level: Medium   Tag: [Design]
 
 Implement an iterator to flatten a 2d vector.
 
@@ -9,7 +10,13 @@ For example, Given 2d vector =
   [3],
   [4,5,6]
 ]
-By calling next repeatedly until hasNext returns false, the order of elements returned by next should be: [1,2,3,4,5,6].
+By calling next repeatedly until hasNext returns false,
+the order of elements returned by next should be: [1,2,3,4,5,6].
+
+Example 2:
+
+Input:[[7,9],[5]]
+Output:[7,9,5]
 
 Hint:
 
@@ -64,4 +71,46 @@ i = Vector2D([
 
 
 while i.hasNext():
-    print i.next()
+    print(i.next())
+
+
+class Vector2D2(object):
+
+    # @param vec2d {List[List[int]]}
+    def __init__(self, vec2d):
+        self.vec2d = vec2d
+
+
+    # @return {int} a next element
+    def next(self):
+        ret = None
+        for n in self.vec2d:
+            ret = n.pop(0)
+            if n == []:
+                self.vec2d.pop(0)
+            break
+
+        return ret
+
+
+
+    # @return {boolean} true if it has next element
+    # or false
+    def hasNext(self):
+        if self.vec2d:
+            return True
+        return False
+
+
+# Your Vector2D object will be instantiated and called as such:
+# i, v = Vector2D(vec2d), []
+# while i.hasNext(): v.append(i.next())
+vec2d = [
+  [1,2],
+  [3],
+  [4,5,6]
+]
+i, v = Vector2D2(vec2d), []
+while i.hasNext():
+    v.append(i.next())
+print(v)
