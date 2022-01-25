@@ -67,29 +67,37 @@ class ZigzagIterator2:
         # initialize your data structure here
         self.z1 = deque(v1)
         self.z2 = deque(v2)
-        self.last_one = None
-        self.next_one = self.z1[0] - self.z2[0]
-        self.higher = True
+        self.last_v = 0
 
 
-    def _next(self):
+
+    def next(self):
         # Write your code here
-        if self.last_one == None:
-            if self.next_one >= 0:
-                self.last_one = self.z1.popleft()
+        self.last_v += 1
+        if self.last_v % 2 == 1:
+            if self.z1:
+                return self.z1.popleft()
+            else:
+                return self.z2.popleft()
         else:
+            if self.z2:
+                return self.z2.popleft()
+            else:
+                return self.z1.popleft()
 
 
 
 
     def hasNext(self):
         # Write your code here
+        return self.z1 or self.z2
 
 # Your ZigzagIterator object will be instantiated and called as such:
 # solution, result = ZigzagIterator(v1, v2), []
 # while solution.hasNext(): result.append(solution.next())
 # Output result
 
-solution, result = ZigzagIterator(v1, v2), []
-while solution.hasNext(): result.append(solution.next())
+solution, result = ZigzagIterator2(v1, v2), []
+while solution.hasNext():
+    result.append(solution.next())
 print(result)
