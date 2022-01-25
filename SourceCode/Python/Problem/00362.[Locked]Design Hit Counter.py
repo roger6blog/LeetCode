@@ -3,7 +3,8 @@ Level:Medium   Tag: [Design]
 
 Design a hit counter which counts the number of hits received in the past 5 minutes.
 
-Each function accepts a timestamp parameter (in seconds granularity) and you may assume that calls are being made to the system in chronological order
+Each function accepts a timestamp parameter (in seconds granularity)
+and you may assume that calls are being made to the system in chronological order
 
 (ie, the timestamp is monotonically increasing).
 
@@ -88,6 +89,48 @@ class HitCounter(object):
 
 
 
+
+
+class HitCounter2(object):
+
+
+    def __init__(self):
+        """
+        Initialize your data structure here.
+        """
+        self.queue = deque()
+
+
+
+
+
+    def hit(self, timestamp):
+        """
+        Record a hit.
+        @param timestamp - The current timestamp (in seconds granularity).
+        :type timestamp: int
+        :rtype: void
+        """
+        self.queue.append(timestamp)
+
+
+
+
+    def getHits(self, timestamp):
+        """
+        Return the number of hits in the past 5 minutes.
+        @param timestamp - The current timestamp (in seconds granularity).
+        :type timestamp: int
+        :rtype: int
+        """
+        while self.queue and timestamp - self.queue[0] > 300:
+            self.queue.popleft()
+        return len(self.queue)
+
+
+
+
+
 # Your HitCounter object will be instantiated and called as such:
 # obj = HitCounter()
 # obj.hit(timestamp)
@@ -97,9 +140,21 @@ timestamp = 1
 obj = HitCounter()
 obj.hit(timestamp)
 param_2 = obj.getHits(timestamp)
-print param_2
+print(param_2)
 obj.hit(3)
-print obj.getHits(3)
+print(obj.getHits(3))
 obj.hit(300)
-print obj.getHits(300)
-print obj.getHits(500)
+print(obj.getHits(300))
+print(obj.getHits(500))
+
+print("======")
+timestamp = 1
+obj = HitCounter2()
+obj.hit(timestamp)
+param_2 = obj.getHits(timestamp)
+print(param_2)
+obj.hit(3)
+print(obj.getHits(3))
+obj.hit(300)
+print(obj.getHits(300))
+print(obj.getHits(500))

@@ -1,4 +1,5 @@
 '''
+Level: Medium   Tag: [Design]
 
 Given two 1d vectors, implement an iterator to return their elements alternately.
 
@@ -51,6 +52,44 @@ class ZigzagIterator(object):
 
         print ans
 
+
 v1 = [1, 2]
 v2 = [3, 4, 5, 6]
 ZigzagIterator(v1, v2)
+
+
+
+from collections import deque
+class ZigzagIterator2:
+
+    # @param {int[]} v1 v2 two 1d vectors
+    def __init__(self, v1, v2):
+        # initialize your data structure here
+        self.z1 = deque(v1)
+        self.z2 = deque(v2)
+        self.last_one = None
+        self.next_one = self.z1[0] - self.z2[0]
+        self.higher = True
+
+
+    def _next(self):
+        # Write your code here
+        if self.last_one == None:
+            if self.next_one >= 0:
+                self.last_one = self.z1.popleft()
+        else:
+
+
+
+
+    def hasNext(self):
+        # Write your code here
+
+# Your ZigzagIterator object will be instantiated and called as such:
+# solution, result = ZigzagIterator(v1, v2), []
+# while solution.hasNext(): result.append(solution.next())
+# Output result
+
+solution, result = ZigzagIterator(v1, v2), []
+while solution.hasNext(): result.append(solution.next())
+print(result)
