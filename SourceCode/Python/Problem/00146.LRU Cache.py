@@ -164,7 +164,13 @@ class LRUCache2(object):
         """
         if all(self.lru):
             c = Counter(self.freq)
-        self.lru[key] = value
+            evit = min(c, key=c.get)
+            self.lru.remove(evit)
+        for cache in self.lru:
+            if cache == {}:
+                cache[key] = value
+                self.freq[key] += 1
+                break
 
 
 
