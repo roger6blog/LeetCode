@@ -127,34 +127,35 @@ print(cache.get(1))
 print(cache.get(3))
 print(cache.get(4))
 
+print("!!!!!!!!!")
 
 
 
 
 
 
-
-from collections import defaultdict, Counter
+from collections import OrderedDict
 class LRUCache2(object):
 
     def __init__(self, capacity):
         """
         :type capacity: int
         """
-        def zero():
-            return 0
-        self.lru = [{} for _ in range(capacity)]
-        self.freq = defaultdict(zero)
+
+        self.lru = OrderedDict()
+        self.capacity = capacity
+
 
     def get(self, key):
         """
         :type key: int
         :rtype: int
         """
-        if any(key in k for k in self.lru):
-            self.freq[key] += 1
-
-            return self.lru[key]
+        if key not in self.lru:
+            return -1
+        value = self.lru.pop(key)
+        self.lru[key] = value
+        return value
 
 
     def put(self, key, value):
@@ -163,21 +164,14 @@ class LRUCache2(object):
         :type value: int
         :rtype: None
         """
-        if all(self.lru):
-            c = Counter(self.freq)
-            evit = min(c, key=c.get)
-            self.freq.pop(evit)
-            for i, d in enumerate(self.lru):
-                if evit in d:
-                    self.lru[i] = {}
-                    break
-                self.lru[i] = {key: value}
-        else:
-            for cache in self.lru:
-                if cache == {}:
-                    cache[key] = value
-                    self.freq[key] += 1
-                    break
+        if key in self.lru:
+            self.lru.pop(key)
+
+        elif len(self.lru) == self.capacity:
+            ## last = True时pop规则为FILO, last = False时pop规则为FIFO
+            self.lru.popitem(last=False)
+
+        self.lru[key] = value
 
 
 
@@ -189,14 +183,36 @@ class LRUCache2(object):
 
 
 
-cache = LRUCache2(2)
-cache.get(2)
-cache.put(1, 1)
-cache.put(2, 2)
-print(cache.get(1))
-cache.put(3, 3)
-print(cache.get(2))
-cache.put(4, 4)
-print(cache.get(1))
-print(cache.get(3))
-print(cache.get(4))
+# cache = LRUCache2(2)
+# cache.get(2)
+# cache.put(1, 1)
+# cache.put(2, 2)
+# print(cache.get(1))
+# cache.put(3, 3)
+# print(cache.get(2))
+# cache.put(4, 4)
+# print(cache.get(1))
+# print(cache.get(3))
+# print(cache.get(4))
+
+# print("!!!!!!")
+# # ["LRUCache","put","get","put","get","get"]
+# # [[1],[2,1],[2],[3,2],[2],[3]]
+
+cache2 = LRUCache2(1)
+cache2.put(2,1)
+assert 1 == cache2.get(2)
+cache2.put(3,2)
+assert -1 == cache2.get(2)
+assert 2 == cache2.get(3)
+
+# ["LRUCache","put","put","get","put","put","get"]
+# [[2],[2,1],[2,2],[2],[1,1],[4,1],[2]]
+
+cache3 = LRUCache2(2)
+cache3.put(2, 1)
+cache3.put(2, 2)
+cache3.get(2)
+cache3.put(1, 1)
+cache3.put(4, 1)
+cache3.get(2)
