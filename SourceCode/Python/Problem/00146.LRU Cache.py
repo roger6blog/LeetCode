@@ -153,6 +153,7 @@ class LRUCache2(object):
         """
         if any(key in k for k in self.lru):
             self.freq[key] += 1
+
             return self.lru[key]
 
 
@@ -165,12 +166,18 @@ class LRUCache2(object):
         if all(self.lru):
             c = Counter(self.freq)
             evit = min(c, key=c.get)
-            self.lru.remove(evit)
-        for cache in self.lru:
-            if cache == {}:
-                cache[key] = value
-                self.freq[key] += 1
-                break
+            self.freq.pop(evit)
+            for i, d in enumerate(self.lru):
+                if evit in d:
+                    self.lru[i] = {}
+                    break
+                self.lru[i] = {key: value}
+        else:
+            for cache in self.lru:
+                if cache == {}:
+                    cache[key] = value
+                    self.freq[key] += 1
+                    break
 
 
 
