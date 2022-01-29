@@ -84,8 +84,9 @@ class Twitter(object):
             heapq.heappush(heap, self.tweets[userId][-1])
 
         # 放入自己follow的最新tweets資訊
-        for follower_id in self.friendship[userId]:
-            heapq.heappush(heap, self.tweets[follower_id][-1])
+        for followee_id in self.friendship[userId]:
+            if self.tweets[followee_id]:
+                heapq.heappush(heap, self.tweets[followee_id][-1])
 
         count = 10
 
