@@ -1,5 +1,5 @@
-
 '''
+Level: Medium   Tag: [Math]
 
 Given a list of non negative integers, arrange them such that they form the largest number.
 
@@ -12,6 +12,10 @@ Example 2:
 Input: [3,30,34,5,9]
 Output: "9534330"
 
+Constraints:
+
+1 <= nums.length <= 100
+0 <= nums[i] <= 10^9
 '''
 
 
