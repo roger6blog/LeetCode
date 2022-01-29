@@ -1,5 +1,5 @@
 '''
-Level: Medium   Tag: [Design]
+Level: Medium   Tag: [Design], [DP]
 
 Given a 2D matrix matrix, handle multiple queries of the following type:
 
@@ -71,6 +71,46 @@ class NumMatrix(object):
 
 
 
+
+class NumMatrix_DP(object):
+
+    def __init__(self, matrix):
+        """
+        :type matrix: List[List[int]]
+        """
+        m = len(matrix)
+        n = len(matrix[0])
+        self.prefix_sum = [[0] * (n+1) for _ in range(m+1)]
+
+        # prefix_sum[i-1][j-1]被減去
+        # 是因為prefix_sum[i-1][j] + prefix_sum[i][j-1]本身就有包含prefix_sum[i-1][j-1]
+        # 所以要減去多加的部分
+        for i in range(1, m+1):
+            for j in range(1, n+1):
+                self.prefix_sum[i][j] = matrix[i-1][j-1] + self.prefix_sum[i-1][j] + self.prefix_sum[i][j-1] \
+                                        - self.prefix_sum[i-1][j-1]
+
+
+
+    def sumRegion(self, row1, col1, row2, col2):
+        """
+        :type row1: int
+        :type col1: int
+        :type row2: int
+        :type col2: int
+        :rtype: int
+        """
+        row2 += 1
+        col2 += 1
+
+        # prefix_sum[row1][col2] 和 prefix_sum[row2][col1] 被重複加到
+        # 所以要扣掉
+        ans = self.prefix_sum[row2][col2] + self.prefix_sum[row1][col1] \
+            - self.prefix_sum[row1][col2] - self.prefix_sum[row2][col1]
+
+        print(ans)
+        return ans
+
 # Your NumMatrix object will be instantiated and called as such:
 # obj = NumMatrix(matrix)
 # param_1 = obj.sumRegion(row1,col1,row2,col2)
@@ -86,3 +126,9 @@ obj = NumMatrix(matrix)
 obj.sumRegion(2, 1, 4, 3)
 obj.sumRegion(1, 1, 2, 2)
 obj.sumRegion(1, 2, 2, 4)
+
+
+obj2 = NumMatrix_DP(matrix)
+obj2.sumRegion(2, 1, 4, 3)
+obj2.sumRegion(1, 1, 2, 2)
+obj2.sumRegion(1, 2, 2, 4)
