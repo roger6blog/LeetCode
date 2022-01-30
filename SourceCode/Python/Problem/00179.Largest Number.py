@@ -34,3 +34,25 @@ class Solution(object):
         if largest[0] == "0":
             return "0"
         return largest
+
+
+
+
+
+    def largestNumber2(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: str
+        """
+        temp = []
+        i = 1
+        for n in nums[::-1]:
+            if len(str(n)) == i:
+                temp.append(n)
+        temp.sort(reverse=True)
+
+        pass
+
+
+nums = [3,30,34,5,9]
+Solution().largestNumber2(nums)
