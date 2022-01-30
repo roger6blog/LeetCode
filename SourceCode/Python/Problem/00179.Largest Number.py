@@ -1,5 +1,5 @@
 '''
-Level: Medium   Tag: [Math]
+Level: Medium   Tag: [String]
 
 Given a list of non negative integers, arrange them such that they form the largest number.
 
@@ -33,6 +33,7 @@ class Solution(object):
             largest = ''.join([largest, num_to_str[i]])
         if largest[0] == "0":
             return "0"
+        print(largest)
         return largest
 
 
@@ -44,15 +45,26 @@ class Solution(object):
         :type nums: List[int]
         :rtype: str
         """
-        temp = []
-        i = 1
-        for n in nums[::-1]:
-            if len(str(n)) == i:
-                temp.append(n)
-        temp.sort(reverse=True)
+        # 注意要先轉成string再比較  不然用數字比 30會大於3
+        def cmp(a, b):
+            if a+b > b+a:
+                return 1
+            else:
+                return -1
+        ans = []
+        for n in nums:
+            ans.append(str(n))
+        ans.sort(reverse=True, cmp=cmp)
 
-        pass
+
+        ans = "".join(ans)
+        if ans[0] == "0":
+            return "0"
+
+        print(ans)
+        return ans
 
 
 nums = [3,30,34,5,9]
+Solution().largestNumber(nums)
 Solution().largestNumber2(nums)

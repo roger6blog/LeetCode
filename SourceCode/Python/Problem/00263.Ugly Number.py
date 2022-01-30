@@ -1,4 +1,5 @@
 '''
+Level: Easy  Tag: [Math]
 
 Write a program to check whether a given number is an ugly number.
 
@@ -9,11 +10,13 @@ Example 1:
 Input: 6
 Output: true
 Explanation: 6 = 2 * 3
+
 Example 2:
 
 Input: 8
 Output: true
 Explanation: 8 = 2 * 2 * 2
+
 Example 3:
 
 Input: 14
@@ -25,6 +28,9 @@ Note:
 Input is within the 32-bit signed integer range: [-2^31,  2^31 - 1].
 
 
+Constraints:
+
+-2^31 <= n <= 2^31 - 1
 '''
 
 class Solution(object):
@@ -69,4 +75,4 @@ class Solution(object):
             return False
 
 num = 8
-print Solution().isUgly(num)
+print(Solution().isUgly(num))

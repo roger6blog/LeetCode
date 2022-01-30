@@ -1,4 +1,5 @@
 '''
+Level: Medium  Tag: [Math]
 
 Find the nth digit of the infinite integer sequence
 
@@ -25,14 +26,16 @@ Output:
 
 Explanation:
 The 11th digit of the sequence 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, ... is a 0,
-
 which is part of the number 10.
 
+Constraints:
+
+1 <= n <= 2^31 - 1
 '''
 
 
-class Solution_TLE(object):
-    def findNthDigit(self, n):
+class Solution(object):
+    def findNthDigit_TLE(self, n):
         """
         :type n: int
         :rtype: int
@@ -47,8 +50,6 @@ class Solution_TLE(object):
             numlist += str(x)
         return int(numlist[n:n+1])
 
-
-class Solution(object):
     def findNthDigit(self, n):
         """
         :type n: int
@@ -72,4 +73,29 @@ class Solution(object):
         print("{}th number is {}".format(m, ans))
         return int(ans)
 
-print Solution().findNthDigit(1234)
+    def findNthDigit2(self, n):
+        """
+        :type n: int
+        :rtype: int
+        """
+        length = 1
+        count = 9
+        start = 1
+
+        while n > length * count:
+            # 以此类推二位数的个数为90，从10开始
+            n -= length * count  # 走過了這些數字
+            length += 1
+            count *= 10
+            start *= 10
+
+        # 找到第n位数所在的整数start
+        start += (n-1) // length
+        # 找出ans是位於start的哪一個數字裡
+        ans = int(str(start)[(n-1)%length])
+        print(ans)
+        return ans
+
+
+print(Solution().findNthDigit(1234))
+print(Solution().findNthDigit2(1234))
