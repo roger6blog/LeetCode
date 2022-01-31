@@ -34,7 +34,7 @@ Follow up: Could you write a solution that works in logarithmic time complexity?
 
 '''
 class Solution(object):
-    def trailingZeroes(self, n):
+    def trailingZeroes_TLE(self, n):
         """
         :type n: int
         :rtype: int
@@ -51,6 +51,19 @@ class Solution(object):
         print(ans)
 
         return ans
+
+
+    def trailingZeroes(self, n):
+        """
+        :type n: int
+        :rtype: int
+        """
+        num_zero = 0
+        while n > 0:
+            num_zero += n // 5
+            n //= 5
+
+        return num_zero
 
 n = 5
 Solution().trailingZeroes(n)
