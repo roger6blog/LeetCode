@@ -13,13 +13,13 @@ Example 1:
 
 Input: n = 2
 Output: 1
-Explanation: 2 = 1 + 1, 1 × 1 = 1.
+Explanation: 2 = 1 + 1, 1 x 1 = 1.
 
 Example 2:
 
 Input: n = 10
 Output: 36
-Explanation: 10 = 3 + 3 + 4, 3 × 3 × 4 = 36.
+Explanation: 10 = 3 + 3 + 4, 3 x 3 x 4 = 36.
 
 
 Constraints:
@@ -33,11 +33,21 @@ class Solution(object):
         :type n: int
         :rtype: int
         """
-        ans = 0
-        for _ in range(n):
-            res =
+        if n == 2 or n ==3:
+            return n - 1
+
+        ans = 1
+        while n > 4:
+            ans *= 3
+            n -= 3
+
+        ans *= n
+        print(ans)
+        return ans
 
 
 
 n = 10
+Solution().integerBreak(n)
+n = 58
 Solution().integerBreak(n)

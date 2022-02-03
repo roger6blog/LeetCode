@@ -1,4 +1,5 @@
 '''
+Level: Medium   Tag: [Math]
 
 Given a non-negative integer n,
 
@@ -9,9 +10,20 @@ Given n = 2, return 91.
 (The answer should be the total numbers in the range of 0 <= x < 100,
 excluding [11,22,33,44,55,66,77,88,99])
 
+Example 2:
+
+Input: n = 0
+Output: 1
+
+
+
 Credits:
 Special thanks to @memoryless for adding this problem and creating all test cases.
 
+
+Constraints:
+
+0 <= n <= 8
 '''
 
 
