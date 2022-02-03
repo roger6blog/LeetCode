@@ -60,5 +60,47 @@ class Solution(object):
         return ans
 
 
-nums = [1,2,3,4]
-print Solution().largestDivisibleSubset(nums)
+    '''
+    和300 Longest increasing Subsequence同個模板
+    '''
+
+
+    def largestDivisibleSubset2(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: List[int]
+        """
+        nums.sort()
+
+        n = len(nums)
+        dp = [1] * n
+        prev = [-1] * n
+
+        for i in range(n):
+            for j in range(i):
+                if nums[i] % nums[j] == 0:
+                    dp[i] = max(dp[i], dp[j] + 1)
+                    if dp[i] == dp[j] + 1:
+                        prev[i] = j
+
+
+        longest = max(dp)
+        last = dp.index(longest)
+
+        path = []
+        while last != -1:
+            path.append(nums[last])
+            last = prev[last]
+
+        print(path[::-1])
+
+        return path[::-1]
+
+
+# nums = [1,2,3,4]
+# print(Solution().largestDivisibleSubset(nums))
+# assert [1, 2, 4] == Solution().largestDivisibleSubset2(nums)
+
+
+nums = [4,8,10,240]
+Solution().largestDivisibleSubset2(nums)

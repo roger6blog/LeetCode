@@ -29,7 +29,7 @@ Output: 1
 Constraints:
 
 1 <= nums.length <= 2500
--104 <= nums[i] <= 104
+-10^4 <= nums[i] <= 10^4
 
 
 Follow up: Can you come up with an algorithm that runs in O(n log(n)) time complexity?
@@ -58,6 +58,57 @@ class Solution(object):
         return len(max_sub)
 
 
+
+    '''
+    O(n^2)解法:
+
+    Dpi 表示以第i个数字为结尾的最长上升子序列的长度。 对于每个数字，枚举前面所有小于自己的数字 j，
+    Dpi = max{Dpj} + 1. 如果没有比自己小的，Dpi = 1;
+
+
+    和368 Largest Divisible Subset同個模板
+
+    '''
+
+    def lengthOfLIS_DP(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        # dp[i] 表示以第 i 个数结尾的 LIS 的长度
+        # initialization: dp[0..n-1] = 1
+        n = len(nums)
+        dp = [1] * n
+        # prev[i] 代表 dp[i] 的最优值是从哪个 dp[j] 算过来的
+        prev = [-1] * n
+        # function: dp[i] = max(dp[j] + 1), j < i && nums[j] < nums[i]
+        for i in range(n):
+            for j in range(i):
+                if nums[j] < nums[i]:
+                    dp[i] = max(dp[i], dp[j]+1)
+                    if dp[i] == dp[j] + 1:
+                        prev[i] = j
+
+
+
+        # answer: max(dp)
+        # 這段只是找出所有元素，可有可無，除非題目要求寫出所有元素
+        longest = max(dp)
+        last = dp.index(longest)
+
+
+        path = []
+        while last != -1:
+            path.append(nums[last])
+            last = prev[last]
+
+        print(path[::-1])
+        return longest
+
+
+
+
+
 nums = [10,9,2,5,3,7,101,18]
 assert 4 == Solution().lengthOfLIS(nums)
 
@@ -66,3 +117,5 @@ assert 1 == Solution().lengthOfLIS(nums)
 
 nums = [4,10,4,3,8,9]
 assert 3 == Solution().lengthOfLIS(nums)
+nums = [4,10,4,3,8,9]
+assert 3 == Solution().lengthOfLIS_DP(nums)
