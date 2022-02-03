@@ -1,35 +1,64 @@
 '''
-Level: Medium   Tag: [Math]
 
-Given a set of distinct positive integers nums,
+Given a set of distinct positive integers,
 
-return the largest subset answer such that every pair (answer[i], answer[j]) of elements in this subset satisfies:
+find the largest subset such that every pair (Si, Sj) of elements in this subset satisfies:
 
-answer[i] % answer[j] == 0, or
-answer[j] % answer[i] == 0
-If there are multiple solutions, return any of them.
+Si % Sj = 0 or Sj % Si = 0.
 
-
+If there are multiple solutions, return any subset is fine.
 
 Example 1:
 
-Input: nums = [1,2,3]
-Output: [1,2]
-Explanation: [1,3] is also accepted.
+nums: [1,2,3]
+Result: [1,2] (of course, [1,3] will also be ok)
 
 Example 2:
 
-Input: nums = [1,2,4,8]
-Output: [1,2,4,8]
+nums: [1,2,4,8]
+Result: [1,2,4,8]
 
-
-Constraints:
-
-1 <= nums.length <= 1000
-1 <= nums[i] <= 2 * 10^9
-All the integers in nums are unique.
 
 Credits:
 Special thanks to @Stomach_ache for adding this problem and creating all test cases.
 
+
 '''
+
+
+class Solution(object):
+    def largestDivisibleSubset(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: List[int]
+        """
+
+        nums.sort()
+        length = len(nums)
+        dp = [0] * length
+        max = 0
+        max_index = 0
+        child = [0] * length
+        ans = []
+
+        for i in xrange(length-1, -1, -1):
+            for j in xrange(i, length):
+                if nums[j] % nums[i] == 0 and dp[i] < dp[j] + 1:
+                    dp[i] = dp[j] + 1
+                    child[i] = j
+
+                    # To store max subset length and relative start point index
+                    if max < dp[i]:
+                        max = dp[i]
+                        max_index = i
+
+        # Construct output subset
+        for k in xrange(max):
+            ans.append(nums[max_index])
+            max_index = child[max_index]
+
+        return ans
+
+
+nums = [1,2,3,4]
+print Solution().largestDivisibleSubset(nums)
