@@ -1,5 +1,5 @@
 '''
-
+Level: Medium   Tag: [Bit Manipulation]
 
 A character in UTF8 can be from 1 to 4 bytes long, subjected to the following rules:
 
@@ -84,6 +84,17 @@ class Solution(object):
 
 
 
+    def validUtf82(self, data):
+        """
+        :type data: List[int]
+        :rtype: bool
+        """
+
+        for i in range(len(data)):
+            data[i] = str(bin(data[i]))[2:]
+        pass
+
+
 class SolutionTLE(object):
     def validUtf8(self, data):
         """
@@ -139,7 +150,8 @@ class SolutionTLE(object):
 
 
 data = [197, 130, 1]
-print Solution().validUtf8(data)
+print(Solution().validUtf8(data))
+print(Solution().validUtf82(data))
 # data = [235, 140, 4]
 # data = [240,162,138,147,145]
 # data = [228,189,160,229,165,189,13,10]

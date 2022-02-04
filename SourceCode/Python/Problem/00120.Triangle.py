@@ -39,9 +39,41 @@ where n is the total number of rows in the triangle?
 
 '''
 
+
+'''
+
+DP[i][j] = min(DP[i-1][j-1], DP[i-1][j]) + trangle[i][j]
+
+'''
+
 class Solution(object):
     def minimumTotal(self, triangle):
         """
         :type triangle: List[List[int]]
         :rtype: int
         """
+        n = len(triangle)
+        # dp[i][j] 代表從0,0 走到i, j的最短路徑值
+        dp = [[0] * (i+1) for i in range(n)]
+
+        # 初始值，三角形的左右要初始化
+        # 因為他們沒有上面的路徑能到達
+        dp[0][0] = triangle[0][0]
+
+        for i in range(1, n):
+            dp[i][0] = dp[i-1][0] + triangle[i][0]
+            dp[i][i] = dp[i-1][i-1] + triangle[i][i]
+
+        # 轉移方程式 DP[i][j] = min(DP[i-1][j-1], DP[i-1][j]) + trangle[i][j]
+        # i,j 這位置是從 i-1,j 或 i-1,j-1 走過來的
+        for i in range(2, n):
+            for j in range(1, i): # 三角形的matrix 無法走到n,只能走到i
+                dp[i][j] = min(dp[i-1][j], dp[i-1][j-1]) + triangle[i][j]
+
+        print(min(dp[n-1]))
+        return min(dp[n-1])
+
+
+
+triangle = [[2],[3,4],[6,5,7],[4,1,8,3]]
+Solution().minimumTotal(triangle)
