@@ -91,8 +91,18 @@ class Solution(object):
         """
 
         for i in range(len(data)):
-            data[i] = str(bin(data[i]))[2:]
+            data[i] = str(bin(data[i]))[2:].zfill(8)
+
+        index = 0
+        for i in range(len(data[0])):
+            if data[0][i] == '1':
+                index += 1
+            else:
+                break
+
         pass
+
+
 
 
 class SolutionTLE(object):
