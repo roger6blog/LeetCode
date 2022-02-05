@@ -61,7 +61,7 @@ class Solution(object):
         """
         from collections import deque
         edges = {i: [] for i in range(numCourses)}
-        degrees = [0 for _ in range(numCourses)]
+        degrees = {i: 0 for i in range(numCourses)}
 
         # 建圖
         for course, pre in prerequisites:

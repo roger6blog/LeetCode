@@ -1,4 +1,5 @@
 '''
+Level: Easy
 
 You are given a license key represented as a string S which consists only alphanumeric character and dashes.
 
@@ -70,6 +71,14 @@ class Solution(object):
                 ans += '-'
 
         return ans
+
+
+    def licenseKeyFormatting2(self, S, K):
+        """
+        :type S: str
+        :type K: int
+        :rtype: str
+        """
 
 
 # S = "5F3Z-2e-9-w"

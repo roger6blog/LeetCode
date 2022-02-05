@@ -1,4 +1,5 @@
 '''
+Level: Easy
 
 A binary watch has 4 LEDs on the top which represent the hours (0-11),
 
@@ -8,16 +9,31 @@ Each LED represents a zero or one, with the least significant bit on the right.
 
 (https://upload.wikimedia.org/wikipedia/commons/8/8b/Binary_clock_samui_moon.jpg)
 
-For example, the above binary watch reads "3:25".
+For example, the above binary watch reads "4:51".
 
-Given a non-negative integer n which represents the number of LEDs that are currently on,
+"../../../Material/binarywatch.jpg"
 
-return all possible times the watch could represent.
+Given an integer turnedOn which represents the number of LEDs that are currently on,
+
+return all possible times the watch could represent. You may return the answer in any order.
+
+The hour must not contain a leading zero.
+
 
 Example:
 
-Input: n = 1
+Input: turnedOn = 1
 Return: ["1:00", "2:00", "4:00", "8:00", "0:01", "0:02", "0:04", "0:08", "0:16", "0:32"]
+
+Example 2:
+
+Input: turnedOn = 9
+Output: []
+
+
+Constraints:
+
+0 <= turnedOn <= 10
 
 Note:
 The order of output does not matter.
@@ -43,4 +59,4 @@ class Solution(object):
                     ans.append("{:d}:{:02d}".format(h, m))
         return ans
 n = 4
-print Solution().readBinaryWatch(n)
+print(Solution().readBinaryWatch(n))

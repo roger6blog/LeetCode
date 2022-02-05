@@ -1,4 +1,3 @@
-
 '''
 LeveL: Hard (2021 change to Medium)  Tag: [List]
 
