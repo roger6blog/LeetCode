@@ -79,11 +79,20 @@ class Solution(object):
         :type K: int
         :rtype: str
         """
+        ans = ""
+        s = "".join(S.split("-"))
+        if len(s) % K == 0:
+            for _ in range(len(s)//K):
+                ans += s[:K]
+                ans += "-"
+
+        else:
+            ans +=
 
 
-# S = "5F3Z-2e-9-w"
-# K = 4
-
+S = "5F3Z-2e-9-w"
+K = 4
+print Solution().licenseKeyFormatting2(S, K)
 # S = "2-5g-3-J"
 # K = 2
 # S = "a-a-a-a-"

@@ -1,5 +1,6 @@
 '''
 Level: Medium Tags:[]
+
 You are given an integer array height of length n.
 
 There are n vertical lines drawn such that the two endpoints of the ith line are (i, 0) and (i, height[i]).
@@ -31,7 +32,7 @@ Output: 1
 Constraints:
 
 n == height.length
-2 <= n <= 105
+2 <= n <= 10^5
 0 <= height[i] <= 104
 
 '''
@@ -52,7 +53,6 @@ class Solution(object):
         return max_area
 
 
-class Solution(object):
     def maxArea(self, height):
         """
         :type height: List[int]
