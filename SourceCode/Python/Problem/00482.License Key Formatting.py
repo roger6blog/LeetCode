@@ -73,28 +73,42 @@ class Solution(object):
         return ans
 
 
-    def licenseKeyFormatting2(self, S, K):
+    def licenseKeyFormatting2(self, s, k):
         """
         :type S: str
         :type K: int
         :rtype: str
         """
         ans = ""
-        s = "".join(S.split("-"))
-        if len(s) % K == 0:
-            for _ in range(len(s)//K):
-                ans += s[:K]
-                ans += "-"
+        s = "".join(s.upper().split("-"))
+        if len(s) < k:
+            return s
 
-        else:
-            ans +=
+        n = len(s)
+        if n % k != 0:
+            ans += s[:n%k] + "-"
+            s = s[n%k:]
+
+        for _ in range(n//k):
+            ans += s[:k]
+            ans += "-"
+            s = s[k:]
+
+        ans = ans.strip("-")
+        print(ans)
+        return ans
 
 
-S = "5F3Z-2e-9-w"
-K = 4
-print Solution().licenseKeyFormatting2(S, K)
+# S = "5F3Z-2e-9-w"
+# K = 4
+# assert "5F3Z-2E9W" == Solution().licenseKeyFormatting2(S, K)
 # S = "2-5g-3-J"
 # K = 2
+# assert "2-5G-3J" == Solution().licenseKeyFormatting2(S, K)
+
+S = "2"
+K = 2
+Solution().licenseKeyFormatting2(S, K)
 # S = "a-a-a-a-"
 # K = 1
 S = "-----------"
