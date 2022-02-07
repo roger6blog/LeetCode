@@ -1,4 +1,5 @@
 '''
+Level: Medium
 
 Given a time represented in the format "HH:MM",
 
@@ -55,6 +56,23 @@ class Solution(object):
 
 
 
+
+    def nextClosestTime2(self, time):
+        """
+        :type time: str
+        :rtype: str
+        """
+        h, m = map(int, time.split(":"))
+        curr = h * 60 + m
+        for c in range(curr+1, 1441):
+            h = c // 60
+            m = c % 60
+            next_time = "{:02d}:{:02d}".format(h, m)
+            if set(next_time) <= set(time):
+                return next_time
+
+
 clock  = "19:34"
+print(Solution().nextClosestTime2(clock))
 clock2 = "23:59"
-print Solution().nextClosestTime(clock2)
+print(Solution().nextClosestTime(clock2))
