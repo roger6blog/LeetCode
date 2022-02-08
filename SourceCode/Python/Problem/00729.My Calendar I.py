@@ -57,8 +57,8 @@ class MyCalendar(object):
         if self.cal:
             i = 0
             while i < len(self.cal):
-                if self.cal[i][1] <= start and i+1 > len(self.cal):
-                    self.append((start, end))
+                if self.cal[i][1] <= start and i+1 >= len(self.cal):
+                    self.cal.append((start, end))
                     self.cal.sort()
                     return True
                 i += 1
