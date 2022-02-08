@@ -51,4 +51,4 @@ A = "abcd"
 B = "cdabcdab"
 C = "a"
 D = "a"*10000
-print Solution().repeatedStringMatch(C, D)
+print(Solution().repeatedStringMatch(C, D))
