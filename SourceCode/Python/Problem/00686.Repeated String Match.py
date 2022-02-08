@@ -36,7 +36,8 @@ class Solution(object):
         """
         na = len(A)
         nb = len(B)
-
+        # 為了確保左右各加一個a所以加2
+        # 寫3是因為python迴圈只到3-1
         times = nb / na + 3
 
         for i in xrange(1, times):

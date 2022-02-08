@@ -33,8 +33,9 @@ class Solution:
     """
 
     def longestLine(self, M):
-        dp = [[0] * (len(M[0])+1) for _ in range(len(M)+1)]
-        dx = [0, -1, -1, -1]
+        dp = [[[0] * 4 for _ in range(len(M[0]))] for _ in range(len(M))]
+        # 計算四個方向就好
+        dx = [ 0,-1, -1, -1]
         dy = [-1, 0, -1,  1]
         dir = []
         for i in range(len(dx)):
@@ -42,33 +43,27 @@ class Solution:
 
         def max_nearby(m, x, y):
             res = 0
+            for k in range(len(dir)):
+                dp[x][y][k] = 1
             for dx, dy in dir:
                 new_x = x + dx
                 new_y = y + dy
                 if new_x < 0 or new_y < 0 or new_x >= len(m) or new_y >= len(m[0]):
                     continue
-                if m[new_x][new_y] == 0:
-                    continue
-                res = max(res, m[x][y] + m[new_x][new_y])
+                i = dir.index((dx, dy))
+                dp[x][y][i] += dp[new_x][new_y][i]
+                res = max(res, dp[x][y][i])
             return res
-
         ans = 0
         for x in range(len(M)):
             for y in range(len(M[0])):
                 if M[x][y] != 0:
-                    dp[x][y] = M[x][y] + max_nearby(M, x, y)
-                    ans = max(ans, dp[x][y])
-
-0        return ans
+                    ans = max(ans, max_nearby(M, x, y))
 
 
+        return ans
 
 
-# matrix = [[0,1,1,0],
-#    [0,1,1,0],
-#    [0,0,0,1]]
-
-# Solution().longestLine(matrix)
 
 
 matrix = [
@@ -85,8 +80,4 @@ matrix = [
     [0,1,0],
     [0,1,0]
     ]
-# Output
-# 1
-# Expected
-# 5
-Solution().longestLine(matrix)
+assert 5 == Solution().longestLine(matrix)
