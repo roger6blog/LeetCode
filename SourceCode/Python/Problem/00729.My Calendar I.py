@@ -53,27 +53,17 @@ class MyCalendar(object):
         :type end: int
         :rtype: bool
         """
+        def is_overlap(a, b):
+            return max(0, min(a[1], b[1]) - max(a[0], b[0]))
+
 
         if self.cal:
-            i = 0
-            while i < len(self.cal):
-                if self.cal[i][1] <= start and i+1 >= len(self.cal):
-                    self.cal.append((start, end))
-                    self.cal.sort()
-                    return True
-                i += 1
+            for event in self.cal:
+                if is_overlap(event, (start, end)) > 0:
+                    return False
 
-            j = len(self.cal)-1
-            while j >= 0:
-                if self.cal[j][0] >= end and j-1 < 0:
-                    self.cal.append((start, end))
-                    self.cal.sort()
-                    return True
-                j -= 1
-            return False
-        else:
-            self.cal.append((start, end))
-
+        self.cal.append((start, end))
+        self.cal.sort()
         return True
 
 # Your MyCalendar object will be instantiated and called as such:
@@ -99,4 +89,16 @@ assert True == obj2.book(start,end)
 start, end = 39, 45
 assert False == obj2.book(start,end)
 start, end = 33, 42
+assert False == obj2.book(start,end)
+start, end = 25, 32
+assert True == obj2.book(start,end)
+start, end = 26, 35
+assert False == obj2.book(start,end)
+start, end = 19, 25
+assert True == obj2.book(start,end)
+start, end = 3, 8
+assert True == obj2.book(start,end)
+start, end = 8, 13
+assert True == obj2.book(start,end)
+start, end = 18, 27
 assert False == obj2.book(start,end)

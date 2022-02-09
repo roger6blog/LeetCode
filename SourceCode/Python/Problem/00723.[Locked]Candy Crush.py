@@ -59,6 +59,8 @@ Output:
 ]
 Explanation
 
+"../../../Material/0060lm7Tly1fp5kkl8ctij30ll0eswh7.jpg"
+
 Example 2:
 
 Input: [
