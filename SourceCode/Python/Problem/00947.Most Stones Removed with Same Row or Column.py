@@ -66,8 +66,8 @@ class Solution(object):
 
         for a, b in stones:
             '''
-            # 此處的b需要用別的數字顯示，他只是一個終點，用index來表示
-            # 但是不能和題目的y重複，不然[[0,1],[1,0]]這兩個座標會造成無法分組
+            # 此處的b需要用別的數字顯示, 他只是一個終點, 用index來表示
+            # 但是不能和題目的y重複, 不然[[0,1],[1,0]]這兩個座標會造成無法分組
             # 可以用b的1補數~b 或是直接b+10000(題目的yi上限)來做區隔
             https://leetcode.com/problems/most-stones-removed-with-same-row-or-column/discuss/197668/Count-the-Number-of-Islands-O%28N%29
             '''
