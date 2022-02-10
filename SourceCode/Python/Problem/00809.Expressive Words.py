@@ -52,28 +52,40 @@ class Solution(object):
         :type words: List[str]
         :rtype: int
         """
-        from collections import Counter, OrderedDict
-        c = OrderedDict(Counter(s))
-        c = c.items()
-        key = 0
-        value = 1
+
+        def count_sequence(word):
+            ret = []
+            count = 1
+            for i in range(1, len(word)):
+                if word[i-1] == word[i]:
+                    count += 1
+                else:
+                    ret.append((word[i-1], count))
+                    count = 1
+            ret.append((word[-1], count))
+            return ret
+
         ans = 0
+        c = count_sequence(s)
+
+        char = 0
+        count = 1
+
         for w in words:
-            n = OrderedDict(Counter(w))
+            n = count_sequence(w)
             if len(n) != len(c):
                 continue
-            n = n.items()
             can_expand = True
             for i in range(len(n)):
-                if not ( c[i][key] == n[i][key] and \
-                    (c[i][value] == n[i][value] or \
-                    (c[i][value] > n[i][value] and c[i][value] >= 3))):
+                # 可以expand的條件有2:
+                # 1. 同index的字元相同
+                # 2. 同index的字元數相同或是s字串同index的字元數比較大而且超過3以上
+                if not (n[i][char] == c[i][char] and \
+                    (n[i][count] == c[i][count] or \
+                    (c[i][count] > n[i][count] and c[i][count] >= 3))):
                     can_expand = False
             if can_expand:
                 ans += 1
-
-
-
         print(ans)
         return ans
 
@@ -85,8 +97,12 @@ class Solution(object):
 
 s = "heeellooo"
 words = ["hello", "hi", "helo"]
-Solution().expressiveWords(s, words)
+assert 1 == Solution().expressiveWords(s, words)
 
 s = "zzzzzyyyyy"
 words = ["zzyy","zy","zyy"]
-Solution().expressiveWords(s, words)
+assert 3 == Solution().expressiveWords(s, words)
+
+s = "sass"
+words = ["sa"]
+assert 0 == Solution().expressiveWords(s, words)
