@@ -32,6 +32,12 @@ Since all edges are undirected, [0, 1] is the same as [1, 0] and thus will not a
 
 '''
 
+
+'''
+UF 算法的思路是每个个体先初始化为不同的群组，然后遍历有关联的两个个体
+如果发现其 getRoot 函数的返回值不同，则手动将二者加入一个群组，然后总群组数自减1
+
+'''
 class Solution:
     def countComponents(self, n, edges):
         self.count = n  # 一開始預期是分成n塊
@@ -42,8 +48,15 @@ class Solution:
         for a, b in edges:
             self.union(a, b)
 
+        # 計算分成幾組
+        group = set()
+        for x in self.father:
+            group.add(self.find(x))
+
         print(self.count)
-        return self.count
+        # 最後return group或count都可以
+        return len(group)
+        # return self.count
 
     def find(self, x):
         x2 = x

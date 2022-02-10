@@ -1,6 +1,7 @@
 
 '''
-Level: Hard (2021 changed to Medium) Tag:[List]
+Level: Hard (2021 changed to Medium) Tag:[List][Sweep Line]
+
 Given an array of meeting time intervals consisting of
 start and end times [[s1,e1],[s2,e2],...] (si < ei),
 find the minimum number of conference rooms required.
@@ -53,8 +54,8 @@ class Solution:
         return maxNum
 
 
-
-    def minMeetingRooms_scan_line(self, intervals):
+    # 扫描线，按时间从小到大排序，若是起点，count++，若是终点，count--
+    def minMeetingRooms_sweep_line(self, intervals):
         rooms = []
         start = 0
         end = 1
@@ -82,5 +83,5 @@ sol = Solution()
 print(sol.minMeetingRooms(s))
 
 s = [[0, 30],[5, 10],[15, 20]]
-print(sol.minMeetingRooms_scan_line(s))
+print(sol.minMeetingRooms_sweep_line(s))
 
