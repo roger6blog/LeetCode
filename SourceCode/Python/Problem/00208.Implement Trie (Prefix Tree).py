@@ -69,15 +69,16 @@ All inputs are guaranteed to be non-empty strings.
 
 '''
 Trie explain:
-一个保存了8个键的trie结构，"A", "to", "tea", "ted", "ten", "i", "in", and "inn"，如下图所示
+一个保存了8个键的trie结构
+"A", "to", "tea", "ted", "ten", "i", "in", and "inn", 如下图所示
 
 "../../../Material/208_trie.png"
 
 字典树主要有如下三点性质:
 
-1. 根节点不包含字符，除根节点以外每个节点只包含一个字符。
+1. 根节点不包含字符, 除根节点以外每个节点只包含一个字符。
 
-2. 从根节点到某一个节点，路径上经过的字符连接起来，为该节点对应的字符串。
+2. 从根节点到某一个节点, 路径上经过的字符连接起来, 为该节点对应的字符串。
 
 3. 每个节点的所有子节点包含的字符串不相同
 
@@ -157,6 +158,8 @@ class Trie2:
         :rtype: void
         """
         curr = self.root
+        # 順著root往下找有沒有字元c在hashmap裏
+        # 有的話就繼續找
         for c in word:
             if c not in curr.children:
                 curr.children[c] = TrieNode()
@@ -166,6 +169,8 @@ class Trie2:
 
     def find(self, word):
         curr = self.root
+        # 順著root試著去get每個char, 有的話就繼續往下找
+        # 迴圈跑完後返回目前指的node供search和startwith判斷
         for c in word:
             curr = curr.children.get(c)
             if curr is None:

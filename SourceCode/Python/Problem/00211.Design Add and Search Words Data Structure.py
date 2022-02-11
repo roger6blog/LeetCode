@@ -47,9 +47,9 @@ At most 50000 calls will be made to addWord and search.
 
 '''
 基本仿造208題的Trie樹做法
-但对于.符号，需要对当前节点的所有孩子进行遍历。
-为此我们需要定一个新的函数，因为search函数只有要查找的字符串，肯定是以根节点root开始查的
-而我们向后面查的过程中，一定会移动到子节点上，所以需要新的函数match。
+但对于.符号, 需要对当前节点的所有孩子进行遍历。
+为此我们需要定一个新的函数, 因为search函数只有要查找的字符串, 肯定是以根节点root开始查的
+而我们向后面查的过程中, 一定会移动到子节点上, 所以需要新的函数match。
 
 '''
 
@@ -76,6 +76,21 @@ class WordDictionary(object):
 
         curr.is_word = True
 
+    def find(self, word):
+        curr = self.root
+        for c in word:
+            if c != ".":
+                curr = curr.child.get(c)
+                if curr == None:
+                    return None
+            else:
+                if curr.child:
+                    curr = curr.child
+                else:
+                    return None
+
+        return curr
+
     def match(self, word, index, root):
         if root == None:
             return False
@@ -100,7 +115,12 @@ class WordDictionary(object):
         :type word: str
         :rtype: bool
         """
-        return self.match(word, 0, self.root)
+        curr = self.find(word)
+        if curr == None or curr.is_word == False:
+            return False
+
+        return True
+        # return self.match(word, 0, self.root)
 
 
 # Your WordDictionary object will be instantiated and called as such:
