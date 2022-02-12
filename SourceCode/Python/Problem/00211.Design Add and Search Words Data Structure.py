@@ -78,14 +78,22 @@ class WordDictionary(object):
 
     def find(self, word):
         curr = self.root
-        for c in word:
-            if c != ".":
-                curr = curr.child.get(c)
+        for i in range(len(word)):
+            if word[i] != ".":
+                curr = curr.child.get(word[i])
                 if curr == None:
                     return None
             else:
                 if curr.child:
-                    curr = curr.child
+                    if i < len(word)-1:
+                        for k, _ in curr.child.items():
+                            temp = curr.child.get(k)
+                            if word[i+1] == "." or temp and temp.child.get(word[i+1]) != None:
+                                curr = curr.child.get(k)
+                    else:
+                        for k, _ in curr.child.items():
+                            curr = curr.child.get(k)
+                            return curr
                 else:
                     return None
 
@@ -115,12 +123,15 @@ class WordDictionary(object):
         :type word: str
         :rtype: bool
         """
-        curr = self.find(word)
-        if curr == None or curr.is_word == False:
-            return False
+        # For self.find, not AC
+        # curr = self.find(word)
+        # if curr == None or curr.is_word == False:
+        #     return False
 
-        return True
-        # return self.match(word, 0, self.root)
+        # return True
+
+        # for self.match
+        return self.match(word, 0, self.root)
 
 
 # Your WordDictionary object will be instantiated and called as such:
@@ -131,8 +142,11 @@ class WordDictionary(object):
 word = "bad"
 obj = WordDictionary()
 obj.addWord(word)
-param_2 = obj.search(word)
-print(param_2)
+obj.addWord("mad")
+obj.addWord("pad")
+assert True == obj.search(word)
 print(obj.search("mad"))
-assert False == obj.search("mad")
+assert True == obj.search("mad")
+assert True == obj.search("bad")
 assert True == obj.search(".ad")
+assert True == obj.search("b..")

@@ -1,10 +1,13 @@
 '''
-Level: Easy
+Level: Easy  Tag: [Sweep Line]
+
 ## Meeting Rooms I
 
 >**Question 1**
 
-Given an array of meeting time intervals consisting of start and end times `[[s1,e1],[s2,e2],...] (si < ei)`, determine if a person could attend all meetings.
+Given an array of meeting time intervals consisting of start and end times `[[s1,e1],[s2,e2],...] (si < ei)`,
+
+determine if a person could attend all meetings.
 
 For example,
 
@@ -22,7 +25,11 @@ Two times will not conflict
 
 >**Solution**
 
-The idea is pretty simple: first we sort the intervals in the ascending order of start; then we check for the overlapping of each pair of neighboring intervals. If they do, then return false; after we finish all the checks and have not returned false, just return true.
+The idea is pretty simple: first we sort the intervals in the ascending order of start;
+
+then we check for the overlapping of each pair of neighboring intervals. If they do, then return false;
+
+after we finish all the checks and have not returned false, just return true.
 
 Sorting takes O(nlogn) time and the overlapping checks take O(n) time, so this idea is O(nlogn) time in total.
 
@@ -59,6 +66,22 @@ class Solution(object):
 
 
 
+    def isAbleAttend_overlap(self, timeLst):
+        def overlap(a, b):
+            if min(0, max(a[0], b[0] - min(a[1], b[1]))) > 0:
+                return True
+
+            return False
+
+
+        timeLst.sort()
+        for i in range(len(timeLst)-1):
+            if overlap(timeLst[i], timeLst[i+1]):
+                retunr False
+
+        return True
+
+
 s1 = Interval(0, 30)
 s2 = Interval(5, 10)
 s3 = Interval(15, 20)
@@ -68,3 +91,4 @@ print(a)
 
 meetings = [[0, 30],[5, 10],[15, 20]]
 print(Solution().isAbleAttend_no_class(meetings))
+print(Solution().isAbleAttend_overlap(meetings))
