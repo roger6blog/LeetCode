@@ -75,6 +75,29 @@ class Solution:
 
 
 
+
+
+
+
+
+    def minMeetingRooms_sweep_line2(self, intervals):
+
+        ans = 0
+        tmp = 0
+        rooms = []
+        for i, j in intervals:
+            rooms.append((i, 1))
+            rooms.append((j, -1))
+        rooms.sort()
+        for room, count in rooms:
+            tmp += count
+            ans = max(ans, tmp)
+
+        print(ans)
+
+        return ans
+
+
 a = Interval(0, 30)
 b = Interval(5, 10)
 c = Interval(15, 20)
@@ -84,4 +107,4 @@ print(sol.minMeetingRooms(s))
 
 s = [[0, 30],[5, 10],[15, 20]]
 print(sol.minMeetingRooms_sweep_line(s))
-
+print(sol.minMeetingRooms_sweep_line2(s))

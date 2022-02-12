@@ -1,5 +1,5 @@
 '''
-Level: Medium      Tag: Matrix
+Level: Medium      Tag: [Matrix], [Binary Search]
 
 Write an efficient algorithm that searches for a value in an m x n matrix.
 
@@ -47,10 +47,10 @@ All the integers in each column are sorted in ascending order.
 
 '''
 這矩陣不是一般的遞增矩陣
-是左下角比右上角大的遞增矩陣，不能用二分法搜尋
+是左下角比右上角大的遞增矩陣,不能用一般的二分法搜尋
 這矩陣的特色是越往左數字越小 往右數字越大
 所以單純的選一個數字來比較 (例如挑右上角的數字)
-如果比目標數大就往左，比目標數小就往下
+如果比目標數大就往左, 比目標數小就往下
 直到找到或超出邊界為止
 '''
 
@@ -85,6 +85,25 @@ class Solution(object):
 
 
 
+    def searchMatrix2(self, matrix, target):
+        """
+        :type matrix: List[List[int]]
+        :type target: int
+        :rtype: bool
+        """
+        m = len(matrix)
+        n = len(matrix[0])
+        left = 0
+        right = n - 1
+        while left < m and right >= 0:
+            if matrix[left][right] == target:
+                return True
+            elif matrix[left][right] > target:
+                right -= 1
+            else:
+                left += 1
+
+        return False
 
 
 

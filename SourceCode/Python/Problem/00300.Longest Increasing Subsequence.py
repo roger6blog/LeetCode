@@ -62,8 +62,8 @@ class Solution(object):
     '''
     O(n^2)解法:
 
-    Dpi 表示以第i个数字为结尾的最长上升子序列的长度。 对于每个数字，枚举前面所有小于自己的数字 j，
-    Dpi = max{Dpj} + 1. 如果没有比自己小的，Dpi = 1;
+    Dpi 表示以第i个数字为结尾的最长上升子序列的长度。 对于每个数字, 枚举前面所有小于自己的数字 j
+    Dpi = max{Dpj} + 1. 如果没有比自己小的, Dpi = 1;
 
 
     和368 Largest Divisible Subset同個模板

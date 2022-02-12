@@ -1,5 +1,5 @@
 '''
-Level: Medium Tag: 2DP
+Level: Medium Tag: 2[DP]
 
 
 Given strings s1, s2, and s3, find whether s3 is formed by an interleaving of s1 and s2.
@@ -47,7 +47,7 @@ Follow up: Could you solve it using only O(s2.length) additional memory space?
 '''
 
 設DP[i][j] 為是否可由s1的前i個字串和s2的前j的字串所組成(i+j) True為可以組成 False為不可組成
-如果DP[i][j] 為True，代表 DP[i-1個長度的s1字串][j個長度的s1字串] 為True
+如果DP[i][j] 為True, 代表 DP[i-1個長度的s1字串][j個長度的s2字串] 為True
                     而且s1 位置i後面的字串 s2 位置j後面的字串加起來可以組成s3剩下的字串
 所以狀態轉移方程式為 DP[i][j] = True if DP[i][j-1] 為True且s1[i] == s3[i+j]
                 或DP[i][j] = true if DP[i-1][j] 為True且S2[i] == s3[i+j]
@@ -92,13 +92,44 @@ class Solution(object):
         print(dp[m][n])
         return dp[m][n]
 
+    # TLE at 93/106
+    def isInterleave_rec(self, s1, s2, s3):
+        """
+        :type s1: str
+        :type s2: str
+        :type s3: str
+        :rtype: bool
+        """
+        if len(s3) != len(s1) + len(s2):
+            return False
 
+        if not s1:
+            return s2 == s3
 
+        if not s2:
+            return s1 == s3
+
+        if s1[0] != s3[0] and s2[0] != s3[0]:
+            return False
+
+        if s3 == s1 + s2:
+            return True
+
+        ans1 = False
+        ans2 = False
+        if s1[0] == s3[0]:
+            ans1 = self.isInterleave_rec(s1[1:], s2, s3[1:])
+
+        if s2[0] == s3[0]:
+            ans2 = self.isInterleave_rec(s1, s2[1:], s3[1:])
+
+        return ans1 or ans2
 
 s1 = "aabcc"
 s2 = "dbbca"
 s3 = "aadbbcbcac"
 assert True == Solution().isInterleave(s1, s2, s3)
+assert True == Solution().isInterleave_rec(s1, s2, s3)
 
 s1 = "a"
 s2 = ""
@@ -110,3 +141,16 @@ s1 = "a"
 s2 = ""
 s3 = "a"
 assert True == Solution().isInterleave(s1, s2, s3)
+
+
+s1 = "aabcc"
+s2 = "dbbca"
+s3 = "aadbbbaccc"
+assert False == Solution().isInterleave(s1, s2, s3)
+assert False == Solution().isInterleave_rec(s1, s2, s3)
+
+
+s1 = "cbcccbabbccbbcccbbbcabbbabcababbbbbbaccaccbabbaacbaabbbc"
+s2 = "abcbbcaababccacbaaaccbabaabbaaabcbababbcccbbabbbcbbb"
+s3 = "abcbcccbacbbbbccbcbcacacbbbbacabbbabbcacbcaabcbaaacbcbbbabbbaacacbbaaaabccbcbaabbbaaabbcccbcbabababbbcbbbcbb"
+assert False == Solution().isInterleave_rec(s1, s2, s3)

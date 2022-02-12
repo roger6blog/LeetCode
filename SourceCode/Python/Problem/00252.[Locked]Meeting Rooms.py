@@ -1,4 +1,6 @@
 '''
+2022 Locked
+
 Level: Easy  Tag: [Sweep Line]
 
 ## Meeting Rooms I
@@ -68,7 +70,7 @@ class Solution(object):
 
     def isAbleAttend_overlap(self, timeLst):
         def overlap(a, b):
-            if min(0, max(a[0], b[0] - min(a[1], b[1]))) > 0:
+            if max(0, min(a[1], b[1]) - max(a[0], b[0])) > 0:
                 return True
 
             return False
@@ -77,7 +79,7 @@ class Solution(object):
         timeLst.sort()
         for i in range(len(timeLst)-1):
             if overlap(timeLst[i], timeLst[i+1]):
-                retunr False
+                return False
 
         return True
 

@@ -1,5 +1,5 @@
 '''
-Level: Medium Tag:  DP
+Level: Medium Tag:  [DP]
 
 Given a non-empty string s and a dictionary wordDict containing a list of non-empty words,
 determine if s can be segmented into a space-separated sequence of one or more dictionary words.
@@ -79,11 +79,16 @@ class Solution(object):
         return dp[len(s)]
 
 
+    def wordBreak_rec(self, s, wordDict):
+        if len(s) == 0:
+            return True
 
+        for i in range(1, len(s)+1):
+            if s[:i] in wordDict:
+                if self.wordBreak_rec(s[i:], wordDict) == True:
+                    return True
 
-
-
-
+        return False
 
 
 
@@ -169,16 +174,16 @@ sol = Solution()
 s = "catsandog"
 wordDict = ["cats", "dog", "sand", "and", "cat"]
 res = sol.wordBreak2(s, wordDict)
-print res
+print(res)
 res = sol.wordBreak("abcd", ["a","ab", "abc", "cde"])
-print res
+print(res)
 
 res = sol.wordBreak2("abcd", ["a","ab", "abc", "cde"])
-print res
+print(res)
 
 
 res = sol.wordBreak4_TLE("abcd", ["a","ab", "abc", "cde"])
-print res
+print(res)
 
 s = "applepenapple"
 wordDict = ["apple", "pen"]

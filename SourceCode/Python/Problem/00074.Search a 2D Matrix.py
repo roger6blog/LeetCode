@@ -1,5 +1,5 @@
 '''
-Level: Medium      Tag: Matrix
+Level: Medium      Tag: [Matrix], [Binary Search]
 
 Write an efficient algorithm that searches for a value in an m x n matrix.
 This matrix has the following properties:
@@ -88,19 +88,19 @@ class Solution(object):
         row = len(matrix)
         col = len(matrix[0])
         left = 0
-        right = row*col
+        right = row * col
 
         while left < right:
             mid = left + (right-left) // 2
-            if matrix[mid // col][mid % col] == target:
+            val = matrix[mid // col][mid % col]
+            if val == target:
                 return True
-            elif matrix[mid // col][mid % col] > target:
+            elif val > target:
                 right = mid
             else:
                 left = mid + 1
 
-        if left >= row*col:
-            return False
+        return False
 
 
 
@@ -113,4 +113,4 @@ matrix = [
   [23, 30, 34, 50]
 ]
 
-print Solution().BinsearchMatrix(matrix, 3)
+print(Solution().BinsearchMatrix(matrix, 3))

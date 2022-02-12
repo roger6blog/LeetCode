@@ -41,7 +41,7 @@ where n is the total number of rows in the triangle?
 
 
 '''
-
+自上而下的DP
 DP[i][j] = min(DP[i-1][j-1], DP[i-1][j]) + trangle[i][j]
 
 '''
@@ -55,6 +55,7 @@ class Solution(object):
         n = len(triangle)
         # dp[i][j] 代表從0,0 走到i, j的最短路徑值
         dp = [[0] * (i+1) for i in range(n)]
+        # dp = [[0] * n for i in range(n)] # 也行
 
         # 初始值，三角形的左右要初始化
         # 因為他們沒有上面的路徑能到達
