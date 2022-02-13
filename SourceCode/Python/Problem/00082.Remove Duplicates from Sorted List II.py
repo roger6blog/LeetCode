@@ -1,5 +1,5 @@
 '''
-Level: Medium  Tag:   LinkList
+Level: Medium  Tag:   [LinkList]
 
 Given the head of a sorted linked list, delete all nodes that have duplicate numbers,
 
@@ -33,8 +33,6 @@ The list is guaranteed to be sorted in ascending order.
 
 '''
 
-from os import dup
-
 
 def list_to_link_list(head):
     for n in range(len(head))[::-1]:
@@ -58,6 +56,18 @@ class ListNode(object):
     def __init__(self, val=0, next=None):
         self.val = val
         self.next = next
+
+'''
+删除链表中重复出现的节点，全部删掉一个都不保留
+
+因为删除某个节点node，需要让node的前序节点.next = node.next，删除全部重复的元素可能删掉head元素
+因此需要构造一个dummy node，让其指向head的前序节点，也就是dummy.next = head。
+这样需要删除head的时候就可以令dummy.next = head.next。
+最后反回dummy.next
+
+'''
+
+
 class Solution(object):
     def deleteDuplicates(self, head):
         """

@@ -1,5 +1,5 @@
 '''
-Level : Easy   Tag: LinkList
+Level : Easy   Tag: [LinkList]
 
 Given the head of a singly linked list, reverse the list, and return the reversed list.
 
