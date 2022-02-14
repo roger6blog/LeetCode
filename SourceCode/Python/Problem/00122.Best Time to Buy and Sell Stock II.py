@@ -49,6 +49,16 @@ class Solution:
                 profit += prices[i+1] - prices[i]
         return profit
 
+
+    # @param prices, a list of integer
+    # @return an integer
+    def maxProfit2(self, prices):
+        ans = 0
+        for i in range(len(prices)-1):
+            if prices[i+1] > prices[i]:
+                ans += prices[i+1] - prices[i]
+
+        return ans
 stock = [7,1,5,3,6,4]
 stock2 = [1,2,3,4,5]
 print(Solution().maxProfit(stock2))

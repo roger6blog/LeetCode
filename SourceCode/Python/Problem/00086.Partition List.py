@@ -1,5 +1,5 @@
 '''
-Level: Medium   Tag: LinkList
+Level: Medium   Tag: [LinkList]
 
 Given the head of a linked list and a value x,
 
@@ -54,6 +54,13 @@ class ListNode(object):
     def __init__(self, val=0, next=None):
         self.val = val
         self.next = next
+
+'''
+将链表排成两队，小于x的一队，大于等于x的一队，然后把两个链表连起来。
+
+链表的结构会发生变化，所以需要两个dummy node，一个用来指向小的队dummy_low，一个用来指向大的队dummy_high。
+
+'''
 class Solution(object):
     def partition(self, head, x):
         """

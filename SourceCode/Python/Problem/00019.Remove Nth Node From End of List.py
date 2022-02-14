@@ -1,5 +1,5 @@
 '''
-Level: Medium  Tag:  LinkList
+Level: Medium  Tag:  [LinkList]
 
 Given the head of a linked list,
 

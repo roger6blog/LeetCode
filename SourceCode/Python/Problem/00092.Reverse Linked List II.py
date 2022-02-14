@@ -59,6 +59,13 @@ class ListNode(object):
 
 '''
 一直记录换完区间的头，让reverse区间之前的node的next等于reverse区间的头
+
+
+[1,]->[2,]->...->[m-1,]->[m,]->...->[n,]->[n+1,]->...
+翻转m和n之间的部分，分为三个步骤：
+1. 找到m-1和m的点，设为prev和curt
+2. 将m~n反转
+3. 把m-1.next指向n;把m.next指向n.next
 '''
 
 class Solution(object):

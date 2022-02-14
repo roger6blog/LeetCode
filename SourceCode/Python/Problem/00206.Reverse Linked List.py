@@ -57,6 +57,29 @@ class ListNode(object):
         self.val = val
         self.next = next
 
+
+"""
+ null   [1,] -> [2,] -> [3,] -> [4,] -> [,5,]
+  ↑       ↑
+ prev   curr
+
+1. 用temp记录下curr.next（因为后面要修改curr.next）
+ null   [1,] -> [2,] -> [3,] -> [4,] -> [,5,]
+  ↑       ↑      ↑
+ prev   curr    temp
+
+2. 将curr.next指向其前序节点prev，此时原来的后续链断掉:
+ null <- [1,]  [2,] -> [3,] -> [4,] -> [,5,]
+  ↑       ↑      ↑
+ prev   curr    temp
+3. 将prev移到curr位置，curr移动到原来的curr.next,即temp:
+null <- [1,]  [2,] -> [3,] -> [4,] -> [,5,]
+         ↑      ↑       ↑
+        prev   curr    temp
+
+"""
+
+
 class Solution(object):
     def reverseList(self, head):
         """
