@@ -30,6 +30,26 @@ Constraints:
 
 
 class Solution(object):
+    '''
+    从最后一个位置开始，找到一个上升点，上升点之前的无需改动。
+    然后，翻转上升点之后的降序。 在降序里，找到第一个比上升点大的，交换位置。
+    看下面一个例子，有如下的一个数组
+
+    1　　2　　7　　4　　3　　1
+
+    下一个排列为：
+
+    1　　3　　1　　2　　4　　7
+
+    那么是如何得到的呢，我们通过观察原数组可以发现，如果从末尾往前看，数字逐渐变大，到了2时才减小的，
+    然后再从后往前找第一个比2大的数字，是3，那么我们交换2和3，再把此时3后面的所有数字转置一下即可，步骤如下：
+
+    1　　2　　7　　4　　3　　1
+
+    1　　3　　7　　4　　2　　1
+
+    1　　3　　1　　2　　4　　7
+        '''
     def nextPermutation(self, nums):
         """
         :type nums: List[int]
@@ -122,10 +142,22 @@ class Solution(object):
         print(nums)
         return
 
+    def nextPermutation4(self, nums):
+        n = len(nums)
+        for i in range(n-1, -1, -1):
+            if i > 0 and nums[i] > nums[i-1]:
+                for j in range(n-1, i-1, -1):
+                    if nums[j] > nums[i-1]:
+                        nums[j], nums[i-1] = nums[i-1], nums[j]
+                        nums = nums[:i] + nums[i:][::-1]
+                        return nums
+
+        return nums[::-1]
+
 nums = [1,4,5,3,2]
 nums2 = [3,2,1]
 print(Solution().nextPermutation(nums2))
-
+print(Solution().nextPermutation4(nums))
 nums = [3,2,1]
 print(Solution().nextPermutation3(nums))
 nums = [1,4,5,3,2]
