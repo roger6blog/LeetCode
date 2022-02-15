@@ -149,11 +149,13 @@ class Solution(object):
                 for j in range(n-1, i-1, -1):
                     if nums[j] > nums[i-1]:
                         nums[j], nums[i-1] = nums[i-1], nums[j]
-                        nums = nums[:i] + nums[i:][::-1]
+                        nums[i:] = sorted(nums[i:])
                         return nums
+        nums.reverse()
+        return
 
-        return nums[::-1]
-
+nums = [1,3,2]
+print(Solution().nextPermutation4(nums))
 nums = [1,4,5,3,2]
 nums2 = [3,2,1]
 print(Solution().nextPermutation(nums2))

@@ -1,5 +1,5 @@
 '''
-Level: Easy Tag: DP
+Level: Easy Tag: [DP]
 
 You are climbing a staircase. It takes n steps to reach the top.
 

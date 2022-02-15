@@ -103,6 +103,27 @@ class Solution(object):
         print(ans)
         return ans
 
+
+    def combinationSum3(self, candidates, target):
+        ans = []
+        curr = []
+        def rec(candidates, curr, target):
+            if sum(curr) == target:
+                curr.sort()
+                if curr not in ans:
+                    ans.append(curr)
+
+            if sum(curr) > target:
+                return
+
+            for i in range(len(candidates)):
+
+                rec(candidates, curr+[candidates[i]], target)
+
+        candidates.sort()
+        rec(candidates, curr, target)
+        return ans
+
 candidates = [2,3,6,7]
 target = 7
 

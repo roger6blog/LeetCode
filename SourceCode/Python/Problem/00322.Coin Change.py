@@ -1,5 +1,5 @@
 '''
-Level: Medium Tag: DP
+Level: Medium Tag: [DP]
 
 You are given an integer array coins representing coins of different denominations
 
@@ -32,8 +32,8 @@ Output: 0
 Constraints:
 
 1 <= coins.length <= 12
-1 <= coins[i] <= 231 - 1
-0 <= amount <= 104
+1 <= coins[i] <= 2^31 - 1
+0 <= amount <= 10^4
 
 
 '''
@@ -86,8 +86,38 @@ class Solution(object):
         return dp[amount]
 
 
+
+    def coinChange2(self, coins, amount):
+        """
+        :type coins: List[int]
+        :type amount: int
+        :rtype: int
+        """
+        ans = []
+        curr = []
+        def rec(coins, curr, amount):
+            if sum(curr) == amount:
+                curr.sort()
+                if curr not in ans:
+                    ans.append(curr)
+            if sum(curr) > amount:
+                return
+
+            for i in range(len(coins)):
+                rec(coins, curr+[coins[i]], amount)
+
+        rec(coins, curr, amount)
+        print(ans)
+        if len(ans) == 0:
+            return -1
+        ans = min(ans, key=len)
+        print(ans)
+        return len(ans)
+
+
 coins = [1,2,5]
 amount = 11
+Solution().coinChange2(coins, amount)
 assert 3 == Solution().coinChange(coins, amount)
 
 coins = [0]
