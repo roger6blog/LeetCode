@@ -23,8 +23,8 @@ Explanation: You will always arrive at index 3 no matter what. Its maximum jump 
 
 Constraints:
 
-1 <= nums.length <= 104
-0 <= nums[i] <= 105
+1 <= nums.length <= 10^4
+0 <= nums[i] <= 10^5
 
 
 '''
