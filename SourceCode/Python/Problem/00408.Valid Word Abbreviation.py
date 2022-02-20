@@ -1,4 +1,5 @@
 '''
+Level: Medium  Tag: [String]
 
 Given a non-empty string s and an abbreviation abbr,
 
