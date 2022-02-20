@@ -31,7 +31,7 @@ class Solution(object):
             x, y = v[:int(len(v)/2)], v[int(len(v)/2):]
             if int(x) * int(y) == num:
                 return True
-        pass
+        return False
 
 
 
@@ -40,3 +40,5 @@ num = 688
 assert True == Solution().isVampreNumber(num)
 num = 125460
 assert True == Solution().isVampreNumber(num)
+num = 152222
+assert False == Solution().isVampreNumber(num)
