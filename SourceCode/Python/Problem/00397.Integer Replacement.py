@@ -49,7 +49,7 @@ class Solution(object):
             if n == 1:
                 ans = 0
 
-            elif n & 1 == 1:
+            elif n & 1 == 1: # 判斷奇偶
                 ans = min(rec(n+1), rec(n-1)) + 1
             else:
                 ans = rec(n//2)+1

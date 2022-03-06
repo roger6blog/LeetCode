@@ -76,16 +76,57 @@ class Solution:
         return ans
 
 
+
+
+
+
+
+
+    def wordsTyping2(self, sentence, rows, cols):
+		rx = 0
+		cx = 0
+		ans = 0
+		n = len(sentence)
+		i = 0
+		while rx < rows:
+			cx = 0
+			while cx < cols:
+				if len(sentence[i]) <= cols - cx:
+					cx +=  len(sentence[i])+1
+					if i < n-1:
+						i += 1
+					else:
+						i = 0
+						ans += 1
+					if cx >= cols:
+						break
+				else:
+					break
+			rx += 1
+
+		print(ans)
+		return ans
+
+
+
+
+
+
+
+
+
+
+
 rows = 4
 cols = 5
 sentence = ["I", "had", "apple", "pie"]
-assert 1 == Solution().wordsTyping(sentence, rows, cols)
+assert 1 == Solution().wordsTyping2(sentence, rows, cols)
 
 
 rows = 3
 cols = 6
 sentence = ["a", "bcd", "e"]
-assert 2 == Solution().wordsTyping(sentence, rows, cols)
+assert 2 == Solution().wordsTyping2(sentence, rows, cols)
 
 rows = 2
 cols = 8
