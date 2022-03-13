@@ -15,10 +15,10 @@ Example1
 
 Input:
 [
-  "abcd",
-  "bnrt",
-  "crmy",
-  "dtye"
+    "abcd",
+    "bnrt",
+    "crmy",
+    "dtye"
 ]
 Output: true
 Explanation:
@@ -33,10 +33,10 @@ Example2
 
 Input:
 [
-  "abcd",
-  "bnrt",
-  "crm",
-  "dt"
+    "abcd",
+    "bnrt",
+    "crm",
+    "dt"
 ]
 Output: true
 Explanation:
@@ -50,10 +50,10 @@ Example3
 
 Input:
 [
-  "ball",
-  "area",
-  "read",
-  "lady"
+    "ball",
+    "area",
+    "read",
+    "lady"
 ]
 Output: false
 Explanation:
@@ -70,3 +70,29 @@ class Solution:
     """
     def validWordSquare(self, words):
         # write your code here
+        row = len(words)
+        for x in range(row):
+            y = len(words[x])
+            for i in range(y):
+                if words[x][i] != words[i][x]:
+                    return False
+
+
+        return True
+
+Input = [
+    "ball",
+    "area",
+    "read",
+    "lady"
+]
+Solution().validWordSquare(Input)
+
+Input = [
+    "abcd",
+    "bnrt",
+    "crmy",
+    "dtye"
+]
+Solution().validWordSquare(Input)
+
