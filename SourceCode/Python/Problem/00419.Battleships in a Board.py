@@ -1,5 +1,5 @@
 '''
-Level: Medium
+Level: Medium  Tag: [DFS]
 
 Given an m x n matrix board where each cell is a battleship 'X' or empty '.',
 
@@ -50,6 +50,7 @@ Follow up: Could you do it in one-pass, using only O(1) extra memory and without
 用 |= 來分別記錄每一個連續的x 和 y
 如果有不同的row 或 col的x 或y被 |= 了，那x和y最後一定不會是原本同一行/列的值
 如此便可依此判斷這些X是否在同一行/同一列上
+注意 造訪過的點不用刪除
 '''
 
 
