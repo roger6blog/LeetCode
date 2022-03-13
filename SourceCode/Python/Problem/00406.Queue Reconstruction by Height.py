@@ -73,5 +73,24 @@ class Solution(object):
         return people
 
 
+
+
+    def reconstructQueue2(self, people):
+        """
+        :type people: List[List[int]]
+        :rtype: List[List[int]]
+        """
+        def cmp_position(a, b):
+            if a[0] == b[0]:
+                return cmp(a[1], b[1])
+            else:
+                return cmp(a[0], b[0])
+        people.sort(cmp=cmp_position, reverse=True)
+        pass
+
+
+
+
 Input = [[7,0], [4,4], [7,1], [5,0], [6,1], [5,2]]
-print Solution().reconstructQueue(Input)
+print(Solution().reconstructQueue(Input))
+print(Solution().reconstructQueue2(Input))
