@@ -43,21 +43,15 @@ class Solution(object):
         :rtype: int
         """
         from collections import Counter
-        c = Counter(s)
-        max_freq = c.most_common(1)[0][1]
         ans = 0
         i = 0
-        for i in range(len(s)):
-
-            n = len(set(queue))
-            if n == 1:
-                ans = max(ans, len(queue))
-            else:
-
-                if len(queue) - x <= k:
-                    ans = max(ans, len(queue))
-                else:
-                    i += 1
+        n = len(s)
+        for i in range(n):
+            for j in range(i+1, n):
+                substr = s[i:j+1]
+                c = Counter(substr)
+                if len(c) <= 2:
+                    ans = max(ans, len(substr))
 
         print(ans)
         return ans
@@ -90,13 +84,13 @@ class Solution(object):
 
 
 
-s = "ABAA"
-k = 0
-Solution().characterReplacement(s, k)
+# s = "ABAA"
+# k = 0
+# Solution().characterReplacement(s, k)
 
-s = "ABBB"
-k = 2
-Solution().characterReplacement(s, k)
+# s = "ABBB"
+# k = 2
+# Solution().characterReplacement(s, k)
 
 s = "AABABBA"
 k = 1
