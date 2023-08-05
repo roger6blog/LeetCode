@@ -3,7 +3,7 @@
   
 ***
   
-### [00001.Two_Sum](../../SourceCode/Python/Problem/00001.Two_Sum.py) Level: Easy Tags: []
+### [00001.Two_Sum](../../SourceCode/Python/Problem/00001.Two%20Sum.py) Level: Easy Tags: []
   
 Time:  O(n)  
 Space: O(n)  
@@ -25,7 +25,7 @@ for i in xrange(len(nums)):
   
 ***
   
-### [00014.Longest_Common_Prefix](../../SourceCode/Python/Problem/00014.Longest_Common_Prefix.py) Level: Easy Tags: []
+### [00014.Longest_Common_Prefix](../../SourceCode/Python/Problem/00014.Longest%20Common%20Prefix.py) Level: Easy Tags: []
   
 Time:  O(n)    
 Space: O(1)   
